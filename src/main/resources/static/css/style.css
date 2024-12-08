@@ -112,7 +112,7 @@ button, input, textarea {
 	line-height: 160%; /* 22.4px */
 	
 	position: absolute;
-	top: 45%;
+	top: 50%;
 	right: 48px;
 	transform: translateY(-50%);
 	
@@ -143,6 +143,7 @@ button, input, textarea {
 .header.shrink .logo {
 	left: 0px;
 	transform: translateY(-50%) scale(0.8);
+	font-size:0;
 }
 
 .hamburger-btn {
@@ -157,6 +158,7 @@ button, input, textarea {
 .header.shrink .hamburger-btn {
 	opacity: 1;
 	right: 12px;
+	font-size:0;
 }
 
 
@@ -1440,7 +1442,7 @@ button, input, textarea {
 
 .index .section6 .inner .fly .fly-bar{
 	background: rgba(255, 255, 255, 0.48);
-	width:2px;
+	width:3px;
 	height:100%;
 	position:relative;
 }
@@ -1449,6 +1451,10 @@ button, input, textarea {
 	display: flex;
     justify-content: center;
     align-items: center;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, -50%)
 }
 
 .index .section6 .inner .fly .fly-bar-inner.on{
@@ -1460,8 +1466,9 @@ button, input, textarea {
 
 .index .section6 .inner .fly .fly-bar-inner.stop{
 	position:absolute;
-	bottom:0;
+	bottom:-2px;
 	left:50%;
+	top:auto;
 	transform: translateX(-50%);
 }
 
@@ -1479,7 +1486,7 @@ button, input, textarea {
 .index .section6 .inner .fly .fly-line-wrap{
 	background: linear-gradient(0deg, #FFF 14.5%, rgba(255, 255, 255, 0.00) 48.5%);
 	background-size: cover;
-	width: 2px;
+	width: 3px;
 	height:0;
 	position:fixed;
 	bottom:50%;

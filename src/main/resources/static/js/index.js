@@ -1,4 +1,13 @@
+
+
+
+console.log(1);
+
 $(document).ready(function () {
+
+	$("html, body").animate({
+		scrollTop : 0
+	});
 
 	//$("body").smoothWheel();
 	
@@ -195,10 +204,22 @@ var prata = {
 		if(this.scrollTop >= section3) {
 			$(".section3").addClass("is-fixed");
 
+
 		}else{
 			$(".section3").removeClass("is-fixed");
 			$(".navTxt").text("");
 		}
+
+
+		var sectionNext4 = $(".section4").offset().top;
+		var sec3End = sectionNext4 - $(window).height();
+
+		if(this.scrollTop >= section3 && $(window).scrollTop() <= sec3End) {
+			$(".navTxt").text(((lang=="ko")?"브랜드 슬로건":"Brand Slogan"));
+		}
+
+
+
 
 
 		let sec3Bound = document.querySelector(".section3").getBoundingClientRect();
@@ -212,8 +233,8 @@ var prata = {
 		if(sec3Bound.top < 300 && sec3Bound.bottom - $(window).height() > 0){
 
 
-			$(".navTxt").text(((lang=="ko")?"브랜드 슬로건":"Brand Slogan"));
-			
+
+
 			const videoTerm = 4000
 			const intermediateHeight = 122; // 초기 목표 높이
 
@@ -580,12 +601,19 @@ var prata = {
 
 		/*섹션 4 구간*/
 		var section4 = $(".section4").offset().top;
-		if(this.scrollTop >= section4) {
+		var sectionNext5 = $(".section5").offset().top;
+		var sec4End = sectionNext5 - $(window).height();
+
+		if(this.scrollTop >= section4 && $(window).scrollTop() <= sec4End) {
 			$(".section4").addClass("is-fixed");
+			$(".navTxt").text(((lang=="ko")?"브랜드 가치":"Brand Value"));
+			//$(".section31").addClass("is-fixed");
 
 		}else{
 			$(".section4").removeClass("is-fixed");
 		}
+
+
 
 
 		let sec4Bound = document.querySelector(".section4").getBoundingClientRect();
@@ -615,7 +643,7 @@ var prata = {
 
 
 			if(sec4TextFirst.bottom - 150 <= 0){
-				$(".navTxt").text(((lang=="ko")?"브랜드 가치":"Brand Value"));
+
 				$(".section4 .text-wrap.second").addClass("on");
 			}else{
 				$(".section4 .text-wrap.second").removeClass("on");
@@ -636,12 +664,20 @@ var prata = {
 		var section5 = $(".section5").offset().top;
 		var expandHeight = Math.max(100, this.scrollTop - section5);
 		var dynamicPadding = Math.max(16 - (this.scrollTop - section5) / 10); // padding 감소
-		if(this.scrollTop >= section5) {
+
+		var sectionNext6 = $(".section6").offset().top;
+		var sec5End = sectionNext4 - $(window).height();
+
+		if(this.scrollTop >= section5 && $(window).scrollTop() <= sec5End) {
 			$(".section5").addClass("is-fixed");
 			$(".navTxt").text(((lang=="ko")?"브랜드 네이밍":"Brand Naming"));
+			//$(".section31").addClass("is-fixed");
+
 		}else{
-			$(".section5").removeClass("is-fixed");
+			//$(".section31").removeClass("is-fixed");
 		}
+
+
 
 
 
@@ -1010,7 +1046,7 @@ var prata = {
 				$(".fly-line-wrap").css('height', (move) + 'px'); // px로 높이 설정
 			}else{
 				$(".fly-bar-inner").removeClass("on");
-				$(".fly-line-wrap").addClass("stop");
+				$(".fly-line-wrap").addClass("stop").css({"height":"0px"});
 			}
 			
 		}
