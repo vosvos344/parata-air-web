@@ -557,12 +557,12 @@ button {
 }
 #animationSection2 .animationImgTextLeft {
 	opacity: 0;
-	transition: opacity .5s ease-out, transform .6s ease-out;
+	transition: opacity .3s ease-out, transform .4s ease-out;
 	transform: translateY(100%);
 }
 #animationSection2 .animationImgTextLeft.leftOn{
 	opacity: 1;
-	transition: opacity .5s ease-out, transform .6s ease-out;
+	transition: opacity .3s ease-out, transform .4s ease-out;
 	transform: translateY(0%);
 }
 #animationSection2 .animationImgTextLeft h3{
@@ -573,6 +573,7 @@ button {
 	color: #FFF;
 	padding: 0 80px;
 	box-sizing: border-box;
+	white-space: nowrap;
 }
 #animationSection2 .animationImgTextRight {
 }
