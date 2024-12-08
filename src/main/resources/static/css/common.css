@@ -1116,7 +1116,7 @@ button {
 	right: 0;
 	width: 50%;
 	height: 4000px;
-	background: url('./images/section6_bg.png') no-repeat center / cover;
+	background: url('/images/section6_bg.png') no-repeat center / cover;
 }
 
 #animationSection6 .animationSectionRightInner{
