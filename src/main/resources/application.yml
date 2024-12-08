@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: parata-micro-front
+  messages:
+    basename: messages
+    encoding: UTF-8

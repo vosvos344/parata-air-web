@@ -1,0 +1,1603 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: 'pretendard';
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  font-family: 'pretendard';
+  line-height: 1;
+  color: #000;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  font-size: 0;
+}
+button {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  color: var(--white)
+}
+
+.progressLine {
+	height: 2px;
+	background: #001EE6;
+	width: 0%;
+	transition: width 0.3s ease-out;
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+}
+
+.animationWrap{
+	overflow: hidden;
+}
+.animationHeader{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	opacity: 1;
+}
+.animationLogoWrapper{
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	margin: 0 auto;
+	position: relative;
+}
+.animationLogoOuter{
+	position: absolute;
+	z-index: 50;
+	top: -110%;
+	transform: translate(-50%, -50%) scale(300);
+	left: 100%;
+}
+
+.animationLogoAfter{
+	width: 100%;
+	height: 100%;
+	background: #FFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: -50;
+	opacity: 0;
+	position: relative;
+}
+.animationLogoAfter.show{
+	opacity: 1;
+	z-index: 99;
+	transition: all .5 ease-out;
+}
+.animationLogoAfterInner{
+	transform: translateX(0%);
+	position: relative;
+	width: 120px;
+	overflow: hidden;
+	opacity: 1;
+	transition: opacity .5s ease-out;
+}
+.animationLogoAfterInner img{
+	object-fit: cover;
+}
+.animationLogoAfterInner.imgFull img{
+	width: 100%;
+}
+.animationLogoAfterInner.pa-fade{
+	opacity: 0;
+	transition: opacity .1s ease-out;
+}
+.animationLogoLanguage{
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.animationLogoLanguage a{
+	font-family: Pretendard;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 23.4px;
+	text-align: left;
+	text-underline-position: from-font;
+	text-decoration-skip-ink: none;
+	color: rgba(255, 255, 255, 0.5);
+}
+.animationLogoLanguage a.langActive{
+	color: rgba(255, 255, 255, 1);
+}
+
+.additionalSection {
+	position: absolute;
+	bottom: 1px;
+	left: 0;
+	transform: translateY(100%);
+	width: 100%;
+	height: 120px;
+	background-color: #FFF;
+	clip-path: polygon(0 0%, 160% 0%, 0% 90%, 0% 100%);
+	z-index: 5;
+}
+.animationSection{
+	position: relative;
+}
+.animationHeaderOriginal{
+	height: 58px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 90;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+.animationHeaderOriginal .animationHeaderInner{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+	padding: 0 40px;
+}
+.animationHeaderOriginal .animationHeaderLogo{
+	width: 188px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+}
+.animationHeaderOriginal .animationHeaderLogo img{
+	width: 100%;
+	object-fit: cover;
+}
+.animationHeaderOriginal .animationHeaderToc{
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.animationHeaderOriginal .animationHeaderToc strong{
+	font-family: Pretendard;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 19.6px;
+	text-align: right;
+	color: #FFF;
+}
+.animationHeaderOriginal .animationHeaderToc span{
+	width: 20px;
+	height: 20px;
+}
+.animationHeaderOriginal .animationHeaderToc span img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+#animationSection1 .animationImg{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	overflow: hidden;
+}
+#animationSection1 .animationImg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#animationSection1 .animationText {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	transform: translate(0%, -50%);
+}	
+
+#animationSection1 .animationText h4{
+	font-size: 6vw;
+	font-weight: 700;
+	line-height: 110%;
+	text-align: center;
+	color: #FFF;
+	opacity: 0;
+	transform: translateY(100%);
+}
+#animationSection1 .animationText.txtOn h4{
+	opacity: 1;
+	transform: translateY(0%);
+	transition: transform .3s ease-out, opacity .3s ease-out;
+	transition-delay: 0.2s;
+}
+#animationSection1 .animationText p{
+	font-size: 1.2vw;
+	font-weight: 600;
+	line-height: 110%;
+	text-align: center;
+	color: #FFF;
+	padding: 22px 0 0;
+	opacity: 0;
+	transform: translateY(100%);
+}
+
+#animationSection1 .animationText.txtOn p{
+	opacity: 1;
+	transform: translateY(0%);
+	transition: transform .6s ease-out, opacity .6s ease-out;
+	transition-delay: 0.6s;
+}
+
+
+
+
+
+
+
+
+
+
+#animationSection2{
+	background: #161626;
+	z-index: 1;
+	position: relative;
+}
+
+#animationSection2 .animationImg{
+	width: 0;
+	height: 80%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); 
+	z-index: 6;
+	transition: all .5s ease-out;
+}
+
+#animationSection2 .second .animationImg{
+	width: 10%;
+	height: 80%;
+	transition: width .5s ease-out;
+}
+
+#animationSection2 .fourth .animationImg{
+	width: 100%;
+	height: 100%;
+	transition: width .5s ease-out, height .5s ease-out;
+	background: #161626;
+}
+
+#animationSection2 .fifth .animationImg{
+	width: 877px;
+	height: 500px;
+	top: 30%;
+	transition: width .5s ease-out, height .5s ease-out, top .5s ease-out;
+	background: #161626;
+}
+
+#animationSection2 .animationImg .animationSection2Video{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	position: absolute;
+	opacity: 1;
+	z-index: 56;
+	transition: opacity .5s ease-out
+}
+#animationSection2 .animationImg.imageChange .animationSection2Video{
+	opacity: 0;
+	z-index: 55;
+	transition: opacity .5s ease-out;
+}
+
+#animationSection2 .animationImg .animationSection2Image{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0;
+	position: absolute;
+	z-index: 55;
+	transition: opacity .5s ease-out;
+}
+#animationSection2 .animationImg.imageChange .animationSection2Image{
+	opacity: 1;
+	z-index: 56;
+	transition: opacity .5s ease-out;
+}
+#animationSection2 .animationImg .animationSection2ImageTxt{
+	position: absolute;
+	bottom: -61px;
+	transform: translateY(200%);
+	opacity: 0;
+	transition: opacity .5s ease-out, transform .5s ease-out;
+}
+#animationSection2 .sixth .animationImg .animationSection2ImageTxt{
+	position: absolute;
+	bottom: -61px;
+	transform: translateY(100%);
+	opacity: 1;
+	transition: opacity .5s ease-out, transform .5s ease-out;
+}
+#animationSection2 .sixth .animationImg .animationSection2ImageTxt h3{
+	font-family: Pretendard;
+	font-size: 4vw;
+	font-weight: 700;
+	line-height: 120%;
+	text-align: left;
+	color: #FFF;
+}
+
+#animationSection2 .animationSectionInner{
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+}
+#animationSection2 .animationTxt{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 5;
+	opacity: 1;
+	transition: all .5s ease-out;
+}
+
+#animationSection2 .third .animationTxt{
+	opacity: 1;
+	transition: opacity .5s ease-out;
+}
+#animationSection2 .fourth .animationTxt{
+	opacity: 0;
+	transition: opacity .5s ease-out;
+}
+#animationSection2 .fifth .animationTxt{
+	opacity: 0;
+	transition: opacity .5s ease-out;
+}
+
+#animationSection2 .third .animationTxt.animationTxtRight{
+	opacity: 1;
+	transition: opacity .5s ease-out;
+}
+#animationSection2 .fourth .animationTxt.animationTxtRight{
+	opacity: 0;
+	transition: opacity .5s ease-out;
+}
+#animationSection2 .fifth .animationTxt.animationTxtRight{
+	opacity: 0;
+	transition: opacity .5s ease-out;
+}
+
+
+#animationSection2 .animationTxt.animationTxtLeft{
+	transform: translate(-115% , -50%);
+}
+
+#animationSection2 .animationTxt.animationTxtLeft span{
+	font-size: 90px;
+	font-weight: 700;
+	line-height: 135px;
+	letter-spacing: 0.03em;
+	color: rgba(255, 255, 255, 0.1);
+}
+#animationSection2 .first .animationTxt.animationTxtLeft span{
+	color: rgba(255, 255, 255, 1);
+}
+#animationSection2 .second .animationTxt.animationTxtLeft{
+	left: 45%;
+	transition: left .5s ease-out;
+}
+
+#animationSection2 .animationTxt.animationTxtRight{
+	position: absolute;
+	display: flex;
+	width: 100%;
+	top: 50%;
+	opacity: 1;
+	transform: translate(20px, -50%);
+	flex-direction: column;
+}
+#animationSection2 .animationTxt .animationTxtInner{
+	height: 135px;
+	overflow: hidden;
+}
+#animationSection2 .second .animationTxt.animationTxtRight{
+	left: 55%;
+	transition: left .5s ease-out;
+}
+#animationSection2 .animationTextWrap{
+	
+}
+#animationSection2 .animationTextWrap span{
+	font-size: 90px;
+	font-weight: 700;
+	line-height: 135px;
+	letter-spacing: -1px;
+	color: rgba(255, 255, 255, 0.1);
+	display: inline-block;
+	transform: translateY(0%);
+}
+#animationSection2 .first .animationTextWrap span{
+	color: rgba(255, 255, 255, 1);
+}
+
+
+.txtWrapFirst .animatedText{
+	opacity: 1;
+	transform: translateY(0%);
+}
+.txtWrapSecond .animatedText{
+	opacity: 1;
+	transform: translateY(-100%);
+}
+.txtWrapSecond .animatedText{
+	opacity: 1;
+	transform: translateY(-200%);
+}
+.third .txtWrapFirst .animatedText{
+	animation: animate1Up 1s ease forwards;
+	transition: transform .5s ease-out;
+}
+.third .txtWrapSecond .animatedText{
+	animation: animate2Up 2s ease forwards;
+	animation-delay: 1s;
+	transition: transform .5s ease-out;
+}
+
+.third .txtWrapThird .animatedText{
+	animation: animate3Up 1s ease forwards;
+	animation-delay: 3s;
+	transition: transform .5s ease-out;
+}
+
+@keyframes animate1Up {
+	from {
+		transform: translateY(0%);
+	}
+	to {
+		transform: translateY(-100%);
+	}
+}
+
+@keyframes animate2Up {
+	0% {
+		transform: translateY(0%);
+	}
+	33% {
+		transform: translateY(-100%);
+	}
+	66% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(-200%);
+	}
+}
+
+
+@keyframes animate3Up {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(-200%);
+	}
+}
+
+#animationSection2 .animationImgText{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	display: grid;
+	grid-template-columns: 30% 1fr;
+	height: 74px;
+	z-index: 60;
+}
+#animationSection2 .animationImgTextLeft {
+	opacity: 0;
+	transition: opacity .5s ease-out, transform .6s ease-out;
+	transform: translateY(100%);
+}
+#animationSection2 .animationImgTextLeft.leftOn{
+	opacity: 1;
+	transition: opacity .5s ease-out, transform .6s ease-out;
+	transform: translateY(0%);
+}
+#animationSection2 .animationImgTextLeft h3{
+	font-size: 3vw;
+	font-weight: 700;
+	line-height: 72.8px;
+	text-align: left;
+	color: #FFF;
+	padding: 0 80px;
+	box-sizing: border-box;
+}
+#animationSection2 .animationImgTextRight {
+}
+#animationSection2 .animationImgTextRight p{
+	font-size: 2.4vw;
+	font-weight: 700;
+	line-height: 72px;
+	text-align: left;
+	color: #FFF;
+	top: 0;
+	position: absolute;
+	width: 100%;
+}
+#animationSection2 .animationImgTextRight p.first{
+	transform: translateX(100%);
+	opacity: 0;
+	transition: transform 1s ease-out, opacity .5s ease-out;
+}
+#animationSection2 .animationImgTextRight.firstOn p.first{
+	opacity: 1;
+	transform: translateX(0%);
+	transition: transform 1s ease-out, opacity .5s ease-out;
+}
+#animationSection2 .animationImgTextRight.secondOn p.first{
+	opacity: 0;
+	transition: opacity .5s ease-out;
+}
+#animationSection2 .animationImgTextRight p.second{
+	opacity: 0;
+}
+#animationSection2 .animationImgTextRight.secondOn p.second{
+	transform: translateX(0%);
+	opacity: 1;
+	transition: opacity 1s ease-out;
+}
+#animationSection2 .animationImgTextRight p.third{
+	transform: translateX(0%);
+	opacity: 0;
+}
+#animationSection2 .animationImgTextRight.thirdOn p.third{
+	opacity: 1;
+	transition: opacity 1s ease-out;
+}
+
+#animationSection2 .animationImgTextBottom{
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	left: 0px;
+	padding: 80px 0px;
+	opacity: 0;
+	z-index: 60;
+	transform: translateY(100%);
+	transition: opacity .5s ease-out, transform .6s ease-out;
+}
+#animationSection2 .animationImgTextBottom.bottomOn{
+	opacity: 1;
+	transform: translateY(0%);
+	transition: opacity .5s ease-out, transform .6s ease-out;
+}
+#animationSection2 .animationImgTextBottomWrap{
+	display: grid;
+	align-items: flex-start;
+	grid-template-columns: 30% 1fr;
+}
+#animationSection2 .animationImgTextBottomWrap h4{
+	font-family: Pretendard;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 22.4px;
+	text-align: left;
+	color: #FFF;
+	padding: 0 80px;
+}
+#animationSection2 .animationImgTextBottomInner{
+	position: relative;
+	min-height: 52px;
+}
+#animationSection2 .animationImgTextBottomWrap p{
+	font-family: Pretendard;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 25.6px;
+	text-align: left;
+	color: #FFF;
+	position: absolute;
+	top: 0;
+}
+
+#animationSection2 .animationImgTextBottomWrap p.first{
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity .5s ease-out, transform .6s ease-out;
+}
+#animationSection2 .animationImgTextBottomWrap p.second{
+	opacity: 0;
+	transform: translateY(100%);
+	transition: opacity .5s ease-out, transform .6s ease-out;
+}
+
+#animationSection2 .textChange .animationImgTextBottomWrap p.first{
+	opacity: 0;
+	transform: translateY(100%);
+	transition: opacity .5s ease-out, transform .6s ease-out;
+}
+#animationSection2 .textChange .animationImgTextBottomWrap p.second{
+	opacity: 1;
+	transform: translateY(0%);
+	transition: opacity .5s ease-out, transform .6s ease-out;
+}
+
+
+
+#animationSection3{
+	background: #161626;
+}
+#animationSection3 .animationImgMain{
+	position: absolute;
+	width: 80%;
+	height: 100vh;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	transition: width 0.3s ease-out, transform 0.3s ease-out, left 0.3s ease-out;
+	z-index: 5;
+}
+
+#animationSection3 .animationImgCont{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform: translateY(100%);
+}
+#animationSection3 .animationImgCont.active{
+	transform: translateY(0);
+}
+#animationSection3 .animationImgCont img{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+#animationSection3 .animationInfoWrap{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50%;
+	height: 100vh;
+	opacity: 0;
+	z-index: 4;
+}
+#animationSection3 .animationInfo{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	transform: translateY(0%);
+	padding: 0 3.4em;
+	box-sizing: border-box;
+	transition: ease-out opacity .5s;
+}
+#animationSection3 .animationInfo.two{
+	transform: translateY(100%);
+}
+
+#animationSection3 .animationInfo.active{
+	
+}
+#animationSection3 .animationInfo.two.ready{
+	transform : translateY(94%);
+	transition: ease-out transform .5s
+}
+#animationSection3 .animationInfo .animationInfoInner{
+	display: flex;
+	flex-direction: column;
+	margin-top: -4em;
+	opacity: 0;
+	transition: ease-out opacity .5s;
+}
+#animationSection3 .animationInfo.activeOne .animationInfoInner{
+	opacity: 1;
+	transition: ease-out opacity .5s;
+}
+#animationSection3 .animationInfo.activeTwo .animationInfoInner{
+	opacity: 1;
+	transition: ease-out opacity .5s;
+}
+
+#animationSection3 .animationInfo .animationInfoInner h4{
+	font-size: 3em;
+	font-weight: 700;
+	line-height: 57.28px;
+	text-align: left;
+	color: #FFF;
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	padding: 0 0 1.4em;
+}
+#animationSection3 .animationInfo .animationInfoInner h4 small{
+	font-size: 0.45em;
+	font-weight: 700;
+	line-height: 23.87px;
+	text-align: left;
+	color: #FFF;
+	margin-top: -2px;
+}
+
+#animationSection3 .animationInfo .animationInfoInner p{
+	font-size: 1.125em;
+	font-weight: 500;
+	line-height: 32.4px;
+	text-align: left;
+	color: #FFF;
+	transform: translateY(100%);
+	opacity: 0;
+	transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+	height: 0;
+	overflow: hidden;
+}
+
+#animationSection3 .animationInfo.activeOne .animationInfoInner p.first{
+	height: auto;
+	transform: translateY(0);
+	opacity: 1;
+	transition: all 0.5s ease-out;
+}
+
+#animationSection3 .animationInfo.activeTwo .animationInfoInner p.second{
+	height: auto;
+	transform: translateY(0);
+	opacity: 1;
+	transition: all 0.5s ease-out;
+}
+
+
+#animationSection3 .animationInfo.white{
+	background: #FFF;
+}
+#animationSection3 .animationInfo.white .animationInfoInner h4{
+	color: #161626;
+}
+#animationSection3 .animationInfo.white .animationInfoInner h4 small{
+	color: #161626;
+}
+
+#animationSection3 .animationInfo.white .animationInfoInner p{
+	color: #161626;
+}
+
+#animationSection3 .animationInfoTitle{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 12px 3.4em;
+	box-sizing: border-box;	
+}
+#animationSection3 .animationInfoTitle h3{
+	font-size: 1.2em;
+	font-weight: 700;
+	line-height: 26.25px;
+	text-align: left;
+	color: #B6BEC9;
+
+}
+
+
+#animationSection4{
+	background: #00145A;
+}
+
+#animationSection4 .animationTextWrap{
+	width: 100%;
+	padding: 360px 0;
+	box-sizing: border-box;
+	
+}
+#animationSection4 .animationTextInner{
+	width: 100%;
+}
+#animationSection4 .animationTextNumberInner {
+	display: flex;
+	align-content: center;
+	height: 110px;
+	overflow: hidden;
+	transition: transform 0.5s ease-in-out;
+}
+
+
+
+#animationSection4 .animationTextNumber{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	left: 0;
+	width: 25%;
+	top: 360px;
+	z-index: 10;
+}
+
+#animationSection4 .countWrapper {
+	display: flex;
+	flex-direction: column;
+	transform: translateY(0); 
+	transition: transform 0.3s ease-out; 
+}
+
+#animationSection4 .numberIndex .countWrapper {
+	transform: translateY(0%);
+	transition: transform 0.3s ease-out;
+}
+#animationSection4 .numberIndex1 .countWrapper {
+	transform: translateY(-100%);
+	transition: transform 0.3s ease-out;
+}
+
+#animationSection4 .numberIndex2 .countWrapper {
+	transform: translateY(-200%);
+	transition: transform 0.3s ease-out;
+}
+
+#animationSection4 .animationTextNumber span{
+	font-size: 110px;
+	font-weight: 700;
+	line-height: 110px;
+	text-align: left;
+	color: #FFF;
+}
+
+
+
+#animationSection4 .animationList{width: 75%; margin-left: 25%; padding: 0 3.4em; transition: all .5s ease-out; box-sizing: border-box;}
+#animationSection4 .animationList ul{
+	display: flex;
+	flex-direction: column;
+	gap: 136px;
+}
+#animationSection4 .animationList ul li{
+	padding: 32px 0;
+	border-top: 1px solid #33437B;
+	position: relative;
+}
+
+#animationSection4 .animationList ul li::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1px;
+	background-color: #FFF;
+	width: 0;
+	transition: width 0.5s ease-in-out;
+}
+
+#animationSection4 .animationList ul li.listOn::after {
+	width: 100%;
+}
+#animationSection4 .animationList ul li .animationListCont{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: flex-start;
+}
+#animationSection4 .animationList ul li .animationListCont span{
+	font-size: 52px;
+	font-weight: 700;
+	line-height: 52px;
+	text-align: left;
+	color: #33437B;
+}
+#animationSection4 .animationList ul li .animationListCont p{
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 25.6px;
+	text-align: left;
+	color: #33437B;
+	
+}
+#animationSection4 .animationList ul li:first-child .animationListCont span{color: #FFF;}
+#animationSection4 .animationList ul li:first-child .animationListCont p{color: #B6BEC9;}
+
+#animationSection4 .animationList ul li.listOn .animationListCont span{color: #FFF;}
+#animationSection4 .animationList ul li.listOn .animationListCont p{color: #B6BEC9;}
+
+
+
+
+
+
+#animationSection5{
+	background: #161626;
+}
+#animationSection5 .animationSectionInner{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	
+}
+
+#animationSection5 .animationSectionCont{
+
+}
+#animationSection5 .animationSectionText{
+	
+}
+
+#animationSection5 .animationSectionTextInner{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 8em 3.4em;
+}
+
+#animationSection5 .animationSectionText h3{
+	font-size: 6vw;
+	font-weight: 700;
+	line-height: 110%;
+	text-align: left;
+	color: #FFF;
+}
+
+#animationSection5 .animationSectionText h3 .animationSectionTextAfter br{
+	display: none;
+}
+
+#animationSection5 .animationSectionText .txtActive h3 .animationSectionTextAfter{
+	color: #BDC1C6;
+}
+#animationSection5 .animationSectionText .txtActive h3 .animationSectionTextAfter br{
+	display: block;
+}
+#animationSection5 .animationSectionText p{
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 160%;
+	text-align: left;
+	color: #FFF;
+	padding-top: 4%;
+}
+
+#animationSection5 .animationSectionText .txtActive p{
+	padding-top: 10%;
+	transition: all .5s ease-out;
+}
+	
+#animationSection5 .animationSectionVideo{
+	position: absolute;
+	bottom: 2%;
+	right: 2%;
+	width: 30%;
+	height: 30%;
+}
+
+#animationSection5 .animationSectionVideo video{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+#animationSection5 .animationSectionLogo{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+}
+#animationSection5 .animationSectionLogo img{
+	transform: translateY(110%);
+	transition: transform .5s ease-out;
+}
+#animationSection5 .animationSectionLogo.active img{
+	transform: translateY(0%);
+	transition-delay: 1s;
+	transition: transform .5s ease-out;
+}
+
+
+
+
+
+
+
+
+
+#animationSection6{
+	background: #161626;
+}
+#animationSection6 .animationSectionLeft{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100vh;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	margin-top: 14%;
+	margin-bottom: -14%;
+}
+#animationSection6 .animationSectionLeft p{
+	color: #FFF;
+	font-size: 1.3vw;
+	font-weight: 700;
+	line-height: 100%;
+	margin-bottom: 1.4vw;
+	transform: translateY(100%);
+	opacity: 0;
+	transition: all .5s ease-out;
+	transition-delay: 0.6s;
+}
+#animationSection6 .animationSectionLeft.txt6On p{
+	transform: translateY(0);
+	opacity: 1;
+	transition: all .5s ease-out;
+	transition-delay: 0.3s;
+}
+
+#animationSection6 .animationSectionLeft h3{
+	color: #FFF;
+	font-size: 3.2vw;
+	font-weight: 700;
+	line-height: 110%;
+	text-align: left;
+	transform: translateY(100%);
+	opacity: 0;
+	transition: all .5s ease-out;
+	transition-delay: 0.3s;
+}
+#animationSection6 .animationSectionLeft.txt6On h3{
+	transform: translateY(0);
+	opacity: 1;
+	transition: all .5s ease-out;
+	transition-delay: 0.6s;
+}
+#animationSection6 .animationSectionRight{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50%;
+	height: 4000px;
+	background: url('./images/section6_bg.png') no-repeat center / cover;
+}
+
+#animationSection6 .animationSectionRightInner{
+	position: relative;
+}
+#animationSection6 .animationSectionRightInner img{
+	display: inline-block;
+	width: 120px;
+	height: 178px;
+	object-fit: cover;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	transition: opacity .5s ease-out;
+}
+#animationSection6 .animationSectionRightInner.active img{
+	opacity: 1;
+	transition: opacity .5s ease-out;
+}
+#animationSection6 .animationSectionRightText{
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	position: absolute;
+	transform: translateY(-50%);
+}
+
+#animationSection6 .animationSectionRightText.one{
+	top: 50%;
+	left: 34%;
+	transition: all ease-out .5s;
+}
+#animationSection6 .animationSectionRightText.two{
+	top: 50%;
+	left: 34%;
+	transition: all ease-out .5s;
+}
+#animationSection6 .animationSectionRightText.three{
+	top: 50%;
+	left: 34%;
+	transition: all ease-out .5s;
+}
+#animationSection6 .animationSectionRightText.four{
+	top: 50%;
+	left: 34%;
+	transition: all ease-out .5s;
+}
+#animationSection6 .animationSectionRightText.five{
+	top: 50%;
+	left: 34%;
+	transition: all ease-out .5s;
+}
+#animationSection6 .animationSectionRightText span{
+	display: inline-block;
+	position: relative;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	border: 2px solid rgba(255, 255, 255, 0.4);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#animationSection6 .animationSectionRightText span::before{
+	content: "";
+	display: none;
+	width: 39px;
+	height: 39px;
+	border-radius: 50%;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#animationSection6 .animationSectionRightText span::after{
+	content: "";
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.4);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#animationSection6 .animationSectionRightText strong{
+	font-size: 1.3vw;
+	font-weight: 700;
+	line-height: 23.4px;
+	text-align: left;
+	color: rgba(255, 255, 255, 0.4);	
+}
+
+#animationSection6 .active .animationSectionRightText span::before{
+	display: block;
+}
+#animationSection6 .active .animationSectionRightText span{
+	border: 2px solid rgba(255, 255, 255, 1);
+}
+#animationSection6 .active .animationSectionRightText span::after{
+	background: rgba(255, 255, 255, 1);
+}
+#animationSection6 .active .animationSectionRightText strong{
+	color: rgba(255, 255, 255, 1);
+}
+
+#animationSection6 .active .animationSectionRightText{
+	top: 50% !important;
+	left: 20% !important;
+	transition: all ease-out .5s;
+}
+
+
+
+
+
+
+
+#animationSection7{
+	background: #161626;
+}
+
+
+
+#animationSection7 .animationSectionInner{
+	padding: 80px 80px 200px;
+	width: 100%;
+	box-sizing: border-box;
+}
+#animationSection7 .animationSectionTitle{
+	display: grid;
+	grid-template-columns: 40% 60%;
+	align-items: baseline;
+	padding: 0 0 100px;
+}
+#animationSection7 .animationSectionTitle small{
+	font-family: Pretendard;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 28.8px;
+	text-align: left;
+	color: #FFF;
+	transform: translateY(-100%);
+	opacity: 0;
+	transition: all .5s ease-out;
+}
+
+#animationSection7 .animationSectionTitle.txtActiveOn small{
+	transform: translateY(0%);
+	opacity: 1;
+	transition: all .5s ease-out;
+}
+
+#animationSection7 .animationSectionTitleCont{}
+#animationSection7 .animationSectionTitleCont h4{
+	font-size: 52px;
+	font-weight: 700;
+	line-height: 67.6px;
+	text-align: left;
+	color: #FFF;
+	transform: translateY(-100%);
+	opacity: 0;
+	transition: all .5s ease-out;
+}
+#animationSection7 .animationSectionTitle.txtActiveOn h4{
+	transform: translateY(0%);
+	opacity: 1;
+	transition: all .5s ease-out;
+	transition-delay: .4s;
+}
+#animationSection7 .animationSectionTitleCont h5{
+	font-size: 52px;
+	font-weight: 700;
+	line-height: 67.6px;
+	text-align: left;
+	color: #BDC1C6;
+	transform: translateY(-100%);
+	opacity: 0;
+	transition: all .5s ease-out;
+}
+#animationSection7 .animationSectionTitle.txtActiveOn h5{
+	transform: translateY(0%);
+	opacity: 1;
+	transition: all .5s ease-out;
+	transition-delay: .8s;
+	
+}
+#animationSection7 .animationSectionTitleCont p{
+	font-family: Pretendard;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 25.6px;
+	text-align: left;
+	color: #F0F3F5;
+	padding-top: 28px;
+	transform: translateY(-100%);
+	opacity: 0;
+	transition: all .5s ease-out;
+}
+#animationSection7 .animationSectionTitle.txtActiveOn p{
+	transform: translateY(0%);
+	opacity: 1;
+	transition: all .5s ease-out;
+	transition-delay: 1.2s;
+}
+#animationSection7 .animationSectionImgList ul{
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	transition: transform 0.3s ease-out;
+}
+#animationSection7 .animationSectionImgList ul li {
+	position: relative;
+	transition: transform 0.5s ease, opacity 0.5s ease;
+	transform: translateX(0);
+	opacity: 1;
+}
+#animationSection7 .animationSectionImgCont{
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+#animationSection7 .animationSectionImgCont img{
+	display: inline-block;
+	width: 914px;
+	height: 508px;
+	object-fit: cover;
+	border-radius: 4px;
+}
+#animationSection7 .animationSectionImgCont p{
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 19.6px;
+	text-align: left;
+	color: #B6BEC9;
+
+}
+
+#animationSection7 .animationSectionRecruit{
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 180px 0 0;
+}
+#animationSection7 .animationSectionRecruitTop{
+	display: flex;
+	justify-content: center;
+	flex: 1 0 0;
+}
+#animationSection7 .animationSectionRecruitTop h4{
+	font-family: Pretendard;
+	font-size: 52px;
+	font-weight: 700;
+	line-height: 67.6px;
+	color: #FFF;
+	word-break: keep-all;
+	transform: translateY(-100%);
+	opacity: 0;
+	transition: all .5s ease-out;
+	
+}
+#animationSection7 .txtActiveOn .animationSectionRecruitTop h4{
+	transform: translateY(0%);
+	opacity: 1;
+	transition: all .5s ease-out;
+}
+#animationSection7 .animationSectionRecruitBot{
+	display: flex;
+	flex-direction: column;
+	gap: 80px;
+}
+#animationSection7 .animationSectionRecruitBot p{
+	font-family: Pretendard;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 24px;
+	text-align: left;
+	color: #FFF;
+	transform: translateY(-100%);
+	opacity: 0;
+	transition: all .5s ease-out;
+}
+#animationSection7 .txtActiveOn .animationSectionRecruitBot p{
+	transform: translateY(0%);
+	opacity: 1;
+	transition: all .5s ease-out;
+	transition-delay: .4s;
+}
+#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox{
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a{
+	display: block;
+	padding: 18px 20px;
+	background: #1D1D2D;
+	border-radius: 4px;
+	position: relative;
+	min-width: 240px;
+	transform: translateY(-100%);
+	opacity: 0;
+	transition: all .5s ease-out;
+}
+
+#animationSection7 .txtActiveOn .animationSectionRecruitBot .animationSectionRecruitBox a:first-child{
+	transform: translateY(0%);
+	opacity: 1;
+	transition: all .5s ease-out;
+	transition-delay: .6s;
+}
+#animationSection7 .txtActiveOn .animationSectionRecruitBot .animationSectionRecruitBox a:last-child{
+	transform: translateY(0%);
+	opacity: 1;
+	transition: all .5s ease-out;
+	transition-delay: .8s;
+}
+
+#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a img{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	object-fit: cover;
+	position: absolute;
+	top: 18px;
+	right: 20px;
+}
+#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a h5{
+	font-family: Pretendard;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 23.4px;
+	text-align: left;
+	color: #FFF;
+	padding: 0 0 44px;
+}
+#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a p{
+	font-family: Pretendard;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 16.9px;
+	text-align: left;
+	color: #FFF;
+}
+
+
+
+
+
+
+
+.animationFooter{
+	background: #161626;
+}
+.animationFooter .animationFooterInner{
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 55px 72px 45px;
+	display: flex;
+	flex-direction: column;
+	gap: 88px;
+}
+.animationFooter .animationFooterLogo{
+
+}
+.animationFooter .animationFooterLogo img{
+	width: 222px;
+	height: 33px;
+	object-fit: cover;
+}
+.animationFooter .animationFooterInfo{
+	display: grid;
+	grid-template-columns: 60% 40%;
+	align-items: center;
+	padding: 0 8px;
+}
+.animationFooter .animationFooterComp{}
+.animationFooter .animationFooterComp h4{
+	font-family: Pretendard;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 18.2px;
+	text-align: left;
+	color: #B6BEC9;
+
+}
+.animationFooter .animationFooterCopy{}
+.animationFooter .animationFooterCopy p{
+	font-family: Pretendard;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 18.2px;
+	text-align: left;
+	color: #B6BEC9;
+}
+
+
+
+
+
+#progress {
+	position:fixed;
+	z-index: 10000000;
+	top:0;
+	left:0;
+	bottom: 0;
+	right: 0;
+	background:#161626;
+	color:#fff;
+	width:100%;
+	height:100%;
+}
+#progress .progressLine{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	height: 1px;
+	background: rgba(182, 190, 201, 0.1);
+	width:100%;
+}
+#progress .progressActive{
+	position: relative;
+	top: -2px;
+	left: 0;
+	width: 40%;
+	height: 4px;
+	background: linear-gradient(90deg, #001EE6 73%, #2266B1 100%);
+	transition: ease-out all .2s;
+}
+
+#progress .progressIcon{
+	position: absolute;
+	right: -2px;
+	top: -11px;
+	width: 25px;
+	height: 26px;
+}
+
+
+
+#progress .percent{
+	position:absolute;
+	top:50px;
+	right: 5%;
+	font-size: 10vw;
+	color:#fff;
+	line-height: 100%;
+	font-weight: 600;
+	letter-spacing: -2px;
+}
+#progress .progressBar{
+	width:100%;
+	position:absolute;
+	bottom:0px;
+	left:0;
+	padding:60px 48px;
+	box-sizing: border-box;
+	display: none;
+}
+#progress .progressBar .bar{
+	height:104px;
+	background:#fff;
+	border-radius:10px;
+}
+
+@media (max-width: 767px) {
+	#progress .percent{
+		font-size: 68px;
+		top:8px;
+		right:16px;
+		line-height:88px;
+	}
+	#progress .progressBar{
+		padding:36px 20px;
+	}
+	#progress .progressBar .bar{
+		height:60px;
+	}
+}

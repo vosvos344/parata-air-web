@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      th:with="cdnUrl='https://kr.object.ncloudstorage.com/winix-web/website'">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="">
+
+  <!--
+  <th:block th:if="${CommonCode['meta']}">
+    <th:block th:utext="${CommonCode['meta']}"></th:block>
+  </th:block>
+  -->
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" th:content="${seoTitle != null ? seoTitle : 'PARATA AIR'}">
+  <meta property="og:description" content="">
+  <meta property="og:image" th:content="${seoImage != null ? seoImage : 'https://kr.object.ncloudstorage.com/w2r-group/w2r_kakao.jpg'}">
+  <meta property="og:url" th:content="${seoUrl}" content="https://winix.com">
+  <title th:text="${seoTitle != null ? seoTitle : 'PARATA AIR'}">PARATA AIR</title>
+  <link rel="icon" th:href="@{${cdnUrl} + '/favicon.ico'}">
+
+
+</head>
+<body>
+
+<div id="wrap">
+<!--  <th:block th:if="${hideHeader == false || hideHeader == null}">-->
+<!--    <div th:replace="~{mobile/fragments/header::header}"></div>-->
+<!--  </th:block>-->
+  <!-- 콘텐츠 시작 { -->
+  <th:block layout:fragment="content" class="content"></th:block>
+
+<!--  <th:block th:if="${hideFooter == false || hideFooter == null}">-->
+<!--    <div th:replace="~{mobile/fragments/footer::footer}"></div>-->
+<!--  </th:block>-->
+</div>
+
+
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+
+<th:block layout:fragment="script"></th:block>
+
+</body>
+</html>
