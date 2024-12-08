@@ -288,6 +288,9 @@ var prata = {
 				$(".section3 .ani-wrap .second").removeClass().addClass("second up-up");
 				$(".section3 .ani-wrap .third").removeClass().addClass("third up");
 				$(".section3 .sec1 .video-wrap").css({"width":"100%", "height":"100vh", "transition-delay": "1.8s"});
+
+				$(".navTxt").text(((lang == "ko") ? "기업 철학" : "philosophy"));
+
 				$(".section3 .sec1 .video-wrap").on("transitionend", function (e) {
 					$(".section3 .ani-wrap .third").removeClass().addClass("third down");
 				});
@@ -309,7 +312,7 @@ var prata = {
 
 			if (sec3Bound.top <= -3500 ) {
 				if(sec1Bound.top == 0) {
-					$(".navTxt").text(((lang == "ko") ? "기업 철학" : "philosophy"));
+
 					$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").addClass("on");
 				}
 			}else{
