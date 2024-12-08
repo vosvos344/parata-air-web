@@ -32,19 +32,19 @@ $(window).on('scroll', function () {
 	const windowHeight = $(window).height();
 	
 	const sections = [
-		{ section: $('#animationSection1'), percent: "(100 / 8)", progress: $('.progressLine1')},
-		{ section: $('#animationSection2'), percent: "(100 / 6)", progress: $('.progressLine2')},
-		{ section: $('#animationSection3'), percent: "(100 / 5)", progress: $('.progressLine3')},
-		{ section: $('#animationSection4'), percent: "(100 / 4)", progress: $('.progressLine4'), title: "브랜드 가치" },
-		{ section: $('#animationSection5'), percent: "(100 / 3)", progress: $('.progressLine5'), title: "브랜드 네이밍", },
-		{ section: $('#animationSection6'), percent: "(100 / 2)", progress: $('.progressLine6'), title: "브랜드 컬러" },
-		{ section: $('#animationSection7'), percent: "(100 / 1)", progress: $('.progressLine7'), title: "브랜드 에셋" },
+		{ section: $('#animationSection1'), progress: $('.progressLine')},
+		{ section: $('#animationSection2'), progress: $('.progressLine')},
+		{ section: $('#animationSection3'), progress: $('.progressLine')},
+		{ section: $('#animationSection4'), percent: "(100 / 4)", progress: $('.progressLine'), titleKo: "브랜드 가치", titleEn: "Brand Value" },
+		{ section: $('#animationSection5'), percent: "(100 / 3)", progress: $('.progressLine'), titleKo: "브랜드 네이밍", titleEn: "Brand Naming" },
+		{ section: $('#animationSection6'), percent: "(100 / 2)", progress: $('.progressLine'), titleKo: "브랜드 컬러", titleEn: "Brand Color" },
+		{ section: $('#animationSection7'), percent: "(100 / 1)", progress: $('.progressLine'), titleKo: "브랜드 에셋", titleEn: "Brand Assets" },
 
 
 
 	];
 
-	sections.forEach(({ section, progress, title, percent }, index) => {
+	sections.forEach(({ section, progress, titleKo, titleEn, percent }, index) => {
 		const sectionTop = section.offset().top;
 		const sectionHeight = section.outerHeight();
 		
@@ -54,9 +54,12 @@ $(window).on('scroll', function () {
 		let progressWidth = 0;
 	
 		if (scrollTop >= progressStart && scrollTop <= progressEnd) {
-			if(title){
+			if(lang === "en") {
 				$(".sectionTitle").html("");
-				$(".sectionTitle").html(title);
+				$(".sectionTitle").html(titleEn);
+			}else{
+				$(".sectionTitle").html("");
+				$(".sectionTitle").html(titleKo);
 			}
 			if(percent){
 				progress.css({
@@ -310,9 +313,9 @@ const animation = {
 		var animationSection3Top = $("#animationSection3").offset().top;
 		var animationFirstEnd = animationSection3Top - setHeight;
 		var animationSecondEnd = animationSection3Top - windowHeight;
-		
-	
-		
+
+
+
 		
 		let imgWidth = 10;
 		if(scrollTop >= animationSection2Top && scrollTop < animationSecondEnd){
@@ -322,8 +325,8 @@ const animation = {
 				bottom: "unset",
 				height: "100%",
 			})
-			
-			
+
+
 			const totalHeight = animationSecondEnd - animationSection2Top;
 			const sectionHeight = totalHeight / 6;
 			
@@ -334,16 +337,51 @@ const animation = {
 			const fourthSecEnd = thirdSecEnd + 600;
 			const fifthSecEnd = fourthSecEnd + sectionHeight * 3;
 			const sixthSecEnd = animationSecondEnd;
-			let isAnimationPlayed = false;
-			let isSecondAnimationPlayed = false; // 두 번째 wrap 애니메이션 플래그
-			let isThirdAnimationPlayed = false;
+
+
+
+			let animationSection4Top = $("#animationSection4").offset().top;
+			let animation3End = animationSection4Top - windowHeight;
+
+
+			if (scrollTop >= animationSection2Top && scrollTop <= thirdSecEnd) {
+
+				if(lang === "en"){
+					$(".sectionTitle").html("Brand Slogan");
+				}else{
+					$(".sectionTitle").html("브랜드 슬로건");
+				}
+
+				$(".progressHeaderLine").css({
+					width: "calc(14%)",
+				})
+
+			} else if (scrollTop >= thirdSecEnd && scrollTop <= animationSecondEnd) {
+
+
+				if(lang === "en"){
+					$(".sectionTitle").html("Corporate Philosophy");
+				}else{
+					$(".sectionTitle").html("기업 철학");
+				}
+
+				$(".progressHeaderLine").css({
+					width: "calc(14% * 2)",
+				})
+			}
+
+
 			if (scrollTop >= animationSection2Top && scrollTop < firstSecEnd) {
+
 				animationSectionInner.addClass("first");
 				animationSectionInner.removeClass("second");
 				animationSectionInner.removeClass("third");
 				animationSectionInner.removeClass("fourth");
 				animationSectionInner.removeClass("fifth");
 				animationSectionInner.removeClass("sixth");
+
+
+
 			} else if (scrollTop >= firstSecEnd && scrollTop < secondSecEnd) {
 				animationSectionInner.addClass("first");
 				animationSectionInner.addClass("second");
@@ -367,10 +405,13 @@ const animation = {
 				animationImgTextRight.removeClass("firstOn");
 				animationSectionInner.removeClass("fifth");
 				animationSectionInner.removeClass("sixth");
+
+
+
 				
 			} else if (scrollTop >= fourthSecEnd && scrollTop <= fifthSecEnd) {
 				let aniSecProgress = (scrollTop - fourthSecEnd) / (fifthSecEnd - fourthSecEnd);
-				let aniSecSubSectionSize = 1 / 4;
+				let aniSecSubSectionSize = 1 / 3;
 				animationSectionInner.addClass("first");
 				animationSectionInner.addClass("second");
 				animationSectionInner.addClass("third");
@@ -384,21 +425,16 @@ const animation = {
 					animationImgTextRight.addClass("firstOn");
 					animationImgTextRight.removeClass("secondOn");
 					animationImg.removeClass("imageChange");
+					animationImgTextBottom.removeClass("textChange");
 				} else if (aniSecProgress < aniSecSubSectionSize * 2) {
 					animationImg.addClass("imageChange");
-					animationImgTextBottom.removeClass("textChange");
+					animationImgTextRight.addClass("secondOn");
+					animationImgTextBottom.addClass("textChange");
 				} else if (aniSecProgress < aniSecSubSectionSize * 3) {
 					animationImg.addClass("imageChange");
 					animationImgTextRight.addClass("secondOn");
 					animationImgTextBottom.addClass("textChange");
 					animationImgTextRight.removeClass("firstOn");
-					
-				} else if (aniSecProgress < aniSecSubSectionSize * 4) {
-					animationImg.addClass("imageChange");
-					animationImgTextLeft.removeClass("leftOn");
-					animationImgTextBottom.removeClass("bottomOn");
-					animationImgTextRight.removeClass("firstOn");
-					animationImgTextRight.removeClass("secondOn");
 					
 				}
 			} else if (scrollTop >= fifthSecEnd && scrollTop <= sixthSecEnd) {
@@ -419,8 +455,16 @@ const animation = {
 				}else if(aniLastProgress < aniLastSubSectionSize * 2){
 					animationSectionInner.addClass("sixth");
 				}
-				
-				
+				if(lang === "en"){
+					$(".sectionTitle").html("Reasonable premium");
+				}else{
+					$(".sectionTitle").html("합리적 프리미엄");
+				}
+
+				$(".progressHeaderLine").css({
+					width: "calc(14% * 3)",
+				})
+
 			}
 			
 		}else if(scrollTop > animationSecondEnd){
@@ -430,6 +474,17 @@ const animation = {
 				top: "unset",
 				bottom: "0",
 				height: "100vh",
+			})
+
+
+			if(lang === "en"){
+				$(".sectionTitle").html("Reasonable premium");
+			}else{
+				$(".sectionTitle").html("합리적 프리미엄");
+			}
+
+			$(".progressHeaderLine").css({
+				width: "calc(14% * 3)",
 			})
 		
 			
@@ -459,6 +514,15 @@ const animation = {
 		var animationImgCont = $("#animationSection3 .animationImgCont");
 		
 		if(scrollTop > animationSection3Top && scrollTop < animation3End){
+			if(lang === "en"){
+				$(".sectionTitle").html("Reasonable premium");
+			}else{
+				$(".sectionTitle").html("합리적 프리미엄");
+			}
+
+			$(".progressHeaderLine").css({
+				width: "calc(14% * 3)",
+			})
 			aniThirdInfoWrap.css({
 				position: "fixed",
 				top: "0",
@@ -645,6 +709,9 @@ const animation = {
 		let animationSection4 = $("#animationSection4");
 		let animationSection4Top = animationSection4.offset().top;
 		let animationSection4TopHeight = animationSection4.outerHeight();
+
+		let animationSection5 = $("#animationSection5");
+		let animationSection5Top = animationSection5.offset().top;
 		
 		let animationTextWrap = animationSection4.find(".animationTextWrap");
 		let animationTextInner = animationSection4.find(".animationTextInner");
@@ -659,14 +726,70 @@ const animation = {
 			top: "360px",
 			bottom: "unset",
 		})
-		
+
+
+
+		if(scrollTop > animationSection4Top && scrollTop < animationSection5Top) {
+
+			if (lang === "en") {
+				$(".sectionTitle").html("Brand Value");
+			} else {
+				$(".sectionTitle").html("브랜드 가치");
+			}
+
+			$(".progressHeaderLine").css({
+				width: "calc(14% * 4)",
+			})
+
+
+		}
+
 
 		if(scrollTop > numberFixedPoint && scrollTop < animationEndPoint){
+
+
+
 			animation4TextNumber.css({
 				position: "fixed",
 				top: "180px",
 				bottom: "unset",
 			})
+
+
+			let currentProgress = 0;
+			let currentActiveListIndex = -1;
+			let maxNumber = $(".animationList ul li").length;
+			const $listItems = $(".animationList ul li");
+			const firstItemTop = $listItems.eq(0).offset().top - $listItems.eq(0).outerHeight() * 2;
+			const thirdItemTop = $listItems.eq(2).offset().top - $listItems.eq(2).outerHeight() * 2;
+			const totalScrollHeight = thirdItemTop - firstItemTop;
+			const progress = Math.min(1, Math.max(0, (scrollTop - firstItemTop) / totalScrollHeight));
+
+			$(".animationList ul li").each(function (index) {
+				const thisList = $(this);
+
+				const itemTop = thisList.offset().top - thisList.outerHeight() * 2;
+
+				if (scrollTop >= itemTop) {
+					animation4TextNumber.removeClass("numberIndex0 numberIndex1 numberIndex2");
+
+					if (currentActiveListIndex !== index) {
+						thisList.addClass("listOn");
+						if (!animation4TextNumber.hasClass("numberIndex" + index)) {
+							animation4TextNumber.addClass("numberIndex" + index);
+						}
+						currentActiveListIndex = index;
+
+					}
+				} else {
+					if (thisList.hasClass("listOn")) {
+						thisList.removeClass("listOn");
+						if (currentActiveListIndex === index) currentActiveListIndex = -1;
+					}
+				}
+			});
+
+
 		}else if(scrollTop >= animationEndPoint){
 			animation4TextNumber.css({
 				position: "absolute",
@@ -675,41 +798,10 @@ const animation = {
 			})
 		}
 		
-		let currentProgress = 0;
-		let currentActiveListIndex = -1;
-		let maxNumber = $(".animationList ul li").length;
-		const $listItems = $(".animationList ul li");
-		const firstItemTop = $listItems.eq(0).offset().top - $listItems.eq(0).outerHeight() * 2;
-		const thirdItemTop = $listItems.eq(2).offset().top - $listItems.eq(2).outerHeight() * 2;
-		const totalScrollHeight = thirdItemTop - firstItemTop; 
-		const progress = Math.min(1, Math.max(0, (scrollTop - firstItemTop) / totalScrollHeight));
-		
-		$(".animationList ul li").each(function (index) {
-			const thisList = $(this);
-			
-			const itemTop = thisList.offset().top - thisList.outerHeight() * 2;
-		
-			if (scrollTop >= itemTop) {
-				animation4TextNumber.removeClass("numberIndex0 numberIndex1 numberIndex2");
-				
-				if (currentActiveListIndex !== index) {
-					thisList.addClass("listOn");
-					if (!animation4TextNumber.hasClass("numberIndex" + index)) {
-						animation4TextNumber.addClass("numberIndex" + index);
-					}
-					currentActiveListIndex = index;
-					
-				}
-			} else {
-				if (thisList.hasClass("listOn")) {
-					thisList.removeClass("listOn");
-					if (currentActiveListIndex === index) currentActiveListIndex = -1;
-				}
-			}
-		});
-		
-		
-		
+
+
+
+
 		function updateCount(progress) {
 			const countWrapper = $(".countWrapper");
 			const translateY = progress * (maxNumber - 1) * 110;
@@ -730,20 +822,34 @@ const animation = {
 		let animationSection6Top = $("#animationSection6").offset().top;
 		let animation5End = animationSection6Top - windowHeight;
 		let animationSection5Inner = animationSection5.find(".animationSectionInner");
+
+
+
 		
-		
+		if(scrollTop >= animationSection5Top && scrollTop < animationSection6Top){
+			if(lang === "en"){
+				$(".sectionTitle").html("Brand Naming");
+			}else{
+				$(".sectionTitle").html("브랜드 네이밍");
+			}
+
+			$(".progressHeaderLine").css({
+				width: "calc(14% * 5)",
+			})
+		}
+
 		if(scrollTop >= animationSection5Top && scrollTop < animation5End){
-			
+
 			let aniFifthProgress = (scrollTop - animationSection5Top) / (animation5End - animationSection5Top);
 			let aniFifthSubSectionSize = 1 / 3;
-			
+
 			animationSection5Inner.css({
 				position: "fixed",
 				top: "0",
 				bottom: "unset",
 			})
-			
-			if (aniFifthProgress < aniFifthSubSectionSize) {
+
+			if (aniFifthProgress < aniFifthSubSectionSize * 1.1) {
 				let parentHeight = animationSection5Inner.outerHeight();
 				let topValue = aniFifthProgress * parentHeight;
 				animationSection5TextInner.css({
@@ -751,49 +857,62 @@ const animation = {
 					left: 0,
 				});
 				animationSection5TextInner.addClass("txtActive");
-				
-				
+
+
 				let progressRatio = aniFifthProgress / aniFifthSubSectionSize;
 				let newBottom = `${2 - progressRatio * 2}%`;
 				let newRight = `${2 - progressRatio * 2}%`;
 				let newWidth = `${30 + progressRatio * 20}%`;
 				let newHeight = `${30 + progressRatio * 70}%`;
-				
+
+	console.log(progressRatio);
+				if(progressRatio > 1){
+					newBottom = "0%";
+					newRight = "0%";
+					newWidth = "50%";
+					newHeight = "100%";
+				}
 				animationSection5Video.css({
 					bottom: newBottom,
 					right: newRight,
 					width: newWidth,
 					height: newHeight,
 				});
-				
-				
-				
-			}else if (aniFifthProgress < aniFifthSubSectionSize * 2) {
+
+
+
+			}else if (aniFifthProgress < aniFifthSubSectionSize * 2.1) {
+
 				let progressRatio = Math.min(1, Math.max(0, (aniFifthProgress - aniFifthSubSectionSize) / aniFifthSubSectionSize));
-				
 				let newLeft = `${Math.min(0, Math.max(-100, -100 * progressRatio))}%`;
 				let newOpacity = Math.min(1, Math.max(0, 1 - progressRatio));
 				let newVideoWidth = `${Math.min(100, Math.max(50, 50 + progressRatio * 50))}%`;
-		
+
 				animationSection5TextInner.css({
 					left: newLeft,
 					opacity: newOpacity,
 				});
-				
+
+				if(progressRatio > 1){
+					newVideoWidth = "100%";
+				}
+
 				animationSection5Video.css({
 					width: newVideoWidth,
 				});
 
+
+
 				$(".animationSectionLogo").removeClass("active");
 			}else if (aniFifthProgress < aniFifthSubSectionSize * 3) {
-				
-				
+
+
 				$(".animationSectionLogo").addClass("active");
-				
-				
+
+
 			}
-			
-			
+
+
 		}else if(scrollTop < animationSection5Top){
 			$(".animationSectionLogo").removeClass("active");
 			animationSection5TextInner.removeClass("txtActive");
@@ -807,8 +926,8 @@ const animation = {
 				top: "0",
 				left: 0,
 			});
-			
-			
+
+
 		}else if(scrollTop >= animation5End){
 			$(".animationSectionLogo").addClass("active");
 			animationSection5Inner.css({
@@ -820,20 +939,20 @@ const animation = {
 				position: "absolute",
 				left: "-98%",
 			});
-			
+
 			animationSection5Video.css({
 				width: "100%",
 				height: "100%",
 				bottom: 0,
 				right: 0,
 			});
-			
+
 		}
-		
-		
-		
+
+
+
 	},
-	
+
 	
 	section6 : function(scrollTop, windowHeight){
 		var setHeight = defaultHeight;
@@ -852,7 +971,7 @@ const animation = {
 		let animationRightEachHeight = windowHeight;
 
 		animationSection6RightInner.each(function(index){
-			
+
 			if(index === 0)
 			{
 				$(this).css({
@@ -865,10 +984,23 @@ const animation = {
 			}
 			
 		})
-		
+		if(scrollTop >= animationSection6Top && scrollTop < animationSection7Top) {
+			if (lang === "en") {
+				$(".sectionTitle").html("Brand Color");
+			} else {
+				$(".sectionTitle").html("브랜드 컬러");
+			}
+
+			$(".progressHeaderLine").css({
+				width: "calc(14% * 6)",
+			})
+		}
 
 		
 		if(scrollTop >= animationSection6Top && scrollTop < animation6End){
+
+
+
 			animationSection6Left.addClass("txt6On");
 			animationSection6Left.css({
 				position: "fixed",
@@ -920,51 +1052,68 @@ const animation = {
 		const animationRecriut = animation7.find('.animationSectionRecruit');
 		const animationImgListHeight = animationImgList.outerHeight();
 		const animationInnerHeight = animation7Inner.outerHeight();
-		const animationInnerTop = animation7Inner.offset().top;
 		const animationImgListTop = animationImgList.offset().top;
-		const centralOffset = animation7Top + ((windowHeight - animationImgListHeight) / 2);
-		const fixedTopValue = animation7Top - centralOffset;
+		const imageWidth = $('.animationSectionImgCont img').width();
+		const centralOffset = animation7Top + ((windowHeight - animationImgListHeight) / 2) ;
+		const fixedTopValue = animation7Top - centralOffset ;
 		const endPoint = animation7Top + animation7Height - animationInnerHeight - fixedTopValue;
 		
-		const totalImages = 5; 
-		const imageWidth = $('.animationSectionImgCont img').width() - 42;
-		const maxTransformValue = -(imageWidth * (totalImages - 1)); 
+		const totalImages = 5;
+		const maxTransformValue = -(imageWidth * (totalImages - 1));
 		
 		if(scrollTop >= (animation7Top - 300) && scrollTop < endPoint){
 			animation7Title.addClass("txtActiveOn");
 		}else if(scrollTop < (animation7Top - 300)){
 			animation7Title.removeClass("txtActiveOn");
 		}
-		
-		
+
+
+		if(scrollTop >= animation7Top){
+			if(lang === "en"){
+				$(".sectionTitle").html("Brand Assets");
+			}else{
+				$(".sectionTitle").html("브랜드 에셋");
+			}
+
+
+			$(".progressHeaderLine").css({
+				width: "calc(100%)",
+			})
+		}
+
+
+
+
+
 		let botTxtAni = animationImgListTop + (animationImgListHeight / 2) - 100;
 		if(scrollTop >= botTxtAni){
 			animationRecriut.addClass("txtActiveOn");
 		}else{
 			animationRecriut.removeClass("txtActiveOn");
 		}
-		
-		
-		
-		
+
+
 		if(scrollTop >= centralOffset && scrollTop < endPoint){
+
 			animation7Inner.css({
 				position: "fixed",
 				top: fixedTopValue,
 				bottom: "unset",
 			})
-			
-			let aniSevenProgress = (scrollTop - centralOffset) / (endPoint - centralOffset);
+
+			let aniSevenProgress = (scrollTop - centralOffset) / (endPoint - centralOffset) ;
 			let aniSevenSubSectionSize = 1 / (totalImages - 1);
 			let currentImageIndex = Math.floor(aniSevenProgress / aniSevenSubSectionSize);
 			let progressWithinSection = (aniSevenProgress % aniSevenSubSectionSize) / aniSevenSubSectionSize;
-			
+
 			if (currentImageIndex < totalImages - 1) {
 				const ulTransformValue = -imageWidth * currentImageIndex - (progressWithinSection * imageWidth);
 				$('.animationSectionImgList ul').css({
 					transform: `translateX(${ulTransformValue}px)`,
 				});
 			} else {
+				const ulTransformValue = -imageWidth * (totalImages - 1);
+				const adjustedTransformValue = ulTransformValue + maxTransformValue
 				$('.animationSectionImgList ul').css({
 					transform: `translateX(${maxTransformValue}px)`,
 				});
