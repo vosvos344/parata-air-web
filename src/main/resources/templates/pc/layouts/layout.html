@@ -15,9 +15,10 @@
 
 <th:block layout:fragment="content" class="content"></th:block>
 
-
+<script th:inline="javascript">
+  const lang = /*[[${lang}]]*/ ""
+</script>
 <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
-
 <th:block layout:fragment="script"></th:block>
 
 </body>

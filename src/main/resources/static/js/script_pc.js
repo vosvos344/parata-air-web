@@ -39,6 +39,9 @@ $(window).on('scroll', function () {
 		{ section: $('#animationSection5'), percent: "(100 / 3)", progress: $('.progressLine5'), title: "브랜드 네이밍", },
 		{ section: $('#animationSection6'), percent: "(100 / 2)", progress: $('.progressLine6'), title: "브랜드 컬러" },
 		{ section: $('#animationSection7'), percent: "(100 / 1)", progress: $('.progressLine7'), title: "브랜드 에셋" },
+
+
+
 	];
 
 	sections.forEach(({ section, progress, title, percent }, index) => {
@@ -1068,5 +1071,6 @@ var progressCounter = setInterval(function () {
 	if (percentage === 100 && elapsedTime >= minDisplayTime) {
 		$progress.fadeOut();
 		clearInterval(progressCounter);
+		$("#animationSection1 .animationText").addClass("txtOn");
 	}
 }, 100);

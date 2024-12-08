@@ -47,6 +47,7 @@ public class MainController {
 
         mav.setViewName(isDevice + "/" + lang);
 
+        mav.addObject("lang", lang);
         Locale newLocale = new Locale(lang);
         localeResolver.setLocale(request, response, newLocale);
 
