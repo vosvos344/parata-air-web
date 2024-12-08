@@ -1574,8 +1574,8 @@ button, input, textarea {
 	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
 }
 
-.index .section7 .inner .title-sub .first div:nth-child(2) span,
-.index .section7 .inner .title-sub .third div:nth-child(2) span{
+.index .section7 .inner .title-sub .first div span.gray,
+.index .section7 .inner .title-sub .third div span.gray{
 	color:#B6BEC9;
 }
 

@@ -14,6 +14,7 @@ $(document).ready(function () {
 
 
 
+
 	let totalElements = $("img, video").length; // 이미지 및 동영상 총 개수
 	let loadedElements = 0; // 로드된 요소 개수
 	let $progressBar = $(".bar");
@@ -186,11 +187,14 @@ var prata = {
 
 	sectionFixed: function(){
 
+
+
+
 		/*섹션 3 구간*/
 		var section3 = $(".section3").offset().top;
 		if(this.scrollTop >= section3) {
 			$(".section3").addClass("is-fixed");
-			$(".navTxt").text("브랜드 슬로건");
+
 		}else{
 			$(".section3").removeClass("is-fixed");
 			$(".navTxt").text("");
@@ -206,9 +210,9 @@ var prata = {
 		//console.log(section3);
 		//console.log(this.scrollTop);
 		if(sec3Bound.top < 300 && sec3Bound.bottom - $(window).height() > 0){
-			
-			
-			
+
+
+			$(".navTxt").text(((lang=="ko")?"브랜드 슬로건":"Brand Slogan"));
 			
 			const videoTerm = 4000
 			const intermediateHeight = 122; // 초기 목표 높이
@@ -252,6 +256,8 @@ var prata = {
 			if(sec3Bound.top >= -1500 && $(".section3 .ani-wrap .first").hasClass("up-up")){
 				$(".section3 .ani-wrap .second").removeClass().addClass("second down");
 				$(".section3 .ani-wrap .first").removeClass().addClass("first down-down");
+
+
 			}
 
 
@@ -261,29 +267,30 @@ var prata = {
 				$(".section3 .ani-wrap .second").removeClass().addClass("second up-up");
 				$(".section3 .ani-wrap .third").removeClass().addClass("third up");
 				$(".section3 .sec1 .video-wrap").css({"width":"100%", "height":"100vh", "transition-delay": "1.8s"});
-				$(".navTxt").text("기업 철학");
 				$(".section3 .sec1 .video-wrap").on("transitionend", function (e) {
 					$(".section3 .ani-wrap .third").removeClass().addClass("third down");
 				});
+
+
 		
 			}else if(sec3Bound.top >= -2500 && sec1Bound.height > 122){
 				$(".section3 .ani-wrap .third").removeClass().addClass("third down");
 				$(".section3 .ani-wrap .second").removeClass().addClass("second down-down");
-			
+
 				$(".section3 .sec1 .video-wrap").css({"width":"calc(100% - 32px)","height":"122px","transition-delay": "0s"});
-				//$(".section3 .sec1 .text-wrap div").removeClass("on");
+				$(".section3 .ani-wrap .second").removeClass().addClass("second down");
 			}
-		
-			
+
+
+
+			console.log(sec1Bound);
+
+
 			if (sec3Bound.top <= -3500 ) {
-				//$(".section3 .sec1 .video-wrap").on("transitionend", function (e) {
-					//$(".section3 .ani-wrap .third").removeClass().addClass("third down");
-					//if(e.originalEvent.propertyName === "height"){
-						//if (sec3Bound.top <= -3500 ) {
-							$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").addClass("on");
-						//}
-					//}
-				//});
+				if(sec1Bound.top == 0) {
+					$(".navTxt").text(((lang == "ko") ? "기업 철학" : "philosophy"));
+					$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").addClass("on");
+				}
 			}else{
 				$(".section3 .sec1 .text-wrap div").removeClass("on");
 				
@@ -575,7 +582,7 @@ var prata = {
 		var section4 = $(".section4").offset().top;
 		if(this.scrollTop >= section4) {
 			$(".section4").addClass("is-fixed");
-			$(".navTxt").text("브랜드 가치");
+
 		}else{
 			$(".section4").removeClass("is-fixed");
 		}
@@ -588,6 +595,8 @@ var prata = {
 		let sec4TextThird = document.querySelector(".section4 .text-wrap.third").getBoundingClientRect();
 
 		if(sec4Bound.top < 0 && sec4Bound.bottom - $(window).height() > 0) {
+
+
 			const videoTerm = 0
 			let videoPer = Math.abs(sec4Bound.top) / videoTerm
 			if (videoPer > 1) {
@@ -605,8 +614,8 @@ var prata = {
 			$(".section4 .inner").css("top", sec4Bound.top);
 
 
-
 			if(sec4TextFirst.bottom - 150 <= 0){
+				$(".navTxt").text(((lang=="ko")?"브랜드 가치":"Brand Value"));
 				$(".section4 .text-wrap.second").addClass("on");
 			}else{
 				$(".section4 .text-wrap.second").removeClass("on");
@@ -629,7 +638,7 @@ var prata = {
 		var dynamicPadding = Math.max(16 - (this.scrollTop - section5) / 10); // padding 감소
 		if(this.scrollTop >= section5) {
 			$(".section5").addClass("is-fixed");
-			$(".navTxt").text("브랜드 네이밍");
+			$(".navTxt").text(((lang=="ko")?"브랜드 네이밍":"Brand Naming"));
 		}else{
 			$(".section5").removeClass("is-fixed");
 		}
@@ -691,11 +700,11 @@ var prata = {
 
 		/*섹션 31 구간*/
 		var section31 = $(".section31").offset().top;
-		
-		
-		
-		if(this.scrollTop >= section31) {
-			$(".navTxt").text("합리적 프리미엄");
+		var sectionNext4 = $(".section4").offset().top;
+		var sec31End = sectionNext4 - $(window).height();
+
+		if(this.scrollTop >= section31 && $(window).scrollTop() <= sec31End) {
+			$(".navTxt").text(((lang=="ko")?"합리적 프리미엄":"Reasonable"));
 			//$(".section31").addClass("is-fixed");
 			
 		}else{
@@ -719,6 +728,7 @@ var prata = {
 
 
 		if(sec31Bound.top < 300){
+
 			$(".section31 .top-text-inner .title ").addClass("on");
 		}else{
 			$(".section31 .top-text-inner .title ").removeClass("on");
@@ -732,6 +742,7 @@ var prata = {
 
 
 		if(sec31TopFirstText.top <= $(window).height() * 0.85){
+
 			$(".section31 .top-wrap .text-wrap .first div").each(function (index) {
 				setTimeout(() => {
 					$(this).addClass("on");
@@ -904,7 +915,7 @@ var prata = {
 		
 		
 		if(this.scrollTop >= section6) {
-			$(".navTxt").text("브랜드 컬러");
+			$(".navTxt").text(((lang=="ko")?"브랜드 컬러":"Brand Color"));
 			//$(".section31").addClass("is-fixed");
 			
 		}else{
@@ -1017,10 +1028,10 @@ var prata = {
 		var section7 = $(".section7").offset().top;
 		var section7Recruit = $(".section7 .link-wrap").offset().top;
 		if(this.scrollTop >= section7) {
-			$(".navTxt").text("브랜드 에셋");
+			$(".navTxt").text(((lang=="ko")?"브랜드 에셋":"Brand assets"));
 		}
 		if(this.scrollTop >= section7Recruit) {
-			$(".navTxt").text("인재 채용");
+			$(".navTxt").text(((lang=="ko")?"인재 채용":"Recruit"));
 		}
 		
 
