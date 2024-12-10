@@ -360,7 +360,7 @@ button, input, textarea {
 	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* 애니메이션 효과 */
 }
 
-.index .section1 .sky-text-inner .first div:nth-child(2){
+.index .section1 .sky-text-inner .first div:nth-child(1){
 	margin-bottom:20px;
 }
 
@@ -924,6 +924,11 @@ button, input, textarea {
     transition-delay: 0.7s;
 }
 
+.index .section3 .sec1 .third div:nth-child(6) span,
+.index .section3 .sec2 .third div:nth-child(6) span{
+	transition-delay: 0.8s;
+}
+
 
 
 
@@ -1086,7 +1091,7 @@ button, input, textarea {
 
 
 
-.index .section31 .fifth{
+.index .section31 .top-wrap .text-wrap .fifth{
 	position:absolute;
 	width:calc(100% - 32px);
 	bottom:-80px;
