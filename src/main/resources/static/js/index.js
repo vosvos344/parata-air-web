@@ -743,7 +743,16 @@ var prata = {
 		var sec31End = sectionNext4 - $(window).height();
 
 		if(this.scrollTop >= section31 && $(window).scrollTop() <= sec31End) {
-			$(".navTxt").text(((lang=="ko")?"합리적 프리미엄":"Reasonable"));
+			if($(window).scrollTop() >= $(".section31 .top-wrap").offset().top){
+				$(".navTxt").text(((lang=="ko")?"합리적 프리미엄":"Reasonable"));
+			}
+			if($(window).scrollTop() >= $(".section31 .bottom-wrap").offset().top){
+
+				$(".navTxt").text(((lang=="ko")?"진심어린 서비스":"Mindful Service"));
+			}
+
+
+
 			//$(".section31").addClass("is-fixed");
 			
 		}else{
