@@ -60,9 +60,9 @@ deploy-dev:
     - apk update  # Alpine 패키지 목록 업데이트
     - apk add --no-cache sshpass openssh  # sshpass 및 ssh 패키지 설치
   script:
+    - set -x
     - echo "[$PROD_SERVER_IP_01] 애플리케이션 배포 중..."
-    - echo "[$PROD_SERVER_PASSWORD_01] 패스워드"
-    - sshpass -p "$PROD_SERVER_PASSWORD_01" scp -o StrictHostKeyChecking=no -o ProxyCommand="sshpass -p '$W2R_SERVER_PASSWORD' ssh -o StrictHostKeyChecking=no -W %h:%p root@$W2R_SERVER_IP" build/libs/parata-micro-front-0.0.1-SNAPSHOT.jar root@$PROD_SERVER_IP_01:/home/
+    - sshpass -p "$PROD_SERVER_PASSWORD_01" scp -o StrictHostKeyChecking=no -o ProxyCommand="sshpass -p '$W2R_SERVER_PASSWORD' ssh -o StrictHostKeyChecking=no -W %h:%p root@$W2R_SERVER_IP" build/libs/parata-micro-front-0.0.1-SNAPSHOT.jar root@$PROD_SERVER_IP_01:/var/www/
     - sshpass -p "$PROD_SERVER_PASSWORD_01" ssh -o StrictHostKeyChecking=no -o ProxyCommand="sshpass -p '$W2R_SERVER_PASSWORD' ssh -o StrictHostKeyChecking=no -W %h:%p root@$W2R_SERVER_IP" root@$PROD_SERVER_IP_01 "sh /var/www/startup.sh"
   environment:
     name: dev
