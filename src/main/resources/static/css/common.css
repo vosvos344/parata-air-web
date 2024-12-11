@@ -213,14 +213,16 @@ button {
 	text-align: right;
 	color: #FFF;
 }
+.animationHeaderOriginal .animationHeaderToc.black strong{
+	color: #000;
+}
 .animationHeaderOriginal .animationHeaderToc span{
 	width: 20px;
 	height: 20px;
+	background: url("../images/menu_outline.svg") no-repeat center / 100%;
 }
-.animationHeaderOriginal .animationHeaderToc span img{
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+.animationHeaderOriginal .animationHeaderToc.black span{
+	background: url("../images/menu_outline_black.svg") no-repeat center / 100%;
 }
 #animationSection1 .animationImg{
 	position: fixed;
@@ -278,8 +280,15 @@ button {
 	transition-delay: 0.6s;
 }
 
-
-
+#animationSection1 .animation1Logo{
+	position: absolute;
+	bottom: 28px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+#animationSection1 .animation1Logo img{
+	width: 250px;
+}
 
 
 
@@ -771,6 +780,27 @@ button {
 	transition: ease-out opacity .5s;
 }
 
+#animationSection3 .animationInfo .animationInfoHead{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	opacity: 0;
+	transform: translateY(100%);
+	transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+#animationSection3 .animationInfo .animationInfoHead strong{
+	font-size: 1.2em;
+	font-weight: 700;
+	line-height: 26.25px;
+	text-align: left;
+	color: #000;
+}
+#animationSection3 .animationInfo.activeOne .animationInfoHead{
+	opacity: 1;
+}
 #animationSection3 .animationInfo .animationInfoInner h4{
 	font-size: 3em;
 	font-weight: 700;
