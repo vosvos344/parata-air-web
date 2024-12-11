@@ -1,0 +1,98 @@
+image: alpine
+
+stages:
+  - build
+  - deploy
+  - release
+
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - .gradle
+
+before_script:
+  - mkdir -p ~/.ssh
+  - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+variables:
+  GRADLE_OPTS: '-Dorg.gradle.caching=true -Dorg.gradle.daemon=false'
+  GRADLE_USER_HOME: "$CI_PROJECT_DIR/.gradle"
+
+# Git 상태 확인 작업
+#check-for-new-commits:
+#  stage: check
+#  script:
+#    - echo "최근 커밋 확인 중..."
+#    # 마지막 커밋이 새로운 푸시인지 확인
+#    - LAST_COMMIT=$(git rev-parse HEAD)
+#    - LAST_PUSH_COMMIT=$(git log --since='1 day ago' --format="%H" -n 1)
+#    # LAST_PUSH_COMMIT이 비어 있는 경우 처리
+#    - echo "$LAST_PUSH_COMMIT"
+#    - if [ -z "$LAST_PUSH_COMMIT" ]; then echo "지난 1일 내에 새로운 푸시가 없습니다. 파이프라인 종료"; exit 0; fi
+#    - echo "새로운 푸시가 발견되었습니다. 파이프라인 계속 진행.."
+#  resource_group: "pipeline"
+#  allow_failure: false
+
+
+
+build:
+  stage: build
+  image: gradle:jdk17
+  script:
+    - echo "빌드 실행 중..."
+    - ./gradlew build -x test
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - build/libs/W2R-GROUP.jar
+  resource_group: "pipeline"
+  dependencies:
+    - test
+  except:
+    - tags  # 태그 푸시 시에는 실행하지 않음
+
+
+include:
+  - local: '.gitlab/dev.gitlab-ci.yml'
+    rules:
+      - if: '$CI_COMMIT_BRANCH == "main"'
+        when: always
+      - if: '$CI_COMMIT_TAG'
+        when: never
+  - local: '.gitlab/staging.gitlab-ci.yml'
+    rules:
+      - if: '$CI_COMMIT_BRANCH == "staging"'
+        when: always
+      - if: '$CI_COMMIT_TAG'
+        when: never
+  - local: '.gitlab/production.gitlab-ci.yml'
+    rules:
+      - if: '$CI_PIPELINE_SOURCE == "schedule"'
+        changes:
+          - "**/*"  # 모든 파일 경로에서 변경이 있을 때
+        when: always
+      - if: '$CI_COMMIT_TAG'
+        when: never
+
+
+
+
+#variables:
+#  GIT_DEPTH: "0"  # 모든 커밋 내역을 가져오도록 설정
+#
+## Git 상태 확인 작업
+#check-for-new-commits:
+#  stage: check
+#  script:
+#    - echo "최근 커밋 확인 중..."
+#    # 마지막 커밋이 새로운 푸시인지 확인
+#    - LAST_COMMIT=$(git rev-parse HEAD)
+#    - LAST_PUSH_COMMIT=$(git log --since='1 day ago' --format="%H" -n 1)
+#    # LAST_PUSH_COMMIT이 비어 있는 경우 처리
+#    - echo "$LAST_PUSH_COMMIT"
+#    - if [ -z "$LAST_PUSH_COMMIT" ]; then echo "지난 1일 내에 새로운 푸시가 없습니다. 파이프라인 종료"; exit 0; fi
+#    - echo "새로운 푸시가 발견되었습니다. 파이프라인 계속 진행.."
+#  resource_group: "pipeline-dev"
+#  allow_failure: false
+

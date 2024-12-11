@@ -1,0 +1,23 @@
+
+
+# 배포 작업
+deploy-production-01:
+  stage: deploy
+  variables:
+    GIT_DEPTH: "0"  # 모든 커밋 내역을 가져오도록 설정
+  before_script:
+#    - apt-get update -y
+#    - apt-get install -y sshpass
+    - apk update  # Alpine 패키지 목록 업데이트
+    - apk add --no-cache sshpass openssh  # sshpass 및 ssh 패키지 설치
+  script:
+    - echo "[$PROD_SERVER_IP_01] 애플리케이션 배포 중..."
+    - LAST_PUSH_COMMIT=$(git log --since='1 day ago' --format="%H" -n 1)
+    - if [ -z "$LAST_PUSH_COMMIT" ]; then echo "푸시가 없으므로 빌드 스킵"; exit 0; fi
+    - sshpass -p "$PROD_SERVER_PASSWORD_01" scp -o StrictHostKeyChecking=no -o ProxyCommand="sshpass -p '$W2R_SERVER_PASSWORD' ssh -o StrictHostKeyChecking=no -W %h:%p root@$W2R_SERVER_IP" build/libs/W2R-GROUP.jar root@$PROD_SERVER_IP_01:/home/web/
+    - sshpass -p "$PROD_SERVER_PASSWORD_01" ssh -o StrictHostKeyChecking=no -o ProxyCommand="sshpass -p '$W2R_SERVER_PASSWORD' ssh -o StrictHostKeyChecking=no -W %h:%p root@$W2R_SERVER_IP" root@$PROD_SERVER_IP_01 "sh /home/web/startup.sh"
+  environment:
+    name: production
+    url: https://winix.com
+  dependencies:
+    - build  # 빌드와 테스트가 완료된 후에만 배포 실행
