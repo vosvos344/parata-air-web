@@ -47,8 +47,6 @@ build:
     paths:
       - build/libs/W2R-GROUP.jar
   resource_group: "pipeline"
-  dependencies:
-    - test
   except:
     - tags  # 태그 푸시 시에는 실행하지 않음
 
@@ -67,7 +65,7 @@ deploy-dev:
     - sshpass -p "$PROD_SERVER_PASSWORD_01" ssh -o StrictHostKeyChecking=no -o ProxyCommand="sshpass -p '$W2R_SERVER_PASSWORD' ssh -o StrictHostKeyChecking=no -W %h:%p root@$W2R_SERVER_IP" root@$PROD_SERVER_IP_01 "sh /var/www/startup.sh"
   environment:
     name: dev
-    url: https://wattz.w2rgroup.co.kr
+    url: http://brand.parataair.com
   dependencies:
     - build  # 빌드와 테스트가 완료된 후에만 배포 실행
 
