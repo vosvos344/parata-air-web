@@ -53,27 +53,23 @@ build:
     - tags  # 태그 푸시 시에는 실행하지 않음
 
 
-include:
-  - local: '.gitlab/dev.gitlab-ci.yml'
-    rules:
-      - if: '$CI_COMMIT_BRANCH == "main"'
-        when: always
-      - if: '$CI_COMMIT_TAG'
-        when: never
-  - local: '.gitlab/staging.gitlab-ci.yml'
-    rules:
-      - if: '$CI_COMMIT_BRANCH == "staging"'
-        when: always
-      - if: '$CI_COMMIT_TAG'
-        when: never
-  - local: '.gitlab/production.gitlab-ci.yml'
-    rules:
-      - if: '$CI_PIPELINE_SOURCE == "schedule"'
-        changes:
-          - "**/*"  # 모든 파일 경로에서 변경이 있을 때
-        when: always
-      - if: '$CI_COMMIT_TAG'
-        when: never
+# 배포 작업
+deploy-dev:
+  stage: deploy
+  before_script:
+    #    - apt-get update -y
+    #    - apt-get install -y sshpass
+    - apk update  # Alpine 패키지 목록 업데이트
+    - apk add --no-cache sshpass openssh  # sshpass 및 ssh 패키지 설치
+  script:
+    - echo "[$PROD_SERVER_IP_01] 애플리케이션 배포 중..."
+    - sshpass -p "$PROD_SERVER_PASSWORD_01" scp -o StrictHostKeyChecking=no -o ProxyCommand="sshpass -p '$W2R_SERVER_PASSWORD' ssh -o StrictHostKeyChecking=no -W %h:%p root@$W2R_SERVER_IP" build/libs/parata-micro-front-0.0.1-SNAPSHOT.jar root@$PROD_SERVER_IP_01:/var/www/
+    - sshpass -p "$PROD_SERVER_PASSWORD_01" ssh -o StrictHostKeyChecking=no -o ProxyCommand="sshpass -p '$W2R_SERVER_PASSWORD' ssh -o StrictHostKeyChecking=no -W %h:%p root@$W2R_SERVER_IP" root@$PROD_SERVER_IP_01 "sh /var/www/startup.sh"
+  environment:
+    name: dev
+    url: https://wattz.w2rgroup.co.kr
+  dependencies:
+    - build  # 빌드와 테스트가 완료된 후에만 배포 실행
 
 
 
