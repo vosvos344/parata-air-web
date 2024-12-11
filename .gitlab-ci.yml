@@ -45,7 +45,7 @@ build:
   artifacts:
     expire_in: 1 day
     paths:
-      - build/libs/W2R-GROUP.jar
+      - build/libs/parata-micro-front-0.0.1-SNAPSHOT.jar
   resource_group: "pipeline"
   except:
     - tags  # 태그 푸시 시에는 실행하지 않음
