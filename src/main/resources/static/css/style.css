@@ -1226,7 +1226,7 @@ button, input, textarea {
 .index .section4 .inner{
 	display: flex;
 	flex-direction: column;
-	gap:100px;
+	gap:140px;
 	padding:200px 16px;
 	width:100%;
 
