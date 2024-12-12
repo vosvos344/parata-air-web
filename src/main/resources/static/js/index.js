@@ -131,7 +131,6 @@ $(window).on("load", function(){
 
 $(window).scroll(function(){
 	prata.scrollTop = $(document).scrollTop()
-	console.log("scroll",prata.scrollTop)
 	prata.winHeight =  $(window).outerHeight()
 	prata.set()
 
