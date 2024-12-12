@@ -1,40 +1,16 @@
-
-
-
-console.log(1);
-
 $(document).ready(function () {
 
 	$("html, body").animate({
 		scrollTop : 0
 	});
 
-	//$("body").smoothWheel();
-	
-	//new WOW().init();
-
-	var Slide = new Swiper(".type-normal", {
-		slidesPerView: 'auto',
-		spaceBetween: 20,
-		pagination: {
-			el: ".swiper-pagination",
-		}
-	});
-
-
-
-
 	let totalElements = $("img, video").length; // 이미지 및 동영상 총 개수
 	let loadedElements = 0; // 로드된 요소 개수
 	let $progressBar = $(".bar");
 	let $percentage = $(".percent");
-	let logo = 0;
 
 
 	//첫번째 섹션 비디오 absolute 높이 가져오기
-	var w = $(document).width();
-
-
 	$(".section1 .inner").height($(".section1 .video-wrap video").outerHeight());
 
 
@@ -155,10 +131,10 @@ $(window).on("load", function(){
 
 $(window).scroll(function(){
 	prata.scrollTop = $(document).scrollTop()
-	//console.log(prata.scrollTop)
+	console.log("scroll",prata.scrollTop)
 	prata.winHeight =  $(window).outerHeight()
 	prata.set()
-		
+
 })
 
 
@@ -196,15 +172,10 @@ var prata = {
 
 	sectionFixed: function(){
 
-
-
-
 		/*섹션 3 구간*/
 		var section3 = $(".section3").offset().top;
 		if(this.scrollTop >= section3) {
 			$(".section3").addClass("is-fixed");
-
-
 		}else{
 			$(".section3").removeClass("is-fixed");
 			$(".navTxt").text("");
@@ -220,20 +191,10 @@ var prata = {
 
 
 
-
-
 		let sec3Bound = document.querySelector(".section3").getBoundingClientRect();
 		let sec1Bound = document.querySelector(".section3 .sec1").getBoundingClientRect();
-		
-		//console.log(section3);
-		//console.log(this.scrollTop);
-		//console.log(sec3Bound);
-		//console.log(section3);
-		//console.log(this.scrollTop);
+
 		if(sec3Bound.top < 300 && sec3Bound.bottom - $(window).height() > 0){
-
-
-
 
 			const videoTerm = 4000
 			const intermediateHeight = 122; // 초기 목표 높이
@@ -258,16 +219,11 @@ var prata = {
 				$(".section3 .ani-wrap .third").removeClass().addClass("third");
 			}
 
-			
-			
-			
 			if(sec3Bound.top < -800 && sec1Bound.height <= 0){
 				$(".section3 .sec1 .video-wrap").css("height", "122");
 			}else if(sec3Bound.top > -800 && sec1Bound.height == 122){
 				$(".section3 .sec1 .video-wrap").css("height", "0");
 			}
-			
-			
 			
 			if(sec3Bound.top < -1500 && ($(".section3 .ani-wrap .first").hasClass("up") && !$(".section3 .ani-wrap .second").hasClass("up"))){
 				$(".section3 .ani-wrap .first").addClass(" up-up");
@@ -305,22 +261,17 @@ var prata = {
 				$(".section3 .ani-wrap .second").removeClass().addClass("second down");
 			}
 
-
-
-			console.log(sec1Bound);
+			// console.log(sec1Bound);
 
 
 			if (sec3Bound.top <= -3500 ) {
 				if(sec1Bound.top == 0) {
-
 					$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").addClass("on");
 				}
 			}else{
 				$(".section3 .sec1 .text-wrap div").removeClass("on");
-				
 			}
-			
-			
+
 			if(sec3Bound.top < -5000) {
 				$(".section3 .sec1").addClass("toggle");
 				$(".section3 .sec2").addClass("toggle");
@@ -341,104 +292,40 @@ var prata = {
 			}
 
 
-			/*if(sec3Bound.top < -2500){
-				$(".section3 .sec1 .video-wrap").css("width", ((videoPer) * 32) + ($(window).width() - 32))
-				$(".section3 .sec1 .video-wrap").css("height", calculatedHeight + 80);
-			}
-			
-			if(sec3Bound.top <= -6000){
-				$(".section3 .sec1 .first strong").addClass("on");
-			}else{
-				$(".section3 .sec1 .first strong").removeClass("on");
-			}
-
-			if(sec3Bound.top < -6500) {
-				$(".section3 .sec1 .second span").addClass("on");
-			}else{
-				$(".section3 .sec1 .second span").removeClass("on");
-			}
-
-			if(sec3Bound.top < -7000) {
-				$(".section3 .sec1 .third small").addClass("on");
-			}else{
-				$(".section3 .sec1 .third small").removeClass("on");
-			}
-
-
-			if(sec3Bound.top < -8000) {
-				$(".section3 .sec1").addClass("toggle");
-				$(".section3 .sec2").addClass("toggle");
-			}else{
-				$(".section3 .sec1").removeClass("toggle");
-				$(".section3 .sec2").removeClass("toggle");
-			}
-
-			if(sec3Bound.top <= -8500){
-				$(".section3 .sec2 .first strong").addClass("on");
-			}else{
-				$(".section3 .sec2 .first strong").removeClass("on");
-			}
-
-			if(sec3Bound.top <= -9000){
-				$(".section3 .sec2 .second span").addClass("on");
-			}else{
-				$(".section3 .sec2 .second span").removeClass("on");
-			}
-
-			if(sec3Bound.top <= -9500){
-				$(".section3 .sec2 .third small").addClass("on");
-			}else{
-				$(".section3 .sec2 .third small").removeClass("on");
-			}
-
-			if(sec3Bound.top <= -11000){
-				$(".section3 .sec2 .first strong").removeClass("on");
-				$(".section3 .sec2 .second span").removeClass("on");
-				$(".section3 .sec2 .third small").removeClass("on");
-			}
-			*/
-
-
-
-			//console.log(sec3Bound);
-			//console.log(section3);
-			//console.log(sec1Bound);
-
 		}else{
 			/*$(".section3 .ani-wrap .first").removeClass("text-animation text-animation-up");
 			$(".section3 .ani-wrap .second").removeClass("text-animation text-animation-up");
 			$(".section3 .ani-wrap .third").removeClass("text-animation text-animation-up");*/
 		}
 
-
-		
-		
 		
 		/*섹션 1 구간*/
 		$(function(){
 			const symbolInner = $(".symbol-inner");
 			const section1Bound = document.querySelector(".section1").getBoundingClientRect();
 			if(section1Bound.top < 0 && section1Bound.bottom > -200) {
-				
+
 				const scaleStart = 0;
-				const scaleEnd = $(".section1").outerHeight() * 0.6;
+				const scaleEnd = $(".section1").outerHeight() * 0.4;
 				let scaleRatio = Math.abs(section1Bound.top) / scaleEnd;
 				if (scaleRatio > 1) {
 					scaleRatio = 1;
 				}
-				
-				let boxScale = ((4000 - 43) * (1 - scaleRatio)) + 43;
-				let boxTopMove = (70 * (1 - scaleRatio)) + 50
-				symbolInner.find(".symbol").css("width", boxScale);
-				symbolInner.find(".symbol").css("height", boxScale);
-				symbolInner.find(".symbol").css("top", boxTopMove + '%');
 
-				const textResizeStart = scaleEnd
+				let boxScale = ((4000 - 43) * (1 - Math.pow(scaleRatio, 1.5))) + 43;
+				let boxTopMove = (70 * (1 - Math.pow(scaleRatio, 1.5))) + 50;
+				symbolInner.find(".symbol").css({
+					"width": boxScale,
+					"height": boxScale,
+					"top": boxTopMove + '%'
+				});
+
+				const textResizeStart = scaleEnd;
 				const textResizeEnd = $(".section1").outerHeight() * 0.7;
 				if (Math.abs(section1Bound.top) > textResizeStart) {
-					symbolInner.addClass("is-active")
+					symbolInner.addClass("is-active");
 				} else {
-					symbolInner.removeClass("is-active")
+					symbolInner.removeClass("is-active");
 				}
 					
 					
@@ -518,89 +405,6 @@ var prata = {
 
 			}
 		})
-
-/*
-		const symbolInner = $(".symbol-inner");
-		const section1Bound = document.querySelector(".section1").getBoundingClientRect();
-		
-		console.log(section1Bound);
-		if(!isAnimating){
-			
-			let transitionCount = 0;
-			
-			if(section1Bound.top < 0 && section1Bound.top > -200) {
-					$("body").css("overflow", "hidden");
-					isAnimating = true;
-					$(".symbol").addClass("loading");
-					$(".symbol").on("transitionend", function (e) {
-						
-						if(e.originalEvent.propertyName === "width"){
-							transitionCount++;
-							
-							if (transitionCount === 1) {
-								$(".symbol-inner").addClass("is-active");
-								$(".symbol").css("width", "177px");
-								//$(window).scrollTop(2800);
-							 } else if (transitionCount === 2) {
-								isAnimating = false;
-								$("body").css("overflow", "auto");
-							}
-			
-						}
-						
-
-					});
-				
-				
-			}
-		
-			if(section1Bound.top <= -2800){
-				
-				//$("body").css("overflow", "hidden");
-				//isAnimating = true;
-					
-				const textResizeEnd = $(".section1").outerHeight() * 0.7;
-				
-				const textUpEnd = $(".section1").outerHeight() - $(window).outerHeight();
-				const textLeftTerm = ($(window).outerWidth() / 2);
-				const textLeftStart = textUpEnd
-				const textLeftEnd = textLeftStart + ($(window).outerHeight() * 0.9)
-				const textLeft = 108
-				
-				$(".symbol").css({"top":"26px"});
-				
-				
-				$(".symbol").on("transitionend", function (e) {
-					
-					if(e.originalEvent.propertyName === "top"){
-						$(".symbol").css("left", textLeft + "px");
-						$(".header").addClass("is-opacity");
-						$("html, body").animate({
-							scrollTop : textLeftEnd
-						}, 500);
-						
-					}
-					
-					if(e.originalEvent.propertyName === "left"){
-						
-						$(".symbol-wrap").css({
-							position: "absolute",
-							top: textLeftStart + "px"
-						})
-					}
-					
-				});
-				
-				
-				
-				isAnimating = false;
-				$("body").css("overflow", "auto");
-				
-			}
-			
-		}
-		*/
-
 
 		/*섹션 4 구간*/
 		var section4 = $(".section4").offset().top;
