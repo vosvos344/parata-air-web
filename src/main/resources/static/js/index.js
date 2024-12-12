@@ -305,6 +305,7 @@ var prata = {
 			const section1Bound = document.querySelector(".section1").getBoundingClientRect();
 			if(section1Bound.top < 0 && section1Bound.bottom > -200) {
 
+				//
 				const scaleStart = 0;
 				const scaleEnd = $(".section1").outerHeight() * 0.4;
 				let scaleRatio = Math.abs(section1Bound.top) / scaleEnd;
