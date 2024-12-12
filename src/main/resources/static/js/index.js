@@ -4,6 +4,14 @@ $(document).ready(function () {
 		scrollTop : 0
 	});
 
+	var Slide = new Swiper(".type-normal", {
+		slidesPerView: 'auto',
+		spaceBetween: 20,
+		pagination: {
+			el: ".swiper-pagination",
+		}
+	});
+
 	let totalElements = $("img, video").length; // 이미지 및 동영상 총 개수
 	let loadedElements = 0; // 로드된 요소 개수
 	let $progressBar = $(".bar");
