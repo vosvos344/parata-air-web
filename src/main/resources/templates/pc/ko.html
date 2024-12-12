@@ -6,9 +6,11 @@
 
 <th:block layout:fragment="script">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="/js/smoothwheel.js"></script>
     <script src="/js/script_pc.js"></script>
 </th:block>
+
 
 <th:block layout:fragment="content">
     <div id="progress">
@@ -83,7 +85,7 @@
         </section>
 
         <!-- Section1 -->
-        <section class="animationSection" id="animationSection1">
+        <section class="animationSection return" id="animationSection1">
             <div class="animationImg">
                 <video autoplay loop muted playsinline>
                     <source src="./images/video1.mp4" type="video/mp4">
@@ -158,29 +160,29 @@
                         <div class="animationTxtInner">
                             <div class="animationTextWrap txtWrapFirst">
                                 <span class="animatedText" style="animation-delay: 0.1s;">N</span>
-                                <span class="animatedText" style="animation-delay: 0.15s;">e</span>
-                                <span class="animatedText" style="animation-delay: 0.2s;">w</span>
+                                <span class="animatedText" style="animation-delay: 0.13s;">e</span>
+                                <span class="animatedText" style="animation-delay: 0.16s;">w</span>
                             </div>
                             <div class="animationTextWrap txtWrapSecond">
-                                <span class="animatedText" style="animation-delay: 0.3s;">H</span>
-                                <span class="animatedText" style="animation-delay: 0.35s;">a</span>
-                                <span class="animatedText" style="animation-delay: 0.4s;">p</span>
-                                <span class="animatedText" style="animation-delay: 0.45s;">p</span>
-                                <span class="animatedText" style="animation-delay: 0.5s;">i</span>
-                                <span class="animatedText" style="animation-delay: 0.55s;">n</span>
-                                <span class="animatedText" style="animation-delay: 0.6s;">e</span>
-                                <span class="animatedText" style="animation-delay: 0.65s;">s</span>
-                                <span class="animatedText" style="animation-delay: 0.7s;">s</span>
+                                <span class="animatedText" style="animation-delay: 0.21s;">H</span>
+                                <span class="animatedText" style="animation-delay: 0.24s;">a</span>
+                                <span class="animatedText" style="animation-delay: 0.27s;">p</span>
+                                <span class="animatedText" style="animation-delay: 0.30s;">p</span>
+                                <span class="animatedText" style="animation-delay: 0.33s;">i</span>
+                                <span class="animatedText" style="animation-delay: 0.36s;">n</span>
+                                <span class="animatedText" style="animation-delay: 0.39s;">e</span>
+                                <span class="animatedText" style="animation-delay: 0.42s;">s</span>
+                                <span class="animatedText" style="animation-delay: 0.45s;">s</span>
                             </div>
                             <div class="animationTextWrap txtWrapThird">
-                                <span class="animatedText" style="animation-delay: 1.8s;">T</span>
-                                <span class="animatedText" style="animation-delay: 1.85s;">o</span>
-                                <span class="animatedText" style="animation-delay: 1.9s;">g</span>
-                                <span class="animatedText" style="animation-delay: 2s;">e</span>
-                                <span class="animatedText" style="animation-delay: 2.05s;">t</span>
-                                <span class="animatedText" style="animation-delay: 2.1s;">h</span>
-                                <span class="animatedText" style="animation-delay: 2.15s;">e</span>
-                                <span class="animatedText" style="animation-delay: 2.2s;">r</span>
+                                <span class="animatedText" style="animation-delay: 0.5s;">T</span>
+                                <span class="animatedText" style="animation-delay: 0.53s;">o</span>
+                                <span class="animatedText" style="animation-delay: 0.56s;">g</span>
+                                <span class="animatedText" style="animation-delay: 0.59s;">e</span>
+                                <span class="animatedText" style="animation-delay: 0.62s;">t</span>
+                                <span class="animatedText" style="animation-delay: 0.65s;">h</span>
+                                <span class="animatedText" style="animation-delay: 0.685s;">e</span>
+                                <span class="animatedText" style="animation-delay: 0.71s;">r</span>
                             </div>
                         </div>
                     </div>
@@ -222,16 +224,13 @@
                         <div class="animationInfoInner">
                             <h4>진심을 다해 다가가겠습니다.</h4>
                             <p class="first">파라타항공만의 따뜻하고 사려 깊은 친절함으로 고객과 함께합니다.</p>
-                            <p class="second">
-                                파라타항공만의 따뜻하고 사려 깊은 친절함으로 고객과 함께합니다.
-                            </p>
                         </div>
                     </div>
                 </div>
             </section>
 
 
-            <section class="animationSection return" id="animationSection4">
+            <section class="animationSection" id="animationSection4">
                 <div class="animationTextWrap">
                     <div class="animationTextInner">
                         <div class="animationTextNumber">
@@ -239,14 +238,12 @@
                                 <span>0</span>
                                 <div class="countWrapper">
                                     <span class="count">1</span>
-                                    <span class="count">2</span>
-                                    <span class="count">3</span>
                                 </div>
                             </div>
                         </div>
                         <div class="animationList">
                             <ul>
-                                <li>
+                                <li class="listOn">
                                     <div class="animationListCont">
                                         <div><span>Essential</span></div>
                                         <div><p>고객 관점에서 근본적 지점부터 혁신해 합리적인 가치 제공</p></div>
@@ -277,7 +274,7 @@
                     <div class="animationSectionCont">
                         <div class="animationSectionText">
                             <div class="animationSectionTextInner">
-                                <h3>PARATA AIR<br><span class="animationSectionTextAfter">New Paradigm<br /> Trustworthy Airline.</span></h3>
+                                <h3>PARATA AIR<br><span class="animationSection4">New Paradigm <br>Trustworthy Airline.</span></h3>
                                 <p>파라타항공은 하늘의 색을 뜻하는 한국어 '파랗다' 처럼<br>
                                     쾌적하고 행복한 여행경험을 제공합니다.</p>
                             </div>
