@@ -17,20 +17,18 @@
 // 밑에 텍스트 변경
 // 첫번째 이미지가 
 
-
 // 카운팅 시점이 약간 다르다 최대한 맞춰서 
-
-
 
 var defaultSmallHeight = 2000;
 var defaultHeight = 4000;
-var defaultLongHeight = 12000;
 var defaultMidHeight = 8000;
-	
+var defaultLongHeight = 10000;
+var defaultMaxHeight = 14000;
+
 $(window).on('scroll', function () {
 	const scrollTop = $(window).scrollTop();
 	const windowHeight = $(window).height();
-	
+
 	const sections = [
 		{ section: $('#animationSection1'), progress: $('.progressLine')},
 		{ section: $('#animationSection2'), progress: $('.progressLine')},
@@ -47,12 +45,12 @@ $(window).on('scroll', function () {
 	sections.forEach(({ section, progress, titleKo, titleEn, percent }, index) => {
 		const sectionTop = section.offset().top;
 		const sectionHeight = section.outerHeight();
-		
+
 		const progressStart = index === 0 ? sectionTop : sectionTop - windowHeight;
 		const progressEnd = sectionTop + sectionHeight - windowHeight;
-	
+
 		let progressWidth = 0;
-	
+
 		if (scrollTop >= progressStart && scrollTop <= progressEnd) {
 			if(lang === "en") {
 				$(".sectionTitle").html("");
@@ -67,78 +65,76 @@ $(window).on('scroll', function () {
 					'transition': 'width 0.3s ease-out',
 				});
 			}
-			
+
 		}
 	});
 });
-	
-	$(document).ready(function () {
-		
-		var sections = $(".animationSection");
-		var sectionLong1 = $(".animationSection#animationSection2");
-		var sectionLong2 = $(".animationSection#animationSection3");
-		sections.each(function (index, section) {
-			var setHeight = defaultHeight;
-			if($(this).hasClass("return")){
-				return;
-			}else{
-				$(section).css({"height": setHeight + "px",}); 		
-			}
-			
-		});
-		sectionLong1.css({"height": defaultMidHeight + "px",}); 	
-		sectionLong2.css({"height": defaultMidHeight + "px",}); 	
-		
-		
-		$(window).on("scroll", function () {
-			var scrollTop = $(this).scrollTop();
-			var windowHeight = $(window).height();
-			
-			animation.sectionHead(scrollTop, windowHeight);
-			animation.section1(scrollTop, windowHeight);
-			animation.section2(scrollTop, windowHeight);
-			animation.section3(scrollTop, windowHeight);
-			animation.section4(scrollTop, windowHeight);
-			animation.section5(scrollTop, windowHeight);
-			animation.section6(scrollTop, windowHeight);
-			animation.section7(scrollTop, windowHeight);
-		
-		});
+
+
+$(document).ready(function () {
+
+	var sections = $(".animationSection");
+	var sectionLong1 = $(".animationSection#animationSection1");
+	var sectionLong2 = $(".animationSection#animationSection2");
+	var sectionLong3 = $(".animationSection#animationSection3");
+	sections.each(function (index, section) {
+		var setHeight = defaultHeight;
+		if($(this).hasClass("return")){
+			return;
+		}else{
+			$(section).css({"height": setHeight + "px",});
+		}
+
 	});
-	  
+	sectionLong1.css({"height": defaultLongHeight + "px",});
+	sectionLong2.css({"height": defaultMaxHeight + "px",});
+	sectionLong3.css({"height": defaultMidHeight + "px",});
+
+
+	$(window).on("scroll", function () {
+		var scrollTop = $(this).scrollTop();
+		var windowHeight = $(window).height();
+		animation.sectionHead(scrollTop, windowHeight);
+		animation.section1(scrollTop, windowHeight);
+		animation.section2(scrollTop, windowHeight);
+		animation.section3(scrollTop, windowHeight);
+		animation.section4(scrollTop, windowHeight);
+		animation.section5(scrollTop, windowHeight);
+		animation.section6(scrollTop, windowHeight);
+		animation.section7(scrollTop, windowHeight);
+
+	});
+});
+
 const animation = {
-	sectionHead : function(scrollTop, windowHeight){
-		const setHeight = 4000;
+	sectionHead: function(scrollTop, windowHeight) {
+		const setHeight = 10000;
 		const setStartShrink = 0;
-		const setScale = 30000;
-		const targetScale = 100;
 		const setEndShrink = setHeight;
-		
+
 		const animationHeader = $(".animationHeader");
 		const animationLogo = $(".animationLogoOuter");
 		const animationAfter = $(".animationLogoAfter");
 		const animationAfterInner = $(".animationLogoAfterInner");
 		const additionalSection = $(".additionalSection");
-		
+
 		const defaultLeft = 100;
 		const targetLeft = 50;
 		const defaultTop = -110;
 		const targetTop = 50;
-		
+
 		animationHeader.css({
 			height: `${windowHeight}px`,
 		});
-		
-		if (scrollTop >= setStartShrink && scrollTop <= setEndShrink) {
-			const progress = Math.min(1, Math.max(0, scrollTop / setEndShrink));
-			
 
+		if (scrollTop >= setStartShrink && scrollTop <= setEndShrink) {
 			let aniHeadProgress = (scrollTop - setStartShrink) / (setEndShrink - setStartShrink);
-			let aniHeadSubSectionSize = 1 / 3;
-		
-			animationHeader.show();
-			if (aniHeadProgress < aniHeadSubSectionSize) {
-				const subSectionProgress = aniHeadProgress / aniHeadSubSectionSize;
+			const firstSectionSize = 0.8; // 8/10
+			const secondSectionSize = 0.1; // 1/10
+			const thirdSectionSize = 0.1; // 1/10
+
+			if (aniHeadProgress < firstSectionSize) {
+				const subSectionProgress = aniHeadProgress / firstSectionSize;
 				const scale = Math.max(100, Math.min(30000, 30000 - subSectionProgress * (30000 - 1)));
 				const left = defaultLeft + subSectionProgress * (targetLeft - defaultLeft);
 				const top = defaultTop + subSectionProgress * (targetTop - defaultTop);
@@ -152,8 +148,9 @@ const animation = {
 				animationAfter.removeClass("show");
 				animationAfterInner.css({
 					width: `120px`,
-				})
-			}else if (aniHeadProgress < aniHeadSubSectionSize * 2) {
+				});
+			} else if (aniHeadProgress < firstSectionSize + secondSectionSize) {
+				const subSectionProgress = (aniHeadProgress - firstSectionSize) / secondSectionSize;
 				animationLogo.css({
 					transform: `translate(-50%, -50%) scale(1)`,
 					left: `50%`,
@@ -163,22 +160,18 @@ const animation = {
 				animationLogo.show();
 				animationAfter.addClass("show");
 				animationAfterInner.removeClass("imgFull");
-				
-				const subSectionProgress =
-					(aniHeadProgress - aniHeadSubSectionSize) / aniHeadSubSectionSize;
+
 				const width = 120 + subSectionProgress * (558 - 120);
 				animationAfterInner.css({
 					width: `${width}px`,
 					height: `81px`,
-				})
-				
-			}
-			else if (aniHeadProgress < aniHeadSubSectionSize * 3) {
-				animationAfter.addClass("show");
+				});
+			} else if (aniHeadProgress < firstSectionSize + secondSectionSize + thirdSectionSize) {
 				const remainingScroll = setEndShrink - scrollTop;
-				const lastMomentScroll = setEndShrink - 90;
-				const subSectionProgress = Math.min(1, Math.max(0, remainingScroll / windowHeight));
-				
+				const subSectionProgress = Math.min(1, Math.max(0, (setEndShrink - scrollTop) / windowHeight));
+
+				animationAfter.addClass("show");
+
 				if (remainingScroll <= windowHeight) {
 					const height = Math.max(0, subSectionProgress * 100);
 					const logoAfterHeight = Math.max(0, subSectionProgress * 120);
@@ -186,44 +179,36 @@ const animation = {
 					const innerHeight = Math.min(120, Math.max(28, 28 + subSectionProgress * (120 - 28)));
 
 					animationLogo.hide();
-				
 					animationAfter.css({
 						height: `${height}%`,
 					});
 					additionalSection.css({
 						height: `${logoAfterHeight}px`
-					})
+					});
 					animationAfterInner.addClass("imgFull");
 					animationAfterInner.css({
-						width: `${innerWidth}px`, 
+						width: `${innerWidth}px`,
 						height: `${innerHeight}px`,
 					});
-			
 				}
-				
 			}
-			
-			
-			
-			
 		} else if (scrollTop > setEndShrink) {
 			animationLogo.hide();
 			animationHeader.hide();
 			animationAfterInner.removeClass("imgFull");
 			animationAfter.removeClass("show");
 			animationAfterInner.css({
-				width: `558px`, 
+				width: `558px`,
 				height: `120px`,
 			});
 			additionalSection.css({
 				height: `120px`
-			})
+			});
 			animationAfter.css({
 				height: `100%`,
 			});
-			
+
 			animationAfter.removeClass("show");
-			
 		} else if (scrollTop > setStartShrink) {
 			animationLogo.show();
 			animationLogo.css({
@@ -233,7 +218,7 @@ const animation = {
 			});
 			animationHeader.show();
 		}
-		
+
 		if (scrollTop >= 0 && scrollTop <= 200) {
 			const opacity = Math.min(1, Math.max(0, scrollTop / 200));
 			animationHeader.css({
@@ -248,10 +233,8 @@ const animation = {
 				opacity: 0,
 			});
 		}
-		
-		
 	},
-	
+
 	section1 : function(scrollTop, windowHeight){
 		var setHeight = defaultHeight;
 		var animationSection1 = $("#animationSection1");
@@ -260,7 +243,7 @@ const animation = {
 		var animationSection2 = $("#animationSection2").offset().top;
 		var headerStartSec = animationSection2 - $(".animationHeaderOriginal").outerHeight();
 		var nextSection = animationSection2 - windowHeight;
-		
+
 		if(scrollTop >= nextSection){
 			animationSection1Img.css({
 				position: "absolute",
@@ -276,13 +259,13 @@ const animation = {
 				height: "100%",
 			})
 		}
-		
+
 		if(scrollTop >= 0 && scrollTop < 2000){
 			$("#animationSection1 .animationText").addClass("txtOn");
 		}else{
 			$("#animationSection1 .animationText").removeClass("txtOn");
 		}
-		
+
 		if(scrollTop > headerStartSec){
 			$(".animationHeaderOriginal").show();
 			$(".animationLogoAfterInner").addClass("pa-fade");
@@ -290,20 +273,15 @@ const animation = {
 			$(".animationHeaderOriginal").hide();
 			$(".animationLogoAfterInner").removeClass("pa-fade");
 		}
-		
-		
-		
-		
-		
+
+
+
+
+
 	},
-	
+
 	section2 : function(scrollTop, windowHeight){
-		
-		var setHeight = defaultHeight;
 		var animationSection2 = $("#animationSection2");
-		var animationTxtLeft = animationSection2.find(".animationTxtLeft");
-		var animationTxtRight = animationSection2.find(".animationTxtRight");
-		var animationTextWrap = animationSection2.find(".animationTextWrap");
 		var animationImg = animationSection2.find(".animationImg");
 		var animationImgTextLeft = animationSection2.find(".animationImgTextLeft");
 		var animationImgTextRight = animationSection2.find(".animationImgTextRight");
@@ -311,13 +289,26 @@ const animation = {
 		var animationSection2Top = animationSection2.offset().top;
 		var animationSectionInner = animationSection2.find(".animationSectionInner");
 		var animationSection3Top = $("#animationSection3").offset().top;
-		var animationFirstEnd = animationSection3Top - setHeight;
 		var animationSecondEnd = animationSection3Top - windowHeight;
 
 
+		$('.animationTextWrap').each(function(wrapIndex) {
+			let wrap = $(this);
+			let texts = wrap.find('.animatedText');
+			let baseDelay = 0.1;
+			let groupDelay;
 
-		
-		let imgWidth = 10;
+			if(wrap.hasClass("txtWrapThird")){
+				groupDelay = wrapIndex * 0.8;
+			}else{
+				groupDelay = wrapIndex * 0.5;
+			}
+			texts.each(function(index) {
+				const delay = groupDelay + (index * baseDelay);
+				$(this).css('animation-delay', `${delay}s`);
+			});
+		});
+
 		if(scrollTop >= animationSection2Top && scrollTop < animationSecondEnd){
 			animationSectionInner.css({
 				position: "fixed",
@@ -326,23 +317,15 @@ const animation = {
 				height: "100%",
 			})
 
-
 			const totalHeight = animationSecondEnd - animationSection2Top;
 			const sectionHeight = totalHeight / 6;
-			
-			
+
 			const firstSecEnd = animationSection2Top + 400;
 			const secondSecEnd = firstSecEnd + 600;
-			const thirdSecEnd = secondSecEnd + 1000;
+			const thirdSecEnd = secondSecEnd + 3000;
 			const fourthSecEnd = thirdSecEnd + 600;
 			const fifthSecEnd = fourthSecEnd + sectionHeight * 3;
 			const sixthSecEnd = animationSecondEnd;
-
-
-
-			let animationSection4Top = $("#animationSection4").offset().top;
-			let animation3End = animationSection4Top - windowHeight;
-
 
 			if (scrollTop >= animationSection2Top && scrollTop <= thirdSecEnd) {
 
@@ -380,8 +363,6 @@ const animation = {
 				animationSectionInner.removeClass("fifth");
 				animationSectionInner.removeClass("sixth");
 
-
-
 			} else if (scrollTop >= firstSecEnd && scrollTop < secondSecEnd) {
 				animationSectionInner.addClass("first");
 				animationSectionInner.addClass("second");
@@ -393,7 +374,6 @@ const animation = {
 			} else if (scrollTop >= secondSecEnd && scrollTop < thirdSecEnd) {
 				animationSectionInner.addClass("first second third");
 				animationSectionInner.removeClass("fourth sixth fifth");
-				
 			} else if (scrollTop >= thirdSecEnd && scrollTop <= fourthSecEnd) {
 				animationSectionInner.addClass("first");
 				animationSectionInner.addClass("second");
@@ -408,7 +388,7 @@ const animation = {
 
 
 
-				
+
 			} else if (scrollTop >= fourthSecEnd && scrollTop <= fifthSecEnd) {
 				let aniSecProgress = (scrollTop - fourthSecEnd) / (fifthSecEnd - fourthSecEnd);
 				let aniSecSubSectionSize = 1 / 3;
@@ -420,7 +400,7 @@ const animation = {
 				animationImgTextBottom.addClass("bottomOn");
 				animationSectionInner.removeClass("fifth");
 				animationSectionInner.removeClass("sixth");
-				
+
 				if (aniSecProgress < aniSecSubSectionSize) {
 					animationImgTextRight.addClass("firstOn");
 					animationImgTextRight.removeClass("secondOn");
@@ -435,7 +415,7 @@ const animation = {
 					animationImgTextRight.addClass("secondOn");
 					animationImgTextBottom.addClass("textChange");
 					animationImgTextRight.removeClass("firstOn");
-					
+
 				}
 			} else if (scrollTop >= fifthSecEnd && scrollTop <= sixthSecEnd) {
 				animationSectionInner.addClass("first");
@@ -462,9 +442,9 @@ const animation = {
 				})
 
 			}
-			
+
 		}else if(scrollTop > animationSecondEnd){
-			
+
 			animationSectionInner.css({
 				position: "absolute",
 				top: "unset",
@@ -482,8 +462,8 @@ const animation = {
 			$(".progressHeaderLine").css({
 				width: "calc(14% * 3)",
 			})
-		
-			
+
+
 		}else if(scrollTop < animationSection2Top){
 			animationSectionInner.css({
 				position: "absolute",
@@ -493,10 +473,11 @@ const animation = {
 			})
 			animationSectionInner.removeClass("first");
 			animationImg.removeClass("imageChange");
+			$(".animationHeader").show();
 		}
 
 	},
-	
+
 	section3 : function(scrollTop, windowHeight){
 		let setHeight = defaultHeight;
 		let animationSection3 = $("#animationSection3");
@@ -532,21 +513,22 @@ const animation = {
 			setPart1.css({height: windowHeight,});
 			if (aniThirdProgress < aniThirdSubSectionSize) {
 
-			
+
 				let aniThirdMainImgWidth = Math.max(50, Math.min(80, 80 - (aniThirdProgress / aniThirdSubSectionSize) * (80 - 50)));
 				let aniThirdLeftValue = Math.max(0, 50 - (aniThirdProgress / aniThirdSubSectionSize) * 50);
 				let aniThirdTranslateXValue = Math.min(0, -50 + (aniThirdProgress / aniThirdSubSectionSize) * 50);
-				
+
 				aniThirdMainImg.css({
 					position: "fixed",
 					left: `${aniThirdLeftValue}%`,
-					top: "0",             
+					top: "0",
 					transform: `translateX(${aniThirdTranslateXValue}%)`,
 					width: `${aniThirdMainImgWidth}%`,
 					height: "100vh",
 				});
 
 				$("#animationSection3 .animationInfo.one").removeClass("activeOne");
+				$("#animationSection3 .animationInfo.one").removeClass("activeTwo");
 				$("#animationSection3 .animationInfo.two").removeClass("ready");
 				$("#animationSection3 .animationInfo.two").css({
 					transform: `translateY(100%)`,
@@ -557,30 +539,31 @@ const animation = {
 
 			} else {
 				if(aniThirdProgress < aniThirdSubSectionSize * 2){
-					
+
 					const progressInSecondSection = (aniThirdProgress - aniThirdSubSectionSize * 1) / (aniThirdSubSectionSize);
-					
+
 					$("#animationSection3 .animationInfo.two.ready").css({
 						transform: `translateY(94%)`,
 					});
+					$("#animationSection3 .animationInfo.two").removeClass("activeOne");
+					$("#animationSection3 .animationInfo.two").removeClass("activeTwo");
 					aniThirdInfoWrap.css({
 						opacity: "1",
 					});
 					if (progressInSecondSection < 1 / 3) {
-						
+
 						$("#animationSection3 .animationInfo.one").addClass("activeOne");
 						$("#animationSection3 .animationInfo.two").addClass("ready");
 						$("#animationSection3 .animationInfo.one").removeClass("activeTwo");
-						
+
 						animationImgCont.eq(1).css({
 							transform: `translateY(100%)`,
 						});
-						
+
 					} else if (progressInSecondSection <= 3) {
 						$("#animationSection3 .animationInfo.one").addClass("activeTwo");
-						$("#animationSection3 .animationInfo.one").removeClass("activeOne");
 						const translateYValue = 100 - ((progressInSecondSection - 1 / 3) / (1 - 1 / 3)) * 100;
-						
+
 						animationImgCont.eq(1).css({
 							transform: `translateY(${translateYValue}%)`,
 						});
@@ -613,14 +596,13 @@ const animation = {
 						$("#animationSection3 .animationInfo.two.ready").css({
 							transform: `translateY(0%)`,
 						});
-						
-						$("#animationSection3 .animationInfo.two").removeClass("activeOne");
+						$("#animationSection3 .animationInfo.two").addClass("activeOne");
 					} else if (progressInThirdSection < 3 / 6) {
 						animationImgCont.eq(2).css({
 							transform: `translateY(100%)`,
 						});
 						$("#animationSection3 .animationInfo.two").addClass("activeOne");
-						$("#animationSection3 .animationInfo.two").removeClass("activeTwo");
+
 
 
 					} else if (progressInThirdSection < 4 / 6) {
@@ -645,9 +627,8 @@ const animation = {
 						animationImgCont.eq(2).css({
 							transform: `translateY(0%)`,
 						});
-						$("#animationSection3 .animationInfo.two").removeClass("activeOne");
-						$("#animationSection3 .animationInfo.two").addClass("activeTwo");
-						
+						$("#animationSection3 .animationInfo.two").addClass("activeOne");
+
 						animationImgCont.eq(3).css({
 							transform: `translateY(100%)`,
 						});
@@ -677,7 +658,7 @@ const animation = {
 							width: "calc(14% * 3)",
 						})
 					}
-					
+
 					animationImgCont.eq(1).css({
 						transform: `translateY(0%)`,
 					});
@@ -691,8 +672,8 @@ const animation = {
 					height: "100vh",
 				});
 			}
-			
-			
+
+
 		} else if (scrollTop <= animationSection3Top) {
 			// animationSection3Top 이전				
 			aniThirdInfoWrap.css({
@@ -710,7 +691,7 @@ const animation = {
 			});
 		} else if (scrollTop >= animation3End) {
 			// animation3End 이후
-			
+
 			animationImgCont.eq(1).css({
 				transform: `translateY(0%)`,
 			});
@@ -742,37 +723,31 @@ const animation = {
 			});
 
 		}
-		
+
 	},
-	
-	
-	section4 : function(scrollTop, windowHeight){
-		var setHeight = defaultSmallHeight;
+
+
+	section4 : function(scrollTop, windowHeight, event){
 		let animationSection4 = $("#animationSection4");
-		let animationSection4Top = animationSection4.offset().top;
-		let animationSection4TopHeight = animationSection4.outerHeight();
-
-		let animationSection5 = $("#animationSection5");
-		let animationSection5Top = animationSection5.offset().top;
-		
+		let animationSection4Top = $("#animationSection4").offset().top;
+		let animationSection5Top = $("#animationSection5").offset().top;
+		let animation4End = animationSection5Top - windowHeight;
 		let animationTextWrap = animationSection4.find(".animationTextWrap");
-		let animationTextInner = animationSection4.find(".animationTextInner");
-		let animationTextInnerTop = animationTextInner.offset().top;
-		let animation4TextNumber = animationSection4.find(".animationTextNumber");
+		let animationList = animationSection4.find(".animationList");
+		let animationListItems = animationList.find("ul li");
+		let animationTextNumber = animationSection4.find(".animationTextNumberInner .count");
 
-		let numberFixedPoint = animationSection4Top + 180;
-		let animationEndPoint = animationSection4Top + animationSection4TopHeight - 540 - 110 ;
-		
-		animation4TextNumber.css({
-			position: "absolute",
-			top: "360px",
-			bottom: "unset",
-		})
+		let liHeight = animationListItems.eq(0).outerHeight();
+		let liGap = 136;
+		let stepHeight = liHeight + liGap;
+		let lastScrollTop = 0;
+
+		let aniFourthProgress = (scrollTop - animationSection4Top) / (animation4End - animationSection4Top);
+		let aniFourthSubSectionSize = 1 / 5;
 
 		if(scrollTop > animationSection4Top){
 			$(".animationHeaderToc").removeClass("black");
 		}
-
 
 		if(scrollTop > animationSection4Top && scrollTop < animationSection5Top) {
 
@@ -801,75 +776,113 @@ const animation = {
 			})
 		}
 
-
-		if(scrollTop > numberFixedPoint && scrollTop < animationEndPoint){
-
-
-
-			animation4TextNumber.css({
+		if(scrollTop > animationSection4Top && scrollTop < animation4End) {
+			animationTextWrap.css({
 				position: "fixed",
-				top: "180px",
+				left: "0",
+				top: "0",
 				bottom: "unset",
-			})
+				transform: `translateY(0)`,
+			});
 
+			let isScrollingDown = scrollTop > lastScrollTop;
+			lastScrollTop = scrollTop;
 
-			let currentProgress = 0;
-			let currentActiveListIndex = -1;
-			let maxNumber = $(".animationList ul li").length;
-			const $listItems = $(".animationList ul li");
-			const firstItemTop = $listItems.eq(0).offset().top - $listItems.eq(0).outerHeight() * 2;
-			const thirdItemTop = $listItems.eq(2).offset().top - $listItems.eq(2).outerHeight() * 2;
-			const totalScrollHeight = thirdItemTop - firstItemTop;
-			const progress = Math.min(1, Math.max(0, (scrollTop - firstItemTop) / totalScrollHeight));
+			if (isScrollingDown) {
+				if (aniFourthProgress < aniFourthSubSectionSize) {
+				} else if (aniFourthProgress < aniFourthSubSectionSize * 2) {
+					animationTextNumber.html("1");
+					animationList.css({
+						transform: `translateY(0px)`,
+						transition: 'transform .5s ease-out',
+					});
+				} else if (aniFourthProgress < aniFourthSubSectionSize * 3) {
+					animationTextNumber.html("2");
+					animationListItems.eq(1).addClass("listOn");
+					animationList.css({
+						transform: `translateY(-${stepHeight}px)`,
+						transition: 'transform .5s ease-out',
+					});
+				} else if (aniFourthProgress < aniFourthSubSectionSize * 4) {
+					animationTextNumber.html("3");
+					animationListItems.eq(2).addClass("listOn");
+					animationList.css({
+						transform: `translateY(-${stepHeight * 2}px)`,
+						transition: 'transform .5s ease-out',
+					});
+				} else if (aniFourthProgress < aniFourthSubSectionSize * 5) {
 
-			$(".animationList ul li").each(function (index) {
-				const thisList = $(this);
-
-				const itemTop = thisList.offset().top - thisList.outerHeight() * 2;
-
-				if (scrollTop >= itemTop) {
-					animation4TextNumber.removeClass("numberIndex0 numberIndex1 numberIndex2");
-
-					if (currentActiveListIndex !== index) {
-						thisList.addClass("listOn");
-						if (!animation4TextNumber.hasClass("numberIndex" + index)) {
-							animation4TextNumber.addClass("numberIndex" + index);
-						}
-						currentActiveListIndex = index;
-
-					}
-				} else {
-					if (thisList.hasClass("listOn")) {
-						thisList.removeClass("listOn");
-						if (currentActiveListIndex === index) currentActiveListIndex = -1;
-					}
 				}
-			});
+			} else {
 
+				if (aniFourthProgress < aniFourthSubSectionSize) {
 
-		}else if(scrollTop >= animationEndPoint){
-			animation4TextNumber.css({
+				} else if (aniFourthProgress < aniFourthSubSectionSize * 2) {
+					animationTextNumber.html("3");
+					animationListItems.eq(0).addClass("listOn");
+					animationListItems.eq(1).addClass("listOn");
+					animationListItems.eq(2).addClass("listOn");
+					animationList.css({
+						transform: `translateY(${stepHeight * 2}px)`,
+						transition: 'transform .5s ease-out',
+					});
+				} else if (aniFourthProgress < aniFourthSubSectionSize * 3) {
+					animationTextNumber.html("2");
+					animationListItems.eq(0).addClass("listOn");
+					animationListItems.eq(1).addClass("listOn");
+					animationListItems.eq(2).removeClass("listOn");
+					animationList.css({
+						transform: `translateY(${stepHeight}px)`,
+						transition: 'transform .5s ease-out',
+					});
+				} else if (aniFourthProgress < aniFourthSubSectionSize * 4) {
+					animationTextNumber.html("1");
+					animationListItems.eq(0).addClass("listOn");
+					animationListItems.eq(1).removeClass("listOn");
+					animationListItems.eq(2).removeClass("listOn");
+					animationList.css({
+						transform: `translateY(0px)`,
+						transition: 'transform .5s ease-out',
+					});
+				} else if (aniFourthProgress < aniFourthSubSectionSize * 5) {
+
+				}
+			}
+
+		} else if (scrollTop <= animationSection4Top) {
+			animationTextNumber.html("1");
+			animationListItems.eq(0).addClass("listOn");
+			animationListItems.eq(1).removeClass("listOn");
+			animationListItems.eq(2).removeClass("listOn");
+			animationTextWrap.css({
 				position: "absolute",
-				top: "unset",
-				bottom: "360px",
+				left: "0",
+				top: "0",
+				bottom: "unset",
+				transform: `translateY(0)`,
+			});
+
+			animationList.css({
+				transform: `translateY(0px)`,
 			})
-		}
-		
+		}else if (scrollTop >= animation4End) {
+			animationTextNumber.html("3");
+			let bottomOffset = parseInt(animationTextWrap.css("padding-top"), 10) || 0;
+			animationListItems.addClass("listOn");
+			animationTextWrap.css({
+				position: "absolute",
+				left: "0",
+				top: "unset",
+				bottom: '80px',
+				transform: `translateY(${stepHeight * 2}px)`,
+			});
 
-
-
-
-		function updateCount(progress) {
-			const countWrapper = $(".countWrapper");
-			const translateY = progress * (maxNumber - 1) * 110;
-			countWrapper.css({
-				transform: `translateY(-${translateY}px)`,
+			animationList.css({
+				transform: `translateY(-${stepHeight * 2}px)`,
 			});
 		}
-
-		
 	},
-	
+
 	section5 : function(scrollTop, windowHeight){
 		var setHeight = defaultHeight;
 		let animationSection5 = $("#animationSection5");
@@ -882,7 +895,7 @@ const animation = {
 
 
 
-		
+
 		if(scrollTop >= animationSection5Top && scrollTop < animationSection6Top){
 			if(lang === "en"){
 				$(".sectionTitle").html("Brand Naming");
@@ -1010,22 +1023,28 @@ const animation = {
 
 	},
 
-	
+
 	section6 : function(scrollTop, windowHeight){
 		var setHeight = defaultHeight;
-		var setTextWidth = $(window).outerWidth() / 2;
-		var colorCount = $(".animationSectionRight .animationSectionRightInner").length;
 		let animationSection6 = $("#animationSection6");
 		let animationSection6Left = animationSection6.find(".animationSectionLeft");
 		let animationSection6RightInner = animationSection6.find(".animationSectionRightInner");
-		let animationSection6RightText = animationSection6.find(".animationSectionRightText");
-		let animationSection6TopText = animationSection6.offset().top - (windowHeight / 2);
 		let animationSection6Top = animationSection6.offset().top;
 		let animationSection7Top = animationSection6Top + setHeight;
 		let animation6End = animationSection7Top - windowHeight;
-		let animationRight = $(".animationSectionRight");
-		let animationRightHeight = $(".animationSectionRight").outerHeight();
-		let animationRightEachHeight = windowHeight;
+		let animation6TextStart = animationSection6Top - (windowHeight / 3);
+		let animation6TextEnd = animationSection7Top - windowHeight;
+
+
+
+		if(scrollTop >= animation6TextStart && scrollTop < animation6TextEnd){
+			animationSection6Left.addClass("txt6On");
+		}else if(scrollTop < animation6TextStart){
+			animationSection6Left.removeClass("txt6On");
+		}else if(scrollTop < animation6TextEnd){
+			animationSection6Left.addClass("txt6On");
+		}
+
 
 		animationSection6RightInner.each(function(index){
 
@@ -1039,7 +1058,7 @@ const animation = {
 					height: setHeight / 6,
 				})
 			}
-			
+
 		})
 		if(scrollTop >= animationSection6Top && scrollTop < animationSection7Top) {
 			if (lang === "en") {
@@ -1053,34 +1072,29 @@ const animation = {
 			})
 		}
 
-		
+
 		if(scrollTop >= animationSection6Top && scrollTop < animation6End){
-
-
-
-			animationSection6Left.addClass("txt6On");
 			animationSection6Left.css({
 				position: "fixed",
 				top: "0",
 				bottom: "unset",
 			})
-			
+
 			animationSection6RightInner.each(function (index) {
 				if(!$(this).hasClass("active")){
 					const currentBox = $(this);
 					const boxHeight = currentBox.outerHeight();
 					const boxTop = currentBox.offset().top - 300;
-					
+
 					if(scrollTop > boxTop && scrollTop <= boxTop + boxHeight){
 						animationSection6RightInner.removeClass('active');
 						currentBox.addClass('active');
 					}
-					
+
 				}
 			});
-			
+
 		}else if(scrollTop < animationSection6Top){
-			animationSection6Left.removeClass("txt6On");
 			animationSection6RightInner.removeClass('active');
 			animationSection6Left.css({
 				position: "absolute",
@@ -1088,18 +1102,17 @@ const animation = {
 				bottom: "unset",
 			})
 		}else if(scrollTop >= animation6End){
-			animationSection6Left.removeClass("txt6On");
 			animationSection6Left.css({
 				position: "absolute",
 				top: "unset",
 				bottom: "0",
-				
+
 			})
 		}
 	},
-			
+
 	section7 : function(scrollTop, windowHeight){
-		
+
 		const animation7 = $('#animationSection7');
 		const animation7Top = animation7.offset().top;
 		const animation7Height = animation7.outerHeight();
@@ -1114,13 +1127,13 @@ const animation = {
 		const centralOffset = animation7Top + ((windowHeight - animationImgListHeight) / 2) ;
 		const fixedTopValue = animation7Top - centralOffset ;
 		const endPoint = animation7Top + animation7Height - animationInnerHeight - fixedTopValue;
-		
+
 		const totalImages = 6;
 		const maxTransformValue = -(imageWidth * (totalImages - 1));
-		
-		if(scrollTop >= (animation7Top - 300) && scrollTop < endPoint){
+
+		if(scrollTop >= (animation7Top - (windowHeight / 3)) && scrollTop < endPoint){
 			animation7Title.addClass("txtActiveOn");
-		}else if(scrollTop < (animation7Top - 300)){
+		}else if(scrollTop < (animation7Top - (windowHeight / 3))){
 			animation7Title.removeClass("txtActiveOn");
 		}
 
@@ -1175,8 +1188,8 @@ const animation = {
 					transform: `translateX(${maxTransformValue}px)`,
 				});
 			}
-			
-			
+
+
 		}else if (scrollTop < centralOffset) {
 			animation7Inner.css({
 				position: "absolute",
@@ -1196,13 +1209,13 @@ const animation = {
 				transform: `translateX(${maxTransformValue}px)`,
 			});
 		}
-		
-		
+
+
 	},
-	
-	
+
+
 }
-  
+
 
 function animateText($element, progress, direction) {
 	let translateX = direction === "rightToLeft" ? 100 - progress * 100 : progress * 100 - 100;
@@ -1222,9 +1235,9 @@ function resetText($elements) {
 		transition: "opacity .5 ease-out",
 	});
 }
-  
-var startTime = Date.now(); 
-var minDisplayTime = 5000; 
+
+var startTime = Date.now();
+var minDisplayTime = 5000;
 var progressCounter = setInterval(function () {
 	var $progress = $("#progress");
 	var $percent = $progress.find(".percent");
