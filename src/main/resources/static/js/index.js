@@ -12,6 +12,7 @@ $(document).ready(function () {
 		}
 	});
 
+
 	let totalElements = $("img, video").length; // 이미지 및 동영상 총 개수
 	let loadedElements = 0; // 로드된 요소 개수
 	let $progressBar = $(".bar");
@@ -159,7 +160,7 @@ var prata = {
 
 	setSize : function(){
 
-		// $(".section5").height(($(".section5 .inner").outerHeight() * 2));
+		$(".section5").height(($(".section5 .inner").outerHeight() * 2));
 
 		/*$(".section1").height($(".section1 .inner").outerHeight())
 		$(".section2").height($(".section2 .inner").outerHeight())
@@ -179,247 +180,152 @@ var prata = {
 
 	sectionFixed: function(){
 
+
+
+
 		/*섹션 3 구간*/
-		// var section3 = $(".section3").offset().top;
-		// if(this.scrollTop >= section3) {
-		// 	$(".section3").addClass("is-fixed");
-		// }else{
-		// 	$(".section3").removeClass("is-fixed");
-		// 	$(".navTxt").text("");
-		// }
+		var section3 = $(".section3").offset().top;
+		if(this.scrollTop >= section3) {
+			$(".section3").addClass("is-fixed");
+
+
+		}else{
+			$(".section3").removeClass("is-fixed");
+			$(".navTxt").text("");
+		}
 
 
 		var sectionNext4 = $(".section4").offset().top;
-		var sec3End = 0
+		var sec3End = sectionNext4 - $(window).height();
 
-		if(this.scrollTop >= 0 && $(window).scrollTop() <= 0) {
+		if(this.scrollTop >= section3 && $(window).scrollTop() <= sec3End) {
 			$(".navTxt").text(((lang=="ko")?"브랜드 슬로건":"Brand Slogan"));
 		}
 
 
 
-		// let sec3Bound = document.querySelector(".section3").getBoundingClientRect();
-		// let sec1Bound = document.querySelector(".section3 .sec1").getBoundingClientRect();
-        //
-		// if(sec3Bound.top < 300 && sec3Bound.bottom - $(window).height() > 0){
-        //
-		// 	const videoTerm = 4000
-		// 	const intermediateHeight = 122; // 초기 목표 높이
-        //
-		// 	let videoPer = (Math.abs(sec3Bound.top) - 1500) / videoTerm
-		// 	if(videoPer > 1){
-		// 		videoPer = 1
-		// 	}
-        //
-		// 	const calculatedHeight =
-		// 		videoPer <= 0.5
-		// 			? (videoPer * 2) * intermediateHeight // 0에서 intermediateHeight(122)까지
-		// 			: intermediateHeight + ((videoPer - 0.5) * 2 * ($(window).height() - intermediateHeight)); // intermediateHeight에서 디바이스 높이까지
-        //
-		// 	if(this.scrollTop >= section3 && !$(".section3 .ani-wrap .first").hasClass("up")) {
-		// 		$(".section3 .ani-wrap .first").removeClass().addClass("first up");
-		// 	}
-		//
-		// 	if(this.scrollTop <= section3 && $(".section3 .ani-wrap .first").hasClass("up")) {
-		// 		$(".section3 .ani-wrap .first").removeClass().addClass("first down");
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second");
-		// 		$(".section3 .ani-wrap .third").removeClass().addClass("third");
-		// 	}
-        //
-		// 	if(sec3Bound.top < -800 && sec1Bound.height <= 0){
-		// 		$(".section3 .sec1 .video-wrap").css("height", "122");
-		// 	}else if(sec3Bound.top > -800 && sec1Bound.height == 122){
-		// 		$(".section3 .sec1 .video-wrap").css("height", "0");
-		// 	}
-		//
-		// 	if(sec3Bound.top < -1500 && ($(".section3 .ani-wrap .first").hasClass("up") && !$(".section3 .ani-wrap .second").hasClass("up"))){
-		// 		$(".section3 .ani-wrap .first").addClass(" up-up");
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second up");
-		// 	}
-		//
-		// 	if(sec3Bound.top >= -1500 && $(".section3 .ani-wrap .first").hasClass("up-up")){
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second down");
-		// 		$(".section3 .ani-wrap .first").removeClass().addClass("first down-down");
-        //
-        //
-		// 	}
-        //
-        //
-        //
-		// 	if(sec3Bound.top <= -2500 && $(".section3 .ani-wrap .second").hasClass("up")){
-		//
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second up-up");
-		// 		$(".section3 .ani-wrap .third").removeClass().addClass("third up");
-		// 		$(".section3 .sec1 .video-wrap").css({"width":"100%", "height":"100vh", "transition-delay": "1.8s"});
-        //
-		// 		$(".navTxt").text(((lang == "ko") ? "기업 철학" : "philosophy"));
-        //
-		// 		$(".section3 .sec1 .video-wrap").on("transitionend", function (e) {
-		// 			$(".section3 .ani-wrap .third").removeClass().addClass("third down");
-		// 		});
-        //
-        //
-		//
-		// 	}else if(sec3Bound.top >= -2500 && sec1Bound.height > 122){
-		// 		$(".section3 .ani-wrap .third").removeClass().addClass("third down");
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second down-down");
-        //
-		// 		$(".section3 .sec1 .video-wrap").css({"width":"calc(100% - 32px)","height":"122px","transition-delay": "0s"});
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second down");
-		// 	}
-        //
-		// 	// console.log(sec1Bound);
-        //
-        //
-		// 	if (sec3Bound.top <= -3500 ) {
-		// 		if(sec1Bound.top == 0) {
-		// 			$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").addClass("on");
-		// 		}
-		// 	}else{
-		// 		$(".section3 .sec1 .text-wrap div").removeClass("on");
-		// 	}
-        //
-		// 	if(sec3Bound.top < -5000) {
-		// 		$(".section3 .sec1").addClass("toggle");
-		// 		$(".section3 .sec2").addClass("toggle");
-		//
-		// 		$(".section3 .sec2 .text-wrap .first, .section3 .sec2 .text-wrap .second, .section3 .sec2 .text-wrap .third").addClass("on");
-		//
-		// 	}else{
-		//
-		//
-		// 		$(".section3 .sec2 .text-wrap .first, .section3 .sec2 .text-wrap .second, .section3 .sec2 .text-wrap .third").removeClass("on");
-		//
-		// 		$(".section3 .sec1").removeClass("toggle");
-		// 		$(".section3 .sec2").removeClass("toggle");
-		// 	}
-        //
-		// 	if(sec3Bound.top - $(window).height() < sec3Bound.top){
-		// 		$(".section3 .sec2").css({"position":"absolute", "bottom": "0"});
-		// 	}
-        //
 
-		// let sec3Bound = document.querySelector(".section3").getBoundingClientRect();
-		// let sec1Bound = document.querySelector(".section3 .sec1").getBoundingClientRect();
+
+		let sec3Bound = document.querySelector(".section3").getBoundingClientRect();
+		let sec1Bound = document.querySelector(".section3 .sec1").getBoundingClientRect();
 
 		//console.log(section3);
 		//console.log(this.scrollTop);
 		//console.log(sec3Bound);
 		//console.log(section3);
 		//console.log(this.scrollTop);
-		// if(true){
-		//
-		//
-		//
-		//
-		// 	const videoTerm = 4000
-		// 	const intermediateHeight = 122; // 초기 목표 높이
-		//
-		// 	let videoPer = (Math.abs(sec3Bound.top) - 1500) / videoTerm
-		// 	if(videoPer > 1){
-		// 		videoPer = 1
-		// 	}
-		//
-		// 	const calculatedHeight =
-		// 		videoPer <= 0.5
-		// 			? (videoPer * 2) * intermediateHeight // 0에서 intermediateHeight(122)까지
-		// 			: intermediateHeight + ((videoPer - 0.5) * 2 * ($(window).height() - intermediateHeight)); // intermediateHeight에서 디바이스 높이까지
-		//
-		// 	if(this.scrollTop >= section3 && !$(".section3 .ani-wrap .first").hasClass("up")) {
-		// 		$(".section3 .ani-wrap .first").removeClass().addClass("first up");
-		// 	}
-		//
-		// 	if(this.scrollTop <= section3 && $(".section3 .ani-wrap .first").hasClass("up")) {
-		// 		$(".section3 .ani-wrap .first").removeClass().addClass("first down");
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second");
-		// 		$(".section3 .ani-wrap .third").removeClass().addClass("third");
-		// 	}
-		//
-		//
-		//
-		//
-		// 	if(sec3Bound.top < -800 && sec1Bound.height <= 0){
-		// 		$(".section3 .sec1 .video-wrap").css("height", "122");
-		// 	}else if(sec3Bound.top > -800 && sec1Bound.height == 122){
-		// 		$(".section3 .sec1 .video-wrap").css("height", "0");
-		// 	}
-		//
-		//
-		//
-		// 	if(sec3Bound.top < -1500 && ($(".section3 .ani-wrap .first").hasClass("up") && !$(".section3 .ani-wrap .second").hasClass("up"))){
-		// 		$(".section3 .ani-wrap .first").addClass(" up-up");
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second up");
-		// 	}
-		//
-		// 	if(sec3Bound.top >= -1500 && $(".section3 .ani-wrap .first").hasClass("up-up")){
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second down");
-		// 		$(".section3 .ani-wrap .first").removeClass().addClass("first down-down");
-		//
-		//
-		// 	}
-		//
-		//
-		//
-		// 	if(sec3Bound.top <= -2500 && $(".section3 .ani-wrap .second").hasClass("up")){
-		//
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second up-up");
-		// 		$(".section3 .ani-wrap .third").removeClass().addClass("third up");
-		// 		$(".section3 .sec1 .video-wrap").css({"width":"100%", "height":"100vh", "transition-delay": "1.8s"});
-		//
-		// 		$(".navTxt").text(((lang == "ko") ? "기업 철학" : "philosophy"));
-		//
-		// 		$(".section3 .sec1 .video-wrap").on("transitionend", function (e) {
-		// 			$(".section3 .ani-wrap .third").removeClass().addClass("third down");
-		// 		});
-		//
-		//
-		//
-		// 	}else if(sec3Bound.top >= -2500 && sec1Bound.height > 122){
-		// 		$(".section3 .ani-wrap .third").removeClass().addClass("third down");
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second down-down");
-		//
-		// 		$(".section3 .sec1 .video-wrap").css({"width":"calc(100% - 32px)","height":"122px","transition-delay": "0s"});
-		// 		$(".section3 .ani-wrap .second").removeClass().addClass("second down");
-		// 	}
-		//
-		//
-		//
-		// 	console.log(sec1Bound);
-		//
-		//
-		// 	if (sec3Bound.top <= -3500 ) {
-		// 		if(sec1Bound.top == 0) {
-		//
-		// 			$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").addClass("on");
-		// 		}
-		// 	}else{
-		// 		$(".section3 .sec1 .text-wrap div").removeClass("on");
-		//
-		// 	}
-		//
-		//
-		// 	if(sec3Bound.top < -5000) {
-		// 		$(".section3 .sec1").addClass("toggle");
-		// 		$(".section3 .sec2").addClass("toggle");
-		//
-		// 		$(".section3 .sec2 .text-wrap .first, .section3 .sec2 .text-wrap .second, .section3 .sec2 .text-wrap .third").addClass("on");
-		//
-		// 	}else{
-		//
-		//
-		// 		$(".section3 .sec2 .text-wrap .first, .section3 .sec2 .text-wrap .second, .section3 .sec2 .text-wrap .third").removeClass("on");
-		//
-		// 		$(".section3 .sec1").removeClass("toggle");
-		// 		$(".section3 .sec2").removeClass("toggle");
-		// 	}
-		//
-		// 	if(sec3Bound.top - $(window).height() < sec3Bound.top){
-		// 		$(".section3 .sec2").css({"position":"absolute", "bottom": "0"});
-		// 	}
+		if(sec3Bound.top < 300 && sec3Bound.bottom - $(window).height() > 0){
 
 
-		// }else{
-			/*if(sec3Bound.top < -2500){
+
+
+			const videoTerm = 4000
+			const intermediateHeight = 122; // 초기 목표 높이
+
+			let videoPer = (Math.abs(sec3Bound.top) - 1500) / videoTerm
+			if(videoPer > 1){
+				videoPer = 1
+			}
+
+			const calculatedHeight =
+				videoPer <= 0.5
+					? (videoPer * 2) * intermediateHeight // 0에서 intermediateHeight(122)까지
+					: intermediateHeight + ((videoPer - 0.5) * 2 * ($(window).height() - intermediateHeight)); // intermediateHeight에서 디바이스 높이까지
+
+			if(this.scrollTop >= section3 && !$(".section3 .ani-wrap .first").hasClass("up")) {
+				$(".section3 .ani-wrap .first").removeClass().addClass("first up");
+			}
+
+			if(this.scrollTop <= section3 && $(".section3 .ani-wrap .first").hasClass("up")) {
+				$(".section3 .ani-wrap .first").removeClass().addClass("first down");
+				$(".section3 .ani-wrap .second").removeClass().addClass("second");
+				$(".section3 .ani-wrap .third").removeClass().addClass("third");
+			}
+
+
+
+
+			if(sec3Bound.top < -800 && sec1Bound.height <= 0){
+				$(".section3 .sec1 .video-wrap").css("height", "122");
+			}else if(sec3Bound.top > -800 && sec1Bound.height == 122){
+				$(".section3 .sec1 .video-wrap").css("height", "0");
+			}
+
+
+
+			if(sec3Bound.top < -1500 && ($(".section3 .ani-wrap .first").hasClass("up") && !$(".section3 .ani-wrap .second").hasClass("up"))){
+				$(".section3 .ani-wrap .first").addClass(" up-up");
+				$(".section3 .ani-wrap .second").removeClass().addClass("second up");
+			}
+
+			if(sec3Bound.top >= -1500 && $(".section3 .ani-wrap .first").hasClass("up-up")){
+				$(".section3 .ani-wrap .second").removeClass().addClass("second down");
+				$(".section3 .ani-wrap .first").removeClass().addClass("first down-down");
+
+
+			}
+
+
+
+			if(sec3Bound.top <= -2500 && $(".section3 .ani-wrap .second").hasClass("up")){
+
+				$(".section3 .ani-wrap .second").removeClass().addClass("second up-up");
+				$(".section3 .ani-wrap .third").removeClass().addClass("third up");
+				$(".section3 .sec1 .video-wrap").css({"width":"100%", "height":"100vh", "transition-delay": "1.8s"});
+
+				$(".navTxt").text(((lang == "ko") ? "기업 철학" : "philosophy"));
+
+				$(".section3 .sec1 .video-wrap").on("transitionend", function (e) {
+					$(".section3 .ani-wrap .third").removeClass().addClass("third down");
+				});
+
+
+
+			}else if(sec3Bound.top >= -2500 && sec1Bound.height > 122){
+				$(".section3 .ani-wrap .third").removeClass().addClass("third down");
+				$(".section3 .ani-wrap .second").removeClass().addClass("second down-down");
+
+				$(".section3 .sec1 .video-wrap").css({"width":"calc(100% - 32px)","height":"122px","transition-delay": "0s"});
+				$(".section3 .ani-wrap .second").removeClass().addClass("second down");
+			}
+
+
+
+			console.log(sec1Bound);
+
+
+			if (sec3Bound.top <= -3500 ) {
+				if(sec1Bound.top == 0) {
+
+					$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").addClass("on");
+				}
+			}else{
+				$(".section3 .sec1 .text-wrap div").removeClass("on");
+
+			}
+
+
+			if(sec3Bound.top < -5000) {
+				$(".section3 .sec1").addClass("toggle");
+				$(".section3 .sec2").addClass("toggle");
+
+				$(".section3 .sec2 .text-wrap .first, .section3 .sec2 .text-wrap .second, .section3 .sec2 .text-wrap .third").addClass("on");
+
+			}else{
+
+
+				$(".section3 .sec2 .text-wrap .first, .section3 .sec2 .text-wrap .second, .section3 .sec2 .text-wrap .third").removeClass("on");
+
+				$(".section3 .sec1").removeClass("toggle");
+				$(".section3 .sec2").removeClass("toggle");
+			}
+
+			if(sec3Bound.top - $(window).height() < sec3Bound.top){
+				$(".section3 .sec2").css({"position":"absolute", "bottom": "0"});
+			}
+
+
+			if(sec3Bound.top < -2500){
 				$(".section3 .sec1 .video-wrap").css("width", ((videoPer) * 32) + ($(window).width() - 32))
 				$(".section3 .sec1 .video-wrap").css("height", calculatedHeight + 80);
 			}
@@ -474,231 +380,211 @@ var prata = {
 				$(".section3 .sec2 .second span").removeClass("on");
 				$(".section3 .sec2 .third small").removeClass("on");
 			}
-			*/
 
 
 
-			//console.log(sec3Bound);
-			//console.log(section3);
-			//console.log(sec1Bound);
 
-		// }else{
-			/*$(".section3 .ani-wrap .first").removeClass("text-animation text-animation-up");
+			console.log(sec3Bound);
+			console.log(section3);
+			console.log(sec1Bound);
+
+		}else{
+			$(".section3 .ani-wrap .first").removeClass("text-animation text-animation-up");
 			$(".section3 .ani-wrap .second").removeClass("text-animation text-animation-up");
-			$(".section3 .ani-wrap .third").removeClass("text-animation text-animation-up");*/
-		// }
+			$(".section3 .ani-wrap .third").removeClass("text-animation text-animation-up");
+		}
+
+
+
 
 
 		/*섹션 1 구간*/
-		// $(function(){
-		// 	const symbolInner = $(".symbol-inner");
-		// 	const section1Bound = document.querySelector(".section1").getBoundingClientRect();
-		// 	if(section1Bound.top < 0 && section1Bound.bottom > -200) {
-        //
-		// 		//
-		// 		const scaleStart = 0;
-		// 		const scaleEnd = $(".section1").outerHeight() * 0.4;
-		// 		let scaleRatio = Math.abs(section1Bound.top) / scaleEnd;
-		// 		if (scaleRatio > 1) {
-		// 			scaleRatio = 1;
-		// 		}
-        //
-		// 		let boxScale = ((4000 - 43) * (1 - Math.pow(scaleRatio, 1.5))) + 43;
-		// 		let boxTopMove = (70 * (1 - Math.pow(scaleRatio, 1.5))) + 50;
-		// 		symbolInner.find(".symbol").css({
-		// 			"width": boxScale,
-		// 			"height": boxScale,
-		// 			"top": boxTopMove + '%'
-		// 		});
-        //
-		// 		const textResizeStart = scaleEnd;
-		// 		const textResizeEnd = $(".section1").outerHeight() * 0.7;
-		// 		if (Math.abs(section1Bound.top) > textResizeStart) {
-		// 			symbolInner.addClass("is-active");
-		// 		} else {
-		// 			symbolInner.removeClass("is-active");
-		// 		}
-		//
-		//
-		//
-		// 		let textResizeRatio = (Math.abs(section1Bound.top) - textResizeStart) / (textResizeEnd - textResizeStart)
-		//
-		//
-		// 		if (textResizeRatio > 1) {
-		// 			textResizeRatio = 1;
-		// 		} else if (textResizeRatio < 0) {
-		// 			textResizeRatio = 0
-		// 		}
-		//
-		//
-		// 		let textSize = ((177 - 43) * textResizeRatio) + 43
-		// 		if (Math.abs(section1Bound.top) > textResizeStart) {
-		// 			symbolInner.find(".symbol").css("width", textSize + "px");
-		// 		}
-		//
-        //
-		// 		const textUpStart = textResizeEnd;
-		// 		const textUpEnd = $(".section1").outerHeight() - $(window).outerHeight()
-		// 		if (Math.abs(section1Bound.top) > textUpStart) {
-		// 			symbolInner.addClass("is-up")
-		// 		} else {
-		// 			symbolInner.removeClass("is-up")
-		// 		}
-		// 		let textUpRatio = (Math.abs(section1Bound.top) - textUpStart) / (textUpEnd - textUpStart)
-		// 		if (textUpRatio > 1) {
-		// 			textUpRatio = 1;
-		// 		} else if (textUpRatio < 0) {
-		// 			textUpRatio = 0
-		// 		}
-		// 		const textUpTerm = ($(window).outerHeight() / 2);
-		// 		const textUp = ((textUpTerm - 26) * (1 - textUpRatio)) + 26
-		// 		if (Math.abs(section1Bound.top) > textUpStart) {
-		// 			symbolInner.find(".symbol").css("top", textUp + "px");
-		// 		} else {
-		// 			//symbolInner.find(".symbol").css("top", "50%");
-		// 		}
-        //
-        //
-		// 		const textLeftStart = textUpEnd
-		// 		const textLeftEnd = textLeftStart + ($(window).outerHeight() * 0.9)
-		// 		if (Math.abs(section1Bound.top) > textLeftStart) {
-		// 			$(".symbol-wrap").css({
-		// 				position: "absolute",
-		// 				top: textLeftStart + "px"
-		// 			})
-		// 		} else {
-		// 			$(".symbol-wrap").css({
-		// 				position: "fixed",
-		// 				top: 0
-		// 			})
-		// 		}
-		// 		const textLeftTerm = ($(window).outerWidth() / 2);
-		// 		let textLeftRatio = (Math.abs(section1Bound.top) - textLeftStart) / (textLeftEnd - textLeftStart)
-		// 		if (textLeftRatio > 1) {
-		// 			textLeftRatio = 1;
-		// 		} else if (textLeftRatio < 0) {
-		// 			textLeftRatio = 0
-		// 		}
-        //
-		// 		const textLeft = ((textLeftTerm - 108) * (1 - textLeftRatio)) + 108
-		// 		if (Math.abs(section1Bound.top) > textLeftStart) {
-		// 			symbolInner.find(".symbol").css("left", textLeft + "px");
-		// 			$(".header").addClass("is-opacity")
-		// 		} else {
-		// 			symbolInner.find(".symbol").css("left", "50%");
-		// 			$(".header").removeClass("is-opacity")
-		// 		}
-		// 		if (section1Bound.bottom < 5) {
-		// 			symbolInner.find(".symbol").hide()
-		// 		} else {
-		// 			symbolInner.find(".symbol").show()
-		// 		}
-        //
-		// 	}
-		// })
-		// $(function(){
-		// 	const symbolInner = $(".symbol-inner");
-		// 	const section1Bound = document.querySelector(".section1").getBoundingClientRect();
-		// 	if(section1Bound.top < 0 && section1Bound.bottom > -200) {
-		//
-		// 		const scaleStart = 0;
-		// 		const scaleEnd = $(".section1").outerHeight() * 0.6;
-		// 		let scaleRatio = Math.abs(section1Bound.top) / scaleEnd;
-		// 		if (scaleRatio > 1) {
-		// 			scaleRatio = 1;
-		// 		}
-		//
-		// 		let boxScale = ((4000 - 43) * (1 - scaleRatio)) + 43;
-		// 		let boxTopMove = (70 * (1 - scaleRatio)) + 50
-		// 		symbolInner.find(".symbol").css("width", boxScale);
-		// 		symbolInner.find(".symbol").css("height", boxScale);
-		// 		symbolInner.find(".symbol").css("top", boxTopMove + '%');
-		//
-		// 		const textResizeStart = scaleEnd
-		// 		const textResizeEnd = $(".section1").outerHeight() * 0.7;
-		// 		if (Math.abs(section1Bound.top) > textResizeStart) {
-		// 			symbolInner.addClass("is-active")
-		// 		} else {
-		// 			symbolInner.removeClass("is-active")
-		// 		}
-		//
-		//
-		//
-		// 		let textResizeRatio = (Math.abs(section1Bound.top) - textResizeStart) / (textResizeEnd - textResizeStart)
-		//
-		//
-		// 		if (textResizeRatio > 1) {
-		// 			textResizeRatio = 1;
-		// 		} else if (textResizeRatio < 0) {
-		// 			textResizeRatio = 0
-		// 		}
-		//
-		//
-		// 		let textSize = ((177 - 43) * textResizeRatio) + 43
-		// 		if (Math.abs(section1Bound.top) > textResizeStart) {
-		// 			symbolInner.find(".symbol").css("width", textSize + "px");
-		// 		}
-		//
-		//
-		// 		const textUpStart = textResizeEnd;
-		// 		const textUpEnd = $(".section1").outerHeight() - $(window).outerHeight()
-		// 		if (Math.abs(section1Bound.top) > textUpStart) {
-		// 			symbolInner.addClass("is-up")
-		// 		} else {
-		// 			symbolInner.removeClass("is-up")
-		// 		}
-		// 		let textUpRatio = (Math.abs(section1Bound.top) - textUpStart) / (textUpEnd - textUpStart)
-		// 		if (textUpRatio > 1) {
-		// 			textUpRatio = 1;
-		// 		} else if (textUpRatio < 0) {
-		// 			textUpRatio = 0
-		// 		}
-		// 		const textUpTerm = ($(window).outerHeight() / 2);
-		// 		const textUp = ((textUpTerm - 26) * (1 - textUpRatio)) + 26
-		// 		if (Math.abs(section1Bound.top) > textUpStart) {
-		// 			symbolInner.find(".symbol").css("top", textUp + "px");
-		// 		} else {
-		// 			//symbolInner.find(".symbol").css("top", "50%");
-		// 		}
-		//
-		//
-		// 		const textLeftStart = textUpEnd
-		// 		const textLeftEnd = textLeftStart + ($(window).outerHeight() * 0.9)
-		// 		if (Math.abs(section1Bound.top) > textLeftStart) {
-		// 			$(".symbol-wrap").css({
-		// 				position: "absolute",
-		// 				top: textLeftStart + "px"
-		// 			})
-		// 		} else {
-		// 			$(".symbol-wrap").css({
-		// 				position: "fixed",
-		// 				top: 0
-		// 			})
-		// 		}
-		// 		const textLeftTerm = ($(window).outerWidth() / 2);
-		// 		let textLeftRatio = (Math.abs(section1Bound.top) - textLeftStart) / (textLeftEnd - textLeftStart)
-		// 		if (textLeftRatio > 1) {
-		// 			textLeftRatio = 1;
-		// 		} else if (textLeftRatio < 0) {
-		// 			textLeftRatio = 0
-		// 		}
-		//
-		// 		const textLeft = ((textLeftTerm - 108) * (1 - textLeftRatio)) + 108
-		// 		if (Math.abs(section1Bound.top) > textLeftStart) {
-		// 			symbolInner.find(".symbol").css("left", textLeft + "px");
-		// 			$(".header").addClass("is-opacity")
-		// 		} else {
-		// 			symbolInner.find(".symbol").css("left", "50%");
-		// 			$(".header").removeClass("is-opacity")
-		// 		}
-		// 		if (section1Bound.bottom < 5) {
-		// 			symbolInner.find(".symbol").hide()
-		// 		} else {
-		// 			symbolInner.find(".symbol").show()
-		// 		}
-		//
-		// 	}
-		// })
+		$(function(){
+			const symbolInner = $(".symbol-inner");
+			const section1Bound = document.querySelector(".section1").getBoundingClientRect();
+			if(section1Bound.top < 0 && section1Bound.bottom > -200) {
+
+				const scaleStart = 0;
+				const scaleEnd = $(".section1").outerHeight() * 0.6;
+				let scaleRatio = Math.abs(section1Bound.top) / scaleEnd;
+				if (scaleRatio > 1) {
+					scaleRatio = 1;
+				}
+
+				let boxScale = ((4000 - 43) * (1 - scaleRatio)) + 43;
+				let boxTopMove = (70 * (1 - scaleRatio)) + 50
+				symbolInner.find(".symbol").css("width", boxScale);
+				symbolInner.find(".symbol").css("height", boxScale);
+				symbolInner.find(".symbol").css("top", boxTopMove + '%');
+
+				const textResizeStart = scaleEnd
+				const textResizeEnd = $(".section1").outerHeight() * 0.7;
+				if (Math.abs(section1Bound.top) > textResizeStart) {
+					symbolInner.addClass("is-active")
+				} else {
+					symbolInner.removeClass("is-active")
+				}
+
+
+
+				let textResizeRatio = (Math.abs(section1Bound.top) - textResizeStart) / (textResizeEnd - textResizeStart)
+
+
+				if (textResizeRatio > 1) {
+					textResizeRatio = 1;
+				} else if (textResizeRatio < 0) {
+					textResizeRatio = 0
+				}
+
+
+				let textSize = ((177 - 43) * textResizeRatio) + 43
+				if (Math.abs(section1Bound.top) > textResizeStart) {
+					symbolInner.find(".symbol").css("width", textSize + "px");
+				}
+
+
+				const textUpStart = textResizeEnd;
+				const textUpEnd = $(".section1").outerHeight() - $(window).outerHeight()
+				if (Math.abs(section1Bound.top) > textUpStart) {
+					symbolInner.addClass("is-up")
+				} else {
+					symbolInner.removeClass("is-up")
+				}
+				let textUpRatio = (Math.abs(section1Bound.top) - textUpStart) / (textUpEnd - textUpStart)
+				if (textUpRatio > 1) {
+					textUpRatio = 1;
+				} else if (textUpRatio < 0) {
+					textUpRatio = 0
+				}
+				const textUpTerm = ($(window).outerHeight() / 2);
+				const textUp = ((textUpTerm - 26) * (1 - textUpRatio)) + 26
+				if (Math.abs(section1Bound.top) > textUpStart) {
+					symbolInner.find(".symbol").css("top", textUp + "px");
+				} else {
+					//symbolInner.find(".symbol").css("top", "50%");
+				}
+
+
+				const textLeftStart = textUpEnd
+				const textLeftEnd = textLeftStart + ($(window).outerHeight() * 0.9)
+				if (Math.abs(section1Bound.top) > textLeftStart) {
+					$(".symbol-wrap").css({
+						position: "absolute",
+						top: textLeftStart + "px"
+					})
+				} else {
+					$(".symbol-wrap").css({
+						position: "fixed",
+						top: 0
+					})
+				}
+				const textLeftTerm = ($(window).outerWidth() / 2);
+				let textLeftRatio = (Math.abs(section1Bound.top) - textLeftStart) / (textLeftEnd - textLeftStart)
+				if (textLeftRatio > 1) {
+					textLeftRatio = 1;
+				} else if (textLeftRatio < 0) {
+					textLeftRatio = 0
+				}
+
+				const textLeft = ((textLeftTerm - 108) * (1 - textLeftRatio)) + 108
+				if (Math.abs(section1Bound.top) > textLeftStart) {
+					symbolInner.find(".symbol").css("left", textLeft + "px");
+					$(".header").addClass("is-opacity")
+				} else {
+					symbolInner.find(".symbol").css("left", "50%");
+					$(".header").removeClass("is-opacity")
+				}
+				if (section1Bound.bottom < 5) {
+					symbolInner.find(".symbol").hide()
+				} else {
+					symbolInner.find(".symbol").show()
+				}
+
+			}
+		})
+
+
+		const symbolInner = $(".symbol-inner");
+		const section1Bound = document.querySelector(".section1").getBoundingClientRect();
+
+		console.log(section1Bound);
+		if(!isAnimating){
+
+			let transitionCount = 0;
+
+			if(section1Bound.top < 0 && section1Bound.top > -200) {
+					$("body").css("overflow", "hidden");
+					isAnimating = true;
+					$(".symbol").addClass("loading");
+					$(".symbol").on("transitionend", function (e) {
+
+						if(e.originalEvent.propertyName === "width"){
+							transitionCount++;
+
+							if (transitionCount === 1) {
+								$(".symbol-inner").addClass("is-active");
+								$(".symbol").css("width", "177px");
+								//$(window).scrollTop(2800);
+							 } else if (transitionCount === 2) {
+								isAnimating = false;
+								$("body").css("overflow", "auto");
+							}
+
+						}
+
+
+					});
+
+
+			}
+
+			if(section1Bound.top <= -2800){
+
+				//$("body").css("overflow", "hidden");
+				//isAnimating = true;
+
+				const textResizeEnd = $(".section1").outerHeight() * 0.7;
+
+				const textUpEnd = $(".section1").outerHeight() - $(window).outerHeight();
+				const textLeftTerm = ($(window).outerWidth() / 2);
+				const textLeftStart = textUpEnd
+				const textLeftEnd = textLeftStart + ($(window).outerHeight() * 0.9)
+				const textLeft = 108
+
+				$(".symbol").css({"top":"26px"});
+
+
+				$(".symbol").on("transitionend", function (e) {
+
+					if(e.originalEvent.propertyName === "top"){
+						$(".symbol").css("left", textLeft + "px");
+						$(".header").addClass("is-opacity");
+						$("html, body").animate({
+							scrollTop : textLeftEnd
+						}, 500);
+
+					}
+
+					if(e.originalEvent.propertyName === "left"){
+
+						$(".symbol-wrap").css({
+							position: "absolute",
+							top: textLeftStart + "px"
+						})
+					}
+
+				});
+
+
+
+				isAnimating = false;
+				$("body").css("overflow", "auto");
+
+			}
+
+		}
+
+
 
 		/*섹션 4 구간*/
 		var section4 = $(".section4").offset().top;
@@ -772,10 +658,10 @@ var prata = {
 		if(this.scrollTop >= section5 && $(window).scrollTop() <= sec5End) {
 			$(".section5").addClass("is-fixed");
 			$(".navTxt").text(((lang=="ko")?"브랜드 네이밍":"Brand Naming"));
-			//$(".section31").addClass("is-fixed");
+			$(".section31").addClass("is-fixed");
 
 		}else{
-			//$(".section31").removeClass("is-fixed");
+			$(".section31").removeClass("is-fixed");
 		}
 
 
