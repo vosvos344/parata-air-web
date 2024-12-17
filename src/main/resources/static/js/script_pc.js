@@ -1154,6 +1154,18 @@ const animation = {
 
 
 
+		let botTxtAniHead = animationImgListTop - (windowHeight / 2);
+		if(scrollTop >= botTxtAniHead){
+			$(".animationHeaderOriginal").css({
+				background: "#161626",
+			});
+		}else{
+			$(".animationHeaderOriginal").css({
+				background: "transparent",
+			});;
+		}
+
+
 
 		let botTxtAni = animationImgListTop + (animationImgListHeight / 2) - 100;
 		if(scrollTop >= botTxtAni){
