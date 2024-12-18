@@ -137,7 +137,13 @@ const animation = {
 
                 animationSection1.addClass("animateHead11"+direction);
 
-                headName = "브랜드 슬로건";
+
+                if(lang === "en"){
+                    headName = "Brand Slogan";
+                }else{
+                    headName = "브랜드 슬로건";
+                }
+
                 headProgress = 14;
                 //첫번째 애니메이션에서 transition 2초 사용
                 setTimeout(() => {
@@ -205,7 +211,11 @@ const animation = {
                 animationSection2.removeClass("animateSec25Next animateSec25Prev");
 
                 animationSection2.addClass("animateSec24"+direction);
-                headName = "기업 철학";
+                if(lang === "en"){
+                    headName = "Company Philosophy";
+                }else{
+                    headName = "기업 철학";
+                }
                 headProgress = 14 * 2;
                 setTimeout(() => {
                     isAnimating = false;
