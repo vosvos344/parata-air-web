@@ -1506,9 +1506,11 @@ button {
     height: 100vh;
     display: flex;
     align-items: baseline;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 14%;
     margin-bottom: -14%;
+    padding: 0 80px;
+    box-sizing: border-box;
 }
 #animationSection6 .animationSectionLeft p{
     color: #FFF;
