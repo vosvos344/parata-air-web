@@ -1807,7 +1807,6 @@ button {
 }
 #animationSection7 .animationSectionRecruitTop{
     display: flex;
-    justify-content: center;
     flex: 1 0 0;
 }
 #animationSection7 .animationSectionRecruitTop h4{
