@@ -15,6 +15,8 @@ $(document).ready(function () {
     bodyWrap.css({
         overflow: "hidden",
     })
+
+    //각 섹션별 높이 따로 지정하기
     animationTopSection.css({
         height: $(window).height(),
     })
@@ -38,13 +40,13 @@ $(document).ready(function () {
     });
 
 
-
+    //휠 애니메이션 용
     document.addEventListener('wheel', function(e) {
 
         if(isAnimating || headStep === "end") return;
         e.preventDefault();
         const deltaY = e.deltaY;
-
+        //델타 값에 따라 위 아래 방향 지정
         if(deltaY > 0){
             animation.headMoveStep("Next");
         }else if(deltaY < 0) {
@@ -82,9 +84,10 @@ $(document).ready(function () {
 
 })
 
+
+
+
 const animation = {
-
-
     headMoveStep: function (direction) {
         if(isAnimating) return;
 
@@ -286,6 +289,7 @@ const animation = {
         if(scrollTop > animationSection3Top && scrollTop < animation3End){
             if(lang === "en"){
                 $(".sectionTitle").html("Reasonable premium");
+                $(".animationHeaderToc").removeClass("black");
             }else{
                 $(".sectionTitle").html("합리적 프리미엄");
                 $(".animationHeaderToc").removeClass("black");
@@ -364,6 +368,7 @@ const animation = {
                 }else if(aniThirdProgress < aniThirdSubSectionSize * 3){
                     if(lang === "en"){
                         $(".sectionTitle").html("Reasonable premium");
+                        $(".animationHeaderToc").addClass("black");
                     }else{
                         $(".sectionTitle").html("진심 어린 서비스");
                         $(".animationHeaderToc").addClass("black");
@@ -405,6 +410,7 @@ const animation = {
 
                         if(lang === "en"){
                             $(".sectionTitle").html("Reasonable premium");
+                            $(".animationHeaderToc").addClass("black");
                         }else{
                             $(".sectionTitle").html("진심 어린 서비스");
                             $(".animationHeaderToc").addClass("black");
@@ -440,6 +446,7 @@ const animation = {
                         $("#animationSection3 .animationInfo.two").addClass("activeTwo");
                         if(lang === "en"){
                             $(".sectionTitle").html("Reasonable premium");
+                            $(".animationHeaderToc").addClass("black");
                         }else{
                             $(".sectionTitle").html("진심 어린 서비스");
                             $(".animationHeaderToc").addClass("black");
@@ -543,6 +550,7 @@ const animation = {
 
             if (lang === "en") {
                 $(".sectionTitle").html("Brand Value");
+                $(".animationHeaderToc").removeClass("black");
             } else {
                 $(".sectionTitle").html("브랜드 가치");
                 $(".animationHeaderToc").removeClass("black");
@@ -556,6 +564,7 @@ const animation = {
         }else if(scrollTop < animationSection4Top && scrollTop > (animationSection4Top - windowHeight)){
             if (lang === "en") {
                 $(".sectionTitle").html("Brand Value");
+                $(".animationHeaderToc").addClass("black");
             } else {
                 $(".sectionTitle").html("진심 어린 서비스");
                 $(".animationHeaderToc").addClass("black");
@@ -973,439 +982,8 @@ const animation = {
 
     },
 
-
-
-
-
-
 }
 
-
-//
-// $(window).on('scroll', function () {
-//     const scrollTop = $(window).scrollTop();
-//     const windowHeight = $(window).height();
-//
-//     const sections = [
-//         { section: $('#animationSection1'), progress: $('.progressLine')},
-//         { section: $('#animationSection2'), progress: $('.progressLine')},
-//         { section: $('#animationSection3'), progress: $('.progressLine')},
-//         { section: $('#animationSection4'), percent: "(100 / 4)", progress: $('.progressLine'), titleKo: "브랜드 가치", titleEn: "Brand Value" },
-//         { section: $('#animationSection5'), percent: "(100 / 3)", progress: $('.progressLine'), titleKo: "브랜드 네이밍", titleEn: "Brand Naming" },
-//         { section: $('#animationSection6'), percent: "(100 / 2)", progress: $('.progressLine'), titleKo: "브랜드 컬러", titleEn: "Brand Color" },
-//         { section: $('#animationSection7'), percent: "(100 / 1)", progress: $('.progressLine'), titleKo: "브랜드 에셋", titleEn: "Brand Assets" },
-//
-//
-//
-//     ];
-//
-//     sections.forEach(({ section, progress, titleKo, titleEn, percent }, index) => {
-//         const sectionTop = section.offset().top;
-//         const sectionHeight = section.outerHeight();
-//
-//         const progressStart = index === 0 ? sectionTop : sectionTop - windowHeight;
-//         const progressEnd = sectionTop + sectionHeight - windowHeight;
-//
-//         let progressWidth = 0;
-//
-//         if (scrollTop >= progressStart && scrollTop <= progressEnd) {
-//             if(lang === "en") {
-//                 $(".sectionTitle").html("");
-//                 $(".sectionTitle").html(titleEn);
-//             }else{
-//                 $(".sectionTitle").html("");
-//                 $(".sectionTitle").html(titleKo);
-//             }
-//             if(percent){
-//                 progress.css({
-//                     'width': `${percent}%`,
-//                     'transition': 'width 0.3s ease-out',
-//                 });
-//             }
-//
-//         }
-//     });
-// });
-
-
-// $(document).ready(function () {
-//
-//     var sectionHeight = $(window).height();
-//     var sections = $(".animationSection");
-//     // var sectionLong1 = $(".animationSection#animationSection1");
-//     // var sectionLong2 = $(".animationSection#animationSection2");
-//     // var sectionLong3 = $(".animationSection#animationSection3");
-//     sections.each(function (index, section) {
-//         var setHeight = defaultHeight;
-//         $(section).css({"height": setHeight + "px",});
-//
-//     });
-//     // sectionLong1.css({"height": defaultLongHeight + "px",});
-//     //sectionLong2.css({"height": defaultMaxHeight + "px",});
-//     //sectionLong3.css({"height": defaultMidHeight + "px",});
-//
-//
-//     $(window).on("scroll", function () {
-//         var scrollTop = $(this).scrollTop();
-//         var windowHeight = $(window).height();
-//         //animation.sectionHead(scrollTop, windowHeight);
-//         // animation.section1(scrollTop, windowHeight);
-//         // animation.section2(scrollTop, windowHeight);
-//         // animation.section3(scrollTop, windowHeight);
-//         // animation.section4(scrollTop, windowHeight);
-//         // animation.section5(scrollTop, windowHeight);
-//         // animation.section6(scrollTop, windowHeight);
-//         // animation.section7(scrollTop, windowHeight);
-//
-//     });
-// });
-//
-// const animation = {
-//     sectionHead: function(scrollTop, windowHeight, event, deltaY) {
-//         event.preventDefault();
-//         if (isAnimating) return;
-//
-//
-//         if (deltaY > 0) {
-//             animation.headMoveStep("next");
-//         } else if (deltaY < 0) {
-//             animation.headMoveStep("prev");
-//         }
-//
-//     },
-//
-//     headMoveStep : function(direction){
-//         isAnimating = true;
-//
-//         if (direction === "next") {
-//             if (headStep < 4) { // 4단계까지 진행 가능
-//                 headStep += 1;
-//                 console.log(`다음 단계: ${headStep}`);
-//                 animation.headExecuteStep(headStep);
-//             }
-//         } else if (direction === "prev") {
-//             if (headStep > 0) { // 0단계 이하로는 못 내려감
-//                 headStep -= 1;
-//                 console.log(`이전 단계: ${headStep}`);
-//                 animation.headExecuteStep(headStep);
-//             }
-//         }
-//
-//         setTimeout(() => {
-//             isAnimating = false;
-//         }, 800);
-//     },
-//     headExecuteStep : function(step) {
-//         let animationLogo = $(".animationLogoOuter");
-//         switch (step) {
-//             case 0:
-//                 console.log("Step 0: 초기 상태");
-//                 animationLogo.css({
-//                     transform: "translate(-50%, -50%) scale(300)",
-//                     transition: "transform 0.8s ease",
-//                 });
-//                 break;
-//             case 1:
-//                 console.log("Step 1: 로고 축소");
-//                 animationLogo.css({
-//                     transform: "translate(-50%, -50%) scale(1)",
-//                     transition: "transform 0.8s ease",
-//                 });
-//                 break;
-//             case 2:
-//                 console.log("Step 2: 로고 더 축소");
-//                 animationLogo.css({
-//                     transform: "translate(-50%, -50%) scale(0.6)",
-//                     transition: "transform 0.8s ease",
-//                 });
-//                 break;
-//             case 3:
-//                 console.log("Step 3: 로고 최소화");
-//                 animationLogo.css({
-//                     transform: "translate(-50%, -50%) scale(0.5)",
-//                     transition: "transform 0.8s ease",
-//                 });
-//                 break;
-//             case 4:
-//                 console.log("Step 4: 최종 상태");
-//                 animationLogo.css({
-//                     transform: "translate(-50%, -50%) scale(0.3)",
-//                     transition: "transform 0.8s ease",
-//                 });
-//                 break;
-//             default:
-//                 console.log("알 수 없는 단계");
-//         }
-//     },
-//
-//     section1 : function(scrollTop, windowHeight){
-//         var setHeight = defaultHeight;
-//         var animationSection1 = $("#animationSection1");
-//         var animationSection1Img = $("#animationSection1 .animationImg");
-//         var animationSection1Txt = $("#animationSection1 .animationText");
-//         var animationSection2 = $("#animationSection2").offset().top;
-//         var headerStartSec = animationSection2 - $(".animationHeaderOriginal").outerHeight();
-//         var nextSection = animationSection2 - windowHeight;
-//
-//         if(scrollTop >= nextSection){
-//             animationSection1Img.css({
-//                 position: "absolute",
-//                 top: "unset",
-//                 bottom: "0",
-//                 height: windowHeight,
-//             })
-//         }else{
-//             animationSection1Img.css({
-//                 position: "fixed",
-//                 top: "0",
-//                 bottom: "unset",
-//                 height: "100%",
-//             })
-//         }
-//
-//         if(scrollTop >= 0 && scrollTop < 2000){
-//             $("#animationSection1 .animationText").addClass("txtOn");
-//         }else{
-//             $("#animationSection1 .animationText").removeClass("txtOn");
-//         }
-//
-//         if(scrollTop > headerStartSec){
-//             $(".animationHeaderOriginal").show();
-//             $(".animationLogoAfterInner").addClass("pa-fade");
-//         }else{
-//             $(".animationHeaderOriginal").hide();
-//             $(".animationLogoAfterInner").removeClass("pa-fade");
-//         }
-//
-//
-//
-//
-//
-//     },
-//
-//     section2 : function(scrollTop, windowHeight){
-//         var animationSection2 = $("#animationSection2");
-//         var animationImg = animationSection2.find(".animationImg");
-//         var animationImgTextLeft = animationSection2.find(".animationImgTextLeft");
-//         var animationImgTextRight = animationSection2.find(".animationImgTextRight");
-//         var animationImgTextBottom = animationSection2.find(".animationImgTextBottom");
-//         var animationSection2Top = animationSection2.offset().top;
-//         var animationSectionInner = animationSection2.find(".animationSectionInner");
-//         var animationSection3Top = $("#animationSection3").offset().top;
-//         var animationSecondEnd = animationSection3Top - windowHeight;
-//
-//
-//         $('.animationTextWrap').each(function(wrapIndex) {
-//             let wrap = $(this);
-//             let texts = wrap.find('.animatedText');
-//             let baseDelay = 0.1;
-//             let groupDelay;
-//
-//             if(wrap.hasClass("txtWrapThird")){
-//                 groupDelay = wrapIndex * 0.8;
-//             }else{
-//                 groupDelay = wrapIndex * 0.5;
-//             }
-//             texts.each(function(index) {
-//                 const delay = groupDelay + (index * baseDelay);
-//                 $(this).css('animation-delay', `${delay}s`);
-//             });
-//         });
-//
-//         if(scrollTop >= animationSection2Top && scrollTop < animationSecondEnd){
-//             animationSectionInner.css({
-//                 position: "fixed",
-//                 top: "0",
-//                 bottom: "unset",
-//                 height: "100%",
-//             })
-//
-//             const totalHeight = animationSecondEnd - animationSection2Top;
-//             const sectionHeight = totalHeight / 6;
-//
-//             const firstSecEnd = animationSection2Top + 400;
-//             const secondSecEnd = firstSecEnd + 600;
-//             const thirdSecEnd = secondSecEnd + 3000;
-//             const fourthSecEnd = thirdSecEnd + 600;
-//             const fifthSecEnd = fourthSecEnd + sectionHeight * 3;
-//             const sixthSecEnd = animationSecondEnd;
-//
-//             if (scrollTop >= animationSection2Top && scrollTop <= thirdSecEnd) {
-//
-//                 if(lang === "en"){
-//                     $(".sectionTitle").html("Brand Slogan");
-//                 }else{
-//                     $(".sectionTitle").html("브랜드 슬로건");
-//                 }
-//
-//                 $(".progressHeaderLine").css({
-//                     width: "calc(14%)",
-//                 })
-//
-//             } else if (scrollTop >= thirdSecEnd && scrollTop <= animationSecondEnd) {
-//
-//
-//                 if(lang === "en"){
-//                     $(".sectionTitle").html("Corporate Philosophy");
-//                 }else{
-//                     $(".sectionTitle").html("기업 철학");
-//                 }
-//
-//                 $(".progressHeaderLine").css({
-//                     width: "calc(14% * 2)",
-//                 })
-//             }
-//
-//
-//             if (scrollTop >= animationSection2Top && scrollTop < firstSecEnd) {
-//
-//                 animationSectionInner.addClass("first");
-//                 animationSectionInner.removeClass("second");
-//                 animationSectionInner.removeClass("third");
-//                 animationSectionInner.removeClass("fourth");
-//                 animationSectionInner.removeClass("fifth");
-//                 animationSectionInner.removeClass("sixth");
-//
-//             } else if (scrollTop >= firstSecEnd && scrollTop < secondSecEnd) {
-//                 animationSectionInner.addClass("first");
-//                 animationSectionInner.addClass("second");
-//                 animationSectionInner.removeClass("third");
-//                 animationSectionInner.removeClass("fourth");
-//                 animationSectionInner.removeClass("fifth");
-//                 animationSectionInner.removeClass("sixth");
-//                 // 위로 스크롤 시 애니메이션 플래그 초기화
-//             } else if (scrollTop >= secondSecEnd && scrollTop < thirdSecEnd) {
-//                 animationSectionInner.addClass("first second third");
-//                 animationSectionInner.removeClass("fourth sixth fifth");
-//             } else if (scrollTop >= thirdSecEnd && scrollTop <= fourthSecEnd) {
-//                 animationSectionInner.addClass("first");
-//                 animationSectionInner.addClass("second");
-//                 animationSectionInner.addClass("third");
-//                 animationSectionInner.addClass("fourth");
-//                 animationImgTextLeft.removeClass("leftOn");
-//                 animationImgTextBottom.removeClass("bottomOn");
-//                 animationImg.removeClass("imageChange");
-//                 animationImgTextRight.removeClass("firstOn");
-//                 animationSectionInner.removeClass("fifth");
-//                 animationSectionInner.removeClass("sixth");
-//
-//
-//
-//
-//             } else if (scrollTop >= fourthSecEnd && scrollTop <= fifthSecEnd) {
-//                 let aniSecProgress = (scrollTop - fourthSecEnd) / (fifthSecEnd - fourthSecEnd);
-//                 let aniSecSubSectionSize = 1 / 3;
-//                 animationSectionInner.addClass("first");
-//                 animationSectionInner.addClass("second");
-//                 animationSectionInner.addClass("third");
-//                 animationSectionInner.addClass("fourth");
-//                 animationImgTextLeft.addClass("leftOn");
-//                 animationImgTextBottom.addClass("bottomOn");
-//                 animationSectionInner.removeClass("fifth");
-//                 animationSectionInner.removeClass("sixth");
-//
-//                 if (aniSecProgress < aniSecSubSectionSize) {
-//                     animationImgTextRight.addClass("firstOn");
-//                     animationImgTextRight.removeClass("secondOn");
-//                     animationImg.removeClass("imageChange");
-//                     animationImgTextBottom.removeClass("textChange");
-//                 } else if (aniSecProgress < aniSecSubSectionSize * 2) {
-//                     animationImg.addClass("imageChange");
-//                     animationImgTextRight.addClass("secondOn");
-//                     animationImgTextBottom.addClass("textChange");
-//                 } else if (aniSecProgress < aniSecSubSectionSize * 3) {
-//                     animationImg.addClass("imageChange");
-//                     animationImgTextRight.addClass("secondOn");
-//                     animationImgTextBottom.addClass("textChange");
-//                     animationImgTextRight.removeClass("firstOn");
-//
-//                 }
-//             } else if (scrollTop >= fifthSecEnd && scrollTop <= sixthSecEnd) {
-//                 animationSectionInner.addClass("first");
-//                 animationSectionInner.addClass("second");
-//                 animationSectionInner.addClass("third");
-//                 animationSectionInner.addClass("fourth");
-//                 animationImg.addClass("imageChange");
-//                 animationImgTextLeft.removeClass("leftOn");
-//                 animationImgTextBottom.removeClass("bottomOn");
-//                 animationImgTextRight.removeClass("firstOn");
-//                 animationImgTextRight.removeClass("secondOn");
-//                 let aniLastProgress = (scrollTop - fifthSecEnd) / (sixthSecEnd - fifthSecEnd);
-//                 let aniLastSubSectionSize = 1 / 2;
-//                 if(aniLastProgress < aniLastSubSectionSize){
-//                     animationSectionInner.addClass("fifth");
-//                     animationSectionInner.removeClass("sixth");
-//                 }else if(aniLastProgress < aniLastSubSectionSize * 2){
-//                     animationSectionInner.addClass("sixth");
-//                 }
-//
-//
-//                 $(".progressHeaderLine").css({
-//                     width: "calc(14% * 3)",
-//                 })
-//
-//             }
-//
-//         }else if(scrollTop > animationSecondEnd){
-//
-//             animationSectionInner.css({
-//                 position: "absolute",
-//                 top: "unset",
-//                 bottom: "0",
-//                 height: "100vh",
-//             })
-//
-//
-//             if(lang === "en"){
-//                 $(".sectionTitle").html("Reasonable premium");
-//             }else{
-//                 $(".sectionTitle").html("합리적 프리미엄");
-//             }
-//
-//             $(".progressHeaderLine").css({
-//                 width: "calc(14% * 3)",
-//             })
-//
-//
-//         }else if(scrollTop < animationSection2Top){
-//             animationSectionInner.css({
-//                 position: "absolute",
-//                 top: "0",
-//                 bottom: "unset",
-//                 height: "100vh",
-//             })
-//             animationSectionInner.removeClass("first");
-//             animationImg.removeClass("imageChange");
-//             $(".animationHeader").show();
-//         }
-//
-//     },
-//
-
-//
-//
-// }
-//
-//
-// function animateText($element, progress, direction) {
-//     let translateX = direction === "rightToLeft" ? 100 - progress * 100 : progress * 100 - 100;
-//     let opacity = progress;
-//
-//     $element.css({
-//         transform: `translateX(${translateX}%)`,
-//         opacity: opacity,
-//         transition: "opacity .5 ease-out",
-//     });
-// }
-//
-// function resetText($elements) {
-//     $elements.css({
-//         transform: "translateX(100%)",
-//         opacity: 0,
-//         transition: "opacity .5 ease-out",
-//     });
-// }
-//
 var startTime = Date.now();
 var minDisplayTime = 5000;
 var progressCounter = setInterval(function () {
