@@ -1,5 +1,6 @@
 let defaultHeight = 4000;
 let sectionMidHeight = 6000;
+let sectionEmidHeight = 8000;
 let sectionLongHeight = 10000;
 let headStep = 0;
 let isAnimating = false;
@@ -21,13 +22,13 @@ $(document).ready(function () {
         height: $(window).height(),
     })
     $("#animationSection3").css({
-        height: sectionLongHeight+"px",
+        height: sectionEmidHeight+"px",
     });
     $("#animationSection4").css({
         height: sectionMidHeight+"px",
     });
     $("#animationSection5").css({
-        height: sectionMidHeight+"px",
+        height: defaultHeight+"px",
     });
     $("#animationSection6").css({
         height: defaultHeight+"px",
@@ -287,6 +288,13 @@ const animation = {
 
 
         if(scrollTop > animationSection3Top && scrollTop < animation3End){
+
+            aniThirdMainImg.css({
+                position: "fixed",
+                top: "0",
+            });
+
+
             if(lang === "en"){
                 $(".sectionTitle").html("Reasonable premium");
                 $(".animationHeaderToc").removeClass("black");
@@ -303,24 +311,55 @@ const animation = {
                 top: "0",
             });
             let aniThirdProgress = (scrollTop - animationSection3Top) / (animation3End - animationSection3Top);
-            let aniThirdSubSectionSize = 1 / 3;
+            let aniThirdSubSectionSize1 = 3 / 13;
+            let aniThirdSubSectionSize2 = 4 / 13;
+            let aniThirdSubSectionSize3 = 6 / 13;
             imgWidth = 100;
             setPart1.css({height: windowHeight,});
-            if (aniThirdProgress < aniThirdSubSectionSize) {
+            if (aniThirdProgress < aniThirdSubSectionSize1) {
+                let progressInFirstSection = aniThirdProgress / aniThirdSubSectionSize1;
+
+                if (progressInFirstSection < 0.5) {
+                    let widthProgress = progressInFirstSection * 2;
+                    let aniThirdMainImgWidth = Math.max(50, 80 - widthProgress * (80 - 50));
+                    if(progressInFirstSection > 0.485){
+                        aniThirdMainImgWidth = 50;
+                    }
+                    if(progressInFirstSection < 0.015){
+                        aniThirdMainImgWidth = 80;
+                    }
+                    aniThirdMainImg.css({
+                        width: `${aniThirdMainImgWidth}%`,
+                    });
+
+                } else {
 
 
-                let aniThirdMainImgWidth = Math.max(50, Math.min(80, 80 - (aniThirdProgress / aniThirdSubSectionSize) * (80 - 50)));
-                let aniThirdLeftValue = Math.max(0, 50 - (aniThirdProgress / aniThirdSubSectionSize) * 50);
-                let aniThirdTranslateXValue = Math.min(0, -50 + (aniThirdProgress / aniThirdSubSectionSize) * 50);
+                    aniThirdMainImg.css({
+                        width: `50%`,
+                    });
+                    let progressInSecondHalf = (progressInFirstSection - 0.5) * 2;
+                    let aniThirdLeftValue = Math.max(0, 50 - progressInSecondHalf * 50);
+                    let aniThirdTranslateXValue = Math.min(0, -50 + progressInSecondHalf * 50);
+                    if(progressInFirstSection > 0.98){
+                        aniThirdLeftValue = 0;
+                        aniThirdTranslateXValue = 0;
+                    }
+                    if(progressInFirstSection < 0.52){
+                        aniThirdLeftValue = 50;
+                        aniThirdTranslateXValue = -50;
+                    }
+                    aniThirdMainImg.css({
+                        position: "fixed",
+                        left: `${aniThirdLeftValue}%`,
+                        top: "0",
+                        transform: `translateX(${aniThirdTranslateXValue}%)`,
+                        height: "100vh",
+                    });
+                }
 
-                aniThirdMainImg.css({
-                    position: "fixed",
-                    left: `${aniThirdLeftValue}%`,
-                    top: "0",
-                    transform: `translateX(${aniThirdTranslateXValue}%)`,
-                    width: `${aniThirdMainImgWidth}%`,
-                    height: "100vh",
-                });
+
+
 
                 $("#animationSection3 .animationInfo.one").removeClass("activeOne");
                 $("#animationSection3 .animationInfo.one").removeClass("activeTwo");
@@ -332,40 +371,77 @@ const animation = {
 
 
 
-            } else {
-                if(aniThirdProgress < aniThirdSubSectionSize * 2){
+            } else if(aniThirdProgress < aniThirdSubSectionSize1 + aniThirdSubSectionSize2) {
 
-                    const progressInSecondSection = (aniThirdProgress - aniThirdSubSectionSize * 1) / (aniThirdSubSectionSize);
+                let progressInSecondSection = (aniThirdProgress - aniThirdSubSectionSize1) / aniThirdSubSectionSize2;
 
+                $("#animationSection3 .animationInfo.two.ready").css({
+                    transform: `translateY(94%)`,
+                });
+                $("#animationSection3 .animationInfo.two").removeClass("activeOne");
+                $("#animationSection3 .animationInfo.two").removeClass("activeTwo");
+                aniThirdInfoWrap.css({
+                    opacity: "1",
+                });
+                if (progressInSecondSection < 1 / 3) {
+
+                    $("#animationSection3 .animationInfo.one").addClass("activeOne");
+                    $("#animationSection3 .animationInfo.two").addClass("ready");
+                    $("#animationSection3 .animationInfo.one").removeClass("activeTwo");
+
+                    animationImgCont.eq(1).css({
+                        transform: `translateY(100%)`,
+                    });
+
+                } else if (progressInSecondSection <= 3) {
+                    $("#animationSection3 .animationInfo.one").addClass("activeTwo");
+                    const translateYValue = 100 - ((progressInSecondSection - 1 / 3) / (1 - 1 / 3)) * 100;
+
+                    animationImgCont.eq(1).css({
+                        transform: `translateY(${translateYValue}%)`,
+                    });
+                }
+
+
+            } else if (aniThirdProgress < aniThirdSubSectionSize1 + aniThirdSubSectionSize2 + aniThirdSubSectionSize3) {
+
+                let progressInThirdSection = (aniThirdProgress - aniThirdSubSectionSize1 - aniThirdSubSectionSize2) / aniThirdSubSectionSize3;
+                if(lang === "en"){
+                    $(".sectionTitle").html("Reasonable premium");
+                    $(".animationHeaderToc").addClass("black");
+                }else{
+                    $(".sectionTitle").html("진심 어린 서비스");
+                    $(".animationHeaderToc").addClass("black");
+                }
+
+                if (progressInThirdSection < 1 / 5) {
+                    const translateYValue = 94 - (progressInThirdSection / (1 / 5)) * 94;
                     $("#animationSection3 .animationInfo.two.ready").css({
-                        transform: `translateY(94%)`,
+                        transform: `translateY(${translateYValue}%)`,
                     });
-                    $("#animationSection3 .animationInfo.two").removeClass("activeOne");
-                    $("#animationSection3 .animationInfo.two").removeClass("activeTwo");
-                    aniThirdInfoWrap.css({
-                        opacity: "1",
+                    infoTwoTitle.css({
+                        opacity: '1',
+                        transition: 'all ease .5s',
                     });
-                    if (progressInSecondSection < 1 / 3) {
+                } else if (progressInThirdSection < 2 / 5) {
+                    infoTwoTitle.css({
+                        opacity: '0',
+                        transition: 'all ease .5s',
+                    });
+                    $("#animationSection3 .animationInfo.two.ready").css({
+                        transform: `translateY(0%)`,
+                    });
+                    $("#animationSection3 .animationInfo.two").addClass("activeOne");
+                    animationImgCont.eq(2).css({
+                        transform: `translateY(100%)`,
+                    });
+                } else if (progressInThirdSection < 3 / 5) {
+                    const thirdTranslateYValue = 100 - ((progressInThirdSection - 2 / 5) / (1 / 5)) * 100;
+                    animationImgCont.eq(2).css({
+                        transform: `translateY(${thirdTranslateYValue}%)`,
+                    });
 
-                        $("#animationSection3 .animationInfo.one").addClass("activeOne");
-                        $("#animationSection3 .animationInfo.two").addClass("ready");
-                        $("#animationSection3 .animationInfo.one").removeClass("activeTwo");
 
-                        animationImgCont.eq(1).css({
-                            transform: `translateY(100%)`,
-                        });
-
-                    } else if (progressInSecondSection <= 3) {
-                        $("#animationSection3 .animationInfo.one").addClass("activeTwo");
-                        const translateYValue = 100 - ((progressInSecondSection - 1 / 3) / (1 - 1 / 3)) * 100;
-
-                        animationImgCont.eq(1).css({
-                            transform: `translateY(${translateYValue}%)`,
-                        });
-                    }
-
-
-                }else if(aniThirdProgress < aniThirdSubSectionSize * 3){
                     if(lang === "en"){
                         $(".sectionTitle").html("Reasonable premium");
                         $(".animationHeaderToc").addClass("black");
@@ -373,106 +449,57 @@ const animation = {
                         $(".sectionTitle").html("진심 어린 서비스");
                         $(".animationHeaderToc").addClass("black");
                     }
-                    const progressInThirdSection = (aniThirdProgress - aniThirdSubSectionSize * 2) / aniThirdSubSectionSize;
 
-                    if (progressInThirdSection < 1 / 6) {
-                        const translateYValue = 94 - (progressInThirdSection / (1 / 6)) * 94;
-                        $("#animationSection3 .animationInfo.two.ready").css({
-                            transform: `translateY(${translateYValue}%)`,
-                        });
-                        infoTwoTitle.css({
-                            opacity: '1',
-                            transition: 'all ease .5s',
-                        });
-                    } else if (progressInThirdSection < 2 / 6) {
-                        infoTwoTitle.css({
-                            opacity: '0',
-                            transition: 'all ease .5s',
-                        });
-                        $("#animationSection3 .animationInfo.two.ready").css({
-                            transform: `translateY(0%)`,
-                        });
-                        $("#animationSection3 .animationInfo.two").addClass("activeOne");
-                    } else if (progressInThirdSection < 3 / 6) {
-                        animationImgCont.eq(2).css({
-                            transform: `translateY(100%)`,
-                        });
-                        $("#animationSection3 .animationInfo.two").addClass("activeOne");
+                    $(".progressHeaderLine").css({
+                        width: "calc(14% * 3)",
+                    })
 
 
-
-                    } else if (progressInThirdSection < 4 / 6) {
-                        const thirdTranslateYValue = 100 - ((progressInThirdSection - 3 / 6) / (1 / 6)) * 100;
-                        animationImgCont.eq(2).css({
-                            transform: `translateY(${thirdTranslateYValue}%)`,
-                        });
-
-
-                        if(lang === "en"){
-                            $(".sectionTitle").html("Reasonable premium");
-                            $(".animationHeaderToc").addClass("black");
-                        }else{
-                            $(".sectionTitle").html("진심 어린 서비스");
-                            $(".animationHeaderToc").addClass("black");
-                        }
-
-                        $(".progressHeaderLine").css({
-                            width: "calc(14% * 3)",
-                        })
-
-                    }else if (progressInThirdSection < 5 / 6) {
-                        animationImgCont.eq(2).css({
-                            transform: `translateY(0%)`,
-                        });
-                        $("#animationSection3 .animationInfo.two").addClass("activeOne");
-
-                        animationImgCont.eq(3).css({
-                            transform: `translateY(100%)`,
-                        });
-
-                        if(lang === "en"){
-                            $(".sectionTitle").html("Reasonable premium");
-                        }else{
-                            $(".sectionTitle").html("진심 어린 서비스");
-                        }
-
-
-
-                    }else if (progressInThirdSection < 6) {
-                        const lastTranslateYValue = 100 - ((progressInThirdSection - 5 / 6) / (1 / 6)) * 100;
-                        animationImgCont.eq(3).css({
-                            transform: `translateY(${lastTranslateYValue}%)`,
-                        });
-                        $("#animationSection3 .animationInfo.two").addClass("activeTwo");
-                        if(lang === "en"){
-                            $(".sectionTitle").html("Reasonable premium");
-                            $(".animationHeaderToc").addClass("black");
-                        }else{
-                            $(".sectionTitle").html("진심 어린 서비스");
-                            $(".animationHeaderToc").addClass("black");
-                        }
-
-                        $(".progressHeaderLine").css({
-                            width: "calc(14% * 3)",
-                        })
-                    }
-
-                    animationImgCont.eq(1).css({
+                } else if (progressInThirdSection < 4 / 5) {
+                    animationImgCont.eq(2).css({
                         transform: `translateY(0%)`,
                     });
+                    $("#animationSection3 .animationInfo.two").addClass("activeOne");
+
+                    animationImgCont.eq(3).css({
+                        transform: `translateY(100%)`,
+                    });
+
+                    if(lang === "en"){
+                        $(".sectionTitle").html("Reasonable premium");
+                    }else{
+                        $(".sectionTitle").html("진심 어린 서비스");
+                    }
+
+                }else if (progressInThirdSection < 5) {
+
+                    const lastTranslateYValue = 100 - ((progressInThirdSection - 4 / 5) / (1 / 5)) * 100;
+                    animationImgCont.eq(3).css({
+                        transform: `translateY(${lastTranslateYValue}%)`,
+                    });
+                    $("#animationSection3 .animationInfo.two").addClass("activeTwo");
+                    if(lang === "en"){
+                        $(".sectionTitle").html("Reasonable premium");
+                        $(".animationHeaderToc").addClass("black");
+                    }else{
+                        $(".sectionTitle").html("진심 어린 서비스");
+                        $(".animationHeaderToc").addClass("black");
+                    }
+
+                    $(".progressHeaderLine").css({
+                        width: "calc(14% * 3)",
+                    })
+
+
                 }
-                aniThirdMainImg.css({
-                    position: "fixed",
-                    left: "0",
-                    top: "0",
-                    transform: "translateX(0)",
-                    width: "50%",
-                    height: "100vh",
+                animationImgCont.eq(1).css({
+                    transform: `translateY(0%)`,
                 });
+
             }
 
 
-        } else if (scrollTop <= animationSection3Top) {
+        }else if (scrollTop <= animationSection3Top) {
             // animationSection3Top 이전
             aniThirdInfoWrap.css({
                 position: "absolute",
@@ -481,11 +508,7 @@ const animation = {
             });
             aniThirdMainImg.css({
                 position: "absolute",
-                left: "50%",
                 top: "0",
-                transform: "translateX(-50%)",
-                width: "80%",
-                height: "100vh",
             });
         } else if (scrollTop >= animation3End) {
             // animation3End 이후
@@ -506,12 +529,8 @@ const animation = {
             });
             aniThirdMainImg.css({
                 position: "absolute",
-                left: "0",
                 bottom: "0",
                 top: "unset",
-                transform: "translateX(0)",
-                width: "50%",
-                height: "100vh",
             });
             aniThirdInfoWrap.css({
                 opacity: "1",
@@ -677,53 +696,32 @@ const animation = {
             })
 
             if (aniFifthProgress < aniFifthSubSectionSize * 1.1) {
-                let parentHeight = animationSection5Inner.outerHeight();
-                let topValue = aniFifthProgress * parentHeight;
-                // animationSection5TextInner.css({
-                //     top: `${topValue}px`,
-                //     left: 0,
-                // });
-                // animationSection5TextInner.addClass("txtActive");
-
-
                 let progressRatio = aniFifthProgress / aniFifthSubSectionSize;
-                let newBottom = `${Math.floor(2 - progressRatio * 2)}%`;
-                let newRight = `${Math.floor(2 - progressRatio * 2)}%`;
-                let newWidth = `${Math.floor(30 + progressRatio * 20)}%`;
-                let newHeight = `${Math.floor(30 + progressRatio * 70)}%`;
+                let newWidth = `${30 + progressRatio * 20}%`; // Math.floor 제거
+                let newHeight = `${30 + progressRatio * 70}%`; // Math.floor 제거
+
 
                 console.log(progressRatio);
                 if(progressRatio > 1){
-                    newBottom = "0%";
-                    newRight = "0%";
                     newWidth = "50%";
                     newHeight = "100%";
                 }
                 animationSection5Video.css({
-                    bottom: newBottom,
-                    right: newRight,
                     width: newWidth,
                     height: newHeight,
                 });
 
 
-
             }else if (aniFifthProgress < aniFifthSubSectionSize * 2.1) {
 
                 let progressRatio = Math.min(1, Math.max(0, (aniFifthProgress - aniFifthSubSectionSize) / aniFifthSubSectionSize));
-                let newLeft = `${Math.min(0, Math.max(-100, -100 * progressRatio))}%`;
-                let newOpacity = Math.min(1, Math.max(0, 1 - progressRatio));
-                let newVideoWidth = `${Math.min(100, Math.max(50, 50 + progressRatio * 50))}%`;
-
-                // animationSection5TextInner.css({
-                //     left: newLeft,
-                //     opacity: newOpacity,
-                // });
+                let newLeft = `${-100 * progressRatio}%`; // 소수점 그대로 유지
+                let newOpacity = 1 - progressRatio; // 소수점 그대로 유지
+                let newVideoWidth = `${50 + progressRatio * 50}%`; // Math.floor 제거
 
                 if(progressRatio > 1){
                     newVideoWidth = "100%";
                 }
-
                 animationSection5Video.css({
                     width: newVideoWidth,
                 });
@@ -888,9 +886,9 @@ const animation = {
         const totalImages = 6;
         const maxTransformValue = -(imageWidth * (totalImages - 1));
 
-        if(scrollTop >= (animation7Top - (windowHeight / 3)) && scrollTop < endPoint){
+        if(scrollTop >= (animation7Top - (windowHeight / 2)) && scrollTop < endPoint){
             animation7Title.addClass("txtActiveOn");
-        }else if(scrollTop < (animation7Top - (windowHeight / 3))){
+        }else if(scrollTop < (animation7Top - (windowHeight / 2))){
             animation7Title.removeClass("txtActiveOn");
         }
 
