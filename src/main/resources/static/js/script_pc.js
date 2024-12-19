@@ -510,6 +510,18 @@ const animation = {
                 position: "absolute",
                 top: "0",
             });
+            animationImgCont.eq(0).css({
+                transform: "translateY(0%)",
+            })
+            animationImgCont.eq(1).css({
+                transform: "translateY(100%)",
+            })
+            animationImgCont.eq(2).css({
+                transform: "translateY(100%)",
+            })
+            animationImgCont.eq(3).css({
+                transform: "translateY(100%)",
+            })
         } else if (scrollTop >= animation3End) {
             // animation3End 이후
 
