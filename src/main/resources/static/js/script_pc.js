@@ -34,7 +34,7 @@ $(document).ready(function () {
         height: defaultHeight+"px",
     });
     $("#animationSection7").css({
-        height: defaultHeight+"px",
+        height: sectionMidHeight+"px",
     });
     $("#animationSection4 .animationTextInner").css({
         height: $(window).height()+"px",
@@ -879,7 +879,7 @@ const animation = {
         const animationInnerHeight = animation7Inner.outerHeight();
         const animationImgListTop = animationImgList.offset().top;
         const imageWidth = $('.animationSectionImgCont img').width();
-        const centralOffset = animation7Top + ((windowHeight - animationImgListHeight) / 2) ;
+        const centralOffset = animation7Top + ((windowHeight - animationImgListHeight) / 3) ;
         const fixedTopValue = animation7Top - centralOffset ;
         const endPoint = animation7Top + animation7Height - animationInnerHeight - fixedTopValue;
 
