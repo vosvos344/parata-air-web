@@ -374,6 +374,13 @@ const animation = {
 
             } else if(aniThirdProgress < aniThirdSubSectionSize1 + aniThirdSubSectionSize2) {
 
+
+                aniThirdMainImg.css({
+                    left: 0,
+                    transform: "translateX(0)",
+                    width: "50%",
+                })
+
                 let progressInSecondSection = (aniThirdProgress - aniThirdSubSectionSize1) / aniThirdSubSectionSize2;
 
                 $("#animationSection3 .animationInfo.two.ready").css({
