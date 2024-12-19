@@ -1,3 +1,4 @@
+let defaultSmallHeight = 3000;
 let defaultHeight = 4000;
 let sectionMidHeight = 6000;
 let sectionEmidHeight = 8000;
@@ -28,7 +29,7 @@ $(document).ready(function () {
         height: sectionMidHeight+"px",
     });
     $("#animationSection5").css({
-        height: defaultHeight+"px",
+        height: defaultSmallHeight+"px",
     });
     $("#animationSection6").css({
         height: defaultHeight+"px",
@@ -414,8 +415,8 @@ const animation = {
                     $(".animationHeaderToc").addClass("black");
                 }
 
-                if (progressInThirdSection < 1 / 5) {
-                    const translateYValue = 94 - (progressInThirdSection / (1 / 5)) * 94;
+                if (progressInThirdSection < 1 / 6) {
+                    const translateYValue = 94 - (progressInThirdSection / (1 / 6)) * 94;
                     $("#animationSection3 .animationInfo.two.ready").css({
                         transform: `translateY(${translateYValue}%)`,
                     });
@@ -423,7 +424,7 @@ const animation = {
                         opacity: '1',
                         transition: 'all ease .5s',
                     });
-                } else if (progressInThirdSection < 2 / 5) {
+                } else if (progressInThirdSection < 2 / 6) {
                     infoTwoTitle.css({
                         opacity: '0',
                         transition: 'all ease .5s',
@@ -435,8 +436,8 @@ const animation = {
                     animationImgCont.eq(2).css({
                         transform: `translateY(100%)`,
                     });
-                } else if (progressInThirdSection < 3 / 5) {
-                    const thirdTranslateYValue = 100 - ((progressInThirdSection - 2 / 5) / (1 / 5)) * 100;
+                } else if (progressInThirdSection < 3 / 6) {
+                    const thirdTranslateYValue = 100 - ((progressInThirdSection - 2 / 6) / (1 / 6)) * 100;
                     animationImgCont.eq(2).css({
                         transform: `translateY(${thirdTranslateYValue}%)`,
                     });
@@ -455,7 +456,7 @@ const animation = {
                     })
 
 
-                } else if (progressInThirdSection < 4 / 5) {
+                } else if (progressInThirdSection < 4 / 6) {
                     animationImgCont.eq(2).css({
                         transform: `translateY(0%)`,
                     });
@@ -471,9 +472,9 @@ const animation = {
                         $(".sectionTitle").html("진심 어린 서비스");
                     }
 
-                }else if (progressInThirdSection < 5) {
+                }else if (progressInThirdSection < 5 / 6) {
 
-                    const lastTranslateYValue = 100 - ((progressInThirdSection - 4 / 5) / (1 / 5)) * 100;
+                    const lastTranslateYValue = 100 - ((progressInThirdSection - 4 / 6) / (1 / 6)) * 100;
                     animationImgCont.eq(3).css({
                         transform: `translateY(${lastTranslateYValue}%)`,
                     });
@@ -491,7 +492,15 @@ const animation = {
                     })
 
 
+                }else if (progressInThirdSection < 1) {
+                    //텀을 조금 주기
+
+                    animationImgCont.eq(3).css({
+                        transform: `translateY(0%)`,
+                    });
                 }
+
+
                 animationImgCont.eq(1).css({
                     transform: `translateY(0%)`,
                 });
@@ -891,7 +900,8 @@ const animation = {
         const animationInnerHeight = animation7Inner.outerHeight();
         const animationImgListTop = animationImgList.offset().top;
         const imageWidth = $('.animationSectionImgCont img').width();
-        const centralOffset = animation7Top + ((windowHeight - animationImgListHeight) / 3) ;
+        const centralOffset = animation7Top;
+        //const centralOffset = animation7Top + ((windowHeight - animationImgListHeight) / 3) ;
         const fixedTopValue = animation7Top - centralOffset ;
         const endPoint = animation7Top + animation7Height - animationInnerHeight - fixedTopValue;
 

@@ -1232,21 +1232,18 @@ button {
     transform: translateY(100%);
     opacity: 0;
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-    height: 0;
     overflow: hidden;
 }
 #animationSection3 .animationInfo .animationInfoInner p.second{
     padding: 5% 0 0;
 }
 #animationSection3 .animationInfo.activeOne .animationInfoInner p.first{
-    height: auto;
     transform: translateY(0);
     opacity: 1;
     transition: all 0.5s ease-out;
 }
 
 #animationSection3 .animationInfo.activeTwo .animationInfoInner p.second{
-    height: auto;
     transform: translateY(0);
     opacity: 1;
     transition: all 0.5s ease-out;
@@ -1690,7 +1687,7 @@ button {
 
 
 #animationSection7 .animationSectionInner{
-    padding: 80px 80px 200px;
+    padding: 120px 80px;
     width: 100%;
     box-sizing: border-box;
 }
