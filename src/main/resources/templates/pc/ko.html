@@ -5,7 +5,7 @@
 
 
 <th:block layout:fragment="script">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="/js/smoothwheel.js"></script>
     <script src="/js/script_pc.js"></script>
@@ -32,105 +32,80 @@
 
 
     <div class="animationWrap">
-
-
-
-        <section class="animationHeader">
-            <div class="animationLogoWrapper">
-                <div class="animationLogoWhite top"></div>
-                <div class="animationLogoWhite bottom"></div>
-                <div class="animationLogoWhite left"></div>
-                <div class="animationLogoWhite right"></div>
-                <div class="animationLogoOuter">
-                    <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_218_411)">
-                            <g clip-path="url(#clip1_218_411)">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M-104 -44H2161V1266H-104V-44ZM999.407 534.449H920.148C923.706 516.077 940.174 502.184 959.945 502.184C979.716 502.184 995.992 515.916 999.676 534.126C999.708 534.29 999.58 534.446 999.407 534.446V534.449ZM952.258 540.706C958.086 541.754 964.184 545.072 966.413 550.669H966.415C970.269 560.185 964.332 570.75 958.963 577.329C957.946 578.576 956.806 579.772 955.632 580.871C955.235 581.241 954.917 581.3 954.503 581.247C934.705 578.643 919.438 562.01 919.438 541.894C919.438 540.432 919.514 538.995 919.679 537.576C922.166 537.766 924.658 537.932 927.15 538.097H927.152L927.167 538.098L927.169 538.099C935.568 538.657 943.98 539.215 952.258 540.706ZM895.139 534.449C894.528 534.449 894.445 534.863 894.445 535.021C894.445 535.441 894.684 535.626 895.051 535.656L919.673 537.579C919.786 536.521 919.945 535.478 920.145 534.452H895.139V534.449ZM958.388 581.261L999.818 536.94C999.927 536.822 1000.13 536.884 1000.15 537.045C1000.35 538.636 1000.45 540.253 1000.45 541.895C1000.45 563.827 982.317 581.605 959.945 581.605C959.468 581.605 958.994 581.594 958.522 581.578C958.358 581.573 958.275 581.379 958.388 581.261Z" fill="white"/>
-                            </g>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_218_411">
-                                <rect width="1920" height="1080" fill="white"/>
-                            </clipPath>
-                            <clipPath id="clip1_218_411">
-                                <rect width="1920" height="1080" fill="white"/>
-                            </clipPath>
-                        </defs>
-                    </svg>
-                </div>
-                <div class="animationLogoAfter">
-                    <div class="animationLogoAfterInner">
-                        <img src="./images/afterLogo.svg">
+        <div class="animationTopSection">
+            <section class="animationHeaderOriginal" style="display: none;">
+                <div class="animationHeaderInner">
+                    <div class="animationLogoLanguage">
+                        <a href="/kr" class="langLink langActive">KOR</a>
+                        <a href="/en" class="langLink">ENG</a>
                     </div>
-                    <div class="additionalSection"></div>
+                    <a href="#" class="animationHeaderLogo">
+                        <img src="./images/mainlogo.png">
+                    </a>
+                    <div class="animationHeaderToc">
+                        <strong class="sectionTitle">브랜드 슬로건</strong>
+                        <span class="sectionMenuIcon">
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="animationHeaderOriginal" style="display: none;">
-            <div class="animationHeaderInner">
-                <div class="animationLogoLanguage">
-                    <a href="/kr" class="langLink langActive">KOR</a>
-                    <a href="/en" class="langLink">ENG</a>
+                <div class="sectionProgressLine">
+                    <div class="progressHeaderLine"></div>
                 </div>
-                <a href="#" class="animationHeaderLogo">
-                    <img src="./images/mainlogo.png">
-                </a>
-                <div class="animationHeaderToc">
-                    <strong class="sectionTitle">브랜드 슬로건</strong>
-                    <span class="sectionMenuIcon">
-					</span>
+            </section>
+
+            <!-- Section1 -->
+            <section class="animationSection return" id="animationSection1">
+
+                <section class="animationHeader">
+                    <div class="animationLogoWrapper">
+                        <div class="animationLogoOuter">
+                            <div class="animationLogoWhite top"></div>
+                            <div class="animationLogoWhite bottom"></div>
+                            <div class="animationLogoWhite left"></div>
+                            <div class="animationLogoWhite right"></div>
+                            <img src="/images/logoStart.png">
+                        </div>
+                        <div class="animationLogoAfter">
+                            <div class="animationLogoAfterInner">
+                                <img src="./images/afterLogo.svg">
+                            </div>
+                            <div class="additionalSection"></div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <div class="animationImg">
+                    <video autoplay loop muted playsinline>
+                        <source src="./images/video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="animationText">
+                        <h4>Fly New</h4>
+                        <p>경험하지 못한, 새로운 여정을 선사합니다.</p>
+                    </div>
+                    <div class="animation1Logo">
+                        <img src="./images/mainlogo.png">
+                    </div>
+                    <div class="animationScrollReveal">
+                        <strong>
+                            <small style="opacity: 0.5; animation: 3s linear 0s infinite letter-fade-in-out;">스</small>
+                            <small style="opacity: 0.5; animation: 3s linear 0.1s infinite letter-fade-in-out;">크</small>
+                            <small style="opacity: 0.5; animation: 3s linear 0.2s infinite letter-fade-in-out;">롤</small>
+                            <small style="opacity: 0.5; animation: 3s linear 0.3s infinite letter-fade-in-out;">을</small>
+                            <small style="width: 7px; animation: 3s linear 0.4s infinite letter-fade-in-out;"></small>
+                            <small style="opacity: 0.5; animation: 3s linear 0.5s infinite letter-fade-in-out;">내</small>
+                            <small style="opacity: 0.5; animation: 3s linear 0.6s infinite letter-fade-in-out;">려</small>
+                            <small style="opacity: 0.5; animation: 3s linear 0.7s infinite letter-fade-in-out;">주</small>
+                            <small style="opacity: 0.5; animation: 3s linear 0.8s infinite letter-fade-in-out;">세</small>
+                            <small style="opacity: 0.5; animation: 3s linear 0.9s infinite letter-fade-in-out;">요</small>
+                        </strong>
+                        <span><img src="/images/scroll_btn.svg"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="sectionProgressLine">
-                <div class="progressHeaderLine"></div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Section1 -->
-        <section class="animationSection return" id="animationSection1">
-            <div class="animationImg">
-                <video autoplay loop muted playsinline>
-                    <source src="./images/video1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="animationText">
-                    <h4>Fly New</h4>
-                    <p>경험하지 못한, 새로운 여정을 선사합니다.</p>
-                </div>
-                <div class="animation1Logo">
-                    <img src="./images/mainlogo.png">
-                </div>
-                <div class="animationScrollReveal">
-                    <strong>
-                        <small style="opacity: 0.5; animation: 5s linear 0s infinite letter-fade-in-out;">S</small>
-                        <small style="opacity: 0.5; animation: 5s linear 0.1s infinite letter-fade-in-out;">C</small>
-                        <small style="opacity: 0.5; animation: 5s linear 0.2s infinite letter-fade-in-out;">R</small>
-                        <small style="opacity: 0.5; animation: 5s linear 0.3s infinite letter-fade-in-out;">O</small>
-                        <small style="opacity: 0.5; animation: 5s linear 0.4s infinite letter-fade-in-out;">L</small>
-                        <small style="opacity: 0.5; animation: 5s linear 0.5s infinite letter-fade-in-out;">L</small>
-                        <small style="width: 7px; animation: 5s linear 0.6s infinite letter-fade-in-out;"></small>
-                        <small style="opacity: 0.5; animation: 5s linear 0.7s infinite letter-fade-in-out;">T</small>
-                        <small style="opacity: 0.5; animation: 5s linear 0.8s infinite letter-fade-in-out;">O</small>
-                        <small style="width: 7px; animation: 5s linear 0.9s infinite letter-fade-in-out;"></small>
-                        <small style="opacity: 0.5; animation: 5s linear 1s infinite letter-fade-in-out;">R</small>
-                        <small style="opacity: 0.5; animation: 5s linear 1.1s infinite letter-fade-in-out;">E</small>
-                        <small style="opacity: 0.5; animation: 5s linear 1.2s infinite letter-fade-in-out;">V</small>
-                        <small style="opacity: 0.5; animation: 5s linear 1.3s infinite letter-fade-in-out;">E</small>
-                        <small style="opacity: 0.5; animation: 5s linear 1.4s infinite letter-fade-in-out;">A</small>
-                        <small style="opacity: 0.5; animation: 5s linear 1.5s infinite letter-fade-in-out;">L</small>
-                    </strong>
-                    <span><img src="/images/scroll_btn.svg"></span>
-                </div>
-            </div>
-
-
-
-        </section>
-
-
-        <!-- Section2 -->
-        <div class="animationProgress">
+            <!-- Section2 -->
             <section class="animationSection" id="animationSection2">
                 <div class="animationSectionInner">
                     <div class="animationTxt animationTxtLeft">
@@ -160,7 +135,7 @@
                                 <h3>파라타항공은</h3>
                             </div>
                             <div class="animationImgTextRight">
-                                <p class="first">파라타항공은 고객중심의 서비스를 디자인합니다.</p>
+                                <p class="first">고객중심의 서비스를 디자인합니다.</p>
                                 <p class="second">합리적인 서비스를 제공합니다.</p>
                             </div>
                         </div>
@@ -183,142 +158,143 @@
                     <div class="animationTxt animationTxtRight">
                         <div class="animationTxtInner">
                             <div class="animationTextWrap txtWrapFirst">
-                                <span class="animatedText" style="animation-delay: 0.1s;">N</span>
-                                <span class="animatedText" style="animation-delay: 0.13s;">e</span>
-                                <span class="animatedText" style="animation-delay: 0.16s;">w</span>
+                                <span class="animatedText" style="animation-delay: 0.05s;">N</span>
+                                <span class="animatedText" style="animation-delay: 0.1s;">e</span>
+                                <span class="animatedText" style="animation-delay: 0.15s;">w</span>
                             </div>
                             <div class="animationTextWrap txtWrapSecond">
-                                <span class="animatedText" style="animation-delay: 0.21s;">H</span>
-                                <span class="animatedText" style="animation-delay: 0.24s;">a</span>
-                                <span class="animatedText" style="animation-delay: 0.27s;">p</span>
-                                <span class="animatedText" style="animation-delay: 0.30s;">p</span>
-                                <span class="animatedText" style="animation-delay: 0.33s;">i</span>
-                                <span class="animatedText" style="animation-delay: 0.36s;">n</span>
-                                <span class="animatedText" style="animation-delay: 0.39s;">e</span>
-                                <span class="animatedText" style="animation-delay: 0.42s;">s</span>
+                                <span class="animatedText" style="animation-delay: 0.05s;">H</span>
+                                <span class="animatedText" style="animation-delay: 0.1s;">a</span>
+                                <span class="animatedText" style="animation-delay: 0.15s;">p</span>
+                                <span class="animatedText" style="animation-delay: 0.2s;">p</span>
+                                <span class="animatedText" style="animation-delay: 0.25s;">i</span>
+                                <span class="animatedText" style="animation-delay: 0.3s;">n</span>
+                                <span class="animatedText" style="animation-delay: 0.35s;">e</span>
+                                <span class="animatedText" style="animation-delay: 0.4s;">s</span>
                                 <span class="animatedText" style="animation-delay: 0.45s;">s</span>
                             </div>
                             <div class="animationTextWrap txtWrapThird">
-                                <span class="animatedText" style="animation-delay: 0.5s;">T</span>
-                                <span class="animatedText" style="animation-delay: 0.53s;">o</span>
-                                <span class="animatedText" style="animation-delay: 0.56s;">g</span>
-                                <span class="animatedText" style="animation-delay: 0.59s;">e</span>
-                                <span class="animatedText" style="animation-delay: 0.62s;">t</span>
-                                <span class="animatedText" style="animation-delay: 0.65s;">h</span>
-                                <span class="animatedText" style="animation-delay: 0.685s;">e</span>
-                                <span class="animatedText" style="animation-delay: 0.71s;">r</span>
+                                <span class="animatedText" style="animation-delay: 0.05s;">T</span>
+                                <span class="animatedText" style="animation-delay: 0.1s;">o</span>
+                                <span class="animatedText" style="animation-delay: 0.15s;">g</span>
+                                <span class="animatedText" style="animation-delay: 0.2s;">e</span>
+                                <span class="animatedText" style="animation-delay: 0.25s;">t</span>
+                                <span class="animatedText" style="animation-delay: 0.3s;">h</span>
+                                <span class="animatedText" style="animation-delay: 0.35s;">e</span>
+                                <span class="animatedText" style="animation-delay: 0.4s;">r</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
-            <section class="animationSection" id="animationSection3">
-                <div class="animationImgMain">
-                    <div class="animationImgCont active">
-                        <img src="./images/section3_1.png">
-                    </div>
-                    <div class="animationImgCont">
-                        <img src="./images/section3_2.png">
-                    </div>
-                    <div class="animationImgCont">
-                        <img src="./images/section3_3.png">
-                    </div>
-                    <div class="animationImgCont">
-                        <img src="./images/section3_4.png">
-                    </div>
-
-                </div>
-                <div class="animationInfoWrap">
-                    <div class="animationInfo one">
-                        <div class="animationInfoInner">
-                            <h4>서비스 종류에 집중하기보다<br>품질에 집중합니다.</h4>
-                            <p class="first">종류만 다양할 뿐 실속 없는 서비스, 불필요하지만 포함되어 있는 서비스.<br>
-                                파라타항공은 구색만 갖춘 서비스는 지양합니다.
-                            </p>
-                            <p class="second">
-                                파라타항공은 합리적 프리미엄 서비스를 실현합니다.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="animationInfo white two">
-                        <div class="animationInfoTitle">
-                            <h3>02. 진심을 다해 다가가겠습니다.</h3>
-                        </div>
-                        <div class="animationInfoInner">
-                            <h4>진심을 다해 다가가겠습니다.</h4>
-                            <p class="first">파라타항공만의 따뜻하고 사려 깊은 친절함으로 고객과 함께합니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="animationSection" id="animationSection4">
-                <div class="animationTextWrap">
-                    <div class="animationTextInner">
-                        <div class="animationTextNumber">
-                            <div class="animationTextNumberInner ">
-                                <span>0</span>
-                                <div class="countWrapper">
-                                    <span class="count">1</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="animationList">
-                            <ul>
-                                <li class="listOn">
-                                    <div class="animationListCont">
-                                        <div><span>Essential</span></div>
-                                        <div><p>고객 관점에서 근본적 지점부터 혁신해 합리적인 가치 제공</p></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="animationListCont">
-                                        <div><span>Comfortable</span></div>
-                                        <div><p>쾌적하고 깨끗한 항공경험을 디자인해 육체적, 심리적 편안함 제공</p></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="animationListCont">
-                                        <div><span>Authentic</span></div>
-                                        <div><p>진심어린 서비스로 여행의 설렘과 긍정적 가치 제공</p></div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-
-            <section class="animationSection" id="animationSection5">
-                <div class="animationSectionInner">
-                    <div class="animationSectionCont">
-                        <div class="animationSectionText">
-                            <div class="animationSectionTextInner">
-                                <h3>PARATA AIR<br><span class="animationSection4">New Paradigm <br>Trustworthy Airline.</span></h3>
-                                <p>파라타항공은 하늘의 색을 뜻하는 한국어 '파랗다' 처럼<br>
-                                    쾌적하고 행복한 여행경험을 제공합니다.</p>
-                            </div>
-                        </div>
-                        <div class="animationSectionVideo">
-                            <video autoplay loop muted playsinline>
-                                <source src="./images/video3.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="animationSectionLogo">
-                                <img src="./images/section5_logo.svg"></div>
-                        </div>
-                    </div>
-                </div>
         </div>
+
+        <section class="animationSectionScroll" id="animationSection3">
+            <div class="animationImgMain">
+                <div class="animationImgCont active">
+                    <img src="./images/section3_1.png">
+                </div>
+                <div class="animationImgCont">
+                    <img src="./images/section3_2.png">
+                </div>
+                <div class="animationImgCont">
+                    <img src="./images/section3_3.png">
+                </div>
+                <div class="animationImgCont">
+                    <img src="./images/section3_4.png">
+                </div>
+
+            </div>
+            <div class="animationInfoWrap">
+                <div class="animationInfo one">
+                    <div class="animationInfoInner">
+                        <h4>서비스 종류에 집중하기보다<br>품질에 집중합니다.</h4>
+                        <p class="first">종류만 다양할 뿐 실속 없는 서비스, 불필요하지만 포함되어 있는 서비스.<br>
+                            파라타항공은 구색만 갖춘 서비스는 지양합니다.
+                        </p>
+                        <p class="second">
+                            파라타항공은 합리적 프리미엄 서비스를 실현합니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="animationInfo white two">
+                    <div class="animationInfoTitle">
+                        <h3>02. 진심을 다해 다가가겠습니다.</h3>
+                    </div>
+                    <div class="animationInfoInner">
+                        <h4>진심을 다해 다가가겠습니다.</h4>
+                        <p class="first">파라타항공만의 따뜻하고 사려 깊은 친절함으로 고객과 함께합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="animationSectionScroll" id="animationSection4">
+            <div class="animationTextWrap">
+                <div class="animationTextInner">
+                    <div class="animationList">
+                        <ul>
+                            <li class="listOn">
+                                <div class="animationListNum">
+                                    <span>01</span>
+                                </div>
+                                <div class="animationListCont">
+                                    <div><span>Essential</span></div>
+                                    <div><p>고객 관점에서 근본적 지점부터 혁신해 합리적인 가치 제공</p></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="animationListNum">
+                                    <span>02</span>
+                                </div>
+                                <div class="animationListCont">
+                                    <div><span>Comfortable</span></div>
+                                    <div><p>쾌적하고 깨끗한 항공경험을 디자인해 육체적, 심리적 편안함 제공</p></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="animationListNum">
+                                    <span>03</span>
+                                </div>
+                                <div class="animationListCont">
+                                    <div><span>Authentic</span></div>
+                                    <div><p>진심어린 서비스로 여행의 설렘과 긍정적 가치 제공</p></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </section>
 
 
 
-        <section class="animationSection" id="animationSection6">
+        <section class="animationSectionScroll" id="animationSection5">
+            <div class="animationSectionInner">
+                <div class="animationSectionCont">
+                    <div class="animationSectionText">
+                        <div class="animationSectionTextInner">
+                            <h3>PARATA AIR<br><span class="animationSection4">New Paradigm <br>Trustworthy <br>Airline.</span></h3>
+                            <p>파라타항공은 하늘의 색을 뜻하는 한국어 '파랗다' 처럼<br>
+                                쾌적하고 행복한 여행경험을 제공합니다.</p>
+                        </div>
+                    </div>
+                    <div class="animationSectionVideo">
+                        <video autoplay loop muted playsinline>
+                            <source src="./images/video3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="animationSectionLogo">
+                            <img src="./images/section5_logo.svg"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="animationSectionScroll" id="animationSection6">
             <div class="animationSectionInner">
                 <div class="animationSectionLeft">
                     <div class="animationSectionLeftInner">
@@ -371,7 +347,7 @@
         </section>
 
 
-        <section class="animationSection" id="animationSection7">
+        <section class="animationSectionScroll" id="animationSection7">
             <div class="animationSectionInner">
                 <div class="animationSectionTitle">
                     <small>Brand Assets</small>
@@ -387,37 +363,31 @@
                         <li>
                             <div class="animationSectionImgCont">
                                 <img src="./images/section7_1.png">
-                                <p>Look & Feel</p>
                             </div>
                         </li>
                         <li>
                             <div class="animationSectionImgCont">
                                 <img src="./images/section7_2.png">
-                                <p>Look & Feel</p>
                             </div>
                         </li>
                         <li>
                             <div class="animationSectionImgCont">
                                 <img src="./images/section7_3.png">
-                                <p>Look & Feel</p>
                             </div>
                         </li>
                         <li>
                             <div class="animationSectionImgCont">
                                 <img src="./images/section7_4.png">
-                                <p>Look & Feel</p>
                             </div>
                         </li>
                         <li>
                             <div class="animationSectionImgCont">
                                 <img src="./images/section7_5.png">
-                                <p>Look & Feel</p>
                             </div>
                         </li>
                         <li>
                             <div class="animationSectionImgCont">
                                 <img src="./images/section7_6.png">
-                                <p>Look & Feel</p>
                             </div>
                         </li>
                     </ul>
@@ -458,7 +428,14 @@
                 </div>
                 <div class="animationFooterInfo">
                     <div class="animationFooterComp">
+                        <div class="">
+                            <span>대표이사 : 윤철민</span>
+                            <span>사업자등록번호 : 710-81-00367</span><br>
+                            <span>본 사 : 강원특별자치도 양양군 양양읍 일출로 166-20 (25015)</span><br>
+                            <span>서울지점 : 서울특별시 강서구 공항대로 165, C동 3층 (07800)</span>
+                        </div>
                         <h4>A WINIX COMPANY</h4>
+
                     </div>
                     <div class="animationFooterCopy">
                         <p>Copyright© PARATA AIR All rights reserved.</p>
@@ -467,12 +444,6 @@
             </div>
 
         </section>
-
-
-
-
-
-    </div>
 
     </div>
 </th:block>
