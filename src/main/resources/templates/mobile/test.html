@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+
+<body>
+<div id="fullpage">
+<div class="section">섹션 1</div>
+<div class="section">섹션 2</div>
+<div class="section">섹션 3</div>
+<div class="section">섹션 4</div>
+</div>
+
+<!-- GSAP 및 ScrollTrigger -->
+<script src="/js/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.31/fullpage.min.js" integrity="sha512-x5JY7KTULoGmcgxguKf5p4i3wfx7qXlY3OMjqez4Pj8BPoMn4krRQmwDtOwF81F+/9Be+jvhBsKOIaPPZmRelQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.31/fullpage.min.css" integrity="sha512-6C+r1OJlC3qBPXIO1VNXP4c9KUSnF4BTBZXiPL8/oB5VqIYl76jlaH57ZJPBoaPENhcrvOZpEQKDVxSVzi3/1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.31/vendors/easings.min.js" integrity="sha512-SrKslwu6IjHEo/8mAOtkoUOT3MzHCEOFWktrC8BNtjPuBBYLYjg1y/Marat34uYfOfxDMLEwy8DLArWEVc2i+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    $('#fullpage').fullpage({
+        // fixedElements: '#symbol, #navi ,#open_button',
+        licenseKey: "MJMFH-9XT48-KX58H-0D9J9-QEEUN",
+        scrollBar: true,
+        scrollOverflow: true,
+        verticalCentered: false,
+        keyboardScrolling: true,  // 키보드로 스크롤을 활성화
+        scrollingSpeed: 300,
+        fitToSectionDelay: 300,
+
+        onLeave: function(origin, destination, direction, trigger){
+            // console.log("origin:", origin);
+            // console.log("destination:", destination);
+            console.log(destination.index);
+
+            // $(".navTxt").text(direction)
+            if(destination.index === 2){
+                gsap.fromTo(".symbol-wrap", {
+                    scale: 70, // 초기 이미지 크기
+                    top:'140%'
+                }, {
+                    scale: 0.38, // 축소된 이미지 크기
+                    top:'50%',
+                    duration: 1, // 애니메이션 시간
+                    ease: "power2.inOut" // 애니메이션 easing
+                });
+            }
+
+        }
+    });
+</script>
+</body>
+</html>
