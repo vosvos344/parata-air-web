@@ -1,9 +1,11 @@
 
 const wAnimate = {
 	isLoading: false,
+	isAnimated: false,
 	isEnd: false,
-	endStep: 8,
+	endStep: 6,
 	step: 0,
+	upDown: null,
 	init: function () {
 		$(window)
 			.on('touchstart', function(e){
@@ -16,6 +18,9 @@ const wAnimate = {
 				if(!wAnimate.isLoading){
 					return;
 				}
+				if(wAnimate.isAnimated){
+					return;
+				}
 				const moveY = wAnimate.touchStartY - wAnimate.touchEndY
 
 				if(moveY >= 0){
@@ -23,11 +28,15 @@ const wAnimate = {
 						return;
 					}
 					wAnimate.step++
+					wAnimate.upDown = "up"
 				}else{
 					if(wAnimate.isEnd && $(window).scrollTop() > 0){
 						return;
 					}
 					wAnimate.step--
+					wAnimate.upDown = "down"
+					$(window).scrollTop(0)
+
 					if(wAnimate.step < 0){
 						wAnimate.step = 0
 						return;
@@ -38,45 +47,161 @@ const wAnimate = {
 					wAnimate.step = wAnimate.endStep
 					wAnimate.isEnd = true
 					$("body").css("overflow", "auto");
+					$("html, body").css("touch-action", "pan-y");
 				}else{
 					wAnimate.isEnd = false
 					$("body").css("overflow", "hidden");
+					$("html, body").css("touch-action", "none");
 					$(window).scrollTop(0)
 				}
-				$(".animateWrap").attr("data-step", wAnimate.step)
-
-				console.log(wAnimate.step)
+				$(".animateWrap").attr("data-step", wAnimate.step).attr("data-upDown", wAnimate.upDown);
+				console.log(wAnimate.step);
+				wAnimate.isAnimated = true
 				wAnimate.play[wAnimate.step]()
 			})
 	},
 	play: [
 		function(){ // 0
-			console.log("play0")
+			$(".symbol").removeClass("is-down-done is-up-done")
+			$(".symbol").removeClass("is-down-done is-up-done")
+			$(".symbol-inner").removeClass("is-down")
+			void $(".symbol-inner")[0].offsetWidth;
+			$(".symbol-inner").removeClass("is-big")
+			void $(".symbol-inner")[0].offsetWidth;
+			$(".symbol-inner").addClass("is-small");
+			$(".section3 ").css({"top":"auto"});
+
+
+			$(".symbol-inner").one("transitionend animationend", function () {
+				$(".symbol-inner").removeClass("is-active")
+				$(".symbol-inner").removeClass("is-small")
+				$(".symbol").removeClass("small")
+				void $(".symbol")[0].offsetWidth;
+				$(".symbol").addClass("big");
+
+				wAnimate.isAnimated = false
+			});
+
 		},
 		function(){ // 1
-			console.log("play1")
+			//console.log(wAnimate.upDown);
+			if(wAnimate.upDown=="up"){
+				$(".symbol").removeClass("big")
+				void $(".symbol")[0].offsetWidth;
+				$(".symbol").addClass("small");
+
+				$(".symbol").one("transitionend animationend", function() {
+					$(".symbol-inner").addClass("is-active").addClass("is-big");
+				});
+
+				$(".symbol-inner").one("transitionend animationend", function() {
+					wAnimate.isAnimated = false
+				});
+			}else{
+
+				$(".header ").removeClass("is-opacity");
+				$(".symbol-inner").removeClass("is-up");
+				void $(".symbol-inner")[0].offsetWidth;
+
+				$(".symbol-inner").addClass("is-down");
+
+				$(".symbol-inner").one("transitionend animationend", function (e) {
+					$(".symbol").addClass("is-down-done");
+					wAnimate.isAnimated = false
+				});
+
+			}
 		},
 		function(){ // 2
-			console.log("play2")
+
+
+			if(wAnimate.upDown=="up") {
+				$(".navTxt").text(((lang == "ko") ? "브랜드 슬로건" : "Brand Slogan"));
+				$(".symbol-inner").addClass("is-up");
+				$(".section3 ").css({"top":"0"});
+				$(".header ").addClass("is-opacity");
+				$(".symbol").one("transitionend animationend", function (e) {
+					$(".symbol").addClass("is-up-done");
+					wAnimate.isAnimated = false
+				});
+			}else {
+				$(".section3 .ani-wrap .first").removeClass().addClass("first down-down");
+				$(".section3 .ani-wrap .second").removeClass().addClass("second down");
+				$(".section3 .sec1 .video-wrap").css("height", "0");
+				wAnimate.isAnimated = false
+			}
 		},
 		function(){ // 3
-			console.log("play3")
+
+			if(wAnimate.upDown=="up") {
+				$(".section3 .ani-wrap .first").removeClass().addClass("first up-up");
+				$(".section3 .ani-wrap .second").removeClass().addClass("second up");
+				// 		$(".section3 .ani-wrap .third").removeClass().addClass("third");
+				$(".section3 .sec1 .video-wrap").css("height", "50");
+				wAnimate.isAnimated = false
+			}else{
+				$(".section3 .ani-wrap .second").removeClass().addClass("second down-down");
+				$(".section3 .ani-wrap .third").removeClass().addClass("third down");
+				$(".section3 .sec1 .video-wrap").css("height", "50");
+				wAnimate.isAnimated = false
+			}
 		},
 		function(){ // 4
-			console.log("play4")
+			if(wAnimate.upDown=="up") {
+				$(".section3 .ani-wrap .second").removeClass().addClass("second up-up");
+				$(".section3 .ani-wrap .third").removeClass().addClass("third up");
+				$(".section3 .sec1 .video-wrap").css("height", "120");
+				wAnimate.isAnimated = false
+			}else{
+				$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").removeClass("on");
+
+				$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").one("transitionend animationend", function (e) {
+					$(".navTxt").text(((lang == "ko") ? "브랜드 슬로건" : "Brand Slogan"));
+					$(".section3 .sec1 .video-wrap").css("height", "120");
+					$(".section3 .ani-wrap .third").removeClass().addClass("third down-down");
+					wAnimate.isAnimated = false
+				});
+			}
 		},
 		function(){ // 5
+			if(wAnimate.upDown=="up") {
+				$(".section3 .ani-wrap .third").removeClass().addClass("third up-up");
+				$(".section3 .sec1 .video-wrap").css({"width":"100%", "height":"100vh"});
+
+				$(".section3 .sec1 .video-wrap").one("transitionend animationend", function (e) {
+					$(".navTxt").text(((lang == "ko") ? "기업 철학" : "philosophy"));
+					$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").addClass("on");
+					wAnimate.isAnimated = false
+				});
+
+			}else{
+				$(".section3 .sec1").removeClass("toggle");
+				$(".section3 .sec2").removeClass("toggle");
+				$(".section3 .sec2 .text-wrap .first, .section3 .sec2 .text-wrap .second, .section3 .sec2 .text-wrap .third").removeClass("on");
+				wAnimate.isAnimated = false
+			}
+
 			console.log("play5")
 		},
 		function(){ // 6
+
+			if(wAnimate.upDown=="up") {
+				$(".section3 .sec1").addClass("toggle");
+				$(".section3 .sec2").addClass("toggle");
+
+				$(".section3 .sec2 ").one("transitionend animationend", function (e) {
+					$(".section3 .sec2 .text-wrap .first, .section3 .sec2 .text-wrap .second, .section3 .sec2 .text-wrap .third").addClass("on");
+					wAnimate.isAnimated = false
+				});
+			}
 			console.log("play6")
 		},
-		function(){ // 7
+		/*function(){ // 7
 			console.log("play7")
 		},
 		function(){ // 8
 			console.log("play8")
-		},
+		},*/
 	]
 }
 wAnimate.init()

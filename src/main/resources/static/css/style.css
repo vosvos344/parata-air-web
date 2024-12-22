@@ -15,6 +15,7 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 	scroll-behavior: smooth;
+	/*touch-action: none;*/
 }
 
 html:-webkit-scrollbar {
@@ -25,6 +26,7 @@ html:-webkit-scrollbar {
 body {
 	font-family: Pretendard, sans-serif;
   	overflow: hidden;
+	/*touch-action: none;*/
 }
 
 ul, ol {
@@ -187,139 +189,10 @@ button, input, textarea {
 
 
 
-
-.symbol-wrap{
-	position:fixed;
-	width:100%;
-	height:100vh;
-	z-index:999;
-	top:0;
-	left:0;
-}
-.symbol-wrap .bottomBox{
-	position:absolute;
-	bottom:-16px;
-	left:0;
-	width:100%;
-	height:100px;
-	background:#fff;
-	transform: skew(0deg, -4deg);
-	display:none;
-}
-
-.symbol-inner{
-	width: 100%;
-	height: 100%;
-	position:absolute;
-	top:0;
-	left:0;
-}
-
-
-.symbol-inner .top,
-.symbol-inner .left,
-.symbol-inner .right,
-.symbol-inner .bottom {
-	position:absolute;
-	background: #fff;
-	z-index: -1; /* background 영역이 symbol 아래에 있도록 설정 */
-}
-
-.symbol-inner .top {
-	bottom:calc(100% - 2px);
-	left:50%;
-	transform: translateX(-50%);
-	width: 1000px;
-	height: 2000px /* 기본 높이 */
-}
-
-.symbol-inner .left {
-	width: 1000px; /* 기본 너비 */
-	height: 2000px;
-	top:50%;
-	transform: translateY(-50%);
-	right:calc(100% - 2px)
-}
-
-.symbol-inner .right {
-	width: 1000px; /* 기본 너비 */
-	height: 2000px;
-	top:50%;
-	transform: translateY(-50%);
-	left:calc(100% - 2px)
-}
-
-.symbol-inner .bottom {
-	width: 1000px;
-	height: 2000px; /* 기본 높이 */
-	top:calc(100% - 2px);
-	left:50%;
-	transform: translateX(-50%);
-}
-.symbol-inner .symbol{
-	width:4000px;
-	height:4000px;
-	background:url("../img/symbol-1.svg") no-repeat;
-	background-size: 100%;
-	background-position: center;
-	position:absolute;
-	top:120%;
-	left:50%;
-	transform: translate(-50%, -50%);
-
-	z-index: 2;
-}
-.symbol-inner .symbol .logoImg{
-	position:absolute;
-	width:100%;
-	height:100%;
-	top:0;
-	left:0;
-	overflow:hidden;
-}
-.symbol-inner .symbol img{
-	position:absolute;
-	top:10px;
-	width:170px;
-	left:2px;
-	opacity:0;
-}
-.symbol-inner.is-active{
-	background:#fff;
-}
-.symbol-inner.is-active .symbol img{
-	opacity:1;
-}
-.symbol-inner.is-active .right{
-	display:none;
-}
-.symbol-inner.is-active .left{
-	display:none;
-}
-.symbol-inner.is-active .top{
-	display:none;
-}
-.symbol-inner.is-active .bottom{
-	display:none;
-}
-.symbol-inner.is-active .bottomBox{
-	display:block;
-}
-
-.symbol-inner.is-up{
-	transform: inherit !important;
-}
-.symbol-inner.is-up .symbol{
-	position:fixed;
-	background:transparent;
-}
-
-
-
 /*섹션1*/
 .section1{
 	z-index:9;
-	height:4000px;
+	height:100svh;
 }
 
 .section1 .sky-text-wrap{
@@ -400,20 +273,23 @@ button, input, textarea {
 
 
 /*섹션 3*/
-.index .section3{
+.animateWrap .section3{
 	background: #161626;
-	height:7000px;
+	height:100%;
+	z-index: 9;
+	width:100%;
+	position:absolute;
 }
 
-.index .section3 .inner{
+.animateWrap .section3 .inner{
 	display:flex;
 	align-items: center;
 	justify-content: center;
 	width:100%;
-	height:100vh;
+	height:100%;
 }
 
-.index .section3 .inner .container{
+.animateWrap .section3 .inner .container{
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
@@ -421,7 +297,7 @@ button, input, textarea {
 }
 
 
-.index .section3 .inner .text{
+.animateWrap .section3 .inner .text{
 	color:#fff;
 	text-align: center;
 	font-size: 60px;
@@ -431,24 +307,26 @@ button, input, textarea {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height:50px;
+	height:70px;
+	position:relative;
+	overflow:hidden;
 }
 
-.index .section3 .sec1 {
+.animateWrap .section3 .sec1 {
 	display:flex;
 	align-items: center;
 	justify-content: center;
-	position:relative;
 	transition: opacity 0.5s ease-in-out;
 	opacity: 1;
+	height:100%;
 }
 
-.index .section3 .sec1.toggle{
+.animateWrap .section3 .sec1.toggle{
 	opacity: 0;
 }
 
-.index .section3 .sec2 {
-	position:fixed;
+.animateWrap .section3 .sec2 {
+	position:absolute;
 	display:flex;
 	align-items: center;
 	justify-content: center;
@@ -456,20 +334,21 @@ button, input, textarea {
 	z-index:0;
 	opacity: 0;
 	top:0;
-	height:100vh;
+	height:100%;
+	pointer-events: none;
 }
 
-.index .section3 .sec2.toggle{
+.animateWrap .section3 .sec2.toggle{
 	display:block;
 	opacity: 1;
 }
 
 
-.index .section3 .img-wrap {
-	height:100vh;
+.animateWrap .section3 .img-wrap {
+	height:100%;
 }
 
-.index .section3 .img-wrap img{
+.animateWrap .section3 .img-wrap img{
 	width:100%;
 	height:100%;
 	object-fit: cover;
@@ -477,7 +356,7 @@ button, input, textarea {
 
 
 
-.index .section3 .video-wrap {
+.animateWrap .section3 .video-wrap {
 	overflow:hidden;
 	width: calc(100% - 32px);
 	height:0;
@@ -485,23 +364,25 @@ button, input, textarea {
 }
 
 
-.index .section3 .video-wrap video{
+.animateWrap .section3 .video-wrap video{
 	width:100%;
 	height:100%;
 	object-fit: cover;
 }
 
 
-.index .section3 .ani-wrap > div {
+
+.animateWrap .section3 .ani-wrap > div {
 	font-size: 0;
 	overflow: hidden;
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
 	width: 100%;
+	top:0;
 }
 
-.index .section3 .ani-wrap > div span{
+.animateWrap .section3 .ani-wrap > div span{
 	color: #ffffff;
 	text-align: center;
 	font-size: 60px;
@@ -509,67 +390,72 @@ button, input, textarea {
 	letter-spacing:-2px;
 	display:inline-block;
 	line-height: normal;
-	transform: translateY(150%);
+	transform: translateY(0%);
 	opacity:1;
 	transition: transform 0.5s ease-out;
 }
 
-.index .section3 .ani-wrap > div.first.up span,
-.index .section3 .ani-wrap > div.second.up span,
-.index .section3 .ani-wrap > div.third.up span{
+.animateWrap .section3 .ani-wrap .second span,
+.animateWrap .section3 .ani-wrap .third span{
+	transform: translateY(100%);
+}
+
+.animateWrap .section3 .ani-wrap > div.first.up span,
+.animateWrap .section3 .ani-wrap > div.second.up span,
+.animateWrap .section3 .ani-wrap > div.third.up span{
 	display: inline-block;
 	transform: translateY(0);
 }
 
-.index .section3 .ani-wrap > div.first.up-up span,
-.index .section3 .ani-wrap > div.second.up-up span,
-.index .section3 .ani-wrap > div.third.up-up span{
+.animateWrap .section3 .ani-wrap > div.first.up-up span,
+.animateWrap .section3 .ani-wrap > div.second.up-up span,
+.animateWrap .section3 .ani-wrap > div.third.up-up span{
 	display: inline-block;
 	transform: translateY(-150%);
 } 
 
-.index .section3 .ani-wrap > div.first.down span,
-.index .section3 .ani-wrap > div.second.down span,
-.index .section3 .ani-wrap > div.third.down span{
+.animateWrap .section3 .ani-wrap > div.first.down span,
+.animateWrap .section3 .ani-wrap > div.second.down span,
+.animateWrap .section3 .ani-wrap > div.third.down span{
 	display: inline-block;
 	transform: translateY(150%); 
 }
 
-.index .section3 .ani-wrap > div.first.down-down span,
-.index .section3 .ani-wrap > div.second.down-down span,
-.index .section3 .ani-wrap > div.third.down-down span{
+.animateWrap .section3 .ani-wrap > div.first.down-down span,
+.animateWrap .section3 .ani-wrap > div.second.down-down span,
+.animateWrap .section3 .ani-wrap > div.third.down-down span{
 	display: inline-block;
 	transform: translateY(0); 
 }
 
 
 /*new */
-.index .section3 .ani-wrap > div.first.up span:nth-child(1),
-.index .section3 .ani-wrap > div.first.up-up span:nth-child(1){ 
+.animateWrap .section3 .ani-wrap > div.first.up span:nth-child(1),
+.animateWrap .section3 .ani-wrap > div.first.up-up span:nth-child(1){
 	transition-delay: 0s;
 }
 
-.index .section3 .ani-wrap > div.first.up span:nth-child(2),
-.index .section3 .ani-wrap > div.first.up-up span:nth-child(2){ 
+.animateWrap .section3 .ani-wrap > div.first.up span:nth-child(2),
+.animateWrap .section3 .ani-wrap > div.first.up-up span:nth-child(2){
 	transition-delay: 0.1s; 
 }
 
-.index .section3 .ani-wrap > div.first.up span:nth-child(3),
-.index .section3 .ani-wrap > div.first.up-up span:nth-child(3){ 
+.animateWrap .section3 .ani-wrap > div.first.up span:nth-child(3),
+.animateWrap .section3 .ani-wrap > div.first.up-up span:nth-child(3){
 	transition-delay: 0.2s; 
 }
 
-.index .section3 .ani-wrap > div.first.down span:nth-child(1),
-.index .section3 .ani-wrap > div.first.down-down span:nth-child(1){ 
+.animateWrap .section3 .ani-wrap > div.first.down span:nth-child(1),
+.animateWrap .section3 .ani-wrap > div.first.down-down span:nth-child(1){
 	transition-delay: 0.2s; 
 }
 
-.index .section3 .ani-wrap > div.first.down span:nth-child(2),
-.index .section3 .ani-wrap > div.first.down-down span:nth-child(2){ 
+.animateWrap .section3 .ani-wrap > div.first.down span:nth-child(2),
+.animateWrap .section3 .ani-wrap > div.first.down-down span:nth-child(2){
 	transition-delay: 0.1s;
 }
-.index .section3 .ani-wrap > div.first.down span:nth-child(3),
-.index .section3 .ani-wrap > div.first.down-down span:nth-child(3){ 
+.animateWrap .section3 .ani-wrap > div.first.down span:nth-child(3),
+.animateWrap .section3 .ani-wrap > div.first.down-down span:nth-child(3){
 	transition-delay: 0s;
 }
 
@@ -577,246 +463,246 @@ button, input, textarea {
 
 /*happiness*/
 
-.index .section3 .ani-wrap > div.second.up span:nth-child(1),
-.index .section3 .ani-wrap > div.second.up-up span:nth-child(1){ 
+.animateWrap .section3 .ani-wrap > div.second.up span:nth-child(1),
+.animateWrap .section3 .ani-wrap > div.second.up-up span:nth-child(1){
 	transition-delay: 0s;
 }
 
-.index .section3 .ani-wrap > div.second.up span:nth-child(2),
-.index .section3 .ani-wrap > div.second.up-up span:nth-child(2){ 
+.animateWrap .section3 .ani-wrap > div.second.up span:nth-child(2),
+.animateWrap .section3 .ani-wrap > div.second.up-up span:nth-child(2){
 	transition-delay: 0.1s; 
 }
 
-.index .section3 .ani-wrap > div.second.up span:nth-child(3),
-.index .section3 .ani-wrap > div.second.up-up span:nth-child(3){ 
+.animateWrap .section3 .ani-wrap > div.second.up span:nth-child(3),
+.animateWrap .section3 .ani-wrap > div.second.up-up span:nth-child(3){
 	transition-delay: 0.2s; 
 }
 
-.index .section3 .ani-wrap > div.second.up span:nth-child(4),
-.index .section3 .ani-wrap > div.second.up-up span:nth-child(4){ 
+.animateWrap .section3 .ani-wrap > div.second.up span:nth-child(4),
+.animateWrap .section3 .ani-wrap > div.second.up-up span:nth-child(4){
 	transition-delay: 0.3s; 
 }
 
-.index .section3 .ani-wrap > div.second.up span:nth-child(5),
-.index .section3 .ani-wrap > div.second.up-up span:nth-child(5){ 
+.animateWrap .section3 .ani-wrap > div.second.up span:nth-child(5),
+.animateWrap .section3 .ani-wrap > div.second.up-up span:nth-child(5){
 	transition-delay: 0.4s; 
 }
 
-.index .section3 .ani-wrap > div.second.up span:nth-child(6),
-.index .section3 .ani-wrap > div.second.up-up span:nth-child(6){ 
+.animateWrap .section3 .ani-wrap > div.second.up span:nth-child(6),
+.animateWrap .section3 .ani-wrap > div.second.up-up span:nth-child(6){
 	transition-delay: 0.5s; 
 }
 
-.index .section3 .ani-wrap > div.second.up span:nth-child(7),
-.index .section3 .ani-wrap > div.second.up-up span:nth-child(7){ 
+.animateWrap .section3 .ani-wrap > div.second.up span:nth-child(7),
+.animateWrap .section3 .ani-wrap > div.second.up-up span:nth-child(7){
 	transition-delay: 0.6s; 
 }
 
-.index .section3 .ani-wrap > div.second.up span:nth-child(8),
-.index .section3 .ani-wrap > div.second.up-up span:nth-child(8){ 
+.animateWrap .section3 .ani-wrap > div.second.up span:nth-child(8),
+.animateWrap .section3 .ani-wrap > div.second.up-up span:nth-child(8){
 	transition-delay: 0.7s; 
 }
 
-.index .section3 .ani-wrap > div.second.up span:nth-child(9),
-.index .section3 .ani-wrap > div.second.up-up span:nth-child(9){ 
+.animateWrap .section3 .ani-wrap > div.second.up span:nth-child(9),
+.animateWrap .section3 .ani-wrap > div.second.up-up span:nth-child(9){
 	transition-delay: 0.8s; 
 }
 
 
-.index .section3 .ani-wrap > div.second.down span:nth-child(1),
-.index .section3 .ani-wrap > div.second.down-down span:nth-child(1){ 
+.animateWrap .section3 .ani-wrap > div.second.down span:nth-child(1),
+.animateWrap .section3 .ani-wrap > div.second.down-down span:nth-child(1){
 	transition-delay: 0.8s;
 }
 
-.index .section3 .ani-wrap > div.second.down span:nth-child(2),
-.index .section3 .ani-wrap > div.second.down-down span:nth-child(2){ 
+.animateWrap .section3 .ani-wrap > div.second.down span:nth-child(2),
+.animateWrap .section3 .ani-wrap > div.second.down-down span:nth-child(2){
 	transition-delay: 0.7s;
 }
 
-.index .section3 .ani-wrap > div.second.down span:nth-child(3),
-.index .section3 .ani-wrap > div.second.down-down span:nth-child(3){ 
+.animateWrap .section3 .ani-wrap > div.second.down span:nth-child(3),
+.animateWrap .section3 .ani-wrap > div.second.down-down span:nth-child(3){
 	transition-delay: 0.6s;
 }
 
-.index .section3 .ani-wrap > div.second.down span:nth-child(4), 
-.index .section3 .ani-wrap > div.second.down-down span:nth-child(4){ 
+.animateWrap .section3 .ani-wrap > div.second.down span:nth-child(4),
+.animateWrap .section3 .ani-wrap > div.second.down-down span:nth-child(4){
 	transition-delay: 0.5s; 
 }
 
-.index .section3 .ani-wrap > div.second.down span:nth-child(5),
-.index .section3 .ani-wrap > div.second.down-down span:nth-child(5){ 
+.animateWrap .section3 .ani-wrap > div.second.down span:nth-child(5),
+.animateWrap .section3 .ani-wrap > div.second.down-down span:nth-child(5){
 	transition-delay: 0.4s;
 }
 
-.index .section3 .ani-wrap > div.second.down span:nth-child(6),
-.index .section3 .ani-wrap > div.second.down-down span:nth-child(6){ 
+.animateWrap .section3 .ani-wrap > div.second.down span:nth-child(6),
+.animateWrap .section3 .ani-wrap > div.second.down-down span:nth-child(6){
 	transition-delay: 0.3s;
 }
 
-.index .section3 .ani-wrap > div.second.down span:nth-child(7),
-.index .section3 .ani-wrap > div.second.down-down span:nth-child(7){ 
+.animateWrap .section3 .ani-wrap > div.second.down span:nth-child(7),
+.animateWrap .section3 .ani-wrap > div.second.down-down span:nth-child(7){
 	transition-delay: 0.2s;
 }
 
-.index .section3 .ani-wrap > div.second.down span:nth-child(8),
-.index .section3 .ani-wrap > div.second.down-down span:nth-child(8){
+.animateWrap .section3 .ani-wrap > div.second.down span:nth-child(8),
+.animateWrap .section3 .ani-wrap > div.second.down-down span:nth-child(8){
 	transition-delay: 0.1s;
 }
 
-.index .section3 .ani-wrap > div.second.down span:nth-child(9),
-.index .section3 .ani-wrap > div.second.down-down span:nth-child(9){
+.animateWrap .section3 .ani-wrap > div.second.down span:nth-child(9),
+.animateWrap .section3 .ani-wrap > div.second.down-down span:nth-child(9){
 	transition-delay: 0s;
 }
 
 
 /*together*/
 
-.index .section3 .ani-wrap > div.third.up span:nth-child(1),
-.index .section3 .ani-wrap > div.third.up-up span:nth-child(1){ 
+.animateWrap .section3 .ani-wrap > div.third.up span:nth-child(1),
+.animateWrap .section3 .ani-wrap > div.third.up-up span:nth-child(1){
 	transition-delay: 0s;
 }
 
-.index .section3 .ani-wrap > div.third.up span:nth-child(2),
-.index .section3 .ani-wrap > div.third.up-up span:nth-child(2){ 
+.animateWrap .section3 .ani-wrap > div.third.up span:nth-child(2),
+.animateWrap .section3 .ani-wrap > div.third.up-up span:nth-child(2){
 	transition-delay: 0.1s; 
 }
 
-.index .section3 .ani-wrap > div.third.up span:nth-child(3),
-.index .section3 .ani-wrap > div.third.up-up span:nth-child(3){ 
+.animateWrap .section3 .ani-wrap > div.third.up span:nth-child(3),
+.animateWrap .section3 .ani-wrap > div.third.up-up span:nth-child(3){
 	transition-delay: 0.2s; 
 }
 
-.index .section3 .ani-wrap > div.third.up span:nth-child(4),
-.index .section3 .ani-wrap > div.third.up-up span:nth-child(4){ 
+.animateWrap .section3 .ani-wrap > div.third.up span:nth-child(4),
+.animateWrap .section3 .ani-wrap > div.third.up-up span:nth-child(4){
 	transition-delay: 0.3s; 
 }
 
-.index .section3 .ani-wrap > div.third.up span:nth-child(5),
-.index .section3 .ani-wrap > div.third.up-up span:nth-child(5){ 
+.animateWrap .section3 .ani-wrap > div.third.up span:nth-child(5),
+.animateWrap .section3 .ani-wrap > div.third.up-up span:nth-child(5){
 	transition-delay: 0.4s; 
 }
 
-.index .section3 .ani-wrap > div.third.up span:nth-child(6),
-.index .section3 .ani-wrap > div.third.up-up span:nth-child(6){ 
+.animateWrap .section3 .ani-wrap > div.third.up span:nth-child(6),
+.animateWrap .section3 .ani-wrap > div.third.up-up span:nth-child(6){
 	transition-delay: 0.5s; 
 }
 
-.index .section3 .ani-wrap > div.third.up span:nth-child(7),
-.index .section3 .ani-wrap > div.third.up-up span:nth-child(7){ 
+.animateWrap .section3 .ani-wrap > div.third.up span:nth-child(7),
+.animateWrap .section3 .ani-wrap > div.third.up-up span:nth-child(7){
 	transition-delay: 0.6s; 
 }
 
-.index .section3 .ani-wrap > div.third.up span:nth-child(8),
-.index .section3 .ani-wrap > div.third.up-up span:nth-child(8){ 
+.animateWrap .section3 .ani-wrap > div.third.up span:nth-child(8),
+.animateWrap .section3 .ani-wrap > div.third.up-up span:nth-child(8){
 	transition-delay: 0.7s; 
 }
 
 
-.index .section3 .ani-wrap > div.third.down span:nth-child(1),
-.index .section3 .ani-wrap > div.third.down-down span:nth-child(1){ 
+.animateWrap .section3 .ani-wrap > div.third.down span:nth-child(1),
+.animateWrap .section3 .ani-wrap > div.third.down-down span:nth-child(1){
 	transition-delay: 0.8s;
 }
 
-.index .section3 .ani-wrap > div.third.down span:nth-child(2),
-.index .section3 .ani-wrap > div.third.down-down span:nth-child(2){ 
+.animateWrap .section3 .ani-wrap > div.third.down span:nth-child(2),
+.animateWrap .section3 .ani-wrap > div.third.down-down span:nth-child(2){
 	transition-delay: 0.7s;
 }
 
-.index .section3 .ani-wrap > div.third.down span:nth-child(3),
-.index .section3 .ani-wrap > div.third.down-down span:nth-child(3){ 
+.animateWrap .section3 .ani-wrap > div.third.down span:nth-child(3),
+.animateWrap .section3 .ani-wrap > div.third.down-down span:nth-child(3){
 	transition-delay: 0.6s;
 }
 
-.index .section3 .ani-wrap > div.third.down span:nth-child(4), 
-.index .section3 .ani-wrap > div.third.down-down span:nth-child(4){ 
+.animateWrap .section3 .ani-wrap > div.third.down span:nth-child(4),
+.animateWrap .section3 .ani-wrap > div.third.down-down span:nth-child(4){
 	transition-delay: 0.5s; 
 }
 
-.index .section3 .ani-wrap > div.third.down span:nth-child(5),
-.index .section3 .ani-wrap > div.third.down-down span:nth-child(5){ 
+.animateWrap .section3 .ani-wrap > div.third.down span:nth-child(5),
+.animateWrap .section3 .ani-wrap > div.third.down-down span:nth-child(5){
 	transition-delay: 0.4s;
 }
 
-.index .section3 .ani-wrap > div.third.down span:nth-child(6),
-.index .section3 .ani-wrap > div.third.down-down span:nth-child(6){ 
+.animateWrap .section3 .ani-wrap > div.third.down span:nth-child(6),
+.animateWrap .section3 .ani-wrap > div.third.down-down span:nth-child(6){
 	transition-delay: 0.3s;
 }
 
-.index .section3 .ani-wrap > div.third.down span:nth-child(7),
-.index .section3 .ani-wrap > div.third.down-down span:nth-child(7){ 
+.animateWrap .section3 .ani-wrap > div.third.down span:nth-child(7),
+.animateWrap .section3 .ani-wrap > div.third.down-down span:nth-child(7){
 	transition-delay: 0.2s;
 }
 
-.index .section3 .ani-wrap > div.third.down span:nth-child(8),
-.index .section3 .ani-wrap > div.third.down-down span:nth-child(8){
+.animateWrap .section3 .ani-wrap > div.third.down span:nth-child(8),
+.animateWrap .section3 .ani-wrap > div.third.down-down span:nth-child(8){
 	transition-delay: 0.1s;
 }
 
 
 /*
 
-.index .section3 .ani-wrap > div.second.text-animation span:nth-child(1) { animation-delay: 0s; }
-.index .section3 .ani-wrap > div.second.text-animation span:nth-child(2) { animation-delay: 0.1s; }
-.index .section3 .ani-wrap > div.second.text-animation span:nth-child(3) { animation-delay: 0.2s; }
-.index .section3 .ani-wrap > div.second.text-animation span:nth-child(4) { animation-delay: 0.3s; }
-.index .section3 .ani-wrap > div.second.text-animation span:nth-child(5) { animation-delay: 0.4s; }
-.index .section3 .ani-wrap > div.second.text-animation span:nth-child(6) { animation-delay: 0.5s; }
-.index .section3 .ani-wrap > div.second.text-animation span:nth-child(7) { animation-delay: 0.6s; }
-.index .section3 .ani-wrap > div.second.text-animation span:nth-child(8) { animation-delay: 0.7s; }
-.index .section3 .ani-wrap > div.second.text-animation span:nth-child(9) { animation-delay: 0.8s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation span:nth-child(1) { animation-delay: 0s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation span:nth-child(2) { animation-delay: 0.1s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation span:nth-child(3) { animation-delay: 0.2s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation span:nth-child(4) { animation-delay: 0.3s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation span:nth-child(5) { animation-delay: 0.4s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation span:nth-child(6) { animation-delay: 0.5s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation span:nth-child(7) { animation-delay: 0.6s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation span:nth-child(8) { animation-delay: 0.7s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation span:nth-child(9) { animation-delay: 0.8s; }
 
-.index .section3 .ani-wrap > div.third.text-animation span:nth-child(1) { animation-delay: 0s; }
-.index .section3 .ani-wrap > div.third.text-animation span:nth-child(2) { animation-delay: 0.1s; }
-.index .section3 .ani-wrap > div.third.text-animation span:nth-child(3) { animation-delay: 0.2s; }
-.index .section3 .ani-wrap > div.third.text-animation span:nth-child(4) { animation-delay: 0.3s; }
-.index .section3 .ani-wrap > div.third.text-animation span:nth-child(5) { animation-delay: 0.4s; }
-.index .section3 .ani-wrap > div.third.text-animation span:nth-child(6) { animation-delay: 0.5s; }
-.index .section3 .ani-wrap > div.third.text-animation span:nth-child(7) { animation-delay: 0.6s; }
-.index .section3 .ani-wrap > div.third.text-animation span:nth-child(8) { animation-delay: 0.7s; }
-
-
-
-.index .section3 .ani-wrap > div.first.text-animation-up span:nth-child(1) { animation-delay: 0s; }
-.index .section3 .ani-wrap > div.first.text-animation-up span:nth-child(2) { animation-delay: 0.1s; }
-.index .section3 .ani-wrap > div.first.text-animation-up span:nth-child(3) { animation-delay: 0.2s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation span:nth-child(1) { animation-delay: 0s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation span:nth-child(2) { animation-delay: 0.1s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation span:nth-child(3) { animation-delay: 0.2s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation span:nth-child(4) { animation-delay: 0.3s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation span:nth-child(5) { animation-delay: 0.4s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation span:nth-child(6) { animation-delay: 0.5s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation span:nth-child(7) { animation-delay: 0.6s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation span:nth-child(8) { animation-delay: 0.7s; }
 
 
-.index .section3 .ani-wrap > div.second.text-animation-up span:nth-child(1) { animation-delay: 0s; }
-.index .section3 .ani-wrap > div.second.text-animation-up span:nth-child(2) { animation-delay: 0.1s; }
-.index .section3 .ani-wrap > div.second.text-animation-up span:nth-child(3) { animation-delay: 0.2s; }
-.index .section3 .ani-wrap > div.second.text-animation-up span:nth-child(4) { animation-delay: 0.3s; }
-.index .section3 .ani-wrap > div.second.text-animation-up span:nth-child(5) { animation-delay: 0.4s; }
-.index .section3 .ani-wrap > div.second.text-animation-up span:nth-child(6) { animation-delay: 0.5s; }
-.index .section3 .ani-wrap > div.second.text-animation-up span:nth-child(7) { animation-delay: 0.6s; }
-.index .section3 .ani-wrap > div.second.text-animation-up span:nth-child(8) { animation-delay: 0.7s; }
-.index .section3 .ani-wrap > div.second.text-animation-up span:nth-child(9) { animation-delay: 0.8s; }
 
-.index .section3 .ani-wrap > div.third.text-animation-up span:nth-child(1) { animation-delay: 0s; }
-.index .section3 .ani-wrap > div.third.text-animation-up span:nth-child(2) { animation-delay: 0.1s; }
-.index .section3 .ani-wrap > div.third.text-animation-up span:nth-child(3) { animation-delay: 0.2s; }
-.index .section3 .ani-wrap > div.third.text-animation-up span:nth-child(4) { animation-delay: 0.3s; }
-.index .section3 .ani-wrap > div.third.text-animation-up span:nth-child(5) { animation-delay: 0.4s; }
-.index .section3 .ani-wrap > div.third.text-animation-up span:nth-child(6) { animation-delay: 0.5s; }
-.index .section3 .ani-wrap > div.third.text-animation-up span:nth-child(7) { animation-delay: 0.6s; }
-.index .section3 .ani-wrap > div.third.text-animation-up span:nth-child(8) { animation-delay: 0.7s; }
+.animateWrap .section3 .ani-wrap > div.first.text-animation-up span:nth-child(1) { animation-delay: 0s; }
+.animateWrap .section3 .ani-wrap > div.first.text-animation-up span:nth-child(2) { animation-delay: 0.1s; }
+.animateWrap .section3 .ani-wrap > div.first.text-animation-up span:nth-child(3) { animation-delay: 0.2s; }
+
+
+.animateWrap .section3 .ani-wrap > div.second.text-animation-up span:nth-child(1) { animation-delay: 0s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation-up span:nth-child(2) { animation-delay: 0.1s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation-up span:nth-child(3) { animation-delay: 0.2s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation-up span:nth-child(4) { animation-delay: 0.3s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation-up span:nth-child(5) { animation-delay: 0.4s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation-up span:nth-child(6) { animation-delay: 0.5s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation-up span:nth-child(7) { animation-delay: 0.6s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation-up span:nth-child(8) { animation-delay: 0.7s; }
+.animateWrap .section3 .ani-wrap > div.second.text-animation-up span:nth-child(9) { animation-delay: 0.8s; }
+
+.animateWrap .section3 .ani-wrap > div.third.text-animation-up span:nth-child(1) { animation-delay: 0s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation-up span:nth-child(2) { animation-delay: 0.1s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation-up span:nth-child(3) { animation-delay: 0.2s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation-up span:nth-child(4) { animation-delay: 0.3s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation-up span:nth-child(5) { animation-delay: 0.4s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation-up span:nth-child(6) { animation-delay: 0.5s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation-up span:nth-child(7) { animation-delay: 0.6s; }
+.animateWrap .section3 .ani-wrap > div.third.text-animation-up span:nth-child(8) { animation-delay: 0.7s; }
 
 */
 
-.index .section3 .sec1 .first,
-.index .section3 .sec2 .first{
+.animateWrap .section3 .sec1 .first,
+.animateWrap .section3 .sec2 .first{
 	position: absolute;
 	left:16px;
-	top:140px;
+	top:100px;
 }
 
-.index .section3 .sec1 .first div,
-.index .section3 .sec2 .first div{
+.animateWrap .section3 .sec1 .first div,
+.animateWrap .section3 .sec2 .first div{
 	overflow:hidden;
 }
 
 
-.index .section3 .sec1 .first span,
-.index .section3 .sec2 .first span{
+.animateWrap .section3 .sec1 .first span,
+.animateWrap .section3 .sec2 .first span{
 	display:block;
 	color: #ffffff;
 	font-size:28px;
@@ -826,20 +712,20 @@ button, input, textarea {
 	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* 애니메이션 효과 */
 }
 
-.index .section3 .sec1 .second,
-.index .section3 .sec2 .second{
+.animateWrap .section3 .sec1 .second,
+.animateWrap .section3 .sec2 .second{
 	position: absolute;
 	left:16px;
-	top:177px;
+	top:135px;
 }
 
-.index .section3 .sec1 .second div,
-.index .section3 .sec2 .second div{
+.animateWrap .section3 .sec1 .second div,
+.animateWrap .section3 .sec2 .second div{
 	overflow:hidden;
 }
 
-.index .section3 .sec1 .second span, 
-.index .section3 .sec2 .second span{ 
+.animateWrap .section3 .sec1 .second span,
+.animateWrap .section3 .sec2 .second span{
 	display:block; 
 	color: #ffffff; 
 	font-size:28px; 
@@ -851,20 +737,20 @@ button, input, textarea {
 }
 
 
-.index .section3 .sec1 .third,
-.index .section3 .sec2 .third{
+.animateWrap .section3 .sec1 .third,
+.animateWrap .section3 .sec2 .third{
 	position: absolute;
 	left:16px;
 	bottom:50px;
 }
 
-.index .section3 .sec1 .third div,
-.index .section3 .sec2 .third div{
+.animateWrap .section3 .sec1 .third div,
+.animateWrap .section3 .sec2 .third div{
 	overflow:hidden;
 }
 
-.index .section3 .sec1 .third span,
-.index .section3 .sec2 .third span{
+.animateWrap .section3 .sec1 .third span,
+.animateWrap .section3 .sec2 .third span{
 	display:block;
 	color: #ffffff;
 	font-size:16px;
@@ -876,57 +762,57 @@ button, input, textarea {
 
 
 /* 각 span에 transition-delay 적용 */
-.index .section3 .sec1 .first div:nth-child(1) span,
-.index .section3 .sec2 .first div:nth-child(1) span{
+.animateWrap .section3 .sec1 .first div:nth-child(1) span,
+.animateWrap .section3 .sec2 .first div:nth-child(1) span{
     transition-delay: 0s;
 }
 
-.index .section3 .sec1 .second div:nth-child(1) span,
-.index .section3 .sec2 .second div:nth-child(1) span{
+.animateWrap .section3 .sec1 .second div:nth-child(1) span,
+.animateWrap .section3 .sec2 .second div:nth-child(1) span{
     transition-delay: 0.1s;
 }
 
-.index .section3 .sec1 .second div:nth-child(2) span,
-.index .section3 .sec2 .second div:nth-child(2) span{
+.animateWrap .section3 .sec1 .second div:nth-child(2) span,
+.animateWrap .section3 .sec2 .second div:nth-child(2) span{
     transition-delay: 0.2s;
 }
 
 /* 세 번째 줄은 0.6초 지연 */
-.index .section3 .sec1 .third div:nth-child(1) span,
-.index .section3 .sec2 .third div:nth-child(1) span{
+.animateWrap .section3 .sec1 .third div:nth-child(1) span,
+.animateWrap .section3 .sec2 .third div:nth-child(1) span{
     transition-delay: 0.3s;
 }
-.index .section3 .sec1 .third div:nth-child(2) span,
-.index .section3 .sec2 .third div:nth-child(2) span{
+.animateWrap .section3 .sec1 .third div:nth-child(2) span,
+.animateWrap .section3 .sec2 .third div:nth-child(2) span{
     transition-delay: 0.4s;
 }
-.index .section3 .sec1 .third div:nth-child(3) span,
-.index .section3 .sec2 .third div:nth-child(3) span{
+.animateWrap .section3 .sec1 .third div:nth-child(3) span,
+.animateWrap .section3 .sec2 .third div:nth-child(3) span{
     transition-delay: 0.5s;
 }
-.index .section3 .sec1 .third div:nth-child(4) span,
-.index .section3 .sec2 .third div:nth-child(4) span{
+.animateWrap .section3 .sec1 .third div:nth-child(4) span,
+.animateWrap .section3 .sec2 .third div:nth-child(4) span{
     transition-delay: 0.6s;
 }
-.index .section3 .sec1 .third div:nth-child(5) span,
-.index .section3 .sec2 .third div:nth-child(5) span{
+.animateWrap .section3 .sec1 .third div:nth-child(5) span,
+.animateWrap .section3 .sec2 .third div:nth-child(5) span{
     transition-delay: 0.7s;
 }
 
-.index .section3 .sec1 .third div:nth-child(6) span,
-.index .section3 .sec2 .third div:nth-child(6) span{
+.animateWrap .section3 .sec1 .third div:nth-child(6) span,
+.animateWrap .section3 .sec2 .third div:nth-child(6) span{
 	transition-delay: 0.8s;
 }
 
 
 
 
-.index .section3 .sec1 .first.on span,
-.index .section3 .sec1 .second.on span,
-.index .section3 .sec1 .third.on span,
-.index .section3 .sec2 .first.on span,
-.index .section3 .sec2 .second.on span,
-.index .section3 .sec2 .third.on span{
+.animateWrap .section3 .sec1 .first.on span,
+.animateWrap .section3 .sec1 .second.on span,
+.animateWrap .section3 .sec1 .third.on span,
+.animateWrap .section3 .sec2 .first.on span,
+.animateWrap .section3 .sec2 .second.on span,
+.animateWrap .section3 .sec2 .third.on span{
 	transform: translateY(0); /* 위로 올라오도록 */
 }
 
@@ -1851,10 +1737,135 @@ button, input, textarea {
 }
 
 
+/*241222 업데이트*/
 
 
 
+.symbol-wrap{
+	position:fixed;
+	width:100%;
+	height:100%;
+	z-index:999;
+	top:0;
+	left:0;
+	transition: all 2s ease;
+}
+.symbol-wrap .bottomBox{
+	position:absolute;
+	bottom:-16px;
+	left:0;
+	width:100%;
+	height:100px;
+	background:#fff;
+	transform: skew(0deg, -4deg);
+	display:none;
+}
 
+.symbol-inner{
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+
+.symbol-inner .top,
+.symbol-inner .left,
+.symbol-inner .right,
+.symbol-inner .bottom {
+	position:absolute;
+	background: #fff;
+	z-index: -1; /* background 영역이 symbol 아래에 있도록 설정 */
+}
+
+.symbol-inner .top {
+	bottom:calc(100% - 2px);
+	left:50%;
+	transform: translateX(-50%);
+	width: 1000px;
+	height: 2000px /* 기본 높이 */
+}
+
+.symbol-inner .left {
+	width: 1000px; /* 기본 너비 */
+	height: 2000px;
+	top:50%;
+	transform: translateY(-50%);
+	right:calc(100% - 2px)
+}
+
+.symbol-inner .right {
+	width: 1000px; /* 기본 너비 */
+	height: 2000px;
+	top:50%;
+	transform: translateY(-50%);
+	left:calc(100% - 2px)
+}
+
+.symbol-inner .bottom {
+	width: 1000px;
+	height: 2000px; /* 기본 높이 */
+	top:calc(100% - 2px);
+	left:50%;
+	transform: translateX(-50%);
+}
+.symbol-inner .symbol{
+	width:5000px;
+	height:5000px;
+	background:url("../img/symbol-1.svg") no-repeat;
+	background-size: 100%;
+	background-position: center;
+	position:absolute;
+	top:135%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+.symbol-inner .symbol .logoImg{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	overflow:hidden;
+}
+.symbol-inner .symbol img{
+	position:absolute;
+	top:10px;
+	width:170px;
+	left:2px;
+	opacity:0;
+}
+.symbol-inner.is-active{
+	background:#fff;
+}
+.symbol-inner.is-active .symbol img{
+	opacity:1;
+}
+.symbol-inner.is-active .right{
+	display:none;
+}
+.symbol-inner.is-active .left{
+	display:none;
+}
+.symbol-inner.is-active .top{
+	display:none;
+}
+.symbol-inner.is-active .bottom{
+	display:none;
+}
+.symbol-inner.is-active .bottomBox{
+	display:block;
+}
+
+.symbol-inner.is-up{
+	transform: inherit !important;
+}
+.symbol-inner.is-up .symbol{
+	position:fixed;
+	background:transparent;
+}
 
 
 
@@ -1862,5 +1873,111 @@ button, input, textarea {
 .animateWrap {
 	position: relative;
 	width:100%;
-	height:100vh;
+	height:100%;
 }
+
+
+
+.animateWrap .symbol.small{
+	animation: symbol 1s  forwards;
+}
+
+.animateWrap .symbol.big{
+	animation: symbol 1s reverse forwards;
+}
+
+
+.symbol-inner.is-big .symbol{
+	animation: symbolTxt 1s  forwards;
+}
+
+.symbol-inner.is-small .symbol{
+	animation: symbolTxt 1s reverse  forwards;
+}
+
+.symbol-inner.is-up{
+	animation: symbolInnerUp 1s  forwards;
+	animation-delay: 1s;
+}
+.symbol-inner.is-up .symbol{
+	animation: symbolTxtPosition 2s  forwards;
+}
+
+.symbol-inner.is-down{
+	animation: symbolInnerUp 1s reverse forwards;
+}
+
+.symbol-inner .symbol.is-up-done{
+	opacity:0;
+}
+
+.symbol-inner .symbol.is-down-done{
+	opacity:1;
+	animation:symbolTxtPosition 2s reverse  forwards;
+}
+
+@keyframes symbol {
+	from  {
+		width:5000px;
+		height:5000px;
+		top:135%;
+	}
+
+	to {
+		 width:43px;
+		 height:43px;
+		 top:50%;
+	 }
+}
+
+
+@keyframes symbolTxt{
+	from  {
+		width:43px;
+		height:43px;
+		top:50%;
+		left:50%;
+	}
+
+	to {
+		width:177px;
+		height:43px;
+		top:50%;
+		left:50%;
+	}
+}
+
+
+@keyframes symbolTxtPosition{
+	0%  {
+		width:177px;
+		height:43px;
+		top:50%;
+		left:50%;
+	}
+
+	50% {
+		width:177px;
+		height:43px;
+		top:29px;
+		left:50%;
+	}
+
+	100% {
+		width:177px;
+		height:43px;
+		top:29px;
+		left:109px;
+	}
+}
+
+@keyframes symbolInnerUp{
+	0% {
+		top: 0;
+	}
+
+	100% {
+		top: -100%
+	}
+}
+
