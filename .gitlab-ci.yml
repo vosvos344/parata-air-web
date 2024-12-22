@@ -49,6 +49,8 @@ build:
   resource_group: "pipeline"
   except:
     - tags  # 태그 푸시 시에는 실행하지 않음
+  only:
+    - main
 
 
 # 배포 작업
@@ -68,6 +70,8 @@ deploy-dev:
     url: http://brand.parataair.com
   dependencies:
     - build  # 빌드와 테스트가 완료된 후에만 배포 실행
+  only:
+    - main
 
 
 
