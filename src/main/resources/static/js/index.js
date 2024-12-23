@@ -876,7 +876,7 @@ var prata = {
 				$(".section4 .text-wrap.second").removeClass("on");
 			}
 
-			if(sec4TextSecond.bottom - 150 <= 0){
+			if(sec4TextSecond.bottom - 200 <= 0){
 				$(".section4 .text-wrap.third").addClass("on");
 			}else{
 				$(".section4 .text-wrap.third").removeClass("on");
