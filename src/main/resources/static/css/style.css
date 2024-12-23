@@ -1874,6 +1874,7 @@ button, input, textarea {
 	position: relative;
 	width:100%;
 	height:100%;
+	pointer-events: none;
 }
 
 
@@ -1961,6 +1962,11 @@ button, input, textarea {
 		height:43px;
 		top:29px;
 		left:50%;
+
+	}
+
+	80%{
+		opacity: 1;
 	}
 
 	100% {
@@ -1968,6 +1974,7 @@ button, input, textarea {
 		height:43px;
 		top:29px;
 		left:109px;
+		opacity: 0;
 	}
 }
 

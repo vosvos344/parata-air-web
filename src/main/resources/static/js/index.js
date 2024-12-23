@@ -15,6 +15,8 @@ const wAnimate = {
 				wAnimate.touchEndY = e.touches[0].clientY
 			})
 			.on('touchend', function(e){
+				console.log(wAnimate.isAnimated);
+
 				if(!wAnimate.isLoading){
 					return;
 				}
@@ -58,6 +60,8 @@ const wAnimate = {
 				console.log(wAnimate.step);
 				wAnimate.isAnimated = true
 				wAnimate.play[wAnimate.step]()
+
+
 			})
 	},
 	play: [
@@ -78,7 +82,9 @@ const wAnimate = {
 				$(".symbol").removeClass("small")
 				void $(".symbol")[0].offsetWidth;
 				$(".symbol").addClass("big");
+			});
 
+			$(".symbol").one("transitionend animationend", function () {
 				wAnimate.isAnimated = false
 			});
 
@@ -128,7 +134,10 @@ const wAnimate = {
 				$(".section3 .ani-wrap .first").removeClass().addClass("first down-down");
 				$(".section3 .ani-wrap .second").removeClass().addClass("second down");
 				$(".section3 .sec1 .video-wrap").css("height", "0");
-				wAnimate.isAnimated = false
+
+				$(".section3 .sec1 .video-wrap").one("transitionend animationend", function (e) {
+					wAnimate.isAnimated = false
+				});
 			}
 		},
 		function(){ // 3
@@ -138,12 +147,16 @@ const wAnimate = {
 				$(".section3 .ani-wrap .second").removeClass().addClass("second up");
 				// 		$(".section3 .ani-wrap .third").removeClass().addClass("third");
 				$(".section3 .sec1 .video-wrap").css("height", "50");
-				wAnimate.isAnimated = false
+				$(".section3 .sec1 .video-wrap").one("transitionend animationend", function (e) {
+					wAnimate.isAnimated = false
+				});
 			}else{
 				$(".section3 .ani-wrap .second").removeClass().addClass("second down-down");
 				$(".section3 .ani-wrap .third").removeClass().addClass("third down");
 				$(".section3 .sec1 .video-wrap").css("height", "50");
-				wAnimate.isAnimated = false
+				$(".section3 .sec1 .video-wrap").one("transitionend animationend", function (e) {
+					wAnimate.isAnimated = false
+				});
 			}
 		},
 		function(){ // 4
@@ -151,7 +164,9 @@ const wAnimate = {
 				$(".section3 .ani-wrap .second").removeClass().addClass("second up-up");
 				$(".section3 .ani-wrap .third").removeClass().addClass("third up");
 				$(".section3 .sec1 .video-wrap").css("height", "120");
-				wAnimate.isAnimated = false
+				$(".section3 .sec1 .video-wrap").one("transitionend animationend", function (e) {
+					wAnimate.isAnimated = false
+				});
 			}else{
 				$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").removeClass("on");
 
@@ -159,6 +174,8 @@ const wAnimate = {
 					$(".navTxt").text(((lang == "ko") ? "브랜드 슬로건" : "Brand Slogan"));
 					$(".section3 .sec1 .video-wrap").css("height", "120");
 					$(".section3 .ani-wrap .third").removeClass().addClass("third down-down");
+				});
+				$(".section3 .ani-wrap .third").one("transitionend animationend", function (e) {
 					wAnimate.isAnimated = false
 				});
 			}
@@ -178,10 +195,12 @@ const wAnimate = {
 				$(".section3 .sec1").removeClass("toggle");
 				$(".section3 .sec2").removeClass("toggle");
 				$(".section3 .sec2 .text-wrap .first, .section3 .sec2 .text-wrap .second, .section3 .sec2 .text-wrap .third").removeClass("on");
-				wAnimate.isAnimated = false
+
+				$(".section3 .sec2 .text-wrap .first, .section3 .sec2 .text-wrap .second, .section3 .sec2 .text-wrap .third").one("transitionend animationend", function (e) {
+					wAnimate.isAnimated = false
+				});
 			}
 
-			console.log("play5")
 		},
 		function(){ // 6
 
@@ -194,7 +213,6 @@ const wAnimate = {
 					wAnimate.isAnimated = false
 				});
 			}
-			console.log("play6")
 		},
 		/*function(){ // 7
 			console.log("play7")
