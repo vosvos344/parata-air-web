@@ -1679,13 +1679,10 @@ button {
 
 
 
-
+/*브랜드 에셋*/
 #animationSection7{
     background: #161626;
 }
-
-
-
 #animationSection7 .animationSectionInner{
     padding: 120px 80px;
     width: 100%;
@@ -1698,7 +1695,6 @@ button {
     padding: 0 0 100px;
 }
 #animationSection7 .animationSectionTitle small{
-    font-family: Pretendard;
     font-size: 18px;
     font-weight: 700;
     line-height: 28.8px;
@@ -1708,7 +1704,6 @@ button {
     opacity: 0;
     transition: all .5s ease-out;
 }
-
 #animationSection7 .animationSectionTitle.txtActiveOn small{
     transform: translateY(0%);
     opacity: 1;

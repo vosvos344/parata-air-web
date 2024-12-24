@@ -23,10 +23,10 @@ $(document).ready(function () {
         height: $(window).height(),
     })
     $("#animationSection3").css({
-        height: sectionEmidHeight+"px",
+        height: sectionMidHeight+"px",
     });
     $("#animationSection4").css({
-        height: sectionMidHeight+"px",
+        height: defaultHeight+"px",
     });
     $("#animationSection5").css({
         height: defaultSmallHeight+"px",
