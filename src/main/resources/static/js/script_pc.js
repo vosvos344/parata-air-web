@@ -364,7 +364,6 @@ const animation = {
 
                 $("#animationSection3 .animationInfo.one").removeClass("activeOne");
                 $("#animationSection3 .animationInfo.one").removeClass("activeTwo");
-                $("#animationSection3 .animationInfo.two").removeClass("ready");
                 $("#animationSection3 .animationInfo.two").css({
                     transform: `translateY(100%)`,
                     transition: 'all ease-out .5s',
@@ -383,9 +382,6 @@ const animation = {
 
                 let progressInSecondSection = (aniThirdProgress - aniThirdSubSectionSize1) / aniThirdSubSectionSize2;
 
-                $("#animationSection3 .animationInfo.two.ready").css({
-                    transform: `translateY(94%)`,
-                });
                 $("#animationSection3 .animationInfo.two").removeClass("activeOne");
                 $("#animationSection3 .animationInfo.two").removeClass("activeTwo");
                 aniThirdInfoWrap.css({
@@ -394,7 +390,6 @@ const animation = {
                 if (progressInSecondSection < 1 / 3) {
 
                     $("#animationSection3 .animationInfo.one").addClass("activeOne");
-                    $("#animationSection3 .animationInfo.two").addClass("ready");
                     $("#animationSection3 .animationInfo.one").removeClass("activeTwo");
 
                     animationImgCont.eq(1).css({
@@ -423,8 +418,8 @@ const animation = {
                 }
 
                 if (progressInThirdSection < 1 / 6) {
-                    const translateYValue = 94 - (progressInThirdSection / (1 / 6)) * 94;
-                    $("#animationSection3 .animationInfo.two.ready").css({
+                    const translateYValue = 100 - (progressInThirdSection / (1 / 6)) * 100;
+                    $("#animationSection3 .animationInfo.two").css({
                         transform: `translateY(${translateYValue}%)`,
                     });
                     infoTwoTitle.css({
@@ -436,7 +431,7 @@ const animation = {
                         opacity: '0',
                         transition: 'all ease .5s',
                     });
-                    $("#animationSection3 .animationInfo.two.ready").css({
+                    $("#animationSection3 .animationInfo.two").css({
                         transform: `translateY(0%)`,
                     });
                     $("#animationSection3 .animationInfo.two").addClass("activeOne");
