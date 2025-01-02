@@ -122,7 +122,7 @@ const wAnimate = {
 
 
 			if(wAnimate.upDown=="up") {
-				$(".navTxt").text(((lang == "ko") ? "브랜드 슬로건" : "Brand Slogan"));
+				$(".navTxt").text(((lang == "ko") ? "01. 브랜드 슬로건" : "01. Brand Slogan"));
 				$(".symbol-inner").addClass("is-up");
 				$(".section3 ").css({"top":"0"});
 				$(".header ").addClass("is-opacity");
@@ -186,7 +186,7 @@ const wAnimate = {
 				$(".section3 .sec1 .video-wrap").css({"width":"100%", "height":"100vh"});
 
 				$(".section3 .sec1 .video-wrap").one("transitionend animationend", function (e) {
-					$(".navTxt").text(((lang == "ko") ? "기업 철학" : "philosophy"));
+					$(".navTxt").text(((lang == "ko") ? "02. 기업 철학" : "02. philosophy"));
 					$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").addClass("on");
 					wAnimate.isAnimated = false
 				});
@@ -833,7 +833,7 @@ var prata = {
 
 		if(this.scrollTop >= section4 && $(window).scrollTop() <= sec4End) {
 			$(".section4").addClass("is-fixed");
-			$(".navTxt").text(((lang=="ko")?"브랜드 가치":"Brand Value"));
+			$(".navTxt").text(((lang=="ko")?"05. 브랜드 가치":"05. Brand Value"));
 			//$(".section31").addClass("is-fixed");
 
 		}else{
@@ -968,11 +968,11 @@ var prata = {
 
 		if(this.scrollTop >= section31 && $(window).scrollTop() <= sec31End) {
 			if($(window).scrollTop() >= $(".section31 .top-wrap").offset().top){
-				$(".navTxt").text(((lang=="ko")?"합리적 프리미엄":"Reasonable"));
+				$(".navTxt").text(((lang=="ko")?"03. 합리적 프리미엄":"03. Reasonable"));
 			}
 			if($(window).scrollTop() >= $(".section31 .bottom-wrap").offset().top){
 
-				$(".navTxt").text(((lang=="ko")?"진심어린 서비스":"Mindful Service"));
+				$(".navTxt").text(((lang=="ko")?"04. 진심어린 서비스":"04. Mindful Service"));
 			}
 
 
@@ -1187,7 +1187,7 @@ var prata = {
 		
 		
 		if(this.scrollTop >= section6) {
-			$(".navTxt").text(((lang=="ko")?"브랜드 컬러":"Brand Color"));
+			$(".navTxt").text(((lang=="ko")?"06. 브랜드 컬러":"06. Brand Color"));
 			//$(".section31").addClass("is-fixed");
 			
 		}else{
@@ -1300,10 +1300,12 @@ var prata = {
 		var section7 = $(".section7").offset().top;
 		var section7Recruit = $(".section7 .link-wrap").offset().top;
 		if(this.scrollTop >= section7) {
-			$(".navTxt").text(((lang=="ko")?"브랜드 에셋":"Brand assets"));
+			$(".navTxt").text(((lang=="ko")?"07. 브랜드 에셋":"07. Brand assets"));
 		}
-		if(this.scrollTop >= section7Recruit) {
-			$(".navTxt").text(((lang=="ko")?"인재 채용":"Recruit"));
+
+
+		if(this.scrollTop >= (section7Recruit - 100)) {
+			$(".navTxt").text(((lang=="ko")?"08. 인재 채용":"08. Recruit"));
 		}
 		
 
