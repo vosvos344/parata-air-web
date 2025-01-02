@@ -1084,7 +1084,7 @@ var circleX = circle.getAttribute('cx');
 var circleY = circle.getAttribute('cy');
 var circleR = circle.getAttribute('r');
 
-var total = 20;
+var total = 14;
 var gap = 30;
 var ease = 0.5;
 var debounce_removeLine;
