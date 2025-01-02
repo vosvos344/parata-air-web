@@ -144,9 +144,9 @@ const animation = {
 
 
                 if(lang === "en"){
-                    headName = "Brand Slogan";
+                    headName = "01. Brand Slogan";
                 }else{
-                    headName = "브랜드 슬로건";
+                    headName = "01. 브랜드 슬로건";
                 }
 
                 headProgress = 14;
@@ -217,9 +217,9 @@ const animation = {
 
                 animationSection2.addClass("animateSec24"+direction);
                 if(lang === "en"){
-                    headName = "Company Philosophy";
+                    headName = "02. Company Philosophy";
                 }else{
-                    headName = "기업 철학";
+                    headName = "02. 기업 철학";
                 }
                 headProgress = 14 * 2;
                 setTimeout(() => {
@@ -297,10 +297,10 @@ const animation = {
 
 
             if(lang === "en"){
-                $(".sectionTitle").html("Reasonable premium");
+                $(".sectionTitle").html("03. Reasonable premium");
                 $(".animationHeaderToc").removeClass("black");
             }else{
-                $(".sectionTitle").html("합리적 프리미엄");
+                $(".sectionTitle").html("03. 합리적 프리미엄");
                 $(".animationHeaderToc").removeClass("black");
             }
 
@@ -410,10 +410,10 @@ const animation = {
 
                 let progressInThirdSection = (aniThirdProgress - aniThirdSubSectionSize1 - aniThirdSubSectionSize2) / aniThirdSubSectionSize3;
                 if(lang === "en"){
-                    $(".sectionTitle").html("Reasonable premium");
+                    $(".sectionTitle").html("04. Reasonable premium");
                     $(".animationHeaderToc").addClass("black");
                 }else{
-                    $(".sectionTitle").html("진심 어린 서비스");
+                    $(".sectionTitle").html("04. 진심 어린 서비스");
                     $(".animationHeaderToc").addClass("black");
                 }
 
@@ -446,10 +446,10 @@ const animation = {
 
 
                     if(lang === "en"){
-                        $(".sectionTitle").html("Reasonable premium");
+                        $(".sectionTitle").html("04. Reasonable premium");
                         $(".animationHeaderToc").addClass("black");
                     }else{
-                        $(".sectionTitle").html("진심 어린 서비스");
+                        $(".sectionTitle").html("04. 진심 어린 서비스");
                         $(".animationHeaderToc").addClass("black");
                     }
 
@@ -469,9 +469,9 @@ const animation = {
                     });
 
                     if(lang === "en"){
-                        $(".sectionTitle").html("Reasonable premium");
+                        $(".sectionTitle").html("04. Reasonable premium");
                     }else{
-                        $(".sectionTitle").html("진심 어린 서비스");
+                        $(".sectionTitle").html("04. 진심 어린 서비스");
                     }
 
                 }else if (progressInThirdSection < 5 / 6) {
@@ -482,10 +482,10 @@ const animation = {
                     });
                     $("#animationSection3 .animationInfo.two").addClass("activeTwo");
                     if(lang === "en"){
-                        $(".sectionTitle").html("Reasonable premium");
+                        $(".sectionTitle").html("04. Reasonable premium");
                         $(".animationHeaderToc").addClass("black");
                     }else{
-                        $(".sectionTitle").html("진심 어린 서비스");
+                        $(".sectionTitle").html("04. 진심 어린 서비스");
                         $(".animationHeaderToc").addClass("black");
                     }
 
@@ -591,10 +591,10 @@ const animation = {
         if(scrollTop > animationSection4Top && scrollTop < animationSection5Top) {
 
             if (lang === "en") {
-                $(".sectionTitle").html("Brand Value");
+                $(".sectionTitle").html("05. Brand Value");
                 $(".animationHeaderToc").removeClass("black");
             } else {
-                $(".sectionTitle").html("브랜드 가치");
+                $(".sectionTitle").html("05. 브랜드 가치");
                 $(".animationHeaderToc").removeClass("black");
             }
 
@@ -605,10 +605,10 @@ const animation = {
 
         }else if(scrollTop < animationSection4Top && scrollTop > (animationSection4Top - windowHeight)){
             if (lang === "en") {
-                $(".sectionTitle").html("Brand Value");
+                $(".sectionTitle").html("04. Reasonable premium");
                 $(".animationHeaderToc").addClass("black");
             } else {
-                $(".sectionTitle").html("진심 어린 서비스");
+                $(".sectionTitle").html("04. 진심 어린 서비스");
                 $(".animationHeaderToc").addClass("black");
             }
 
@@ -697,9 +697,9 @@ const animation = {
 
         if(scrollTop >= animationSection5Top && scrollTop < animationSection6Top){
             if(lang === "en"){
-                $(".sectionTitle").html("Brand Naming");
+                $(".sectionTitle").html("06. Brand Naming");
             }else{
-                $(".sectionTitle").html("브랜드 네이밍");
+                $(".sectionTitle").html("06. 브랜드 네이밍");
             }
 
             $(".progressHeaderLine").css({
@@ -840,9 +840,9 @@ const animation = {
         })
         if(scrollTop >= animationSection6Top && scrollTop < animationSection7Top) {
             if (lang === "en") {
-                $(".sectionTitle").html("Brand Color");
+                $(".sectionTitle").html("07. Brand Color");
             } else {
-                $(".sectionTitle").html("브랜드 컬러");
+                $(".sectionTitle").html("07. 브랜드 컬러");
             }
 
             $(".progressHeaderLine").css({
@@ -919,9 +919,9 @@ const animation = {
 
         if(scrollTop >= animation7Top){
             if(lang === "en"){
-                $(".sectionTitle").html("Brand Assets");
+                $(".sectionTitle").html("08. Brand Assets");
             }else{
-                $(".sectionTitle").html("브랜드 에셋");
+                $(".sectionTitle").html("08. 브랜드 에셋");
             }
 
 
@@ -1084,21 +1084,24 @@ var circleX = circle.getAttribute('cx');
 var circleY = circle.getAttribute('cy');
 var circleR = circle.getAttribute('r');
 
-var total = 12;
+var total = 20;
 var gap = 30;
 var ease = 0.5;
 var debounce_removeLine;
 var debounce_counter = 0;
+var gradient = document.querySelector('#lineGradient');
 
 var pointer = {
     x: window.innerWidth / 2,
     y: window.innerHeight / 2,
+    prevX: window.innerWidth / 2,
+    prevY: window.innerHeight / 2,
     tx: 0,
     ty: 0,
     dist: 0,
     scale: 1,
     speed: 2,
-    circRadius: 10,
+    circRadius: 12,
     updateCrds: function () {
         if (this.x != 0) {
             this.dist = Math.abs((this.x - this.tx) + (this.y - this.ty));
@@ -1112,8 +1115,23 @@ var pointer = {
 var points = [];
 
 $(window).on('mousemove', function (e) {
+    pointer.prevX = pointer.x;
+    pointer.prevY = pointer.y;
+
     pointer.x = e.clientX;
     pointer.y = e.clientY;
+
+    var deltaX = pointer.x - pointer.prevX;
+    var deltaY = pointer.y - pointer.prevY;
+
+    if (deltaX > 0) {
+        gradient.setAttribute('x1', '0%');
+        gradient.setAttribute('x2', '100%');
+    } else if (deltaX < 0) {
+        gradient.setAttribute('x1', '100%');
+        gradient.setAttribute('x2', '0%');
+    }
+
     debounce_counter = 0;
     drawLine();
 
