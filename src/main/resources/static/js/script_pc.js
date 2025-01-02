@@ -1098,7 +1098,7 @@ var pointer = {
     dist: 0,
     scale: 1,
     speed: 2,
-    circRadius: 16,
+    circRadius: 10,
     updateCrds: function () {
         if (this.x != 0) {
             this.dist = Math.abs((this.x - this.tx) + (this.y - this.ty));
@@ -1125,12 +1125,12 @@ $(window).on('mousemove', function (e) {
 })
 
 $(window).on('mousedown', function (e) {
-    pointer.circRadius = 12;
+    pointer.circRadius = 8;
     drawLine();
 });
 
 $(window).on('mouseup', function (e) {
-    pointer.circRadius = 16;
+    pointer.circRadius = 12;
     drawLine();
 });
 
