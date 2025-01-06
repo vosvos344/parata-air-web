@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.io.IOException;
 
 import java.util.Locale;
 
@@ -82,4 +88,19 @@ public class MainController {
 
         return mav;
     }
+
+
+
+    @GetMapping("/naver70de4b65f8beb11af353ef7c34831a18.html")
+    public ResponseEntity<byte[]> serveNaverVerificationFile() throws IOException {
+        ClassPathResource resource = new ClassPathResource("naver/naver70de4b65f8beb11af353ef7c34831a18.html");
+
+        byte[] content = resource.getInputStream().readAllBytes();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_TYPE, "text/html;charset=UTF-8");
+
+        return new ResponseEntity<>(content, headers, HttpStatus.OK);
+    }
+
+
 }
