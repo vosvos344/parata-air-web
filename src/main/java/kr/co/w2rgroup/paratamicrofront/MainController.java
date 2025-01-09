@@ -94,7 +94,16 @@ public class MainController {
     @GetMapping("/naver70de4b65f8beb11af353ef7c34831a18.html")
     public ResponseEntity<byte[]> serveNaverVerificationFile() throws IOException {
         ClassPathResource resource = new ClassPathResource("naver/naver70de4b65f8beb11af353ef7c34831a18.html");
+        byte[] content = resource.getInputStream().readAllBytes();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_TYPE, "text/html;charset=UTF-8");
 
+        return new ResponseEntity<>(content, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/google58a86ac5aec034e8.html")
+    public ResponseEntity<byte[]> serveGoogleVerificationFile() throws IOException {
+        ClassPathResource resource = new ClassPathResource("google/google58a86ac5aec034e8.html");
         byte[] content = resource.getInputStream().readAllBytes();
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.CONTENT_TYPE, "text/html;charset=UTF-8");
