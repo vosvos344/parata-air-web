@@ -206,7 +206,7 @@ button {
 .animationHeaderOriginal .animationHeaderInner{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     height: 100%;
     padding: 0 40px;
 }
@@ -467,6 +467,31 @@ button {
     position: relative;
 }
 
+
+
+
+.animationMainLanguage{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: fixed;
+    top: 17px;
+    left: 40px;
+    z-index: 999;
+}
+.animationMainLanguage a{
+    font-family: Pretendard;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23.4px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: rgba(255, 255, 255, 0.5);
+}
+.animationMainLanguage a.langActive{
+    color: rgba(255, 255, 255, 1);
+}
 
 
 /*ACTIVE Section1*/

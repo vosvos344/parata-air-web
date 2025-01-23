@@ -32,13 +32,13 @@
 
 
     <div class="animationWrap">
+        <div class="animationMainLanguage">
+            <a href="/kr" class="langLink">KOR</a>
+            <a href="/en" class="langLink langActive">ENG</a>
+        </div>
         <div class="animationTopSection">
             <section class="animationHeaderOriginal" style="display: none;">
                 <div class="animationHeaderInner">
-                    <div class="animationLogoLanguage">
-                        <a href="/kr" class="langLink">KOR</a>
-                        <a href="/en" class="langLink langActive">ENG</a>
-                    </div>
                     <a href="/" class="animationHeaderLogo">
                         <img src="./images/mainlogo.png">
                     </a>
@@ -460,6 +460,12 @@
 
         <div id="drawing_line">
             <svg class="drawing_line_svg">
+                <defs>
+                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.2" />
+                        <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.9" />
+                    </linearGradient>
+                </defs>
                 <circle class="drawing_line_circle" cx="0" cy="0" r="8"></circle>
                 <polyline class="drawing_line_polyline" points=""></polyline>
             </svg>
