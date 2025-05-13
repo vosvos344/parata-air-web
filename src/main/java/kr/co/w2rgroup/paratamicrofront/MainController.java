@@ -52,8 +52,8 @@ public class MainController {
         }
         log.info("device : " + isDevice);
 
-        mav.setViewName(isDevice + "/" + lang);
-
+//         mav.setViewName(isDevice + "/" + lang);
+        mav.setViewName("pc/ko");
         mav.addObject("lang", lang);
         Locale newLocale = new Locale(lang);
         localeResolver.setLocale(request, response, newLocale);
@@ -77,7 +77,8 @@ public class MainController {
         }
         log.info("device : " + isDevice);
 
-        mav.setViewName(isDevice + "/" + lang);
+//         mav.setViewName(isDevice + "/" + lang);
+        mav.setViewName("pc/ko");
 
         mav.addObject("lang", lang);
 

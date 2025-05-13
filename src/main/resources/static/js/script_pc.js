@@ -297,10 +297,12 @@ const animation = {
 
 
             if(lang === "en"){
-                $(".sectionTitle").html("03. Reasonable premium");
+                // $(".sectionTitle").html("03. Reasonable premium");
+                $(".sectionTitle").html("03. Reasonable Service");
                 $(".animationHeaderToc").removeClass("black");
             }else{
-                $(".sectionTitle").html("03. 합리적 프리미엄");
+                // $(".sectionTitle").html("03. 합리적 프리미엄");
+                $(".sectionTitle").html("03. 합리적 서비스");
                 $(".animationHeaderToc").removeClass("black");
             }
 
