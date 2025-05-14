@@ -16,7 +16,7 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    font-family: 'pretendard';
+    font-family: "Pretendard Variable"
 }
 html {
     scroll-behavior: smooth;
@@ -200,7 +200,7 @@ button {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 98;
+    z-index: 100;
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 .animationHeaderOriginal .animationHeaderInner{
@@ -1133,7 +1133,18 @@ button {
 
 #animationSection3{
     background: #161626;
-    min-height: 1000vh;
+    height: 100vh;
+    top: 200vh;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    transition: linear top .5s
+}
+#animationSection3.animateSec31Next{
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: top 0.5s linear;
 }
 #animationSection3 .animationImgMain{
     position: absolute;
@@ -1142,10 +1153,30 @@ button {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    transition: width 0.1s ease, transform 0.1s ease, left 0.1s ease;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 5;
 }
-
+#animationSection3.animateSec31Next .animationImgMain{
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-delay: 1s;
+    z-index: 5;
+}
+#animationSection3.animateSec32Next .animationImgMain{
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 5;
+}
 #animationSection3 .animationImgCont{
     position: absolute;
     top: 0;
@@ -1166,7 +1197,10 @@ button {
     object-position: left center;
 }
 
-
+#animationSection3.animateSec32Next .animationInfoWrap{
+    opacity: 1;
+    transition-delay: 0.5s;
+}
 #animationSection3 .animationInfoWrap{
     position: absolute;
     top: 0;
@@ -1452,6 +1486,18 @@ button {
 
 #animationSection5{
     background: #161626;
+    height: 100vh;
+    top: 200vh;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    transition: linear top .5s
+}
+#animationSection5.animateSec51Next{
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: top 0.5s linear;
 }
 #animationSection5 .animationSectionInner{
     position: absolute;
@@ -1510,9 +1556,15 @@ button {
     right: 0;
     width: 30%;
     height: 30%;
-    transition: all .1s linear;
+    transition: all .3s linear;
 }
-
+#animationSection5.animateSec52Next .animationSectionVideo{
+    width: 50%;
+    height: 100%;
+}
+#animationSection5.animateSec53Next .animationSectionVideo{
+    width: 100%;
+}
 #animationSection5 .animationSectionVideo video{
     display: inline-block;
     width: 100%;
@@ -1961,6 +2013,9 @@ button {
 
 .animationFooter{
     background: #161626;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
 }
 .animationFooter .animationFooterInner{
     border-top: 1px solid rgba(255, 255, 255, 0.1);

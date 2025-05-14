@@ -1,4 +1,5 @@
 let wheelEnabled = false;
+
 // 📌 섹션 ID 목록
 const sectionIds = [
     "animationSection1",
@@ -14,7 +15,8 @@ const sectionIds = [
 let currentSectionIndex = 0;
 let currentSubIndex = 0;
 let isScrolling = false;
-const scrollDelay = 800; // 📌 스크롤 처리 간격 (ms)
+const scrollDelay = 800; // 스크롤 처리 간격 (ms)
+let currentImageIndex = 1; // 섹션 3 이미지
 
 // 📌 페이지 로드 시 프로그레스 바 애니메이션 시작
 window.addEventListener("load", function() {
@@ -71,7 +73,6 @@ window.addEventListener("load", function() {
 window.addEventListener("DOMContentLoaded", () => {
     const polyline = document.querySelector('.drawing_line_polyline');
     const circle = document.querySelector('.drawing_line_circle');
-    const gradient = document.querySelector('#lineGradient');
     const points = [];
     const totalPoints = 14;
     let debounceCounter = 0;
@@ -155,48 +156,50 @@ function startNextAnimations() {
                 { y: 0, opacity: 1, duration: 1, delay: 0.6 + i * 0.3, ease: "power3.out" }
             );
         });
-
-        // images.forEach((image, i) => {
-        //     gsap.fromTo(image,
-        //         { y: 100, opacity: 0 },
-        //         { y: 0, opacity: 1, duration: 1, delay: 0.9 + i * 0.3, ease: "power3.out" }
-        //     );
-        // });
     });
 }
 
-// 📌 휠 이벤트 리스너 추가
+// 📌 원스크롤 애니메이션
 window.addEventListener("wheel", (event) => {
     if (!wheelEnabled || isScrolling) return;
 
-    const currentSectionId = sectionIds[currentSectionIndex];
-    if (currentSectionId === "animationSection3") {
-        console.log("섹션 3부터는 휠 이벤트 비활성화");
-        return;
-    }
-
     const direction = event.deltaY > 0 ? 1 : -1;
+    const sectionTitle = document.querySelector('.sectionTitle');
+    const currentSectionId = sectionIds[currentSectionIndex];
     const currentSection = document.getElementById(currentSectionId);
-    const nextSectionId = sectionIds[currentSectionIndex + 1];
-    const nextSection = document.getElementById(nextSectionId);
-    const section2 = document.getElementById("animationSection2");
-    const sections = ["animateSec22Next", "animateSec23Next", "animateSec24Next", "animateSec25Next"];
-    const activeClasses = sections.filter(cls => section2.classList.contains(cls));
-    const nextIndex = activeClasses.length;
 
+    // 1 메인, 2 ~ 4 슬로건, 5 ~ 6 기업, 7 ~ 9 합리적 서비스, 10 ~ 11 서비스, 12 ~ 13 네이밍
+    // 1 = 0, 2 ~ 7 = 1, 8 ~ 11 = 2, 12 ~ 13 = 3
     if (direction > 0) {
         // 📌 힐 다운 - 다음 단계로 이동
-        if (currentSubIndex < 8) {
-            window.scrollTo(0, 0);
+        if (currentSubIndex < 14) {
             currentSubIndex++;
             const currentClass = `animateHead${currentSectionIndex + 1}${currentSubIndex}Next`;
-            const nextClass = `animateSec${currentSectionIndex + 2}${currentSubIndex - 1}Next`;
             const prevClass = `animateHead${currentSectionIndex + 1}${currentSubIndex}Prev`;
-            // 📌 현재 섹션에 클래스 추가
+            const nextClass = `animateSec${currentSectionIndex + 1}${currentSubIndex - 1}Next`;
+
+            // 타이틀 교체
+            if(currentSubIndex === 2){
+                document.querySelector('.animationHeaderOriginal').style.display = 'block'
+                sectionTitle.innerText = '01.브랜드 슬로건';
+            }
+            if(currentSubIndex === 5){
+                sectionTitle.innerText = '02.기업 철학';
+            }
+            if(currentSubIndex === 7){
+                sectionTitle.innerText = '03.합리적 서비스';
+            }
+            if(currentSubIndex === 10){
+                sectionTitle.innerText = '04.진심 어린 서비스';
+            }
+            if(currentSubIndex === 12){
+                sectionTitle.innerText = '05.브랜드 네이밍';
+            }
+
+            // 📌 섹션 1
             if (currentSectionIndex === 0 && currentSubIndex < 3){
                 currentSection.classList.add(currentClass);
                 currentSection.classList.add(prevClass);
-                console.log(`섹션 ${currentSectionIndex + 1}에 ${currentClass} 추가`);
             }
 
             // 📌 애니메이션 시작 (애니메이션 섹션 1)
@@ -209,107 +212,213 @@ window.addEventListener("wheel", (event) => {
                         delay: 1, // 📌 3초 후 시작
                         ease: "linear",
                         onComplete: () => {
-                            console.log("로고 확장 애니메이션 완료");
+                            currentSectionIndex = 1;
                         }
                     });
                 }
             }
 
-            if (nextSection && currentSubIndex >= 2 && nextSection && currentSubIndex < 7) {
-                nextSection.classList.add(nextClass);
-                console.log(`다음 섹션 ${currentSubIndex}에서 ${nextSection} 추가`);
+            // 섹션 2
+            if (currentSectionIndex === 1 && currentSubIndex >= 2) {
+                if(currentSubIndex === 2){
+                    document.getElementById('animationSection1').classList.add('animateHead12Next');
+                    document.getElementById('animationSection1').classList.add('animateHead12Prev');
+                }
+                currentSection.classList.add(nextClass);
             }
 
-            if (nextSection && currentSubIndex === 7) {
-                nextSection.classList.add(nextClass);
-                nextSection.classList.add('nextSection3');
-                currentSectionIndex = 2;
-                setTimeout(() => {
-                    document.body.style.overflow = "auto";
-                },1000);
+            if (currentSectionIndex === 1 && currentSubIndex === 7) {
+                currentSection.classList.add(nextClass);
+                currentSectionIndex = 2
             }
-            // 섹션2 fly new -> 서비스 제공
-            // if (nextSection && currentSubIndex >= 3) {
-            //     const nextStage = sections[nextIndex];
-            //     section2.classList.add(nextStage);
-            //     console.log(`✅ ${nextStage} 추가`);
-            //     // section2.classList.add(sections[0]);
-            //     // activeTimeouts.forEach(timeout => clearTimeout(timeout));
-            //     // activeTimeouts = []
-            //     // // 📌 남은 단계를 순차적으로 추가
-            //     // sections.slice(nextIndex).forEach((stage, index) => {
-            //     //     const timeout = setTimeout(() => {
-            //     //         section2.classList.add(stage);
-            //     //         console.log(`✅ ${stage} 추가`);
-            //     //
-            //     //         // 모든 단계가 추가되면 애니메이션 잠금 해제
-            //     //         if (index === sections.length - nextIndex - 1) {
-            //     //             isAnimating = false;
-            //     //         }
-            //     //     }, (index) * 1000); // 1초 간격
-            //     //
-            //     //     activeTimeouts.push(timeout);
-            //     //
-            //     // });
-            // }
+
+            // 섹션 3
+            if (currentSectionIndex === 2 && currentSubIndex === 8) {
+                currentSection.style.position = 'fixed';
+                currentSection.style.zIndex = '99';
+                currentSection.classList.add("animateSec31Next");
+
+                // 약간의 지연 후 32 상태로 전환
+                setTimeout(() => {
+                    currentSection.classList.add("animateSec32Next");
+                    const infoText = document.querySelector("#animationSection3 .animationInfoWrap .animationInfo");
+                    infoText.classList.add('activeOne');
+                }, 1500);
+            }
+
+            if (currentSectionIndex === 2 && currentSubIndex > 8) {
+                const imgContainers = document.querySelectorAll("#animationSection3 .animationImgCont");
+                const infoSections = document.querySelectorAll("#animationSection3 .animationInfo");
+
+                // 모든 info에서 activeOne 제거
+                infoSections.forEach(section => section.classList.remove("activeOne"));
+
+                // 현재 이미지 인덱스에 activeOne 추가
+                if (currentImageIndex < infoSections.length) {
+                    infoSections.forEach((container, index) => {
+                        if (index === currentImageIndex) {
+                            container.classList.add("activeOne");
+                        } else {
+                            container.classList.remove("activeOne");
+                        }
+                    });
+                }
+
+                // 이미지가 범위 내에 있을 때만 active 추가
+                if (currentImageIndex < imgContainers.length) {
+                    imgContainers.forEach((container, index) => {
+                        if (index === currentImageIndex) {
+                            container.classList.add("active");
+                        } else {
+                            container.classList.remove("active");
+                        }
+                    });
+                    currentImageIndex++;
+                }
+
+                if(currentImageIndex === 4 && currentSubIndex === 11){
+                    currentSectionIndex = 4;
+                }
+            }
+
+            // 섹션 5
+            if (currentImageIndex === 4 && currentSubIndex === 12) {
+                currentSection.style.position = 'fixed';
+                currentSection.style.zIndex = '99';
+                currentSection.classList.add("animateSec51Next");
+                setTimeout(() => {
+                    currentSection.classList.add("animateSec52Next");
+                }, 1000)
+            }
+            if (currentImageIndex === 4 && currentSubIndex === 13) {
+                currentSection.classList.add("animateSec53Next");
+                setTimeout(() => {
+                    currentSection.querySelector('.animationSectionLogo').classList.add('active');
+                    currentSection.style.position = 'absolute';
+                    document.body.style.overflow = "auto";
+                }, 500)
+            }
+
         }
     } else {
         // 📌 힐 업 - 이전 단계로 이동
         if (currentSubIndex > 0) {
-            const currentClass = `animateHead${currentSectionIndex + 1}${currentSubIndex}Next`;
-            const nextClass = `animateSec${currentSectionIndex + 2}${currentSubIndex - 1}Next`;
+            // 타이틀 교체
+            if(currentSubIndex === 1){
+                document.querySelector('.animationHeaderOriginal').style.display = 'none'
+            }
+            if(currentSubIndex === 4){
+                sectionTitle.innerText = '01.브랜드 슬로건';
+            }
+            if(currentSubIndex === 6){
+                sectionTitle.innerText = '02.기업 철학';
+            }
+            if(currentSubIndex === 9){
+                sectionTitle.innerText = '03.합리적 서비스';
+            }
+            if(currentSubIndex === 11){
+                sectionTitle.innerText = '04.진심 어린 서비스';
+            }
 
-            // 📌 현재 섹션에서 클래스 제거
-            console.log(`섹션 ${currentSectionIndex + 1}에서 ${currentClass} 제거`);
-
-            // 📌 애니메이션 복원 (애니메이션 섹션 1)
-            if (currentSectionIndex+1 === 1 && currentSubIndex === 1) {
+            const currentClass = `animateHead${currentSectionIndex}${currentSubIndex}Next`;
+            const nextClass = `animateSec${currentSectionIndex + 1}${currentSubIndex - 1}Next`;
+            // 📌 애니메이션 시작 (애니메이션 섹션 1)
+            if (currentSectionIndex === 1 && currentSubIndex === 1) {
+                currentSectionIndex = 0;
                 const logoAfterInner = document.querySelector(".animationLogoAfterInner");
                 if (logoAfterInner) {
                     gsap.to(logoAfterInner, {
                         width: "133px",
-                        duration:1,
+                        duration: 1,
                         ease: "linear",
                         onComplete: () => {
-                            console.log("로고 축소 애니메이션 완료");
-                            currentSection.classList.remove(currentClass);
+                            document.getElementById('animationSection1').classList.remove('animateHead11Next');
                         }
                     });
                 }
             }
-            else{
-                console.log(`섹션 ${currentSectionIndex + 1}에서 ${currentClass} 제거`);
-                currentSection.classList.remove(currentClass);
+
+            // 📌 섹션 2 -> 섹션 1
+            if (currentSectionIndex === 1 && currentSubIndex >= 2) {
+                if(currentSubIndex === 2){
+                    document.getElementById('animationSection1').classList.remove('animateHead12Next');
+                }
+                currentSection.classList.remove(nextClass);
             }
 
-            // 📌 이전 섹션에서도 동시 제거
-            if (nextSection && currentSubIndex >= 2 && nextSection && currentSubIndex < 7) {
-                nextSection.classList.remove(nextClass);
-                console.log(`다음 섹션 ${currentSubIndex}에서 ${nextSection} 제거`);
+            // 섹션 3 -> 섹션 2
+            if (currentSectionIndex === 2 && currentSubIndex === 7) {
+                document.getElementById('animationSection2').classList.remove('animateSec26Next');
+                currentSectionIndex = 1;
             }
 
-            if (nextSection && currentSubIndex === 7) {
-                nextSection.classList.remove(nextClass);
-                nextSection.classList.remove('nextSection3');
+            if (currentSectionIndex === 2 && currentSubIndex === 8) {
+                currentSection.classList.remove("animateSec32Next");
+                const infoText = document.querySelector("#animationSection3 .animationInfoWrap .animationInfo");
+                infoText.classList.remove('activeOne');
+
+                // 약간의 지연 후 32 상태로 전환
+                setTimeout(() => {
+                    currentSection.classList.remove("animateSec31Next");
+                    setTimeout(() => {
+                        currentSection.style.position = 'absolute';
+                        currentSection.style.zIndex = '1';
+                    },1500)
+                }, 1500);
+            }
+
+            if(currentImageIndex === 4 && currentSubIndex === 11){
+                currentSectionIndex = 2;
+            }
+
+            if (currentSectionIndex === 2 && currentSubIndex > 8) {
+                const imgContainers = document.querySelectorAll("#animationSection3 .animationImgCont");
+                const infoSections = document.querySelectorAll("#animationSection3 .animationInfo");
+                //
+                // 모든 info에서 activeOne 제거
+                infoSections.forEach(section => section.classList.remove("activeOne"));
+
+                // // 현재 이미지 인덱스에 activeOne 추가 (업)
+                if (currentImageIndex > 0) {
+                    // 현재 인덱스의 activeOne 제거
+                    infoSections[currentImageIndex-1].classList.remove("activeOne");
+
+                    // 이전 인덱스에 activeOne 추가
+                    const prevIndex = currentImageIndex - 2;
+                    infoSections[prevIndex].classList.add("activeOne");
+
+                    // 이미지도 동일하게 처리
+                    imgContainers[currentImageIndex-1].classList.remove("active");
+                    imgContainers[prevIndex].classList.add("active");
+
+                    // 인덱스 감소
+                    currentImageIndex--;
+                }
+            }
+
+            // 섹션 5
+            if (currentImageIndex === 4 && currentSubIndex === 12) {
+                currentSection.classList.remove("animateSec52Next");
+                setTimeout(() => {
+                    currentSection.classList.remove("animateSec51Next");
+                    setTimeout(() => {
+                        currentSection.style.position = 'relative';
+                        currentSection.style.zIndex = '1';
+                    },1000)
+                }, 1000)
+            }
+
+            if (currentImageIndex === 4 &&  currentSubIndex === 13) {
+                currentSection.querySelector('.animationSectionLogo').classList.remove('active');
+                currentSection.style.position = 'fixed';
                 document.body.style.overflow = "hidden";
+                setTimeout(() => {
+                    currentSection.classList.remove("animateSec53Next");
+                }, 500)
             }
-            // 섹션2 서비스 제공 -> fly new
-            // if (direction < 0 && nextIndex > 0) {
-            //     const lastStage = sections[nextIndex - 1];
-            //     section2.classList.remove(lastStage);
-            //     console.log(`❌ ${lastStage} 제거`);
-            //     // activeTimeouts.forEach(timeout => clearTimeout(timeout));
-            //     // activeTimeouts = [];
-            //     // for (let i = nextIndex - 1; i >= 0; i--) {
-            //     //     sections.slice(0, nextIndex).reverse().forEach((cls, idx) => {
-            //     //         setTimeout(() => {
-            //     //             section2.classList.remove(cls);
-            //     //             console.log(`섹션2 - ${cls} 제거`);
-            //     //         }, idx * 1000); // 1초 간격
-            //     //     });
-            //     // }
-            // }
-
+            if (currentImageIndex === 4 && currentSubIndex === 14) {
+                isScrolling = true;
+            }
             currentSubIndex--;
         }
     }
@@ -319,119 +428,4 @@ window.addEventListener("wheel", (event) => {
     setTimeout(() => {
         isScrolling = false;
     }, scrollDelay);
-
-    console.log(`현재 섹션: ${currentSectionIndex + 1}, 서브 인덱스: ${currentSubIndex}`);
-});
-
-// 📌 초기 상태 설정
-let section3Activated = false;
-
-// 📌 스크롤 이벤트 리스너
-window.addEventListener("scroll", () => {
-    const currentSectionId = sectionIds[currentSectionIndex];
-    if (currentSectionId !== "animationSection3") {
-        return;
-    }
-
-    const section3 = document.getElementById("animationSection3");
-    const imgMain = document.querySelector("#animationSection3 .animationImgMain");
-    const infoWrap = document.querySelector("#animationSection3 .animationInfoWrap");
-    const infoText = document.querySelector("#animationSection3 .animationInfoWrap .animationInfo");
-
-    const section3Top = section3.offsetTop;
-    const section3Height = section3.offsetHeight;
-    const scrollY = window.scrollY;
-
-    if(scrollY === 0){
-        currentSectionIndex = 0;
-    }
-
-    // 📌 섹션 3 시작점 (이미지 크기 전환 시작)
-    const endTransition = section3Top + section3Height / 2;
-    const transitionRange = endTransition - section3Top;
-
-    if (scrollY >= section3Top) {
-        const progress = (scrollY - section3Top) / transitionRange;
-        const width = Math.max(50, 80 - (progress * 50));
-        if(section3Activated) {return;}
-        // 📌 이미지 이동
-        imgMain.style.top = "0";
-        imgMain.style.width = `${width}%`;
-        imgMain.style.position = "fixed";
-        if (width <= 50) {
-            imgMain.style.left = `${Math.max(0, 50 - (progress * 100))}%`;
-            imgMain.style.transform = `translateX(${Math.min(0, -50 + (progress * 100))}%)`;
-            imgMain.style.width = "50%";
-            infoWrap.style.opacity = 1;
-            infoWrap.style.position = "fixed";
-
-            setTimeout(() => {
-                infoText.classList.add('activeOne');
-            },100);
-            section3Activated = true;
-        }
-    }
-
-    if(!section3Activated) {return;}
-    const imgContainers = document.querySelectorAll("#animationSection3 .animationImgCont");
-    const infoSections = document.querySelectorAll("#animationSection3 .animationInfo");
-
-    let currentImageIndex = 1;
-    let currentProgress = 0;
-    const scrollThreshold = 0.05;
-    window.addEventListener("wheel", (event) => {
-        const direction = event.deltaY > 0 ? 1 : -1;
-        if (direction > 0) {
-            if (currentProgress < 1) {
-                currentProgress += scrollThreshold;
-                if (currentProgress >= 1) {
-                    currentProgress = 1;
-
-                    // 📌 이미지가 완전히 0%에 도달했을 때 텍스트 활성화
-                    if (currentImageIndex < infoSections.length) {
-                        infoSections.forEach(section => section.classList.remove("activeOne"));
-                        infoSections[currentImageIndex].classList.add("activeOne");
-                    }
-                }
-                imgContainers[currentImageIndex].style.transform = `translateY(${(1 - currentProgress) * 100}%)`;
-            } else if (currentImageIndex < imgContainers.length) {
-                // 다음 이미지로 전환
-                currentImageIndex++;
-                currentProgress = 0;
-                imgContainers[currentImageIndex].style.transform = `translateY(${(1 - currentProgress) * 100}%)`;
-            }
-        } else {
-            // 📌 스크롤 업
-            if (currentProgress > 0) {
-                currentProgress -= scrollThreshold;
-                if (currentProgress <= 0) {
-                    currentProgress = 0;
-
-                    // 📌 이미지가 완전히 100%로 돌아갔을 때 텍스트 비활성화
-                    if (currentImageIndex < infoSections.length) {
-                        infoSections[currentImageIndex].classList.remove("activeOne");
-                    }
-                }
-                imgContainers[currentImageIndex].style.transform = `translateY(${(1 - currentProgress) * 100}%)`;
-            } else if (currentImageIndex > 0) {
-                // 이전 이미지로 전환
-                currentImageIndex--;
-                currentProgress = 1;
-                imgContainers[currentImageIndex].style.transform = `translateY(${(1 - currentProgress) * 100}%)`;
-
-                // 📌 이전 텍스트 비활성화
-                if (currentImageIndex < infoSections.length) {
-                    infoSections[currentImageIndex].classList.add("activeOne");
-                }
-            }
-            if(currentImageIndex + 1 === 1){
-                console.log('여길 타면 다시 시작?');
-                section3Activated = false
-            }
-        }
-        console.log('ee2',currentImageIndex + 1 === 1);
-        console.log('ee',currentProgress.toFixed(2) === 1.00);
-        console.log(`이미지 ${currentImageIndex + 1} 이동 중 (progress: ${currentProgress.toFixed(2)})`);
-
-    });
 });
