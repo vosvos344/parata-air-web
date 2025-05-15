@@ -165,9 +165,10 @@ window.addEventListener("wheel", (event) => {
 
     const direction = event.deltaY > 0 ? 1 : -1;
     const sectionTitle = document.querySelector('.sectionTitle');
+    const sectionMenu = document.querySelectorAll('.sidebar-menu li');
     const currentSectionId = sectionIds[currentSectionIndex];
     const currentSection = document.getElementById(currentSectionId);
-
+    const progressHeaderLine = document.querySelector('.progressHeaderLine');
     // 1 메인, 2 ~ 4 슬로건, 5 ~ 6 기업, 7 ~ 9 합리적 서비스, 10 ~ 11 서비스, 12 ~ 13 네이밍
     // 1 = 0, 2 ~ 7 = 1, 8 ~ 11 = 2, 12 ~ 13 = 3
     if (direction > 0) {
@@ -179,31 +180,51 @@ window.addEventListener("wheel", (event) => {
             const nextClass = `animateSec${currentSectionIndex + 1}${currentSubIndex - 1}Next`;
 
             // 타이틀 교체
-            if(currentSubIndex === 2){
-                document.querySelector('.animationHeaderOriginal').style.display = 'block'
-                sectionTitle.innerText = '01.브랜드 슬로건';
-            }
-            if(currentSubIndex === 5){
-                sectionTitle.innerText = '02.기업 철학';
-            }
-            if(currentSubIndex === 7){
-                sectionTitle.innerText = '03.합리적 서비스';
-            }
-            if(currentSubIndex === 10){
-                sectionTitle.innerText = '04.진심 어린 서비스';
-            }
-            if(currentSubIndex === 12){
-                sectionTitle.innerText = '05.브랜드 네이밍';
+            switch (currentSubIndex) {
+                case 2:
+                    document.querySelector('.animationHeaderOriginal').style.display = 'block';
+                    sectionTitle.innerText = '01.브랜드 슬로건';
+                    progressHeaderLine.style.width = '20%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
+                    sectionMenu[0].classList.add('active');
+                    break;
+                case 5:
+                    sectionTitle.innerText = '02.기업 철학';
+                    progressHeaderLine.style.width = '40%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
+                    sectionMenu[1].classList.add('active');
+                    break;
+                case 7:
+                    sectionTitle.innerText = '03.합리적 서비스';
+                    progressHeaderLine.style.width = '60%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
+                    sectionMenu[2].classList.add('active');
+                    break;
+                case 10:
+                    sectionTitle.classList.add('black');
+                    sectionTitle.innerText = '04.진심 어린 서비스';
+                    progressHeaderLine.style.width = '80%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
+                    sectionMenu.forEach((item) => item.classList.add('black'));
+                    sectionMenu[3].classList.add('active');
+                    break;
+                case 12:
+                    sectionTitle.classList.remove('black');
+                    sectionTitle.innerText = '05.브랜드 네이밍';
+                    progressHeaderLine.style.width = '100%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
+                    sectionMenu.forEach((item) => item.classList.remove('black'));
+                    sectionMenu[4].classList.add('active');
+                    break;
             }
 
             // 📌 섹션 1
-            if (currentSectionIndex === 0 && currentSubIndex < 3){
+            if (currentSectionIndex === 0 && currentSubIndex === 1) {
+                console.log('로고가 여기가 아닌가?',);
+                wheelEnabled = false;
+                console.log('로고가 여기가 아닌가?',wheelEnabled);
                 currentSection.classList.add(currentClass);
                 currentSection.classList.add(prevClass);
-            }
-
-            // 📌 애니메이션 시작 (애니메이션 섹션 1)
-            if (currentSectionIndex === 0 && currentSubIndex === 1) {
                 const logoAfterInner = document.querySelector(".animationLogoAfterInner");
                 if (logoAfterInner) {
                     gsap.to(logoAfterInner, {
@@ -213,6 +234,7 @@ window.addEventListener("wheel", (event) => {
                         ease: "linear",
                         onComplete: () => {
                             currentSectionIndex = 1;
+                            wheelEnabled = true;
                         }
                     });
                 }
@@ -234,8 +256,9 @@ window.addEventListener("wheel", (event) => {
 
             // 섹션 3
             if (currentSectionIndex === 2 && currentSubIndex === 8) {
+                wheelEnabled = false;
                 currentSection.style.position = 'fixed';
-                currentSection.style.zIndex = '99';
+                currentSection.style.zIndex = '98';
                 currentSection.classList.add("animateSec31Next");
 
                 // 약간의 지연 후 32 상태로 전환
@@ -243,6 +266,7 @@ window.addEventListener("wheel", (event) => {
                     currentSection.classList.add("animateSec32Next");
                     const infoText = document.querySelector("#animationSection3 .animationInfoWrap .animationInfo");
                     infoText.classList.add('activeOne');
+                    wheelEnabled = true;
                 }, 1500);
             }
 
@@ -283,19 +307,23 @@ window.addEventListener("wheel", (event) => {
 
             // 섹션 5
             if (currentImageIndex === 4 && currentSubIndex === 12) {
+                wheelEnabled = false;
                 currentSection.style.position = 'fixed';
-                currentSection.style.zIndex = '99';
+                currentSection.style.zIndex = '98';
                 currentSection.classList.add("animateSec51Next");
                 setTimeout(() => {
                     currentSection.classList.add("animateSec52Next");
+                    wheelEnabled = true;
                 }, 1000)
             }
             if (currentImageIndex === 4 && currentSubIndex === 13) {
+                wheelEnabled = false;
                 currentSection.classList.add("animateSec53Next");
                 setTimeout(() => {
                     currentSection.querySelector('.animationSectionLogo').classList.add('active');
                     currentSection.style.position = 'absolute';
                     document.body.style.overflow = "auto";
+                    wheelEnabled = true;
                 }, 500)
             }
 
@@ -304,20 +332,40 @@ window.addEventListener("wheel", (event) => {
         // 📌 힐 업 - 이전 단계로 이동
         if (currentSubIndex > 0) {
             // 타이틀 교체
-            if(currentSubIndex === 1){
-                document.querySelector('.animationHeaderOriginal').style.display = 'none'
-            }
-            if(currentSubIndex === 4){
-                sectionTitle.innerText = '01.브랜드 슬로건';
-            }
-            if(currentSubIndex === 6){
-                sectionTitle.innerText = '02.기업 철학';
-            }
-            if(currentSubIndex === 9){
-                sectionTitle.innerText = '03.합리적 서비스';
-            }
-            if(currentSubIndex === 11){
-                sectionTitle.innerText = '04.진심 어린 서비스';
+            switch (currentSubIndex) {
+                case 2:
+                    document.querySelector('.animationHeaderOriginal').style.display = 'none';
+                    document.querySelector('.animationHeaderOriginal').style.display = 'none';
+                    progressHeaderLine.style.width = '0%';
+                    break;
+                case 5:
+                    sectionTitle.innerText = '01.브랜드 슬로건';
+                    progressHeaderLine.style.width = '20%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
+                    sectionMenu[0].classList.add('active');
+                    break;
+                case 7:
+                    sectionTitle.innerText = '02.기업 철학';
+                    progressHeaderLine.style.width = '40%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
+                    sectionMenu[1].classList.add('active');
+                    break;
+                case 10:
+                    sectionTitle.classList.remove('black');
+                    sectionTitle.innerText = '03.합리적 서비스';
+                    progressHeaderLine.style.width = '60%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
+                    sectionMenu.forEach((item) => item.classList.remove('black'));
+                    sectionMenu[2].classList.add('active');
+                    break;
+                case 12:
+                    sectionTitle.classList.add('black');
+                    sectionTitle.innerText = '04.진심 어린 서비스';
+                    progressHeaderLine.style.width = '80%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
+                    sectionMenu.forEach((item) => item.classList.add('black'));
+                    sectionMenu[3].classList.add('active');
+                    break;
             }
 
             const currentClass = `animateHead${currentSectionIndex}${currentSubIndex}Next`;
@@ -353,6 +401,7 @@ window.addEventListener("wheel", (event) => {
             }
 
             if (currentSectionIndex === 2 && currentSubIndex === 8) {
+                wheelEnabled = false;
                 currentSection.classList.remove("animateSec32Next");
                 const infoText = document.querySelector("#animationSection3 .animationInfoWrap .animationInfo");
                 infoText.classList.remove('activeOne');
@@ -363,6 +412,7 @@ window.addEventListener("wheel", (event) => {
                     setTimeout(() => {
                         currentSection.style.position = 'absolute';
                         currentSection.style.zIndex = '1';
+                        wheelEnabled = true;
                     },1500)
                 }, 1500);
             }
@@ -398,27 +448,31 @@ window.addEventListener("wheel", (event) => {
 
             // 섹션 5
             if (currentImageIndex === 4 && currentSubIndex === 12) {
+                wheelEnabled = false;
                 currentSection.classList.remove("animateSec52Next");
                 setTimeout(() => {
                     currentSection.classList.remove("animateSec51Next");
                     setTimeout(() => {
                         currentSection.style.position = 'relative';
                         currentSection.style.zIndex = '1';
+                        wheelEnabled = true;
                     },1000)
                 }, 1000)
             }
 
             if (currentImageIndex === 4 &&  currentSubIndex === 13) {
+                wheelEnabled = false;
                 currentSection.querySelector('.animationSectionLogo').classList.remove('active');
                 currentSection.style.position = 'fixed';
                 document.body.style.overflow = "hidden";
                 setTimeout(() => {
                     currentSection.classList.remove("animateSec53Next");
+                    wheelEnabled = true;
                 }, 500)
             }
-            if (currentImageIndex === 4 && currentSubIndex === 14) {
-                isScrolling = true;
-            }
+            // if (currentImageIndex === 4 && currentSubIndex === 14) {
+            //     isScrolling = true;
+            // }
             currentSubIndex--;
         }
     }
@@ -428,4 +482,127 @@ window.addEventListener("wheel", (event) => {
     setTimeout(() => {
         isScrolling = false;
     }, scrollDelay);
+
+    console.log(`현재 섹션: ${currentSectionIndex}, 서브 인덱스: ${currentSubIndex}`);
+});
+
+// 사이드 메뉴 선택
+document.addEventListener("DOMContentLoaded", () => {
+    const sectionMenuItems = document.querySelectorAll('.sidebar-menu li');
+    const sections = document.querySelectorAll('.animationSection');
+    const sectionTitles = [
+        '01.브랜드 슬로건',
+        '02.기업 철학',
+        '03.합리적 서비스',
+        '04.진심 어린 서비스',
+        '05.브랜드 네이밍'
+    ];
+    const progressPercentages = [20, 40, 60, 80, 100];
+    const currentSectionId = sectionIds[currentSectionIndex];
+    const currentSection = document.getElementById(currentSectionId);
+    const sectionTitle = document.querySelector('.sectionTitle');
+    const progressHeaderLine = document.querySelector('.progressHeaderLine');
+
+    sectionMenuItems.forEach((menuItem, index) => {
+        menuItem.addEventListener('click', () => {
+            // 섹션 2 초기화
+            const animationSection2 = document.getElementById('animationSection2');
+            animationSection2.classList.remove(
+                'animateSec22Next', 'animateSec23Next',
+                'animateSec24Next', 'animateSec25Next', 'animateSec26Next'
+            );
+
+            // 섹션 3 초기화
+            const animationSection3 = document.getElementById('animationSection3');
+            const imgContainers = document.querySelectorAll('#animationSection3 .animationImgCont');
+            const infoSections = document.querySelectorAll('#animationSection3 .animationInfo');
+            animationSection3.classList.remove('animateSec31Next', 'animateSec32Next');
+            animationSection3.style.position = 'absolute';
+            animationSection3.style.zIndex = '1';
+            imgContainers.forEach(container => container.classList.remove('active'));
+            infoSections.forEach(section => section.classList.remove('activeOne'));
+
+            // 섹션 5 초기화
+            const animationSection5 = document.getElementById('animationSection5');
+            const animationSectionLogo = animationSection5.querySelector('.animationSectionLogo');
+            animationSection5.classList.remove('animateSec51Next', 'animateSec52Next', 'animateSec53Next');
+            animationSection5.style.position = 'relative';
+            animationSection5.style.zIndex = '1';
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // 부드럽게 이동
+            });
+
+            animationSectionLogo.classList.remove('active');
+            document.body.style.overflow = 'hidden'; // 초기 스크롤 상태
+            console.log('menuItem',menuItem);
+            console.log('sections',sections);
+            sectionMenuItems.forEach(item => item.classList.remove('black'));
+            sectionMenuItems.forEach(item => item.classList.remove('active'));
+            menuItem.classList.add('active');
+            currentImageIndex = 1;
+            sectionTitle.classList.remove('black');
+            sectionTitle.innerText = sectionTitles[index];
+            progressHeaderLine.style.width = `${progressPercentages[index]}%`;
+
+            currentSectionIndex = [1, 1, 2, 2, 4][index];
+            currentSubIndex = [2, 5, 7, 10, 12][index];
+
+            if(currentSectionIndex === 1 && currentSubIndex === 2){
+                currentSection.classList.add('animateSec21Next');
+            }
+            if(currentSectionIndex === 1 && currentSubIndex === 5){
+                currentSection.classList.add('animateSec21Next');
+                animationSection2.classList.add(
+                    'animateSec22Next', 'animateSec23Next',
+                    'animateSec24Next'
+                );
+            }
+            if(currentSectionIndex === 2 && currentSubIndex === 7){
+                currentSection.classList.add('animateSec21Next');
+                animationSection2.classList.add(
+                    'animateSec22Next', 'animateSec23Next',
+                    'animateSec24Next','animateSec25Next',
+                    'animateSec26Next'
+                );
+            }
+            if(currentSectionIndex === 2 && currentSubIndex === 10){
+                currentSection.classList.add('animateSec21Next');
+                animationSection2.classList.add(
+                    'animateSec22Next', 'animateSec23Next',
+                    'animateSec24Next','animateSec25Next',
+                    'animateSec26Next'
+                );
+                currentImageIndex = 3;
+                animationSection3.classList.add('animateSec31Next', 'animateSec32Next');
+                animationSection3.style.position = 'fixed';
+                animationSection3.style.zIndex = '98';
+                imgContainers[2].classList.add('active');
+                infoSections[2].classList.add('activeOne');
+                sectionMenuItems[3].classList.add('black');
+                sectionTitle.classList.add('black');
+            }
+            if(currentSectionIndex === 4 && currentSubIndex === 12){
+                currentImageIndex = 4;
+                currentSection.classList.add('animateSec21Next');
+                animationSection2.classList.add(
+                    'animateSec22Next', 'animateSec23Next',
+                    'animateSec24Next','animateSec25Next',
+                    'animateSec26Next'
+                );
+                animationSection3.classList.add('animateSec31Next', 'animateSec32Next');
+                animationSection3.style.position = 'fixed';
+                animationSection3.style.zIndex = '98';
+                imgContainers[2].classList.add('active');
+                infoSections[2].classList.add('activeOne');
+                animationSection5.classList.add('animateSec51Next');
+                setTimeout(() => {
+                    animationSection5.classList.add("animateSec52Next");
+                }, 1000)
+                animationSection5.style.position = 'fixed';
+                animationSection5.style.zIndex = '98';
+            }
+        });
+    });
 });

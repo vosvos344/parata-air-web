@@ -193,14 +193,13 @@ button {
     }
 }
 
-
 .animationHeaderOriginal{
     height: 58px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 99;
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 .animationHeaderOriginal .animationHeaderInner{
@@ -237,7 +236,7 @@ button {
     text-align: right;
     color: #FFF;
 }
-.animationHeaderOriginal .animationHeaderToc.black strong{
+.animationHeaderOriginal .animationHeaderToc .sectionTitle.black{
     color: #000;
 }
 .animationHeaderOriginal .animationHeaderToc span{
@@ -248,6 +247,92 @@ button {
 }
 .animationHeaderOriginal .animationHeaderToc.black span{
     background: url("../images/menu_outline_black.svg") no-repeat center / 100%;
+}
+.sidebar-menu {
+    position: fixed;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    color: #ffffff;
+    font-family: "Pretendard", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 2.5;
+    z-index: 99;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-align: right;
+    height: 40px;
+}
+
+.sidebar-menu li.active span {
+    color: #ffffff;
+    font-weight: 700;
+    display: block;
+}
+
+.sidebar-menu li span {
+    color: #aaa;
+    transition: color 0.3s ease;
+    display: none;
+}
+.sidebar-menu .menu-dot {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 50%;
+    margin-left: 16px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.sidebar-menu .menu-dot::after{
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.sidebar-menu li:hover .menu-dot,
+.sidebar-menu li.active .menu-dot {
+    border: 1px solid #fff;
+}
+.sidebar-menu li:hover .menu-dot::after,
+.sidebar-menu li.active .menu-dot::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #fff;
+}
+.sidebar-menu li.black .menu-dot::after{
+    background-color: #fff;
+}
+.sidebar-menu li.black span{
+    color: #111;
+}
+.sidebar-menu li.black:hover .menu-dot,
+.sidebar-menu li.black.active .menu-dot{
+    border: 1px solid #111;
+}
+.sidebar-menu li.black:hover .menu-dot::after,
+.sidebar-menu li.black.active .menu-dot::after {
+    background-color: #111;
 }
 #animationSection1{
     position: fixed;

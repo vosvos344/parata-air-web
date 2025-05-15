@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,11 +45,35 @@
         </div>
     </div>
 
+    <div class="sidebar-menu">
+        <ul>
+            <li class="active">
+                <span>브랜드 슬로건</span>
+                <div class="menu-dot"></div>
+            </li>
+            <li>
+                <span>기업 철학</span>
+                <div class="menu-dot"></div>
+            </li>
+            <li>
+                <span>합리적 서비스</span>
+                <div class="menu-dot"></div>
+            </li>
+            <li>
+                <span>진심 어린 서비스</span>
+                <div class="menu-dot"></div>
+            </li>
+            <li>
+                <span>브랜드 네이밍</span>
+                <div class="menu-dot"></div>
+            </li>
+        </ul>
+    </div>
 
     <div class="animationWrap" id="animationWrap">
         <div class="animationMainLanguage">
-            <a href="/kr" class="langLink langActive">KOR</a>
-            <a href="/en" class="langLink">ENG</a>
+            <a href="./kr" class="langLink langActive">KOR</a>
+            <a href="./en" class="langLink">ENG</a>
         </div>
         <div class="animationTopSection" id="animationTopSection">
             <section class="animationHeaderOriginal" style="display: none;">

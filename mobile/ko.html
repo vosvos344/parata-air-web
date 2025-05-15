@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{mobile/layouts/layout}">
+<html lang="ko">
+<head>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARATA AIR (파라타 항공)</title>
 
-<th:block layout:fragment="script"></th:block>
+    <link rel="icon" href="../img/icon/favicon.png">
+    <link rel="stylesheet" type="text/css" href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css'>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-3.7.1.min.js"></script>
 
-<th:block layout:fragment="content">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="../css/animate.min.css">
+    <script src="../js/wow.min.js"></script>
+
+    <!--<script src="js/smoothwheel.js"></script>-->
+    <script src="../js/index.js"></script>
+
+</head>
+<body>
+    <script>
+        const lang = "ko";
+    </script>
     <div class="loading">
         <div class="loading-inner">
             <div class="bar-wrap">
@@ -14,7 +32,7 @@
 
                 </div>
                 <div class="icon">
-                    <img src="img/icon/flight.svg">
+                    <img src="../img/icon/flight.svg">
                 </div>
             </div>
 
@@ -24,20 +42,48 @@
 
     <div class="header">
         <div class="logo">
-            <img src="img/logo.svg">
+            <img src="../img/logo.svg">
         </div>
-
-        <span class="navTxt"></span>
+        <div class="menu" onclick="modalEvent()"><img src="../img/menu.png"/></div>
+<!--        <span class="navTxt"></span>-->
     </div>
 
+    <div id="modal">
+        <div class="modal-head">
+            <div><img src="../img/modal-logo.png" /></div>
+            <div onclick="closeEvent()"><img src="../img/close.png" /></div>
+        </div>
+        <ul class="modal-list">
+            <a href="#"><li>브랜드 슬로건</li></a>
+            <a href="#"><li>기업 철학</li></a>
+            <a href="#"><li>합리적 서비스</li></a>
+            <a href="#"><li>진심 어린 서비스</li></a>
+            <a href="#"><li>브랜드 네이밍</li></a>
+        </ul>
+        <div class="modal-footer">
+            <a href="#" class="active">KOR</a>
+            <a href="#" class="">ENG</a>
+        </div>
+    </div>
 
+    <script>
+        function modalEvent() {
+            console.log('eee');
+            $('#modal').addClass('active');
+        };
+
+        function closeEvent() {
+            console.log('eee2');
+            $('#modal').removeClass('active');
+        };
+    </script>
     <section class="animateWrap">
         <div class="symbol-wrap">
             <div class="symbol-inner">
 
                 <div class="symbol">
                     <div class="logoImg">
-                        <img src="./img/logo-back.svg">
+                        <img src="../img/logo-back.svg">
                     </div>
                     <div class="top"></div>
                     <div class="left"></div>
@@ -66,14 +112,14 @@
                 </div>
 
                 <div class="video-wrap">
-                    <video src="video/sky-1.mp4" muted autoplay playsinline loop></video>
+                    <video src="../video/sky-1.mp4" muted autoplay playsinline loop></video>
                 </div>
 
 
 
             </div>
         </section>
-
+        <span class="navTxt"></span>
         <section class="section3 ">
             <div class="inner">
                 <div class="container">
@@ -81,7 +127,7 @@
 
                     <div class="sec1">
                         <div class="video-wrap">
-                            <video src="video/sky-2.mp4" muted autoplay playsinline loop></video>
+                            <video src="../video/sky-2.mp4" muted autoplay playsinline loop></video>
                         </div>
                         <div class="text-wrap">
                             <div class="first txt">
@@ -115,7 +161,7 @@
                     <div class="sec2" >
 
                         <div class="img-wrap">
-                            <img src="img/section3-bg.png">
+                            <img src="../img/section3-bg.png">
                         </div>
 
 
@@ -218,7 +264,7 @@
                             </div>
                             <div class="third">
                                 <div class="">
-                                    <img src="./img/section3-1-1.png">
+                                    <img src="../img/section3-1-1.png">
                                 </div>
                             </div>
 
@@ -264,7 +310,7 @@
                             </div>
                             <div class="fifth">
                                 <div class="">
-                                    <img src="./img/section3-1-2.png">
+                                    <img src="../img/section3-1-2.png">
                                 </div>
                             </div>
                         </div>
@@ -277,7 +323,7 @@
                         </div>
                         <div class="third">
                             <div class="">
-                                <img src="./img/section3-1-3.png">
+                                <img src="../img/section3-1-3.png">
                             </div>
                         </div>
                         <div class="second">
@@ -332,7 +378,7 @@
                         </div>
                         <div class="fifth">
                             <div class="">
-                                <img src="./img/section3-1-4.png">
+                                <img src="../img/section3-1-4.png">
                             </div>
                         </div>
                     </div>
@@ -399,9 +445,9 @@
                 <div class="video-wrap">
                     <div class="video-inner">
                         <div class="video-logo">
-                            <img src="img/logo.svg">
+                            <img src="../img/logo.svg">
                         </div>
-                        <video src="video/sky-3.mp4" muted autoplay playsinline loop></video>
+                        <video src="../video/sky-3.mp4" muted autoplay playsinline loop></video>
                     </div>
                 </div>
             </div>
@@ -423,7 +469,7 @@
                         <div class="fly-bar">
                             <div class="fly-line-wrap"></div>
                             <div class="fly-bar-inner">
-                                <img src="./img/icon/flight-w.svg">
+                                <img src="../img/icon/flight-w.svg">
                             </div>
                         </div>
                         <span class="depth1">Dark Night Blue</span>
@@ -468,27 +514,27 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <strong>Look & Feel</strong>
-                                    <img src="./img/slide/slide-1.png">
+                                    <img src="../img/slide/slide-1.png">
                                 </div>
                                 <div class="swiper-slide">
                                     <strong>Look & Feel</strong>
-                                    <img src="./img/slide/slide-2.png">
+                                    <img src="../img/slide/slide-2.png">
                                 </div>
                                 <div class="swiper-slide">
                                     <strong>Look & Feel</strong>
-                                    <img src="./img/slide/slide-3.png">
+                                    <img src="../img/slide/slide-3.png">
                                 </div>
                                 <div class="swiper-slide">
                                     <strong>Look & Feel</strong>
-                                    <img src="./img/slide/slide-4.png">
+                                    <img src="../img/slide/slide-4.png">
                                 </div>
                                 <div class="swiper-slide">
                                     <strong>Look & Feel</strong>
-                                    <img src="./img/slide/slide-5.png">
+                                    <img src="../img/slide/slide-5.png">
                                 </div>
                                 <div class="swiper-slide">
                                     <strong>Look & Feel</strong>
-                                    <img src="./img/slide/slide-6.png">
+                                    <img src="../img/slide/slide-6.png">
                                 </div>
                             </div>
                             <div class="swiper-pagination"></div>
@@ -533,7 +579,7 @@
                 <div class="footer">
                     <div class="lang">
                         <a href="">
-                            <img src="./img/ft-logo.svg">
+                            <img src="../img/ft-logo.svg">
                         </a>
                         <button type="button" onclick="toggleCommonPopup('popup-lang');" class="langChange">KR</button>
                     </div>
@@ -558,7 +604,7 @@
                 <div class="text">
                     <h4>변경하실 언어를 선택해 주세요</h4>
                     <button type="button" class="common-popup-close__btn" onclick="toggleCommonPopup();">
-                        <img src="./img/icon/close.svg">
+                        <img src="../img/icon/close.svg">
                     </button>
                 </div>
                 <div class="list">
@@ -567,10 +613,8 @@
                 </div>
             </div>
             <div class="common-popup__footer">
-
             </div>
-
         </div>
     </div>
-</th:block>
+</body>
 </html>

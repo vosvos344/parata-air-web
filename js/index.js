@@ -329,7 +329,7 @@ $(document).ready(function () {
 
 
 $(document).on("click", ".common-popup__bg", function (e) {
-    $(e.target).closest(".common-popup__bg").length || toggleCommonPopup()
+	$(e.target).closest(".common-popup__bg").length || toggleCommonPopup()
 })
 
 
@@ -354,11 +354,11 @@ function toggleCommonPopup(e) {
 
 
 function debounce(func, wait) {
-    let timeout;
-    return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
+	let timeout;
+	return function (...args) {
+		clearTimeout(timeout);
+		timeout = setTimeout(() => func.apply(this, args), wait);
+	};
 }
 
 
@@ -374,7 +374,7 @@ $(window).on("load", function(){
 })
 
 
-	let isAnimating = false;
+let isAnimating = false;
 
 
 $(window).scroll(function(){
@@ -743,148 +743,148 @@ var prata = {
 		// 	}
 		// })
 
-/*
-		const symbolInner = $(".symbol-inner");
-		const section1Bound = document.querySelector(".section1").getBoundingClientRect();
+		/*
+                const symbolInner = $(".symbol-inner");
+                const section1Bound = document.querySelector(".section1").getBoundingClientRect();
 
-		console.log(section1Bound);
-		if(!isAnimating){
+                console.log(section1Bound);
+                if(!isAnimating){
 
-			let transitionCount = 0;
+                    let transitionCount = 0;
 
-			if(section1Bound.top < 0 && section1Bound.top > -200) {
-					$("body").css("overflow", "hidden");
-					isAnimating = true;
-					$(".symbol").addClass("loading");
-					$(".symbol").on("transitionend", function (e) {
+                    if(section1Bound.top < 0 && section1Bound.top > -200) {
+                            $("body").css("overflow", "hidden");
+                            isAnimating = true;
+                            $(".symbol").addClass("loading");
+                            $(".symbol").on("transitionend", function (e) {
 
-						if(e.originalEvent.propertyName === "width"){
-							transitionCount++;
+                                if(e.originalEvent.propertyName === "width"){
+                                    transitionCount++;
 
-							if (transitionCount === 1) {
-								$(".symbol-inner").addClass("is-active");
-								$(".symbol").css("width", "177px");
-								//$(window).scrollTop(2800);
-							 } else if (transitionCount === 2) {
-								isAnimating = false;
-								$("body").css("overflow", "auto");
-							}
+                                    if (transitionCount === 1) {
+                                        $(".symbol-inner").addClass("is-active");
+                                        $(".symbol").css("width", "177px");
+                                        //$(window).scrollTop(2800);
+                                     } else if (transitionCount === 2) {
+                                        isAnimating = false;
+                                        $("body").css("overflow", "auto");
+                                    }
 
-						}
-
-
-					});
+                                }
 
 
-			}
-
-			if(section1Bound.top <= -2800){
-
-				//$("body").css("overflow", "hidden");
-				//isAnimating = true;
-
-				const textResizeEnd = $(".section1").outerHeight() * 0.7;
-
-				const textUpEnd = $(".section1").outerHeight() - $(window).outerHeight();
-				const textLeftTerm = ($(window).outerWidth() / 2);
-				const textLeftStart = textUpEnd
-				const textLeftEnd = textLeftStart + ($(window).outerHeight() * 0.9)
-				const textLeft = 108
-
-				$(".symbol").css({"top":"26px"});
+                            });
 
 
-				$(".symbol").on("transitionend", function (e) {
+                    }
 
-					if(e.originalEvent.propertyName === "top"){
-						$(".symbol").css("left", textLeft + "px");
-						$(".header").addClass("is-opacity");
-						$("html, body").animate({
-							scrollTop : textLeftEnd
-						}, 500);
+                    if(section1Bound.top <= -2800){
 
-					}
+                        //$("body").css("overflow", "hidden");
+                        //isAnimating = true;
 
-					if(e.originalEvent.propertyName === "left"){
+                        const textResizeEnd = $(".section1").outerHeight() * 0.7;
 
-						$(".symbol-wrap").css({
-							position: "absolute",
-							top: textLeftStart + "px"
-						})
-					}
+                        const textUpEnd = $(".section1").outerHeight() - $(window).outerHeight();
+                        const textLeftTerm = ($(window).outerWidth() / 2);
+                        const textLeftStart = textUpEnd
+                        const textLeftEnd = textLeftStart + ($(window).outerHeight() * 0.9)
+                        const textLeft = 108
 
-				});
+                        $(".symbol").css({"top":"26px"});
 
 
+                        $(".symbol").on("transitionend", function (e) {
 
-				isAnimating = false;
-				$("body").css("overflow", "auto");
+                            if(e.originalEvent.propertyName === "top"){
+                                $(".symbol").css("left", textLeft + "px");
+                                $(".header").addClass("is-opacity");
+                                $("html, body").animate({
+                                    scrollTop : textLeftEnd
+                                }, 500);
 
-			}
+                            }
 
-		}
-		*/
+                            if(e.originalEvent.propertyName === "left"){
+
+                                $(".symbol-wrap").css({
+                                    position: "absolute",
+                                    top: textLeftStart + "px"
+                                })
+                            }
+
+                        });
+
+
+
+                        isAnimating = false;
+                        $("body").css("overflow", "auto");
+
+                    }
+
+                }
+                */
 
 
 		/*섹션 4 구간*/
-		var section4 = $(".section4").offset().top;
-		var sectionNext5 = $(".section5").offset().top;
-		var sec4End = sectionNext5 - $(window).height();
-
-		if(this.scrollTop >= section4 && $(window).scrollTop() <= sec4End) {
-			$(".section4").addClass("is-fixed");
-			$(".navTxt").text(((lang=="ko")?"05. 브랜드 가치":"05. Brand Value"));
-			//$(".section31").addClass("is-fixed");
-
-		}else{
-			$(".section4").removeClass("is-fixed");
-		}
-
-
-
-
-		let sec4Bound = document.querySelector(".section4").getBoundingClientRect();
-		let sec4Inner =  document.querySelector(".section4 .inner").getBoundingClientRect();
-		let sec4TextFirst = document.querySelector(".section4 .text-wrap.first").getBoundingClientRect();
-		let sec4TextSecond = document.querySelector(".section4 .text-wrap.second").getBoundingClientRect();
-		let sec4TextThird = document.querySelector(".section4 .text-wrap.third").getBoundingClientRect();
-
-		if(sec4Bound.top < 0 && sec4Bound.bottom - $(window).height() > 0) {
-
-
-			const videoTerm = 0
-			let videoPer = Math.abs(sec4Bound.top) / videoTerm
-			if (videoPer > 1) {
-				videoPer = 1
-			}
-
-
-			//console.log(sec4Bound.top);
-			//console.log(sec4Bound.top + $(window).height());
-
-			//console.log(this.scrollTop);
-			//console.log(sec4Bound.top);
-
-			$(".section4 .text-wrap.first").addClass("on");
-			$(".section4 .inner").css("top", sec4Bound.top);
-
-
-			if(sec4TextFirst.bottom - 150 <= 0){
-
-				$(".section4 .text-wrap.second").addClass("on");
-			}else{
-				$(".section4 .text-wrap.second").removeClass("on");
-			}
-
-			if(sec4TextSecond.bottom - 200 <= 0){
-				$(".section4 .text-wrap.third").addClass("on");
-			}else{
-				$(".section4 .text-wrap.third").removeClass("on");
-			}
-
-		}else{
-			$(".section4 .text-wrap.first").removeClass("on");
-		}
+		// var section4 = $(".section4").offset().top;
+		// var sectionNext5 = $(".section5").offset().top;
+		// var sec4End = sectionNext5 - $(window).height();
+		//
+		// if(this.scrollTop >= section4 && $(window).scrollTop() <= sec4End) {
+		// 	$(".section4").addClass("is-fixed");
+		// 	$(".navTxt").text(((lang=="ko")?"05. 브랜드 가치":"05. Brand Value"));
+		// 	//$(".section31").addClass("is-fixed");
+		//
+		// }else{
+		// 	$(".section4").removeClass("is-fixed");
+		// }
+		//
+		//
+		//
+		//
+		// let sec4Bound = document.querySelector(".section4").getBoundingClientRect();
+		// let sec4Inner =  document.querySelector(".section4 .inner").getBoundingClientRect();
+		// let sec4TextFirst = document.querySelector(".section4 .text-wrap.first").getBoundingClientRect();
+		// let sec4TextSecond = document.querySelector(".section4 .text-wrap.second").getBoundingClientRect();
+		// let sec4TextThird = document.querySelector(".section4 .text-wrap.third").getBoundingClientRect();
+		//
+		// if(sec4Bound.top < 0 && sec4Bound.bottom - $(window).height() > 0) {
+		//
+		//
+		// 	const videoTerm = 0
+		// 	let videoPer = Math.abs(sec4Bound.top) / videoTerm
+		// 	if (videoPer > 1) {
+		// 		videoPer = 1
+		// 	}
+		//
+		//
+		// 	//console.log(sec4Bound.top);
+		// 	//console.log(sec4Bound.top + $(window).height());
+		//
+		// 	//console.log(this.scrollTop);
+		// 	//console.log(sec4Bound.top);
+		//
+		// 	$(".section4 .text-wrap.first").addClass("on");
+		// 	$(".section4 .inner").css("top", sec4Bound.top);
+		//
+		//
+		// 	if(sec4TextFirst.bottom - 150 <= 0){
+		//
+		// 		$(".section4 .text-wrap.second").addClass("on");
+		// 	}else{
+		// 		$(".section4 .text-wrap.second").removeClass("on");
+		// 	}
+		//
+		// 	if(sec4TextSecond.bottom - 200 <= 0){
+		// 		$(".section4 .text-wrap.third").addClass("on");
+		// 	}else{
+		// 		$(".section4 .text-wrap.third").removeClass("on");
+		// 	}
+		//
+		// }else{
+		// 	$(".section4 .text-wrap.first").removeClass("on");
+		// }
 
 
 		/*섹션 5 구간*/
@@ -892,10 +892,10 @@ var prata = {
 		var expandHeight = Math.max(100, this.scrollTop - section5);
 		var dynamicPadding = Math.max(16 - (this.scrollTop - section5) / 10); // padding 감소
 
-		var sectionNext6 = $(".section6").offset().top;
-		var sec5End = sectionNext4 - $(window).height();
 
-		if(this.scrollTop >= section5 && $(window).scrollTop() <= sec5End) {
+
+		if(this.scrollTop >= section5 ) {
+			$(".section31").addClass("is-fixed");
 			$(".section5").addClass("is-fixed");
 			$(".navTxt").text(((lang=="ko")?"브랜드 네이밍":"Brand Naming"));
 			//$(".section31").addClass("is-fixed");
@@ -963,10 +963,9 @@ var prata = {
 
 		/*섹션 31 구간*/
 		var section31 = $(".section31").offset().top;
-		var sectionNext4 = $(".section4").offset().top;
-		var sec31End = sectionNext4 - $(window).height();
 
-		if(this.scrollTop >= section31 && $(window).scrollTop() <= sec31End) {
+
+		if(this.scrollTop >= section31) {
 			if($(window).scrollTop() >= $(".section31 .top-wrap").offset().top){
 				// $(".navTxt").text(((lang=="ko")?"03. 합리적 프리미엄":"03. Reasonable"));
 				$(".navTxt").text(((lang=="ko")?"03. 합리적 서비스":"03. Reasonable"));
