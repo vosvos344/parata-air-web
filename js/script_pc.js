@@ -163,7 +163,7 @@ function startNextAnimations() {
 // 📌 원스크롤 애니메이션
 window.addEventListener("wheel", (event) => {
     if (!wheelEnabled || isScrolling || isScrollEvent) return;
-
+    console.log(`현재 섹션: ${currentSectionIndex}, 서브 인덱스: ${currentSubIndex}`);
     const direction = event.deltaY > 0 ? 1 : -1;
     const sectionTitle = document.querySelector('.sectionTitle');
     const sectionMenu = document.querySelectorAll('.sidebar-menu li');
@@ -278,6 +278,11 @@ window.addEventListener("wheel", (event) => {
             }
 
             if (currentSectionIndex === 2 && currentSubIndex > 8) {
+                if(currentSubIndex === 11){
+                    console.log('여길 타야지 섹션4를 감');
+                    currentSectionIndex = 3;
+                }
+
                 const imgContainers = document.querySelectorAll("#animationSection3 .animationImgCont");
                 const infoSections = document.querySelectorAll("#animationSection3 .animationInfo");
 
@@ -304,19 +309,20 @@ window.addEventListener("wheel", (event) => {
                             container.classList.remove("active");
                         }
                     });
-                    currentImageIndex++;
+
+                    if(currentImageIndex < 4) {
+                        currentImageIndex++;
+                    }
                 }
 
-                if(currentImageIndex === 4 && currentSubIndex === 11){
-                    currentSectionIndex = 3;
-                    currentSubIndex === 12;
-                }
             }
 
             // 섹션 4
             if (currentSectionIndex === 3 && currentSubIndex >= 12) {
-                currentSection.style.position = 'fixed';
-                currentSection.style.zIndex = '98';
+                if(currentSectionIndex === 3 && currentSubIndex === 14){
+                    currentSectionIndex = 4;
+                }
+                currentSection.classList.add('on');
                 const animationList = document.querySelectorAll('.animationList li');
 
 
@@ -328,11 +334,6 @@ window.addEventListener("wheel", (event) => {
                         container.classList.remove("listOn");
                     }
                 });
-
-                if(currentListIndex === 2 && currentSubIndex === 14){
-                    currentSectionIndex = 4;
-                    currentSubIndex === 15;
-                }
 
                 if(currentListIndex < 2) {
                     currentListIndex++;
@@ -493,30 +494,28 @@ window.addEventListener("wheel", (event) => {
             }
 
             // 섹션 4
+            if (currentSectionIndex === 3 && currentSubIndex === 12) {
+                console.log('??? 여길 안타나??');
+                currentSectionIndex = 2;
+                currentSection.classList.remove('on')
+            }
+
             if (currentSectionIndex === 3 && currentSubIndex >= 12) {
                 console.log('currentListIndex', currentListIndex);
                 const animationList = document.querySelectorAll('.animationList li');
 
                 // 리스트 인덱스 감소 (최소 0)
                 if (currentListIndex > 0) {
-                    currentListIndex--;
-                }
-
                 // 리스트 활성화 상태 업데이트
-                animationList.forEach((container, index) => {
-                    if (index === currentListIndex) {
-                        container.classList.add("listOn");
-                    } else {
-                        container.classList.remove("listOn");
-                    }
-                });
+                    animationList.forEach((container, index) => {
+                        if (index === currentListIndex) {
+                            container.classList.add("listOn");
+                        } else {
+                            container.classList.remove("listOn");
+                        }
+                    });
 
-                // 특정 조건에서 섹션 상태 복구
-                if (currentListIndex === 0 && currentSubIndex === 12) {
-                    console.log('??? 여길 안타나??');
-                    currentSection.style.position = 'relative';
-                    currentSection.style.zIndex = '1';
-                    currentSectionIndex = 2;
+                    currentListIndex--;
                 }
 
             }
@@ -563,7 +562,6 @@ window.addEventListener("wheel", (event) => {
         isScrolling = false;
     }, scrollDelay);
 
-    console.log(`현재 섹션: ${currentSectionIndex}, 서브 인덱스: ${currentSubIndex}`);
 });
 let defaultHeight = 4000;
 window.addEventListener("scroll", (event) => {
@@ -765,8 +763,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // 섹션 4 초기화
             const animationSection4 = document.getElementById('animationSection4');
             const animationList = document.querySelectorAll('#animationSection4 li');
-            animationSection4.style.position = 'absolute';
-            animationSection4.style.zIndex = '1';
+            animationSection4.classList.remove('on');
             animationList.forEach(container => container.classList.remove('listOn'));
 
             // 섹션 5 초기화
@@ -872,7 +869,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if(index === 5){
                 currentSectionIndex = 4;
-                currentSubIndex = 17;
+                currentSubIndex = 16;
                 currentImageIndex = 4;
                 currentListIndex = 2;
                 wheelEnabled = false;
@@ -886,8 +883,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 animationSection3.classList.add('animateSec31Next', 'animateSec32Next');
                 animationSection3.style.position = 'fixed';
                 animationSection3.style.zIndex = '98';
-                animationSection4.style.position = 'fixed';
-                animationSection4.style.zIndex = '98';
+                animationSection4.classList.add('on');
                 imgContainers[3].classList.add('active');
                 infoSections[3].classList.add('activeOne');
                 animationList[2].classList.add('listOn');
@@ -906,7 +902,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if(index === 6){
                 currentSectionIndex = 4;
-                currentSubIndex = 17;
+                currentSubIndex = 16;
                 currentImageIndex = 4;
                 currentListIndex = 2;
                 wheelEnabled = false;
@@ -920,8 +916,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 animationSection3.classList.add('animateSec31Next', 'animateSec32Next');
                 animationSection3.style.position = 'fixed';
                 animationSection3.style.zIndex = '98';
-                animationSection4.style.position = 'fixed';
-                animationSection4.style.zIndex = '98';
+                animationSection4.classList.add('on');
                 imgContainers[3].classList.add('active');
                 infoSections[3].classList.add('activeOne');
                 animationList[2].classList.add('listOn');
