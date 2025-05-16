@@ -128,6 +128,20 @@ button, input, textarea {
 	font-weight: 600;
 	z-index: 10;
 }
+.navSubTxt{
+	padding-bottom: 12px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #ffffff;
+	transform: translateY(-50%);
+	transition: transform 0.5s ease-in-out;
+}
+.bottom-wrap .navSubTxt{
+	color: #111111;
+}
+.navSubTxt.on{
+	transform: translateY(0);
+}
 .header.shrink {
 	height: 60px;
 	display: flex;
@@ -856,7 +870,8 @@ button, input, textarea {
 }
 
 .index .section31 .top-text{
-	height:50vh;
+	/*height:50vh;*/
+	height:30vh;
 	padding-bottom:80px;
 }
 
@@ -892,7 +907,8 @@ button, input, textarea {
 
 .index .section31 .top-wrap .title-sub span{
 	display:block;
-	color: #BDC1C6;
+	/*color: #BDC1C6;*/
+	color: rgba(255,255,255,0.6);
 	font-size: 40px;
 	font-weight: 700;
 	line-height: 140%; /* 56px */
@@ -904,15 +920,15 @@ button, input, textarea {
 	transform: translateY(0%); /* 위로 올라오도록 */
 }
 
-.index .section31 .top-wrap .text-wrap .first{
+.index .section31 .top-wrap .text-wrap .first, .index .section31 .top-wrap .text-wrap .fourth{
 	margin-bottom:28px;
 }
 
-.index .section31 .top-wrap .text-wrap .first div{
+.index .section31 .top-wrap .text-wrap .first div, .index .section31 .top-wrap .text-wrap .fourth div{
 	overflow:hidden;
 }
 
-.index .section31 .top-wrap .text-wrap .first span{
+.index .section31 .top-wrap .text-wrap .first span, .index .section31 .top-wrap .text-wrap .fourth span{
 	display:block;
 	color: #FFF;
 	font-size: 28px;
@@ -925,17 +941,18 @@ button, input, textarea {
 
 
 
-.index .section31 .top-wrap .text-wrap .second{
+.index .section31 .top-wrap .text-wrap .second, .index .section31 .top-wrap .text-wrap .sixth{
 	margin-bottom:60px;
 }
 
-.index .section31 .top-wrap .text-wrap .second div{
+.index .section31 .top-wrap .text-wrap .second div, .index .section31 .top-wrap .text-wrap .sixth div{
 	overflow:hidden;
 }
 
-.index .section31 .top-wrap .text-wrap .second span{
+.index .section31 .top-wrap .text-wrap .second span, .index .section31 .top-wrap .text-wrap .sixth span{
 	display:block;
-	color: #BDC1C6;
+	/*color: #BDC1C6;*/
+	color: rgba(255,255,255, 0.7);
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 160%; /* 25.6px */
@@ -943,52 +960,52 @@ button, input, textarea {
 	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
 }
 
-.index .section31 .top-wrap .text-wrap .third {
+.index .section31 .top-wrap .text-wrap .third, .index .section31 .top-wrap .text-wrap .fifth {
 	margin-bottom:80px;
 }
 
-.index .section31 .top-wrap .text-wrap .third div{
+.index .section31 .top-wrap .text-wrap .third div,  .index .section31 .top-wrap .text-wrap .fifth div{
 	overflow:hidden;
 }
 
-.index .section31 .top-wrap .text-wrap .third img{
+.index .section31 .top-wrap .text-wrap .third img,  .index .section31 .top-wrap .text-wrap .fifth img{
 	display:block;
 	transform:translateY(100%);
 	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
 }
 
 
-.index .section31 .top-wrap .text-wrap .fourth{
-	margin-bottom:80px;
-}
+/*.index .section31 .top-wrap .text-wrap .fourth, .index .section31 .top-wrap .text-wrap .sixth{*/
+/*	margin-bottom:80px;*/
+/*}*/
 
-.index .section31 .top-wrap .text-wrap .fourth div{
-	overflow:hidden;
-}
+/*.index .section31 .top-wrap .text-wrap .fourth div, .index .section31 .top-wrap .text-wrap .sixth div{*/
+/*	overflow:hidden;*/
+/*}*/
 
-.index .section31 .top-wrap .text-wrap .fourth span{
-	color: #BDC1C6;
-	font-size: 16px;
-	font-weight: 500;
-	line-height: 160%; /* 25.6px */
-	display:block;
-	transform:translateY(100%);
-	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
-}
+/*.index .section31 .top-wrap .text-wrap .fourth span, .index .section31 .top-wrap .text-wrap .sixth span{*/
+/*	color: #BDC1C6;*/
+/*	font-size: 16px;*/
+/*	font-weight: 500;*/
+/*	line-height: 160%; !* 25.6px *!*/
+/*	display:block;*/
+/*	transform:translateY(100%);*/
+/*	transition: transform 0.5s ease-in-out; !* 애니메이션 효과 *!*/
+/*}*/
 
 
 
-.index .section31 .top-wrap .text-wrap .fifth{
+.index .section31 .top-wrap .text-wrap .seventh{
 	position:absolute;
 	width:calc(100% - 32px);
-	bottom:-80px;
+	bottom:-154px;
 }
 
 .index .section31 .fourth div{
 	overflow:hidden;
 }
 
-.index .section31 .fifth img{
+.index .section31 .seventh img{
 	display:block;
 	transform:translateY(100%);
 	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
@@ -996,19 +1013,21 @@ button, input, textarea {
 
 .index .section31 .bottom-wrap{
 	background:#ffffff;
-	padding:240px 16px 16px;
+	/*padding:240px 16px 16px;*/
+	padding:400px 16px 16px;
 }
 
-.index .section31 .bottom-wrap .first{
+.index .section31 .bottom-wrap .first, .index .section31 .bottom-wrap .fourth{
 	margin-bottom:24px;
 }
 
-.index .section31 .bottom-wrap .first div{
+.index .section31 .bottom-wrap .first div, .index .section31 .bottom-wrap .fourth div{
 	overflow:hidden;
 }
 
-.index .section31 .bottom-wrap .first span{
-	color: #000000;
+.index .section31 .bottom-wrap .first span, .index .section31 .bottom-wrap .fourth span{
+	/*color: #000000;*/
+	color: #111111;
 	font-size: 28px;
 	font-weight: 700;
 	line-height: 140%; /* 39.2px */
@@ -1023,12 +1042,13 @@ button, input, textarea {
 	margin-bottom: 48px;
 }
 
-.index .section31 .bottom-wrap .second div{
+.index .section31 .bottom-wrap .second div, .index .section31 .bottom-wrap .sixth div{
 	overflow:hidden;
 }
 
-.index .section31 .bottom-wrap .second span{
-	color: #757575;
+.index .section31 .bottom-wrap .second span, .index .section31 .bottom-wrap .sixth span{
+	/*color: #757575;*/
+	color: #111111;
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 160%; /* 25.6px */
@@ -1037,52 +1057,52 @@ button, input, textarea {
 	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
 }
 
-.index .section31 .bottom-wrap .third{
+.index .section31 .bottom-wrap .third, .index .section31 .bottom-wrap .fifth{
 	margin-bottom: 80px;
 }
 
-.index .section31 .bottom-wrap .third div{
+.index .section31 .bottom-wrap .third div, .index .section31 .bottom-wrap .fifth div{
 	overflow:hidden;
 }
 
-.index .section31 .bottom-wrap .third img{
+.index .section31 .bottom-wrap .third img, .index .section31 .bottom-wrap .fifth img{
 	display:block;
 	transform:translateY(100%);
 	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
 }
 
-.index .section31 .bottom-wrap .fourth{
-	margin-bottom: 60px;
-}
+/*.index .section31 .bottom-wrap .fourth{*/
+/*	margin-bottom: 60px;*/
+/*}*/
 
-.index .section31 .bottom-wrap .fourth div{
-	overflow:hidden;
-}
+/*.index .section31 .bottom-wrap .fourth div{*/
+/*	overflow:hidden;*/
+/*}*/
 
-.index .section31 .bottom-wrap .fourth span{
-	display:block;
-	color: #606060;
-	font-size: 16px;
-	font-weight: 500;
-	line-height: 160%; /* 25.6px */
-	transform:translateY(100%);
-	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
-}
+/*.index .section31 .bottom-wrap .fourth span{*/
+/*	display:block;*/
+/*	color: #606060;*/
+/*	font-size: 16px;*/
+/*	font-weight: 500;*/
+/*	line-height: 160%; !* 25.6px *!*/
+/*	transform:translateY(100%);*/
+/*	transition: transform 0.5s ease-in-out; !* 애니메이션 효과 *!*/
+/*}*/
 
 
-.index .section31 .bottom-wrap .fifth{
+/*.index .section31 .bottom-wrap .fifth{*/
 
-}
+/*}*/
 
-.index .section31 .bottom-wrap .fifth div{
-	overflow:hidden;
-}
+/*.index .section31 .bottom-wrap .fifth div{*/
+/*	overflow:hidden;*/
+/*}*/
 
-.index .section31 .bottom-wrap .fifth img{
-	display:block;
-	transform:translateY(100%);
-	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
-}
+/*.index .section31 .bottom-wrap .fifth img{*/
+/*	display:block;*/
+/*	transform:translateY(100%);*/
+/*	transition: transform 0.5s ease-in-out; !* 애니메이션 효과 *!*/
+/*}*/
 
 
 
@@ -1092,11 +1112,14 @@ button, input, textarea {
 .index .section31 .sec1 .top-wrap .text-wrap .third .on img,
 .index .section31 .sec1 .top-wrap .text-wrap .fourth .on span,
 .index .section31 .sec1 .top-wrap .text-wrap .fifth .on img,
+.index .section31 .sec1 .top-wrap .text-wrap .sixth .on span,
+.index .section31 .sec1 .top-wrap .text-wrap .seventh .on img,
 .index .section31 .sec1 .bottom-wrap .first .on span,
 .index .section31 .sec1 .bottom-wrap .second .on span,
 .index .section31 .sec1 .bottom-wrap .third .on img,
 .index .section31 .sec1 .bottom-wrap .fourth .on span,
-.index .section31 .sec1 .bottom-wrap .fifth .on img{
+.index .section31 .sec1 .bottom-wrap .fifth .on img,
+.index .section31 .sec1 .bottom-wrap .sixth .on span{
 	transform: translateY(0); /* 위로 올라오도록 */
 }
 
@@ -1438,7 +1461,8 @@ button, input, textarea {
 /*섹션 7*/
 .index .section7 .inner{
 	background:#161626;
-	padding:50px 16px 24px;
+	/*padding:50px 16px 24px;*/
+	padding:32px 16px 20px;
 }
 
 .index .section7 .inner .title-sub{
@@ -1579,7 +1603,7 @@ button, input, textarea {
 
 
 .index .section7 .inner .footer{
-	margin-top:80px;
+	/*margin-top:80px;*/
 	display:flex;
 	gap:44px;
 	flex-direction: column;

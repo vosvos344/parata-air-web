@@ -17,7 +17,8 @@ let currentSubIndex = 0;
 let isScrolling = false;
 const scrollDelay = 800; // 스크롤 처리 간격 (ms)
 let currentImageIndex = 1; // 섹션 3 이미지
-
+let isScrollEvent = false; // 스크롤 이벤트 적용
+let currentListIndex = 0;
 // 📌 페이지 로드 시 프로그레스 바 애니메이션 시작
 window.addEventListener("load", function() {
     const duration = 5;
@@ -161,7 +162,7 @@ function startNextAnimations() {
 
 // 📌 원스크롤 애니메이션
 window.addEventListener("wheel", (event) => {
-    if (!wheelEnabled || isScrolling) return;
+    if (!wheelEnabled || isScrolling || isScrollEvent) return;
 
     const direction = event.deltaY > 0 ? 1 : -1;
     const sectionTitle = document.querySelector('.sectionTitle');
@@ -173,7 +174,7 @@ window.addEventListener("wheel", (event) => {
     // 1 = 0, 2 ~ 7 = 1, 8 ~ 11 = 2, 12 ~ 13 = 3
     if (direction > 0) {
         // 📌 힐 다운 - 다음 단계로 이동
-        if (currentSubIndex < 14) {
+        if (currentSubIndex < 17) {
             currentSubIndex++;
             const currentClass = `animateHead${currentSectionIndex + 1}${currentSubIndex}Next`;
             const prevClass = `animateHead${currentSectionIndex + 1}${currentSubIndex}Prev`;
@@ -184,36 +185,42 @@ window.addEventListener("wheel", (event) => {
                 case 2:
                     document.querySelector('.animationHeaderOriginal').style.display = 'block';
                     sectionTitle.innerText = '01.브랜드 슬로건';
-                    progressHeaderLine.style.width = '20%';
+                    progressHeaderLine.style.width = '14%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[0].classList.add('active');
                     break;
                 case 5:
                     sectionTitle.innerText = '02.기업 철학';
-                    progressHeaderLine.style.width = '40%';
+                    progressHeaderLine.style.width = '28%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[1].classList.add('active');
                     break;
                 case 7:
                     sectionTitle.innerText = '03.합리적 서비스';
-                    progressHeaderLine.style.width = '60%';
+                    progressHeaderLine.style.width = '42%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[2].classList.add('active');
                     break;
                 case 10:
                     sectionTitle.classList.add('black');
-                    sectionTitle.innerText = '04.진심 어린 서비스';
-                    progressHeaderLine.style.width = '80%';
+                    sectionTitle.innerText = '03.합리적 서비스';
+                    progressHeaderLine.style.width = '60%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.add('black'));
                     sectionMenu[3].classList.add('active');
                     break;
                 case 12:
                     sectionTitle.classList.remove('black');
-                    sectionTitle.innerText = '05.브랜드 네이밍';
-                    progressHeaderLine.style.width = '100%';
+                    sectionTitle.innerText = '04.브랜드 가치';
+                    progressHeaderLine.style.width = '74%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.remove('black'));
+                    sectionMenu[3].classList.add('active');
+                    break;
+                case 15:
+                    sectionTitle.innerText = '05.브랜드 네이밍';
+                    progressHeaderLine.style.width = '88%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[4].classList.add('active');
                     break;
             }
@@ -301,12 +308,40 @@ window.addEventListener("wheel", (event) => {
                 }
 
                 if(currentImageIndex === 4 && currentSubIndex === 11){
-                    currentSectionIndex = 4;
+                    currentSectionIndex = 3;
+                    currentSubIndex === 12;
                 }
             }
 
+            // 섹션 4
+            if (currentSectionIndex === 3 && currentSubIndex >= 12) {
+                currentSection.style.position = 'fixed';
+                currentSection.style.zIndex = '98';
+                const animationList = document.querySelectorAll('.animationList li');
+
+
+                animationList.forEach((container, index) => {
+                    if (index === currentListIndex) {
+                        container.classList.add("listOn");
+                    }
+                    else {
+                        container.classList.remove("listOn");
+                    }
+                });
+
+                if(currentListIndex === 2 && currentSubIndex === 14){
+                    currentSectionIndex = 4;
+                    currentSubIndex === 15;
+                }
+
+                if(currentListIndex < 2) {
+                    currentListIndex++;
+                }
+            }
+
+
             // 섹션 5
-            if (currentImageIndex === 4 && currentSubIndex === 12) {
+            if (currentSectionIndex === 4 && currentSubIndex === 15) {
                 wheelEnabled = false;
                 currentSection.style.position = 'fixed';
                 currentSection.style.zIndex = '98';
@@ -316,17 +351,24 @@ window.addEventListener("wheel", (event) => {
                     wheelEnabled = true;
                 }, 1000)
             }
-            if (currentImageIndex === 4 && currentSubIndex === 13) {
+            if (currentSectionIndex === 4 && currentSubIndex === 16) {
                 wheelEnabled = false;
                 currentSection.classList.add("animateSec53Next");
                 setTimeout(() => {
                     currentSection.querySelector('.animationSectionLogo').classList.add('active');
                     currentSection.style.position = 'absolute';
+                    // document.getElementById('animationSection4').style.zIndex = '98';
+                    document.getElementById('animationSection6').classList.add('on');
+                    document.getElementById('animationSection7').classList.add('on');
+                    document.querySelector('.animationFooter').style.zIndex = '98';
                     document.body.style.overflow = "auto";
                     wheelEnabled = true;
                 }, 500)
             }
-
+            if (currentSectionIndex === 4 && currentSubIndex === 17) {
+                wheelEnabled = false;
+                isScrollEvent = true;
+            }
         }
     } else {
         // 📌 힐 업 - 이전 단계로 이동
@@ -340,31 +382,38 @@ window.addEventListener("wheel", (event) => {
                     break;
                 case 5:
                     sectionTitle.innerText = '01.브랜드 슬로건';
-                    progressHeaderLine.style.width = '20%';
+                    progressHeaderLine.style.width = '14%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[0].classList.add('active');
                     break;
                 case 7:
                     sectionTitle.innerText = '02.기업 철학';
-                    progressHeaderLine.style.width = '40%';
+                    progressHeaderLine.style.width = '28%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[1].classList.add('active');
                     break;
                 case 10:
                     sectionTitle.classList.remove('black');
                     sectionTitle.innerText = '03.합리적 서비스';
-                    progressHeaderLine.style.width = '60%';
+                    progressHeaderLine.style.width = '42%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.remove('black'));
                     sectionMenu[2].classList.add('active');
                     break;
                 case 12:
                     sectionTitle.classList.add('black');
-                    sectionTitle.innerText = '04.진심 어린 서비스';
-                    progressHeaderLine.style.width = '80%';
+                    sectionTitle.innerText = '03.합리적 서비스';
+                    progressHeaderLine.style.width = '60%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.add('black'));
                     sectionMenu[3].classList.add('active');
+                    break;
+                case 15:
+                    sectionTitle.classList.remove('black');
+                    sectionTitle.innerText = '04.브랜드 가치';
+                    progressHeaderLine.style.width = '74%';
+                    sectionMenu.forEach((item) => item.classList.remove('active'));
+                    sectionMenu[4].classList.add('active');
                     break;
             }
 
@@ -417,9 +466,6 @@ window.addEventListener("wheel", (event) => {
                 }, 1500);
             }
 
-            if(currentImageIndex === 4 && currentSubIndex === 11){
-                currentSectionIndex = 2;
-            }
 
             if (currentSectionIndex === 2 && currentSubIndex > 8) {
                 const imgContainers = document.querySelectorAll("#animationSection3 .animationImgCont");
@@ -446,9 +492,39 @@ window.addEventListener("wheel", (event) => {
                 }
             }
 
+            // 섹션 4
+            if (currentSectionIndex === 3 && currentSubIndex >= 12) {
+                console.log('currentListIndex', currentListIndex);
+                const animationList = document.querySelectorAll('.animationList li');
+
+                // 리스트 인덱스 감소 (최소 0)
+                if (currentListIndex > 0) {
+                    currentListIndex--;
+                }
+
+                // 리스트 활성화 상태 업데이트
+                animationList.forEach((container, index) => {
+                    if (index === currentListIndex) {
+                        container.classList.add("listOn");
+                    } else {
+                        container.classList.remove("listOn");
+                    }
+                });
+
+                // 특정 조건에서 섹션 상태 복구
+                if (currentListIndex === 0 && currentSubIndex === 12) {
+                    console.log('??? 여길 안타나??');
+                    currentSection.style.position = 'relative';
+                    currentSection.style.zIndex = '1';
+                    currentSectionIndex = 2;
+                }
+
+            }
+
             // 섹션 5
-            if (currentImageIndex === 4 && currentSubIndex === 12) {
+            if (currentSectionIndex === 4 && currentSubIndex === 15) {
                 wheelEnabled = false;
+                currentSectionIndex = 3;
                 currentSection.classList.remove("animateSec52Next");
                 setTimeout(() => {
                     currentSection.classList.remove("animateSec51Next");
@@ -460,18 +536,22 @@ window.addEventListener("wheel", (event) => {
                 }, 1000)
             }
 
-            if (currentImageIndex === 4 &&  currentSubIndex === 13) {
+            if (currentSectionIndex === 4 &&  currentSubIndex === 16) {
                 wheelEnabled = false;
                 currentSection.querySelector('.animationSectionLogo').classList.remove('active');
                 currentSection.style.position = 'fixed';
                 document.body.style.overflow = "hidden";
+                document.getElementById('animationSection6').classList.remove('on');
+                document.getElementById('animationSection7').classList.remove('on');
+                document.querySelector('.animationFooter').style.zIndex = '1';
                 setTimeout(() => {
                     currentSection.classList.remove("animateSec53Next");
                     wheelEnabled = true;
                 }, 500)
             }
-            // if (currentImageIndex === 4 && currentSubIndex === 14) {
-            //     isScrolling = true;
+            // if (currentSectionIndex === 4 && currentSubIndex === 17) {
+            //     wheelEnabled = false;
+            //     isScrollEvent = true;
             // }
             currentSubIndex--;
         }
@@ -485,6 +565,164 @@ window.addEventListener("wheel", (event) => {
 
     console.log(`현재 섹션: ${currentSectionIndex}, 서브 인덱스: ${currentSubIndex}`);
 });
+let defaultHeight = 4000;
+window.addEventListener("scroll", (event) => {
+    if (wheelEnabled || !isScrollEvent) return;
+
+    // console.log('타는가?');
+    const animationSection6 = $("#animationSection6");
+    const animationSection6Left = animationSection6.find(".animationSectionLeft");
+    const animationSection6RightInner = animationSection6.find(".animationSectionRightInner");
+    const setHeight = defaultHeight;
+    const windowHeight = $(window).height();
+
+
+    const scrollTop = $(window).scrollTop();
+
+    if(scrollTop === 0){
+        currentSectionIndex = 4;
+        currentSubIndex = 16;
+        wheelEnabled = true;
+        isScrollEvent = false;
+    }
+    const section6Top = animationSection6.offset().top;
+    const section7Top = section6Top + setHeight;
+    const section6End = section7Top - windowHeight;
+    const textStart = section6Top - (windowHeight / 3);
+    const textEnd = section7Top - windowHeight;
+
+    // Text animation toggle
+    if (scrollTop >= textStart && scrollTop < textEnd) {
+        animationSection6Left.addClass("txt6On");
+    } else {
+        animationSection6Left.removeClass("txt6On");
+    }
+
+    // Section title update
+    if (scrollTop >= section6Top && scrollTop < section7Top) {
+        $(".sectionTitle").html("06 . 브랜드 컬러");
+        $(".progressHeaderLine").css({
+            width: "88%",
+        });
+    }
+
+    // Sticky effect for left section
+    if (scrollTop >= section6Top && scrollTop < section6End) {
+        animationSection6Left.css({
+            position: "fixed",
+            top: "0",
+            bottom: "unset",
+        });
+
+        // Right inner section activation
+        animationSection6RightInner.each(function () {
+            const $this = $(this);
+            const boxTop = $this.offset().top - 300;
+            const boxHeight = $this.outerHeight();
+
+            if (scrollTop > boxTop && scrollTop <= boxTop + boxHeight) {
+                animationSection6RightInner.removeClass("active");
+                $this.addClass("active");
+            }
+        });
+    } else if (scrollTop < section6Top) {
+        animationSection6Left.css({
+            position: "absolute",
+            top: "0",
+            bottom: "unset",
+        });
+        animationSection6RightInner.removeClass("active");
+    } else if (scrollTop >= section6End) {
+        animationSection6Left.css({
+            position: "absolute",
+            top: "unset",
+            bottom: "0",
+        });
+    }
+
+
+    // Set right inner box heights
+    animationSection6RightInner.each(function (index) {
+        $(this).css({
+            height: index === 0 ? "300px" : setHeight / 6,
+        });
+    });
+
+    // === SECTION 7 ===
+    const animation7 = $('#animationSection7');
+    const animation7Inner = animation7.find(".animationSectionInner");
+    const animation7Title = animation7.find(".animationSectionTitle");
+    const animationImgList = animation7.find('.animationSectionImgList');
+    const animationRecriut = animation7.find('.animationSectionRecruit');
+    const animationHeaderOriginal = $(".animationHeaderOriginal");
+    const imgListUl = animationImgList.find('ul');
+
+    const animation7Top = animation7.offset().top;
+    const animation7Height = animation7.outerHeight();
+    const animation7InnerHeight = animation7Inner.outerHeight();
+    const animationImgListTop = animationImgList.offset().top;
+    const animationImgListHeight = animationImgList.outerHeight();
+    const imageWidth = $('.animationSectionImgCont img').width();
+    const centralOffset = animation7Top;
+    const fixedTopValue = animation7Top - centralOffset;
+    const endPoint = animation7Top + animation7Height - animation7InnerHeight - fixedTopValue;
+
+    const totalImages = 6;
+    const maxTransformValue = -(imageWidth * (totalImages - 2)) - 144;
+
+    // Text animation (Section 7)
+    const titleActivationPoint = animation7Top - (windowHeight / 2);
+    animation7Title.toggleClass("txtActiveOn", scrollTop >= titleActivationPoint);
+
+    // Section title update (Section 7)
+    if (scrollTop >= animation7Top) {
+        $(".sectionTitle").html("07. 브랜드 에셋");
+        $(".progressHeaderLine").css("width", "100%");
+    }
+
+    // Header background color change (Section 7)
+    const headerBackgroundPoint = animationImgListTop - (windowHeight / 2);
+    animationHeaderOriginal.css("background", scrollTop >= headerBackgroundPoint ? "#161626" : "transparent");
+
+    // Recruit text animation (Section 7)
+    const recruitActivationPoint = animationImgListTop + (animationImgListHeight / 2) - 100;
+    animationRecriut.toggleClass("txtActiveOn", scrollTop >= recruitActivationPoint);
+
+
+    // Image list scroll effect (Section 7)
+    if (scrollTop >= centralOffset && scrollTop < endPoint) {
+        animation7Inner.css({
+            position: "fixed",
+            top: fixedTopValue,
+            bottom: "unset",
+        });
+
+        const aniSevenProgress = (scrollTop - centralOffset) / (endPoint - centralOffset);
+        const aniSevenSubSectionSize = 1 / (totalImages - 1);
+        const currentImageIndex = Math.floor(aniSevenProgress / aniSevenSubSectionSize);
+        const progressWithinSection = (aniSevenProgress % aniSevenSubSectionSize) / aniSevenSubSectionSize;
+
+        const ulTransformValue = -imageWidth * currentImageIndex - (progressWithinSection * imageWidth);
+        imgListUl.css("transform", `translateX(${Math.max(ulTransformValue, maxTransformValue)}px)`);
+
+    } else if (scrollTop < centralOffset) {
+        animation7Inner.css({
+            position: "absolute",
+            top: 0,
+            bottom: "unset",
+        });
+        imgListUl.css("transform", "translateX(0px)");
+
+    } else if (scrollTop >= endPoint) {
+        animation7Inner.css({
+            position: "absolute",
+            top: "unset",
+            bottom: 0,
+        });
+        imgListUl.css("transform", `translateX(${maxTransformValue}px)`);
+    }
+});
+
 
 // 사이드 메뉴 선택
 document.addEventListener("DOMContentLoaded", () => {
@@ -494,10 +732,12 @@ document.addEventListener("DOMContentLoaded", () => {
         '01.브랜드 슬로건',
         '02.기업 철학',
         '03.합리적 서비스',
-        '04.진심 어린 서비스',
-        '05.브랜드 네이밍'
+        '04.브랜드 가치',
+        '05.브랜드 네이밍',
+        '06.브랜드 컬러',
+        '07.브랜드 에셋'
     ];
-    const progressPercentages = [20, 40, 60, 80, 100];
+    const progressPercentages = [14, 28, 42, 60, 74, 88, 100];
     const currentSectionId = sectionIds[currentSectionIndex];
     const currentSection = document.getElementById(currentSectionId);
     const sectionTitle = document.querySelector('.sectionTitle');
@@ -521,6 +761,13 @@ document.addEventListener("DOMContentLoaded", () => {
             animationSection3.style.zIndex = '1';
             imgContainers.forEach(container => container.classList.remove('active'));
             infoSections.forEach(section => section.classList.remove('activeOne'));
+
+            // 섹션 4 초기화
+            const animationSection4 = document.getElementById('animationSection4');
+            const animationList = document.querySelectorAll('#animationSection4 li');
+            animationSection4.style.position = 'absolute';
+            animationSection4.style.zIndex = '1';
+            animationList.forEach(container => container.classList.remove('listOn'));
 
             // 섹션 5 초기화
             const animationSection5 = document.getElementById('animationSection5');
@@ -546,8 +793,22 @@ document.addEventListener("DOMContentLoaded", () => {
             sectionTitle.innerText = sectionTitles[index];
             progressHeaderLine.style.width = `${progressPercentages[index]}%`;
 
-            currentSectionIndex = [1, 1, 2, 2, 4][index];
-            currentSubIndex = [2, 5, 7, 10, 12][index];
+            // 섹션 6 초기화
+            const animationSection6 = document.getElementById('animationSection6');
+            animationSection6.classList.remove('on');
+
+            // 섹션 7 초기화
+            const animationSection7 = document.getElementById('animationSection7');
+            animationSection7.classList.remove('on');
+
+            // 푸터 초기화
+            const animationFooter = document.querySelector('.animationFooter');
+            animationFooter.style.zIndex = '1';
+
+            wheelEnabled = true;
+            isScrollEvent = false;
+            currentSectionIndex = [1, 1, 2, 3, 4][index];
+            currentSubIndex = [2, 5, 7, 12, 15][index];
 
             if(currentSectionIndex === 1 && currentSubIndex === 2){
                 currentSection.classList.add('animateSec21Next');
@@ -567,24 +828,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     'animateSec26Next'
                 );
             }
-            if(currentSectionIndex === 2 && currentSubIndex === 10){
+            if(currentSectionIndex === 3 && currentSubIndex === 12){
                 currentSection.classList.add('animateSec21Next');
                 animationSection2.classList.add(
                     'animateSec22Next', 'animateSec23Next',
                     'animateSec24Next','animateSec25Next',
                     'animateSec26Next'
                 );
-                currentImageIndex = 3;
-                animationSection3.classList.add('animateSec31Next', 'animateSec32Next');
-                animationSection3.style.position = 'fixed';
-                animationSection3.style.zIndex = '98';
-                imgContainers[2].classList.add('active');
-                infoSections[2].classList.add('activeOne');
-                sectionMenuItems[3].classList.add('black');
-                sectionTitle.classList.add('black');
-            }
-            if(currentSectionIndex === 4 && currentSubIndex === 12){
                 currentImageIndex = 4;
+                currentListIndex = 1;
+                animationSection3.classList.add('animateSec31Next', 'animateSec32Next');
+                animationSection3.style.position = 'fixed';
+                animationSection3.style.zIndex = '98';
+                animationSection4.style.position = 'fixed';
+                animationSection4.style.zIndex = '98';
+                imgContainers[3].classList.add('active');
+                infoSections[3].classList.add('activeOne');
+                animationList[0].classList.add('listOn');
+            }
+            if(currentSectionIndex === 4 && currentSubIndex === 15){
+                currentImageIndex = 4;
+                currentListIndex = 2;
                 currentSection.classList.add('animateSec21Next');
                 animationSection2.classList.add(
                     'animateSec22Next', 'animateSec23Next',
@@ -594,14 +858,85 @@ document.addEventListener("DOMContentLoaded", () => {
                 animationSection3.classList.add('animateSec31Next', 'animateSec32Next');
                 animationSection3.style.position = 'fixed';
                 animationSection3.style.zIndex = '98';
-                imgContainers[2].classList.add('active');
-                infoSections[2].classList.add('activeOne');
+                animationSection4.style.position = 'fixed';
+                animationSection4.style.zIndex = '98';
+                imgContainers[3].classList.add('active');
+                infoSections[3].classList.add('activeOne');
+                animationList[2].classList.add('listOn');
                 animationSection5.classList.add('animateSec51Next');
                 setTimeout(() => {
                     animationSection5.classList.add("animateSec52Next");
                 }, 1000)
                 animationSection5.style.position = 'fixed';
                 animationSection5.style.zIndex = '98';
+            }
+            if(index === 5){
+                currentSectionIndex = 4;
+                currentSubIndex = 17;
+                currentImageIndex = 4;
+                currentListIndex = 2;
+                wheelEnabled = false;
+                isScrollEvent = true;
+                currentSection.classList.add('animateSec21Next');
+                animationSection2.classList.add(
+                    'animateSec22Next', 'animateSec23Next',
+                    'animateSec24Next','animateSec25Next',
+                    'animateSec26Next'
+                );
+                animationSection3.classList.add('animateSec31Next', 'animateSec32Next');
+                animationSection3.style.position = 'fixed';
+                animationSection3.style.zIndex = '98';
+                animationSection4.style.position = 'fixed';
+                animationSection4.style.zIndex = '98';
+                imgContainers[3].classList.add('active');
+                infoSections[3].classList.add('activeOne');
+                animationList[2].classList.add('listOn');
+                animationSection5.classList.add('animateSec51Next', 'animateSec52Next', 'animateSec53Next');
+                animationSection5.style.position = 'absolute';
+                animationSection5.style.zIndex = '98';
+                animationSectionLogo.classList.add('active');
+                document.body.style.overflow = 'auto';
+                animationSection6.classList.add('on');
+                animationSection7.classList.add('on');
+                animationFooter.style.zIndex = '98';
+                window.scrollTo({
+                    top: animationSection6.offsetTop,
+                    behavior: 'smooth' // 부드럽게 이동
+                });
+            }
+            if(index === 6){
+                currentSectionIndex = 4;
+                currentSubIndex = 17;
+                currentImageIndex = 4;
+                currentListIndex = 2;
+                wheelEnabled = false;
+                isScrollEvent = true;
+                currentSection.classList.add('animateSec21Next');
+                animationSection2.classList.add(
+                    'animateSec22Next', 'animateSec23Next',
+                    'animateSec24Next','animateSec25Next',
+                    'animateSec26Next'
+                );
+                animationSection3.classList.add('animateSec31Next', 'animateSec32Next');
+                animationSection3.style.position = 'fixed';
+                animationSection3.style.zIndex = '98';
+                animationSection4.style.position = 'fixed';
+                animationSection4.style.zIndex = '98';
+                imgContainers[3].classList.add('active');
+                infoSections[3].classList.add('activeOne');
+                animationList[2].classList.add('listOn');
+                animationSection5.classList.add('animateSec51Next', 'animateSec52Next', 'animateSec53Next');
+                animationSection5.style.position = 'absolute';
+                animationSection5.style.zIndex = '98';
+                animationSectionLogo.classList.add('active');
+                document.body.style.overflow = 'auto';
+                animationSection6.classList.add('on');
+                animationSection7.classList.add('on');
+                animationFooter.style.zIndex = '98';
+                window.scrollTo({
+                    top: animationSection7.offsetTop,
+                    behavior: 'smooth' // 부드럽게 이동
+                });
             }
         });
     });

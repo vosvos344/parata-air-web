@@ -1451,6 +1451,14 @@ button {
 
 #animationSection4{
     background: #00145A;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: unset;
+    width: 100%;
+    height: 100vh;
+    transform: translateY(0);
+    transition: linear top .5s;
 }
 
 #animationSection4 .animationTextWrap{
@@ -1463,6 +1471,7 @@ button {
     position: relative;
     padding: 0 40px;
     box-sizing: border-box;
+    height: 100vh;
 }
 #animationSection4 .animationTextNumberInner {
     display: flex;
@@ -1491,7 +1500,7 @@ button {
 #animationSection4 .animationList ul li{
     position: relative;
     display: grid;
-    grid-template-columns: 20% 1fr;
+    grid-template-columns: 20% 0.9fr;
     align-items: flex-start;
     gap: 40px;
 }
@@ -1684,6 +1693,10 @@ button {
 #animationSection6{
     background: #161626;
 }
+#animationSection6.on{
+    height: 4000px;
+    z-index: 98;
+}
 #animationSection6 .animationSectionLeft{
     position: absolute;
     top: 0;
@@ -1738,7 +1751,7 @@ button {
     top: 0;
     right: 0;
     width: 50%;
-    height: 4000px;
+    /*height: 4000px;*/
     background: url('../images/section6_bg.png') no-repeat center / cover;
 }
 
@@ -1865,14 +1878,20 @@ button {
 #animationSection7{
     background: #161626;
 }
+#animationSection7.on{
+    height: 3000px;
+    z-index: 98;
+}
 #animationSection7 .animationSectionInner{
-    padding: 120px 80px;
+    /*padding: 120px 80px;*/
+    padding: 150px 80px 120px;
     width: 100%;
     box-sizing: border-box;
 }
 #animationSection7 .animationSectionTitle{
     display: grid;
-    grid-template-columns: 40% 60%;
+    /*grid-template-columns: 40% 60%;*/
+    grid-template-columns: 60% 40%;
     align-items: flex-start;
     padding: 0 0 100px;
 }
@@ -1982,11 +2001,13 @@ button {
 }
 
 #animationSection7 .animationSectionRecruit{
-    display: flex;
+    /*display: flex;*/
+    display: grid;
     align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
     padding: 180px 0 0;
+    grid-template-columns: 45% 50%;
 }
 #animationSection7 .animationSectionRecruitTop{
     display: flex;
@@ -2099,7 +2120,7 @@ button {
 .animationFooter{
     background: #161626;
     position: absolute;
-    z-index: 100;
+    /*z-index: 100;*/
     width: 100%;
 }
 .animationFooter .animationFooterInner{
