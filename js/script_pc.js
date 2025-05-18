@@ -19,26 +19,30 @@ const scrollDelay = 800; // 스크롤 처리 간격 (ms)
 let currentImageIndex = 1; // 섹션 3 이미지
 let isScrollEvent = false; // 스크롤 이벤트 적용
 const path = window.location.pathname;
-const languageCode = path.match(/\/(en|ko)\.html/)?.[1];
+
 function isMobile() {
-    const userAgent = navigator.userAgent.toLowerCase();
-    return /iphone|ipod|ipad|android|blackberry|windows phone|webos|opera mini|opera mobi|mobile/.test(userAgent);
+    return /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
 }
 
-// 📌 PC일 때 링크 이동
-if (!isMobile()) {
-    if(languageCode ==='ko') {
-        window.location.href = "https://vosvos344.github.io//parata-air-web/pc/ko.html"; // 이동할 링크
-    }else{
-        window.location.href = "https://vosvos344.github.io//parata-air-web/pc/en.html";
+// 📌 현재 URL 확인
+const currentURL = window.location.href;
+const languageCode = currentURL.includes('/ko.html') ? 'ko' : 'en';
+
+// 📌 중복 이동 방지
+if (!isMobile() && !currentURL.includes('/pc/')) {
+    if (languageCode === 'ko') {
+        window.location.href = "https://vosvos344.github.io/parata-air-web/pc/ko.html";
+    } else {
+        window.location.href = "https://vosvos344.github.io/parata-air-web/pc/en.html";
     }
-}else{
-    if(languageCode ==='ko') {
-        window.location.href = "https://vosvos344.github.io//parata-air-web/mobile/ko.html";
-    }else{
-        window.location.href = "https://vosvos344.github.io//parata-air-web/mobile/en.html";
+} else if (isMobile() && !currentURL.includes('/mobile/')) {
+    if (languageCode === 'ko') {
+        window.location.href = "https://vosvos344.github.io/parata-air-web/mobile/ko.html";
+    } else {
+        window.location.href = "https://vosvos344.github.io/parata-air-web/mobile/en.html";
     }
 }
+
 console.log('languageCode',languageCode);
 // let currentListIndex = 1;
 // 📌 페이지 로드 시 프로그레스 바 애니메이션 시작
