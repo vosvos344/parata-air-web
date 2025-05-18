@@ -300,6 +300,7 @@ button {
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    /*transition: all 0.3s ease;*/
 }
 .sidebar-menu .menu-dot::after{
     content: '';
@@ -1224,7 +1225,8 @@ button {
     left: 0;
     width: 100%;
     z-index: 1;
-    transition: top 0.5s linear;
+    /*transition: top 0.5s linear;*/
+    transition: top 1s linear;
 }
 
 /* 섹션이 활성화될 때 상단으로 이동 */
@@ -1232,17 +1234,21 @@ button {
     top: 0;
     left: 0;
     width: 100%;
-    transition: top 0.5s linear;
+    /*transition: top 0.5s linear;*/
+    transition: top 1s linear;
 }
 
 /* 기본 이미지 스타일 */
 #animationSection3 .animationImgMain {
     position: absolute;
-    width: 80%;
+    /*width: 80%;*/
+    width: 50%;
     height: 100vh;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    /*left: 50%;*/
+    left: 0;
+    /*transform: translateX(-50%);*/
+    transform: translateX(0);
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 5;
 }
@@ -1254,7 +1260,7 @@ button {
     height: 100vh;
     top: 0;
     left: 0;
-    transform: translateX(0) scale(1); /* 축소 효과 추가 */
+    transform: translateX(0); /* 축소 효과 추가 */
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 5;
 }

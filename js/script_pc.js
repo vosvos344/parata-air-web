@@ -25,23 +25,23 @@ function isMobile() {
 const languageCode = window.location.pathname.includes('ko') ? 'ko' : 'en';
 const visitedKey = 'parata_air_redirected';
 
-if (!localStorage.getItem(visitedKey)) {
-    if (!isMobile()) {
-        if (languageCode === 'ko') {
-            window.location.href = "https://vosvos344.github.io/parata-air-web/pc/ko.html";
-        } else {
-            window.location.href = "https://vosvos344.github.io/parata-air-web/pc/en.html";
-        }
-    } else {
-        if (languageCode === 'ko') {
-            window.location.href = "https://vosvos344.github.io/parata-air-web/mobile/ko.html";
-        } else {
-            window.location.href = "https://vosvos344.github.io/parata-air-web/mobile/en.html";
-        }
-    }
-    // 📌 방문 기록 저장 (무한 반복 방지)
-    localStorage.setItem(visitedKey, 'true');
-}
+// if (!localStorage.getItem(visitedKey)) {
+//     if (!isMobile()) {
+//         if (languageCode === 'ko') {
+//             window.location.href = "https://vosvos344.github.io/parata-air-web/pc/ko.html";
+//         } else {
+//             window.location.href = "https://vosvos344.github.io/parata-air-web/pc/en.html";
+//         }
+//     } else {
+//         if (languageCode === 'ko') {
+//             window.location.href = "https://vosvos344.github.io/parata-air-web/mobile/ko.html";
+//         } else {
+//             window.location.href = "https://vosvos344.github.io/parata-air-web/mobile/en.html";
+//         }
+//     }
+//     // 📌 방문 기록 저장 (무한 반복 방지)
+//     localStorage.setItem(visitedKey, 'true');
+// }
 
 console.log('languageCode',languageCode);
 // let currentListIndex = 1;
@@ -296,14 +296,14 @@ window.addEventListener("wheel", (event) => {
                 currentSection.style.position = 'fixed';
                 currentSection.style.zIndex = '98';
                 currentSection.classList.add("animateSec31Next");
-
+                currentSection.classList.add("animateSec32Next");
                 // 약간의 지연 후 32 상태로 전환
                 setTimeout(() => {
-                    currentSection.classList.add("animateSec32Next");
+                    // currentSection.classList.add("animateSec32Next");
                     const infoText = document.querySelector("#animationSection3 .animationInfoWrap .animationInfo");
                     infoText.classList.add('activeOne');
                     wheelEnabled = true;
-                }, 500);
+                }, 1000);
             }
 
             if (currentSectionIndex === 2 && currentSubIndex > 8) {
@@ -491,18 +491,18 @@ window.addEventListener("wheel", (event) => {
 
             if (currentSectionIndex === 2 && currentSubIndex === 8) {
                 wheelEnabled = false;
-                currentSection.classList.remove("animateSec32Next");
                 const infoText = document.querySelector("#animationSection3 .animationInfoWrap .animationInfo");
                 infoText.classList.remove('activeOne');
 
                 // 약간의 지연 후 32 상태로 전환
                 setTimeout(() => {
+                    currentSection.classList.remove("animateSec32Next");
                     currentSection.classList.remove("animateSec31Next");
                     setTimeout(() => {
                         currentSection.style.position = 'absolute';
                         currentSection.style.zIndex = '1';
                         wheelEnabled = true;
-                    },100)
+                    },500)
                 }, 500);
             }
 
