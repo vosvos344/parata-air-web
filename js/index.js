@@ -11,15 +11,15 @@ function isMobile() {
 // 📌 PC일 때 링크 이동
 if (!isMobile()) {
 	if(languageCode ==='ko') {
-		window.location.href = "./parata-air-web/pc/ko.html"; // 이동할 링크
+		window.location.href = "https://vosvos344.github.io//parata-air-web/pc/ko.html"; // 이동할 링크
 	}else{
-		window.location.href = "./parata-air-web/pc/en.html";
+		window.location.href = "https://vosvos344.github.io//parata-air-web/pc/en.html";
 	}
 }else{
 	if(languageCode ==='ko') {
-		window.location.href = "./parata-air-web/mobile/ko.html";
+		window.location.href = "https://vosvos344.github.io//parata-air-web/mobile/ko.html";
 	}else{
-		window.location.href = "./parata-air-web/mobile/en.html";
+		window.location.href = "https://vosvos344.github.io//parata-air-web/mobile/en.html";
 	}
 }
 
