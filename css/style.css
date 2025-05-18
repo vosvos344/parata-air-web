@@ -119,29 +119,7 @@ button, input, textarea {
 	transform: translateY(-50%);
 
 }
-.navTxt{
-	position: absolute;
-	top: 90px;
-	left: 16px;
-	color: #fff;
-	font-size: 14px;
-	font-weight: 600;
-	z-index: 10;
-}
-.navSubTxt{
-	padding-bottom: 12px;
-	font-size: 14px;
-	font-weight: 600;
-	color: #ffffff;
-	transform: translateY(-50%);
-	transition: transform 0.5s ease-in-out;
-}
-.bottom-wrap .navSubTxt{
-	color: #111111;
-}
-.navSubTxt.on{
-	transform: translateY(0);
-}
+
 .header.shrink {
 	height: 60px;
 	display: flex;
@@ -163,11 +141,7 @@ button, input, textarea {
 	transform: translate(-50%, -50%);
 	transition: transform 0.5s ease-in-out, left 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
-.menu{
-	position: absolute;
-	right: 12px;
-	cursor: pointer;
-}
+
 .header.shrink .logo {
 	left: 0px;
 	transform: translateY(-50%) scale(0.8);
@@ -718,7 +692,7 @@ button, input, textarea {
 .animateWrap .section3 .sec2 .first{
 	position: absolute;
 	left:16px;
-	top:120px;
+	top:100px;
 }
 
 .animateWrap .section3 .sec1 .first div,
@@ -742,7 +716,7 @@ button, input, textarea {
 .animateWrap .section3 .sec2 .second{
 	position: absolute;
 	left:16px;
-	top:155px;
+	top:135px;
 }
 
 .animateWrap .section3 .sec1 .second div,
@@ -870,8 +844,7 @@ button, input, textarea {
 }
 
 .index .section31 .top-text{
-	/*height:50vh;*/
-	height:30vh;
+	height:50vh;
 	padding-bottom:80px;
 }
 
@@ -907,8 +880,7 @@ button, input, textarea {
 
 .index .section31 .top-wrap .title-sub span{
 	display:block;
-	/*color: #BDC1C6;*/
-	color: rgba(255,255,255,0.6);
+	color: #BDC1C6;
 	font-size: 40px;
 	font-weight: 700;
 	line-height: 140%; /* 56px */
@@ -951,8 +923,7 @@ button, input, textarea {
 
 .index .section31 .top-wrap .text-wrap .second span, .index .section31 .top-wrap .text-wrap .sixth span{
 	display:block;
-	/*color: #BDC1C6;*/
-	color: rgba(255,255,255, 0.7);
+	color: #BDC1C6;
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 160%; /* 25.6px */
@@ -960,30 +931,30 @@ button, input, textarea {
 	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
 }
 
-.index .section31 .top-wrap .text-wrap .third, .index .section31 .top-wrap .text-wrap .fifth {
+.index .section31 .top-wrap .text-wrap .third, .index .section31 .top-wrap .text-wrap .fifth{
 	margin-bottom:80px;
 }
 
-.index .section31 .top-wrap .text-wrap .third div,  .index .section31 .top-wrap .text-wrap .fifth div{
+.index .section31 .top-wrap .text-wrap .third div, .index .section31 .top-wrap .text-wrap .fifth div{
 	overflow:hidden;
 }
 
-.index .section31 .top-wrap .text-wrap .third img,  .index .section31 .top-wrap .text-wrap .fifth img{
+.index .section31 .top-wrap .text-wrap .third img, .index .section31 .top-wrap .text-wrap .fifth img{
 	display:block;
 	transform:translateY(100%);
 	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
 }
 
 
-/*.index .section31 .top-wrap .text-wrap .fourth, .index .section31 .top-wrap .text-wrap .sixth{*/
+/*.index .section31 .top-wrap .text-wrap .fourth{*/
 /*	margin-bottom:80px;*/
 /*}*/
 
-/*.index .section31 .top-wrap .text-wrap .fourth div, .index .section31 .top-wrap .text-wrap .sixth div{*/
+/*.index .section31 .top-wrap .text-wrap .fourth div{*/
 /*	overflow:hidden;*/
 /*}*/
 
-/*.index .section31 .top-wrap .text-wrap .fourth span, .index .section31 .top-wrap .text-wrap .sixth span{*/
+/*.index .section31 .top-wrap .text-wrap .fourth span{*/
 /*	color: #BDC1C6;*/
 /*	font-size: 16px;*/
 /*	font-weight: 500;*/
@@ -998,7 +969,7 @@ button, input, textarea {
 .index .section31 .top-wrap .text-wrap .seventh{
 	position:absolute;
 	width:calc(100% - 32px);
-	bottom:-154px;
+	bottom:-180px;
 }
 
 .index .section31 .fourth div{
@@ -1014,20 +985,19 @@ button, input, textarea {
 .index .section31 .bottom-wrap{
 	background:#ffffff;
 	/*padding:240px 16px 16px;*/
-	padding:400px 16px 16px;
+	padding:360px 16px 16px;
 }
 
-.index .section31 .bottom-wrap .first, .index .section31 .bottom-wrap .fourth{
+.index .section31 .bottom-wrap .seventh{
 	margin-bottom:24px;
 }
 
-.index .section31 .bottom-wrap .first div, .index .section31 .bottom-wrap .fourth div{
+.index .section31 .bottom-wrap .seventh div{
 	overflow:hidden;
 }
 
-.index .section31 .bottom-wrap .first span, .index .section31 .bottom-wrap .fourth span{
-	/*color: #000000;*/
-	color: #111111;
+.index .section31 .bottom-wrap .seventh span{
+	color: #000000;
 	font-size: 28px;
 	font-weight: 700;
 	line-height: 140%; /* 39.2px */
@@ -1038,8 +1008,26 @@ button, input, textarea {
 
 
 
-.index .section31 .bottom-wrap .second{
-	margin-bottom: 48px;
+/*.index .section31 .bottom-wrap .second{*/
+/*	margin-bottom: 48px;*/
+/*}*/
+
+/*.index .section31 .bottom-wrap .second div{*/
+/*	overflow:hidden;*/
+/*}*/
+
+/*.index .section31 .bottom-wrap .second span{*/
+/*	color: #757575;*/
+/*	font-size: 16px;*/
+/*	font-weight: 500;*/
+/*	line-height: 160%; !* 25.6px *!*/
+/*	display:block;*/
+/*	transform:translateY(100%);*/
+/*	transition: transform 0.5s ease-in-out; !* 애니메이션 효과 *!*/
+/*}*/
+
+.index .section31 .bottom-wrap .second, .index .section31 .bottom-wrap .sixth{
+	margin-bottom:60px;
 }
 
 .index .section31 .bottom-wrap .second div, .index .section31 .bottom-wrap .sixth div{
@@ -1047,18 +1035,17 @@ button, input, textarea {
 }
 
 .index .section31 .bottom-wrap .second span, .index .section31 .bottom-wrap .sixth span{
-	/*color: #757575;*/
-	color: #111111;
+	display:block;
+	color: #111;
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 160%; /* 25.6px */
-	display:block;
 	transform:translateY(100%);
 	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
 }
 
 .index .section31 .bottom-wrap .third, .index .section31 .bottom-wrap .fifth{
-	margin-bottom: 80px;
+	margin-bottom:80px;
 }
 
 .index .section31 .bottom-wrap .third div, .index .section31 .bottom-wrap .fifth div{
@@ -1066,6 +1053,20 @@ button, input, textarea {
 }
 
 .index .section31 .bottom-wrap .third img, .index .section31 .bottom-wrap .fifth img{
+	display:block;
+	transform:translateY(100%);
+	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
+}
+
+.index .section31 .bottom-wrap .third{
+	margin-bottom: 80px;
+}
+
+.index .section31 .bottom-wrap .third div{
+	overflow:hidden;
+}
+
+.index .section31 .bottom-wrap .third img{
 	display:block;
 	transform:translateY(100%);
 	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
@@ -1088,6 +1089,24 @@ button, input, textarea {
 /*	transform:translateY(100%);*/
 /*	transition: transform 0.5s ease-in-out; !* 애니메이션 효과 *!*/
 /*}*/
+
+.index .section31 .bottom-wrap .first, .index .section31 .bottom-wrap .fourth{
+	margin-bottom:28px;
+}
+
+.index .section31 .bottom-wrap .first div, .index .section31 .bottom-wrap .fourth div{
+	overflow:hidden;
+}
+
+.index .section31 .bottom-wrap .first span, .index .section31 .bottom-wrap .fourth span{
+	display:block;
+	color: #111;
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 140%; /* 39.2px */
+	transform:translateY(100%);
+	transition: transform 0.5s ease-in-out; /* 애니메이션 효과 */
+}
 
 
 /*.index .section31 .bottom-wrap .fifth{*/
@@ -1461,8 +1480,7 @@ button, input, textarea {
 /*섹션 7*/
 .index .section7 .inner{
 	background:#161626;
-	/*padding:50px 16px 24px;*/
-	padding:32px 16px 20px;
+	padding:50px 16px 24px;
 }
 
 .index .section7 .inner .title-sub{
@@ -1603,7 +1621,7 @@ button, input, textarea {
 
 
 .index .section7 .inner .footer{
-	/*margin-top:80px;*/
+	margin-top:80px;
 	display:flex;
 	gap:44px;
 	flex-direction: column;
@@ -2024,26 +2042,3 @@ button, input, textarea {
 	}
 }
 
-#modal{
-	width: 100%;
-	height: 100vh;
-	background-color: #fff;
-	position: fixed;
-	top: 0;
-	left: 0;
-	transform-origin: top right;
-	transform: scale(0);
-	transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-	z-index: 2;
-}
-#modal.active {
-	display: block;
-	transform: scale(1);
-	z-index: 999;
-}
-.modal-head{display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 18px 24px;}
-.modal-list{padding: 32px 0;}
-.modal-list li{margin-bottom: 24px; padding: 0 24px; color: #111; font-size: 21px; font-weight: 600}
-.modal-footer{position: absolute; bottom: 100px; left: 24px; display: flex; align-items: center;}
-.modal-footer a{padding-right: 12px; color: #d9d9d9; font-size: 18px; font-weight: 500}
-.modal-footer a.active{font-weight: 600; color: #111; text-decoration: underline}
