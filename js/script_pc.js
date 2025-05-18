@@ -25,23 +25,23 @@ function isMobile() {
 const languageCode = window.location.pathname.includes('ko') ? 'ko' : 'en';
 const visitedKey = 'parata_air_redirected';
 
-// if (!localStorage.getItem(visitedKey)) {
-//     if (!isMobile()) {
-//         if (languageCode === 'ko') {
-//             window.location.href = "https://vosvos344.github.io/parata-air-web/pc/ko.html";
-//         } else {
-//             window.location.href = "https://vosvos344.github.io/parata-air-web/pc/en.html";
-//         }
-//     } else {
-//         if (languageCode === 'ko') {
-//             window.location.href = "https://vosvos344.github.io/parata-air-web/mobile/ko.html";
-//         } else {
-//             window.location.href = "https://vosvos344.github.io/parata-air-web/mobile/en.html";
-//         }
-//     }
-//     // 📌 방문 기록 저장 (무한 반복 방지)
-//     localStorage.setItem(visitedKey, 'true');
-// }
+if (!localStorage.getItem(visitedKey)) {
+    if (!isMobile()) {
+        if (languageCode === 'ko') {
+            window.location.href = "https://vosvos344.github.io/parata-air-web/pc/ko.html";
+        } else {
+            window.location.href = "https://vosvos344.github.io/parata-air-web/pc/en.html";
+        }
+    } else {
+        if (languageCode === 'ko') {
+            window.location.href = "https://vosvos344.github.io/parata-air-web/mobile/ko.html";
+        } else {
+            window.location.href = "https://vosvos344.github.io/parata-air-web/mobile/en.html";
+        }
+    }
+    // 📌 방문 기록 저장 (무한 반복 방지)
+    localStorage.setItem(visitedKey, 'true');
+}
 
 console.log('languageCode',languageCode);
 // let currentListIndex = 1;
