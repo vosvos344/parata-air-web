@@ -2018,7 +2018,8 @@ button {
     align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
-    padding: 180px 0 0;
+    /*padding: 180px 0 0;*/
+    padding: 200px 0 0;
     grid-template-columns: 45% 50%;
 }
 #animationSection7 .animationSectionRecruitTop{
