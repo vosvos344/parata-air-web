@@ -18,6 +18,10 @@ let isScrolling = false;
 const scrollDelay = 800; // 스크롤 처리 간격 (ms)
 let currentImageIndex = 1; // 섹션 3 이미지
 let isScrollEvent = false; // 스크롤 이벤트 적용
+const path = window.location.pathname;
+const languageCode = path.match(/\/(en|ko)\.html/)?.[1];
+
+console.log('languageCode',languageCode);
 // let currentListIndex = 1;
 // 📌 페이지 로드 시 프로그레스 바 애니메이션 시작
 window.addEventListener("load", function() {
@@ -165,6 +169,7 @@ window.addEventListener("wheel", (event) => {
     if (!wheelEnabled || isScrolling || isScrollEvent) return;
     console.log(`현재 섹션: ${currentSectionIndex}, 서브 인덱스: ${currentSubIndex}`);
     console.log(`섹션3 이미지 카운트 : ${currentImageIndex}`);
+    console.log(languageCode === 'ko');
     // console.log(`섹션4 리스트 카운트 : ${currentListIndex}`);
     const direction = event.deltaY > 0 ? 1 : -1;
     const sectionTitle = document.querySelector('.sectionTitle');
@@ -186,26 +191,26 @@ window.addEventListener("wheel", (event) => {
             switch (currentSubIndex) {
                 case 2:
                     document.querySelector('.animationHeaderOriginal').style.display = 'block';
-                    sectionTitle.innerText = '01.브랜드 슬로건';
+                    sectionTitle.innerText = languageCode === 'ko' ? '01.브랜드 슬로건' : '01.Brand Slogan';
                     progressHeaderLine.style.width = '14%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[0].classList.add('active');
                     break;
                 case 5:
-                    sectionTitle.innerText = '02.기업 철학';
+                    sectionTitle.innerText = languageCode === 'ko' ? '02.기업 철학' : '02.Corporate Philosophy';
                     progressHeaderLine.style.width = '28%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[1].classList.add('active');
                     break;
                 case 7:
-                    sectionTitle.innerText = '03.합리적 서비스';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Thoughtful Service';
                     progressHeaderLine.style.width = '42%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[2].classList.add('active');
                     break;
                 case 10:
                     sectionTitle.classList.add('black');
-                    sectionTitle.innerText = '03.합리적 서비스';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Thoughtful Service';
                     progressHeaderLine.style.width = '60%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.add('black'));
@@ -213,14 +218,14 @@ window.addEventListener("wheel", (event) => {
                     break;
                 case 12:
                     sectionTitle.classList.remove('black');
-                    sectionTitle.innerText = '04.브랜드 가치';
+                    sectionTitle.innerText = languageCode === 'ko' ? '04.브랜드 가치' : '04.Brand Value';
                     progressHeaderLine.style.width = '74%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.remove('black'));
                     sectionMenu[3].classList.add('active');
                     break;
                 case 15:
-                    sectionTitle.innerText = '05.브랜드 네이밍';
+                    sectionTitle.innerText = languageCode === 'ko' ? '05.브랜드 네이밍' : '05.Brand Naming';
                     progressHeaderLine.style.width = '88%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[4].classList.add('active');
@@ -394,20 +399,20 @@ window.addEventListener("wheel", (event) => {
                     progressHeaderLine.style.width = '0%';
                     break;
                 case 5:
-                    sectionTitle.innerText = '01.브랜드 슬로건';
+                    sectionTitle.innerText = languageCode === 'ko' ? '01.브랜드 슬로건' : '01.Brand Slogan';
                     progressHeaderLine.style.width = '14%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[0].classList.add('active');
                     break;
                 case 7:
-                    sectionTitle.innerText = '02.기업 철학';
+                    sectionTitle.innerText = languageCode === 'ko' ? '02.기업 철학' : '02.Corporate Philosophy';
                     progressHeaderLine.style.width = '28%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[1].classList.add('active');
                     break;
                 case 10:
                     sectionTitle.classList.remove('black');
-                    sectionTitle.innerText = '03.합리적 서비스';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Thoughtful Service';
                     progressHeaderLine.style.width = '42%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.remove('black'));
@@ -415,7 +420,7 @@ window.addEventListener("wheel", (event) => {
                     break;
                 case 12:
                     sectionTitle.classList.add('black');
-                    sectionTitle.innerText = '03.합리적 서비스';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Thoughtful Service';
                     progressHeaderLine.style.width = '60%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.add('black'));
@@ -423,10 +428,10 @@ window.addEventListener("wheel", (event) => {
                     break;
                 case 15:
                     sectionTitle.classList.remove('black');
-                    sectionTitle.innerText = '04.브랜드 가치';
+                    sectionTitle.innerText = languageCode === 'ko' ? '04.브랜드 가치' : '04.Brand Value';
                     progressHeaderLine.style.width = '74%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
-                    sectionMenu[4].classList.add('active');
+                    sectionMenu[3].classList.add('active');
                     break;
             }
 
@@ -597,6 +602,7 @@ window.addEventListener("scroll", (event) => {
     const animationSection6 = $("#animationSection6");
     const animationSection6Left = animationSection6.find(".animationSectionLeft");
     const animationSection6RightInner = animationSection6.find(".animationSectionRightInner");
+    const sectionMenu = document.querySelectorAll('.sidebar-menu li');
     const setHeight = defaultHeight;
     const windowHeight = $(window).height();
 
@@ -624,7 +630,9 @@ window.addEventListener("scroll", (event) => {
 
     // Section title update
     if (scrollTop >= section6Top && scrollTop < section7Top) {
-        $(".sectionTitle").html("06 . 브랜드 컬러");
+        $(".sectionTitle").html(languageCode === 'ko' ? "06.브랜드 컬러" : '06.Brand Color');
+        sectionMenu.forEach((item) => item.classList.remove('active'));
+        sectionMenu[5].classList.add('active');
         $(".progressHeaderLine").css({
             width: "88%",
         });
@@ -700,7 +708,9 @@ window.addEventListener("scroll", (event) => {
 
     // Section title update (Section 7)
     if (scrollTop >= animation7Top) {
-        $(".sectionTitle").html("07. 브랜드 에셋");
+        $(".sectionTitle").html(languageCode === 'ko' ? "07. 브랜드 에셋" : '07.Brand Assets');
+        sectionMenu.forEach((item) => item.classList.remove('active'));
+        sectionMenu[6].classList.add('active');
         $(".progressHeaderLine").css("width", "100%");
     }
 
@@ -752,14 +762,24 @@ window.addEventListener("scroll", (event) => {
 document.addEventListener("DOMContentLoaded", () => {
     const sectionMenuItems = document.querySelectorAll('.sidebar-menu li');
     const sections = document.querySelectorAll('.animationSection');
-    const sectionTitles = [
-        '01.브랜드 슬로건',
-        '02.기업 철학',
-        '03.합리적 서비스',
-        '04.브랜드 가치',
-        '05.브랜드 네이밍',
-        '06.브랜드 컬러',
-        '07.브랜드 에셋'
+    const sectionTitles = languageCode === 'ko' ? [
+            '01.브랜드 슬로건',
+            '02.기업 철학',
+            '03.합리적 서비스',
+            '04.브랜드 가치',
+            '05.브랜드 네이밍',
+            '06.브랜드 컬러',
+            '07.브랜드 에셋'
+        ]
+        :
+        [
+            '01.Brand Slogan',
+            '02.Corporate Philosophy',
+            '03.Thoughtful Service',
+            '04.Brand Value',
+            '05.Brand Naming',
+            '06.Brand Color',
+            '07.Brand Assets'
     ];
     const progressPercentages = [14, 28, 42, 60, 74, 88, 100];
     const currentSectionId = sectionIds[currentSectionIndex];
@@ -784,6 +804,7 @@ document.addEventListener("DOMContentLoaded", () => {
             animationSection3.style.position = 'absolute';
             animationSection3.style.zIndex = '1';
             imgContainers.forEach(container => container.classList.remove('active'));
+            imgContainers[0].classList.add('active');
             infoSections.forEach(section => section.classList.remove('activeOne'));
 
             // 섹션 4 초기화
