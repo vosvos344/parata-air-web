@@ -381,7 +381,7 @@ button {
 #animationSection1 .animationText.txtOn h4{
     opacity: 1;
     transform: translateY(0%);
-    transition: transform .3s ease-out, opacity .3s ease-out;
+    transition: transform .5s ease-out, opacity .3s ease-out;
     transition-delay: 0.2s;
 }
 #animationSection1 .animationText p{
@@ -398,7 +398,7 @@ button {
 #animationSection1 .animationText.txtOn p{
     opacity: 1;
     transform: translateY(0%);
-    transition: transform .6s ease-out, opacity .6s ease-out;
+    transition: transform .5s ease-out, opacity .5s ease-out;
     transition-delay: 0.6s;
 }
 
@@ -442,7 +442,7 @@ button {
     top: 50%;
     transform: translate(-35%, -58%);
     left: 50%;
-    transition: linear transform 1s, linear top 1s, linear left 1s;
+    transition: linear transform .5s, linear top .5s, linear left .5s;
     will-change: transform;
     opacity: 1;
 }
@@ -596,7 +596,7 @@ button {
 }
 .animateHead10Prev .animationLogoOuter{
     transform: translate(-35%, -58%);
-    transition: linear transform 1s, linear top 1s, linear left 1s;
+    transition: linear transform .5s, linear top .5s, linear left .5s;
     transition-delay: 3s;
 }
 .animateHead10Prev .animationLogoOuter img{
@@ -610,7 +610,7 @@ button {
 /*animateHead11Next*/
 .animateHead11Next .animationLogoOuter{
     transform: translate(-50%, -50%);
-    transition: linear transform 1s, linear top 1s, linear left 1s;
+    transition: linear transform .5s, linear top .5s, linear left .5s;
 }
 .animateHead11Next .animationLogoOuter img{
     width: 138px;
@@ -824,7 +824,7 @@ button {
 }
 #animationSection2 .animationImgTextLeft {
     opacity: 0;
-    transition: opacity .3s ease-out, transform .4s ease-out;
+    transition: opacity .5s ease-out, transform .5s ease-out;
     transform: translateY(100%);
 }
 
@@ -853,7 +853,7 @@ button {
 #animationSection2 .animationImgTextRight p.first{
     transform: translateX(100%);
     opacity: 0;
-    transition: transform 1s ease-out, opacity .5s ease-out;
+    transition: transform .5s ease-out, opacity .5s ease-out;
 }
 
 #animationSection2 .animationImgTextRight.secondOn p.first{
@@ -978,11 +978,11 @@ button {
 }
 #animationSection2.animateSec22Next .txtWrapFirst .animatedText{
     animation: animate1Up .4s linear forwards;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s ease-out;
 }
 #animationSection2.animateSec22Next .txtWrapSecond .animatedText{
     animation: animate2Up .4s linear forwards;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s ease-out;
     transition-delay: 0.3s;
 }
 
@@ -1004,11 +1004,11 @@ button {
 
 #animationSection2.animateSec22Prev .txtWrapThird .animatedText{
     animation: animate1Down .4s linear forwards;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s ease-out;
 }
 #animationSection2.animateSec22Prev .txtWrapSecond .animatedText{
     animation: animate2Down .4s linear forwards;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s ease-out;
     transition-delay: 0.3s;
 }
 
@@ -1017,11 +1017,11 @@ button {
 /* animateSec23Next */
 #animationSection2.animateSec23Next .txtWrapSecond .animatedText{
     animation: animate1Up .4s linear forwards;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s ease-out;
 }
 #animationSection2.animateSec23Next .txtWrapThird .animatedText{
     animation: animate2Up .4s ease forwards;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s ease-out;
     transition-delay: 0.3s;
 }
 #animationSection2.animateSec23Next .animationImg{
@@ -1216,22 +1216,27 @@ button {
     }
 }
 
-#animationSection3{
+/* 기본 섹션 스타일 */
+#animationSection3 {
     background: #161626;
     height: 100vh;
     top: 200vh;
     left: 0;
     width: 100%;
     z-index: 1;
-    transition: linear top .5s
+    transition: top 0.5s linear;
 }
-#animationSection3.animateSec31Next{
+
+/* 섹션이 활성화될 때 상단으로 이동 */
+#animationSection3.animateSec31Next {
     top: 0;
     left: 0;
     width: 100%;
     transition: top 0.5s linear;
 }
-#animationSection3 .animationImgMain{
+
+/* 기본 이미지 스타일 */
+#animationSection3 .animationImgMain {
     position: absolute;
     width: 80%;
     height: 100vh;
@@ -1241,24 +1246,15 @@ button {
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 5;
 }
-#animationSection3.animateSec31Next .animationImgMain{
-    position: absolute;
-    width: 50%;
-    height: 100vh;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition-delay: 1s;
-    z-index: 5;
-}
-#animationSection3.animateSec32Next .animationImgMain{
+
+/* 이미지를 축소하며 왼쪽으로 이동 */
+#animationSection3.animateSec32Next .animationImgMain {
     position: absolute;
     width: 50%;
     height: 100vh;
     top: 0;
     left: 0;
-    transform: translateX(0);
+    transform: translateX(0) scale(1); /* 축소 효과 추가 */
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 5;
 }
@@ -1332,6 +1328,7 @@ button {
     margin-top: -4em;
     opacity: 0;
     transition: ease-out opacity .5s;
+    height: 430px;
 }
 #animationSection3 .animationInfo.activeOne{
     transform: translateY(0%);
@@ -1397,7 +1394,8 @@ button {
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     overflow: hidden;
 }
-#animationSection3 .animationInfo .animationInfoInner p.second{
+#animationSection3 .animationInfo .animationInfoInner p.second,
+#animationSection3 .animationInfo.activeOne .animationInfoInner p.third{
     padding: 5% 0 0;
 }
 #animationSection3 .animationInfo.activeOne .animationInfoInner p.first{
@@ -1412,7 +1410,12 @@ button {
     transition-delay: 1.5s;
     transition: all 0.5s ease-out;
 }
-
+#animationSection3 .animationInfo.activeOne .animationInfoInner p.third{
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 5.5s;
+    transition: all 0.5s ease-out;
+}
 
 #animationSection3 .animationInfo.white{
     background: #e6e9ec;
@@ -1923,13 +1926,13 @@ button {
     color: #FFF;
     transform: translateY(-100%);
     opacity: 0;
-    transition: all .3s ease-out;
+    transition: all .5s ease-out;
 }
 #animationSection7 .animationSectionTitle.txtActiveOn h4{
     transform: translateY(0%);
     opacity: 1;
     transition: all .3s ease-out;
-    transition-delay: .3s;
+    transition-delay: .5s;
 }
 #animationSection7 .animationSectionTitleCont h5{
     font-size: 52px;
@@ -1939,7 +1942,7 @@ button {
     color: #BDC1C6;
     transform: translateY(-100%);
     opacity: 0;
-    transition: all .3s ease-out;
+    transition: all .5s ease-out;
 }
 #animationSection7 .animationSectionTitle.txtActiveOn h5{
     transform: translateY(0%);
@@ -1974,11 +1977,11 @@ button {
     display: flex;
     align-items: center;
     gap: 12px;
-    transition: transform 0.3s linear;
+    transition: transform 0.5s linear;
 }
 #animationSection7 .animationSectionImgList ul li {
     position: relative;
-    transition: transform 0.3s linear, opacity 0.3s ease-out;
+    transition: transform 0.5s linear, opacity 0.3s ease-out;
     transform: translateX(0);
     opacity: 1;
 }
