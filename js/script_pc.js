@@ -28,15 +28,15 @@ function isMobile() {
 // 📌 PC일 때 링크 이동
 if (!isMobile()) {
     if(languageCode ==='ko') {
-        window.location.href = "/pc/ko.html"; // 이동할 링크
+        window.location.href = "./pc/ko.html"; // 이동할 링크
     }else{
-        window.location.href = "/pc/en.html";
+        window.location.href = "./pc/en.html";
     }
 }else{
     if(languageCode ==='ko') {
-        window.location.href = "/mobile/ko.html";
+        window.location.href = "./mobile/ko.html";
     }else{
-        window.location.href = "/mobile/en.html";
+        window.location.href = "./mobile/en.html";
     }
 }
 console.log('languageCode',languageCode);
