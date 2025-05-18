@@ -1,3 +1,27 @@
+$(".navTxt").text('');
+const path = window.location.pathname;
+const languageCode = path.match(/\/(en|ko)\.html/)?.[1];
+
+// 📌 PC와 모바일 체크
+function isMobile() {
+	const userAgent = navigator.userAgent.toLowerCase();
+	return /iphone|ipod|ipad|android|blackberry|windows phone|webos|opera mini|opera mobi|mobile/.test(userAgent);
+}
+
+// 📌 PC일 때 링크 이동
+if (!isMobile()) {
+	if(languageCode ==='ko') {
+		window.location.href = "/pc/ko.html"; // 이동할 링크
+	}else{
+		window.location.href = "/pc/en.html";
+	}
+}else{
+	if(languageCode ==='ko') {
+		window.location.href = "/mobile/ko.html";
+	}else{
+		window.location.href = "/mobile/en.html";
+	}
+}
 
 const wAnimate = {
 	isLoading: false,
@@ -124,7 +148,7 @@ const wAnimate = {
 
 
 			if(wAnimate.upDown=="up") {
-				$(".navTxt").text(((lang == "ko") ? "01. 브랜드 슬로건" : "01. Brand Slogan"));
+				$(".navTxt").text(((languageCode == "ko") ? "01. 브랜드 슬로건" : "01. Brand Slogan"));
 				$(".symbol-inner").addClass("is-up");
 				$(".section3 ").css({"top":"0"});
 				$(".header ").addClass("is-opacity");
@@ -173,7 +197,7 @@ const wAnimate = {
 				$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").removeClass("on");
 
 				$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").one("transitionend animationend", function (e) {
-					$(".navTxt").text(((lang == "ko") ? "브랜드 슬로건" : "Brand Slogan"));
+					$(".navTxt").text(((languageCode == "ko") ? "브랜드 슬로건" : "Brand Slogan"));
 					$(".section3 .sec1 .video-wrap").css("height", "120");
 					$(".section3 .ani-wrap .third").removeClass().addClass("third down-down");
 				});
@@ -188,7 +212,7 @@ const wAnimate = {
 				$(".section3 .sec1 .video-wrap").css({"width":"100%", "height":"100vh"});
 
 				$(".section3 .sec1 .video-wrap").one("transitionend animationend", function (e) {
-					$(".navTxt").text(((lang == "ko") ? "02. 기업 철학" : "02. philosophy"));
+					$(".navTxt").text(((languageCode == "ko") ? "02. 기업 철학" : "02. philosophy"));
 					$(".section3 .sec1 .text-wrap .first, .section3 .sec1 .text-wrap .second, .section3 .sec1 .text-wrap .third").addClass("on");
 					wAnimate.isAnimated = false
 				});
@@ -835,7 +859,7 @@ var prata = {
 
 		if(this.scrollTop >= section4 && $(window).scrollTop() <= sec4End) {
 			$(".section4").addClass("is-fixed");
-			$(".navTxt").text(((lang=="ko")?"05. 브랜드 가치":"05. Brand Value"));
+			$(".navTxt").text(((languageCode=="ko")?"04. 브랜드 가치":"04. Brand Value"));
 			//$(".section31").addClass("is-fixed");
 
 		}else{
@@ -899,7 +923,7 @@ var prata = {
 
 		if(this.scrollTop >= section5 && $(window).scrollTop() <= sec5End) {
 			$(".section5").addClass("is-fixed");
-			$(".navTxt").text(((lang=="ko")?"브랜드 네이밍":"Brand Naming"));
+			$(".navTxt").text(((languageCode=="ko")?"05.브랜드 네이밍":"05.Brand Naming"));
 			//$(".section31").addClass("is-fixed");
 
 		}else{
@@ -970,11 +994,11 @@ var prata = {
 
 		if(this.scrollTop >= section31 && $(window).scrollTop() <= sec31End) {
 			if($(window).scrollTop() >= $(".section31 .top-wrap").offset().top){
-				// $(".navTxt").text(((lang=="ko")?"03. 합리적 프리미엄":"03. Reasonable"));
-				$(".navTxt").text(((lang=="ko")?"03. 합리적 서비스":"03. Reasonable"));
+				// $(".navTxt").text(((languageCode=="ko")?"03. 합리적 프리미엄":"03. Reasonable"));
+				$(".navTxt").text(((languageCode=="ko")?"03. 합리적 서비스":"03. Reasonable"));
 			}
 			// if($(window).scrollTop() >= $(".section31 .bottom-wrap").offset().top){
-			// 	$(".navTxt").text(((lang=="ko")?"04. 진심어린 서비스":"04. Mindful Service"));
+			// 	$(".navTxt").text(((languageCode=="ko")?"04. 진심어린 서비스":"04. Mindful Service"));
 			// }
 
 		}else{
@@ -1227,7 +1251,7 @@ var prata = {
 
 
 		if(this.scrollTop >= section6) {
-			$(".navTxt").text(((lang=="ko")?"06. 브랜드 컬러":"06. Brand Color"));
+			$(".navTxt").text(((languageCode=="ko")?"06. 브랜드 컬러":"06. Brand Color"));
 			//$(".section31").addClass("is-fixed");
 
 		}else{
@@ -1340,12 +1364,12 @@ var prata = {
 		var section7 = $(".section7").offset().top;
 		var section7Recruit = $(".section7 .link-wrap").offset().top;
 		if(this.scrollTop >= section7) {
-			$(".navTxt").text(((lang=="ko")?"07. 브랜드 에셋":"07. Brand assets"));
+			$(".navTxt").text(((languageCode=="ko")?"07. 브랜드 에셋":"07. Brand assets"));
 		}
 
 
 		if(this.scrollTop >= (section7Recruit - 100)) {
-			$(".navTxt").text(((lang=="ko")?"08. 인재 채용":"08. Recruit"));
+			$(".navTxt").text(((languageCode=="ko")?"08. 인재 채용":"08. Recruit"));
 		}
 
 

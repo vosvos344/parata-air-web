@@ -20,7 +20,25 @@ let currentImageIndex = 1; // 섹션 3 이미지
 let isScrollEvent = false; // 스크롤 이벤트 적용
 const path = window.location.pathname;
 const languageCode = path.match(/\/(en|ko)\.html/)?.[1];
+function isMobile() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    return /iphone|ipod|ipad|android|blackberry|windows phone|webos|opera mini|opera mobi|mobile/.test(userAgent);
+}
 
+// 📌 PC일 때 링크 이동
+if (!isMobile()) {
+    if(languageCode ==='ko') {
+        window.location.href = "/pc/ko.html"; // 이동할 링크
+    }else{
+        window.location.href = "/pc/en.html";
+    }
+}else{
+    if(languageCode ==='ko') {
+        window.location.href = "/mobile/ko.html";
+    }else{
+        window.location.href = "/mobile/en.html";
+    }
+}
 console.log('languageCode',languageCode);
 // let currentListIndex = 1;
 // 📌 페이지 로드 시 프로그레스 바 애니메이션 시작
