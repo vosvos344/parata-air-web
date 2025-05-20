@@ -312,7 +312,7 @@ window.addEventListener("wheel", (event) => {
                 const infoSections = document.querySelectorAll("#animationSection3 .animationInfo");
 
                 // 모든 info에서 activeOne 제거
-                infoSections.forEach(section => section.classList.remove("activeOne"));
+                // infoSections.forEach(section => section.classList.remove("activeOne"));
 
                 // 현재 이미지 인덱스에 activeOne 추가
                 if (currentImageIndex < infoSections.length) {
