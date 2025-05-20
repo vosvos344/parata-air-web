@@ -274,7 +274,7 @@ button {
     justify-content: flex-end;
     position: relative;
     margin-bottom: 20px;
-    cursor: pointer;
+    cursor: none;
     text-align: right;
     height: 40px;
     overflow: hidden;
@@ -312,12 +312,21 @@ button {
     height: 12px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.5);
-    transition: all 0.5s ease;
+    transition: all 0.2s ease;
 }
 
-.sidebar-menu li:hover .menu-dot,
-.sidebar-menu li.active .menu-dot {
-    border: 1px solid #fff;
+.sidebar-menu .menu-dot::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.4s ease;
+    z-index: 1;
 }
 
 .sidebar-menu li:hover .menu-dot::after,
@@ -325,6 +334,14 @@ button {
     width: 4px;
     height: 4px;
     background: #fff;
+}
+
+.sidebar-menu li:hover .menu-dot::before,
+.sidebar-menu li.active .menu-dot::before {
+    width: 100%;
+    height: 100%;
+    border-color: #fff;
+    transform: translate(-50%, -50%) scale(0.9);
 }
 
 /* Hover and Active Animation */
@@ -347,15 +364,19 @@ button {
     color: #111;
 }
 
-.sidebar-menu li.black:hover .menu-dot,
-.sidebar-menu li.black.active .menu-dot{
-    border: 1px solid #111;
+.sidebar-menu li.black:hover .menu-dot::before,
+.sidebar-menu li.black.active .menu-dot::before {
+    width: 100%;
+    height: 100%;
+    border-color: #111;
+    transform: translate(-50%, -50%) scale(0.9);
 }
-
 .sidebar-menu li.black:hover .menu-dot::after,
 .sidebar-menu li.black.active .menu-dot::after {
     background-color: #111;
 }
+
+
 
 #animationSection1{
     position: fixed;
@@ -1797,8 +1818,10 @@ button {
 }
 #animationSection6 .animationSectionRightInner img{
     display: inline-block;
-    width: 120px;
-    height: 178px;
+    /*width: 120px;*/
+    /*height: 178px;*/
+    width: 278px;
+    height: 357px;
     object-fit: cover;
     position: absolute;
     top: 50%;
@@ -1950,7 +1973,7 @@ button {
 
 #animationSection7 .animationSectionTitleCont{}
 #animationSection7 .animationSectionTitleCont h4{
-    font-size: 52px;
+    font-size: 42px;
     font-weight: 700;
     line-height: 67.6px;
     text-align: left;
