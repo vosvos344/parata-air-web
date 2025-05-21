@@ -638,7 +638,9 @@ window.addEventListener("scroll", (event) => {
         isScrollEvent = false;
     }
     const section6Top = animationSection6.offset().top;
-    const section7Top = section6Top + setHeight;
+    console.log(windowHeight);
+    // const section7Top = section6Top + setHeight;
+    const section7Top = $("#animationSection7").offset().top;
     const section6End = section7Top - windowHeight;
     const textStart = section6Top - (windowHeight / 3);
     const textEnd = section7Top - windowHeight;
@@ -661,7 +663,7 @@ window.addEventListener("scroll", (event) => {
     }
 
     // Sticky effect for left section
-    if (scrollTop >= section6Top && scrollTop < section6End) {
+    if (scrollTop >= section6Top && scrollTop < section7Top) {
         animationSection6Left.css({
             position: "fixed",
             top: "0",
@@ -720,6 +722,10 @@ window.addEventListener("scroll", (event) => {
     const centralOffset = animation7Top;
     const fixedTopValue = animation7Top - centralOffset;
     const endPoint = animation7Top + animation7Height - animation7InnerHeight - fixedTopValue;
+    const animationFooter = $('.animationFooter');
+    const footerTop = animationFooter.offset().top;
+    const footerHeight = animationFooter.outerHeight(); // padding + border 포함
+    const footerBottom = footerTop + footerHeight;
 
     const totalImages = 6;
     const maxTransformValue = -(imageWidth * (totalImages - 2)) - 144;
@@ -740,12 +746,6 @@ window.addEventListener("scroll", (event) => {
     const headerBackgroundPoint = animationImgListTop - (windowHeight / 2);
     animationHeaderOriginal.css("background", scrollTop >= headerBackgroundPoint ? "#161626" : "transparent");
 
-    // Recruit text animation (Section 7)
-    const recruitActivationPoint = animationImgListTop + (animationImgListHeight / 2) - 100;
-    animationRecriut.toggleClass("txtActiveOn", scrollTop >= recruitActivationPoint);
-
-
-    // Image list scroll effect (Section 7)
     if (scrollTop >= centralOffset && scrollTop < endPoint) {
         animation7Inner.css({
             position: "fixed",
@@ -759,7 +759,18 @@ window.addEventListener("scroll", (event) => {
         const progressWithinSection = (aniSevenProgress % aniSevenSubSectionSize) / aniSevenSubSectionSize;
 
         const ulTransformValue = -imageWidth * currentImageIndex - (progressWithinSection * imageWidth);
-        imgListUl.css("transform", `translateX(${Math.max(ulTransformValue, maxTransformValue)}px)`);
+        // imgListUl.css("transform", `translateX(${Math.max(ulTransformValue, maxTransformValue)}px)`);
+
+        const currentTransform = Math.max(ulTransformValue, maxTransformValue);
+
+        imgListUl.css("transform", `translateX(${currentTransform}px)`);
+        console.log('animationRecriut.offset().top',footerBottom - (310 + 448));
+        // transform이 max에 도달했을 경우 recruit 텍스트 표시
+        if (currentTransform === -3800) { // 여유값 약간 줌
+            animationRecriut.addClass("txtActiveOn");
+        } else {
+            animationRecriut.removeClass("txtActiveOn");
+        }
 
     } else if (scrollTop < centralOffset) {
         animation7Inner.css({
