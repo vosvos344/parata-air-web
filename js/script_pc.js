@@ -225,14 +225,14 @@ window.addEventListener("wheel", (event) => {
                     sectionMenu[1].classList.add('active');
                     break;
                 case 7:
-                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Thoughtful Service';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Resonable Service';
                     progressHeaderLine.style.width = '42%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[2].classList.add('active');
                     break;
                 case 10:
                     sectionTitle.classList.add('black');
-                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Thoughtful Service';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Resonable Service';
                     progressHeaderLine.style.width = '60%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.add('black'));
@@ -434,7 +434,7 @@ window.addEventListener("wheel", (event) => {
                     break;
                 case 10:
                     sectionTitle.classList.remove('black');
-                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Thoughtful Service';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Resonable Service';
                     progressHeaderLine.style.width = '42%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.remove('black'));
@@ -442,7 +442,7 @@ window.addEventListener("wheel", (event) => {
                     break;
                 case 12:
                     sectionTitle.classList.add('black');
-                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Thoughtful Service';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Resonable Service';
                     progressHeaderLine.style.width = '60%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.add('black'));
@@ -808,7 +808,7 @@ document.addEventListener("DOMContentLoaded", () => {
         [
             '01.Brand Slogan',
             '02.Corporate Philosophy',
-            '03.Thoughtful Service',
+            '03.Resonable Service',
             '04.Brand Value',
             '05.Brand Naming',
             '06.Brand Color',
