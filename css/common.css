@@ -2060,21 +2060,133 @@ button {
 
 }
 
-#animationSection7 .animationSectionRecruit{
+/*#animationSection7 .animationSectionRecruit{*/
+/*    !*display: flex;*!*/
+/*    display: grid;*/
+/*    align-items: flex-start;*/
+/*    justify-content: space-between;*/
+/*    gap: 20px;*/
+/*    !*padding: 180px 0 0;*!*/
+/*    padding: 200px 0 0;*/
+/*    grid-template-columns: 45% 50%;*/
+/*}*/
+/*#animationSection7 .animationSectionRecruitTop{*/
+/*    display: flex;*/
+/*    flex: 1 0 0;*/
+/*}*/
+/*#animationSection7 .animationSectionRecruitTop h4{*/
+/*    font-size: 42px;*/
+/*    font-weight: 700;*/
+/*    line-height: 54px;*/
+/*    color: #FFF;*/
+/*    word-break: keep-all;*/
+/*    transform: translateY(-100%);*/
+/*    opacity: 0;*/
+/*    transition: all .5s ease-out;*/
+
+/*}*/
+/*#animationSection7 .animationSectionRecruitTop h4 span{*/
+/*    color: #BDC1C6;*/
+/*}*/
+/*#animationSection7 .txtActiveOn .animationSectionRecruitTop h4{*/
+/*    transform: translateY(0%);*/
+/*    opacity: 1;*/
+/*    transition: all .5s ease-out;*/
+/*}*/
+/*#animationSection7 .animationSectionRecruitBot{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 80px;*/
+/*}*/
+/*#animationSection7 .animationSectionRecruitBot p{*/
+/*    font-family: Pretendard;*/
+/*    font-size: 16px;*/
+/*    font-weight: 500;*/
+/*    line-height: 24px;*/
+/*    text-align: left;*/
+/*    color: #FFF;*/
+/*    transform: translateY(-100%);*/
+/*    opacity: 0;*/
+/*    transition: all .5s ease-out;*/
+/*}*/
+/*#animationSection7 .txtActiveOn .animationSectionRecruitBot p{*/
+/*    transform: translateY(0%);*/
+/*    opacity: 1;*/
+/*    transition: all .5s ease-out;*/
+/*    transition-delay: .4s;*/
+/*}*/
+/*#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox{*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: 12px;*/
+/*}*/
+/*#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a{*/
+/*    display: block;*/
+/*    padding: 18px 20px;*/
+/*    background: #1D1D2D;*/
+/*    border-radius: 4px;*/
+/*    position: relative;*/
+/*    min-width: 240px;*/
+/*    transform: translateY(-100%);*/
+/*    opacity: 0;*/
+/*    transition: all .5s ease-out;*/
+/*}*/
+
+/*#animationSection7 .txtActiveOn .animationSectionRecruitBot .animationSectionRecruitBox a:first-child{*/
+/*    transform: translateY(0%);*/
+/*    opacity: 1;*/
+/*    transition: all .5s ease-out;*/
+/*    transition-delay: .6s;*/
+/*}*/
+/*#animationSection7 .txtActiveOn .animationSectionRecruitBot .animationSectionRecruitBox a:last-child{*/
+/*    transform: translateY(0%);*/
+/*    opacity: 1;*/
+/*    transition: all .5s ease-out;*/
+/*    transition-delay: .8s;*/
+/*}*/
+
+/*#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a img{*/
+/*    display: inline-block;*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    object-fit: cover;*/
+/*    position: absolute;*/
+/*    top: 18px;*/
+/*    right: 20px;*/
+/*}*/
+/*#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a h5{*/
+/*    font-family: Pretendard;*/
+/*    font-size: 18px;*/
+/*    font-weight: 500;*/
+/*    line-height: 23.4px;*/
+/*    text-align: left;*/
+/*    color: #FFF;*/
+/*    padding: 0 0 44px;*/
+/*}*/
+/*#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a p{*/
+/*    font-family: Pretendard;*/
+/*    font-size: 13px;*/
+/*    font-weight: 500;*/
+/*    line-height: 16.9px;*/
+/*    text-align: left;*/
+/*    color: #FFF;*/
+/*}*/
+
+#animationFooter .animationSectionRecruit{
     /*display: flex;*/
     display: grid;
     align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
-    /*padding: 180px 0 0;*/
-    padding: 200px 0 0;
+    padding: 180px 80px;
+    /*padding: 200px 0 0;*/
     grid-template-columns: 45% 50%;
 }
-#animationSection7 .animationSectionRecruitTop{
+#animationFooter .animationSectionRecruitTop{
     display: flex;
     flex: 1 0 0;
 }
-#animationSection7 .animationSectionRecruitTop h4{
+#animationFooter .animationSectionRecruitTop h4{
     font-size: 42px;
     font-weight: 700;
     line-height: 54px;
@@ -2085,20 +2197,20 @@ button {
     transition: all .5s ease-out;
 
 }
-#animationSection7 .animationSectionRecruitTop h4 span{
+#animationFooter .animationSectionRecruitTop h4 span{
     color: #BDC1C6;
 }
-#animationSection7 .txtActiveOn .animationSectionRecruitTop h4{
+#animationFooter .txtActiveOn .animationSectionRecruitTop h4{
     transform: translateY(0%);
     opacity: 1;
     transition: all .5s ease-out;
 }
-#animationSection7 .animationSectionRecruitBot{
+#animationFooter .animationSectionRecruitBot{
     display: flex;
     flex-direction: column;
     gap: 80px;
 }
-#animationSection7 .animationSectionRecruitBot p{
+#animationFooter .animationSectionRecruitBot p{
     font-family: Pretendard;
     font-size: 16px;
     font-weight: 500;
@@ -2109,18 +2221,18 @@ button {
     opacity: 0;
     transition: all .5s ease-out;
 }
-#animationSection7 .txtActiveOn .animationSectionRecruitBot p{
+#animationFooter .txtActiveOn .animationSectionRecruitBot p{
     transform: translateY(0%);
     opacity: 1;
     transition: all .5s ease-out;
     transition-delay: .4s;
 }
-#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox{
+#animationFooter .animationSectionRecruitBot .animationSectionRecruitBox{
     display: flex;
     align-items: center;
     gap: 12px;
 }
-#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a{
+#animationFooter .animationSectionRecruitBot .animationSectionRecruitBox a{
     display: block;
     padding: 18px 20px;
     background: #1D1D2D;
@@ -2132,20 +2244,20 @@ button {
     transition: all .5s ease-out;
 }
 
-#animationSection7 .txtActiveOn .animationSectionRecruitBot .animationSectionRecruitBox a:first-child{
+#animationFooter .txtActiveOn .animationSectionRecruitBot .animationSectionRecruitBox a:first-child{
     transform: translateY(0%);
     opacity: 1;
     transition: all .5s ease-out;
     transition-delay: .6s;
 }
-#animationSection7 .txtActiveOn .animationSectionRecruitBot .animationSectionRecruitBox a:last-child{
+#animationFooter .txtActiveOn .animationSectionRecruitBot .animationSectionRecruitBox a:last-child{
     transform: translateY(0%);
     opacity: 1;
     transition: all .5s ease-out;
     transition-delay: .8s;
 }
 
-#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a img{
+#animationFooter .animationSectionRecruitBot .animationSectionRecruitBox a img{
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -2154,7 +2266,7 @@ button {
     top: 18px;
     right: 20px;
 }
-#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a h5{
+#animationFooter .animationSectionRecruitBot .animationSectionRecruitBox a h5{
     font-family: Pretendard;
     font-size: 18px;
     font-weight: 500;
@@ -2163,7 +2275,7 @@ button {
     color: #FFF;
     padding: 0 0 44px;
 }
-#animationSection7 .animationSectionRecruitBot .animationSectionRecruitBox a p{
+#animationFooter .animationSectionRecruitBot .animationSectionRecruitBox a p{
     font-family: Pretendard;
     font-size: 13px;
     font-weight: 500;
@@ -2171,7 +2283,6 @@ button {
     text-align: left;
     color: #FFF;
 }
-
 
 
 

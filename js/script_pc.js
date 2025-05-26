@@ -213,26 +213,26 @@ window.addEventListener("wheel", (event) => {
             switch (currentSubIndex) {
                 case 2:
                     document.querySelector('.animationHeaderOriginal').style.display = 'block';
-                    sectionTitle.innerText = languageCode === 'ko' ? '01.브랜드 슬로건' : '01.Brand Slogan';
+                    sectionTitle.innerText = languageCode === 'ko' ? '01. 브랜드 슬로건' : '01. Brand Slogan';
                     progressHeaderLine.style.width = '14%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[0].classList.add('active');
                     break;
                 case 5:
-                    sectionTitle.innerText = languageCode === 'ko' ? '02.기업 철학' : '02.Corporate Philosophy';
+                    sectionTitle.innerText = languageCode === 'ko' ? '02. 기업 철학' : '02. Corporate Philosophy';
                     progressHeaderLine.style.width = '28%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[1].classList.add('active');
                     break;
                 case 7:
-                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Resonable Service';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03. 합리적 서비스' : '03. Resonable Service';
                     progressHeaderLine.style.width = '42%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[2].classList.add('active');
                     break;
                 case 10:
                     sectionTitle.classList.add('black');
-                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Resonable Service';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03. 합리적 서비스' : '03. Resonable Service';
                     progressHeaderLine.style.width = '60%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.add('black'));
@@ -240,14 +240,14 @@ window.addEventListener("wheel", (event) => {
                     break;
                 case 12:
                     sectionTitle.classList.remove('black');
-                    sectionTitle.innerText = languageCode === 'ko' ? '04.브랜드 가치' : '04.Brand Value';
+                    sectionTitle.innerText = languageCode === 'ko' ? '04. 브랜드 가치' : '04. Brand Value';
                     progressHeaderLine.style.width = '74%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.remove('black'));
                     sectionMenu[3].classList.add('active');
                     break;
                 case 15:
-                    sectionTitle.innerText = languageCode === 'ko' ? '05.브랜드 네이밍' : '05.Brand Naming';
+                    sectionTitle.innerText = languageCode === 'ko' ? '05. 브랜드 네이밍' : '05. Brand Naming';
                     progressHeaderLine.style.width = '88%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[4].classList.add('active');
@@ -421,20 +421,20 @@ window.addEventListener("wheel", (event) => {
                     progressHeaderLine.style.width = '0%';
                     break;
                 case 5:
-                    sectionTitle.innerText = languageCode === 'ko' ? '01.브랜드 슬로건' : '01.Brand Slogan';
+                    sectionTitle.innerText = languageCode === 'ko' ? '01. 브랜드 슬로건' : '01. Brand Slogan';
                     progressHeaderLine.style.width = '14%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[0].classList.add('active');
                     break;
                 case 7:
-                    sectionTitle.innerText = languageCode === 'ko' ? '02.기업 철학' : '02.Corporate Philosophy';
+                    sectionTitle.innerText = languageCode === 'ko' ? '02. 기업 철학' : '02. Corporate Philosophy';
                     progressHeaderLine.style.width = '28%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[1].classList.add('active');
                     break;
                 case 10:
                     sectionTitle.classList.remove('black');
-                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Resonable Service';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03. 합리적 서비스' : '03. Resonable Service';
                     progressHeaderLine.style.width = '42%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.remove('black'));
@@ -442,7 +442,7 @@ window.addEventListener("wheel", (event) => {
                     break;
                 case 12:
                     sectionTitle.classList.add('black');
-                    sectionTitle.innerText = languageCode === 'ko' ? '03.합리적 서비스' : '03.Resonable Service';
+                    sectionTitle.innerText = languageCode === 'ko' ? '03. 합리적 서비스' : '03. Resonable Service';
                     progressHeaderLine.style.width = '60%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu.forEach((item) => item.classList.add('black'));
@@ -450,7 +450,7 @@ window.addEventListener("wheel", (event) => {
                     break;
                 case 15:
                     sectionTitle.classList.remove('black');
-                    sectionTitle.innerText = languageCode === 'ko' ? '04.브랜드 가치' : '04.Brand Value';
+                    sectionTitle.innerText = languageCode === 'ko' ? '04. 브랜드 가치' : '04. Brand Value';
                     progressHeaderLine.style.width = '74%';
                     sectionMenu.forEach((item) => item.classList.remove('active'));
                     sectionMenu[3].classList.add('active');
@@ -654,7 +654,7 @@ window.addEventListener("scroll", (event) => {
 
     // Section title update
     if (scrollTop >= section6Top && scrollTop < section7Top) {
-        $(".sectionTitle").html(languageCode === 'ko' ? "06.브랜드 컬러" : '06.Brand Color');
+        $(".sectionTitle").html(languageCode === 'ko' ? "06. 브랜드 컬러" : '06. Brand Color');
         sectionMenu.forEach((item) => item.classList.remove('active'));
         sectionMenu[5].classList.add('active');
         $(".progressHeaderLine").css({
@@ -722,10 +722,10 @@ window.addEventListener("scroll", (event) => {
     const centralOffset = animation7Top;
     const fixedTopValue = animation7Top - centralOffset;
     const endPoint = animation7Top + animation7Height - animation7InnerHeight - fixedTopValue;
-    const animationFooter = $('.animationFooter');
-    const footerTop = animationFooter.offset().top;
-    const footerHeight = animationFooter.outerHeight(); // padding + border 포함
-    const footerBottom = footerTop + footerHeight;
+    // const animationFooter = $('.animationFooter');
+    // const footerTop = animationFooter.offset().top;
+    // const footerHeight = animationFooter.outerHeight(); // padding + border 포함
+    // const footerBottom = footerTop + footerHeight;
 
     const totalImages = 6;
     const maxTransformValue = -(imageWidth * (totalImages - 2)) - 144;
@@ -764,7 +764,7 @@ window.addEventListener("scroll", (event) => {
         const currentTransform = Math.max(ulTransformValue, maxTransformValue);
 
         imgListUl.css("transform", `translateX(${currentTransform}px)`);
-        console.log('animationRecriut.offset().top',footerBottom - (310 + 448));
+        // console.log('animationRecriut.offset().top',footerBottom - (310 + 448));
         // transform이 max에 도달했을 경우 recruit 텍스트 표시
         if (currentTransform === -3800) { // 여유값 약간 줌
             animationRecriut.addClass("txtActiveOn");
@@ -788,6 +788,27 @@ window.addEventListener("scroll", (event) => {
         });
         imgListUl.css("transform", `translateX(${maxTransformValue}px)`);
     }
+
+    // 섹션 8 (푸터)
+    const animationFooter = $('#animationFooter');
+    const recruitBox = animationFooter.find('.animationSectionRecruit');
+    const recruitTriggerTop = animationFooter.offset().top - (windowHeight * 0.75); // 약간 일찍 트리거
+    const recruitTriggerBot = animationFooter.offset().top + recruitBox.outerHeight();
+
+    // Section title update (Section 7)
+    if (scrollTop >= recruitTriggerTop) {
+        $(".sectionTitle").html(languageCode === 'ko' ? "08. 인재 채용" : '08. Recruit');
+        sectionMenu.forEach((item) => item.classList.remove('active'));
+        sectionMenu[7].classList.add('active');
+        $(".progressHeaderLine").css("width", "100%");
+    }
+
+    if (scrollTop >= recruitTriggerTop && scrollTop <= recruitTriggerBot) {
+        recruitBox.addClass('txtActiveOn');
+    } else {
+        recruitBox.removeClass('txtActiveOn');
+    }
+
 });
 
 
@@ -796,23 +817,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const sectionMenuItems = document.querySelectorAll('.sidebar-menu li');
     const sections = document.querySelectorAll('.animationSection');
     const sectionTitles = languageCode === 'ko' ? [
-            '01.브랜드 슬로건',
-            '02.기업 철학',
-            '03.합리적 서비스',
-            '04.브랜드 가치',
-            '05.브랜드 네이밍',
-            '06.브랜드 컬러',
-            '07.브랜드 에셋'
+            '01. 브랜드 슬로건',
+            '02. 기업 철학',
+            '03. 합리적 서비스',
+            '04. 브랜드 가치',
+            '05. 브랜드 네이밍',
+            '06. 브랜드 컬러',
+            '07. 브랜드 에셋',
+            '08. 인재 채용'
         ]
         :
         [
-            '01.Brand Slogan',
-            '02.Corporate Philosophy',
-            '03.Resonable Service',
-            '04.Brand Value',
-            '05.Brand Naming',
-            '06.Brand Color',
-            '07.Brand Assets'
+            '01. Brand Slogan',
+            '02. Corporate Philosophy',
+            '03. Resonable Service',
+            '04. Brand Value',
+            '05. Brand Naming',
+            '06. Brand Color',
+            '07. Brand Assets',
+            '08. Recruit'
     ];
     const progressPercentages = [14, 28, 42, 60, 74, 88, 100];
     const currentSectionId = sectionIds[currentSectionIndex];
@@ -879,7 +902,7 @@ document.addEventListener("DOMContentLoaded", () => {
             animationSection7.classList.remove('on');
 
             // 푸터 초기화
-            const animationFooter = document.querySelector('.animationFooter');
+            const animationFooter = document.getElementById('animationFooter');
             animationFooter.style.zIndex = '1';
 
             wheelEnabled = true;
@@ -1008,6 +1031,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 animationFooter.style.zIndex = '98';
                 window.scrollTo({
                     top: animationSection7.offsetTop,
+                    behavior: 'smooth' // 부드럽게 이동
+                });
+            }
+            if(index === 7){
+                currentSectionIndex = 4;
+                currentSubIndex = 16;
+                currentImageIndex = 4;
+                currentListIndex = 2;
+                wheelEnabled = false;
+                isScrollEvent = true;
+                currentSection.classList.add('animateSec21Next');
+                animationSection2.classList.add(
+                    'animateSec22Next', 'animateSec23Next',
+                    'animateSec24Next','animateSec25Next',
+                    'animateSec26Next'
+                );
+                animationSection3.classList.add('animateSec31Next', 'animateSec32Next');
+                animationSection3.style.position = 'fixed';
+                animationSection3.style.zIndex = '98';
+                animationSection4.classList.add('on');
+                imgContainers[3].classList.add('active');
+                infoSections[3].classList.add('activeOne');
+                animationList[2].classList.add('listOn');
+                animationSection5.classList.add('animateSec51Next', 'animateSec52Next', 'animateSec53Next');
+                animationSection5.style.position = 'absolute';
+                animationSection5.style.zIndex = '98';
+                animationSectionLogo.classList.add('active');
+                document.body.style.overflow = 'auto';
+                animationSection6.classList.add('on');
+                animationSection7.classList.add('on');
+                animationFooter.style.zIndex = '98';
+                window.scrollTo({
+                    top: animationFooter.offsetTop,
                     behavior: 'smooth' // 부드럽게 이동
                 });
             }
