@@ -18,6 +18,7 @@ time, mark, audio, video {
     vertical-align: baseline;
     font-family: "Pretendard Variable"
 }
+
 html {
     scroll-behavior: smooth;
     overscroll-behavior: contain;
@@ -1414,7 +1415,7 @@ button {
     opacity: 1;
 }
 #animationSection3 .animationInfo .animationInfoInner h4{
-    font-size: 3em;
+    font-size: 3rem;
     font-weight: 700;
     line-height: 57.28px;
     text-align: left;

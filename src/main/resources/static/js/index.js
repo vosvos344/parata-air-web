@@ -15,7 +15,7 @@ const wAnimate = {
 				wAnimate.touchEndY = e.touches[0].clientY
 			})
 			.on('touchend', function(e){
-				console.log(wAnimate.isAnimated);
+				// console.log(wAnimate.isAnimated);
 
 				if(!wAnimate.isLoading){
 					return;
@@ -57,7 +57,7 @@ const wAnimate = {
 					$(window).scrollTop(0)
 				}
 				$(".animateWrap").attr("data-step", wAnimate.step).attr("data-upDown", wAnimate.upDown);
-				console.log(wAnimate.step);
+				// console.log(wAnimate.step);
 				wAnimate.isAnimated = true
 				wAnimate.play[wAnimate.step]()
 
@@ -833,7 +833,7 @@ var prata = {
 
 		if(this.scrollTop >= section4 && $(window).scrollTop() <= sec4End) {
 			$(".section4").addClass("is-fixed");
-			$(".navTxt").text(((lang=="ko")?"05. 브랜드 가치":"05. Brand Value"));
+			// $(".navTxt").text(((lang=="ko")?"05. 브랜드 가치":"05. Brand Value"));
 			//$(".section31").addClass("is-fixed");
 
 		}else{
@@ -895,9 +895,11 @@ var prata = {
 		var sectionNext6 = $(".section6").offset().top;
 		var sec5End = sectionNext4 - $(window).height();
 
+		console.log('section5',section5);
+
 		if(this.scrollTop >= section5 && $(window).scrollTop() <= sec5End) {
 			$(".section5").addClass("is-fixed");
-			$(".navTxt").text(((lang=="ko")?"브랜드 네이밍":"Brand Naming"));
+			$(".navTxt").text(((lang=="ko")?"05. 브랜드 네이밍":"05. Brand Naming"));
 			//$(".section31").addClass("is-fixed");
 
 		}else{
@@ -965,7 +967,6 @@ var prata = {
 		var section31 = $(".section31").offset().top;
 		var sectionNext4 = $(".section4").offset().top;
 		var sec31End = sectionNext4 - $(window).height();
-
 		if(this.scrollTop >= section31 && $(window).scrollTop() <= sec31End) {
 			if($(window).scrollTop() >= $(".section31 .top-wrap").offset().top){
 				// $(".navTxt").text(((lang=="ko")?"03. 합리적 프리미엄":"03. Reasonable"));
@@ -975,11 +976,7 @@ var prata = {
 
 				$(".navTxt").text(((lang=="ko")?"04. 진심어린 서비스":"04. Mindful Service"));
 			}
-
-
-
 			//$(".section31").addClass("is-fixed");
-
 		}else{
 			//$(".section31").removeClass("is-fixed");
 		}
@@ -1161,11 +1158,14 @@ var prata = {
 			});
 		}
 
-
-
-
-
-
+		/* 섹션 5 구간 */
+		var section5 = $(".section5").offset().top;
+		var section6Next = $(".section6").offset().top;
+		console.log('this.scrollTop',this.scrollTop);
+		console.log('section5',section5);
+		if(this.scrollTop >= section5) {
+			$(".navTxt").text(((lang=="ko")?"05. 브랜드 네이밍":"05. Brand Naming"));
+		}
 
 
 
@@ -1305,7 +1305,7 @@ var prata = {
 		}
 
 
-		if(this.scrollTop >= (section7Recruit - 100)) {
+		if(this.scrollTop >= (section7Recruit - 500)) {
 			$(".navTxt").text(((lang=="ko")?"08. 인재 채용":"08. Recruit"));
 		}
 

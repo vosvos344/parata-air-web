@@ -1,4 +1,6 @@
-$(".navTxt").text('');
+$(document).ready(function () {
+	$(".navTxt").text('');
+});
 function isMobile() {
 	return /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
 }
@@ -82,7 +84,7 @@ const wAnimate = {
 					$(window).scrollTop(0)
 				}
 				$(".animateWrap").attr("data-step", wAnimate.step).attr("data-upDown", wAnimate.upDown);
-				console.log(wAnimate.step);
+				// console.log(wAnimate.step);
 				wAnimate.isAnimated = true
 				wAnimate.play[wAnimate.step]()
 
@@ -918,9 +920,8 @@ var prata = {
 		var section5 = $(".section5").offset().top;
 		var expandHeight = Math.max(100, this.scrollTop - section5);
 		var dynamicPadding = Math.max(16 - (this.scrollTop - section5) / 10); // padding 감소
-
 		var sectionNext6 = $(".section6").offset().top;
-		var sec5End = sectionNext4 - $(window).height();
+		var sec5End = sectionNext6 - $(window).height();
 
 		if(this.scrollTop >= section5 && $(window).scrollTop() <= sec5End) {
 			$(".section5").addClass("is-fixed");
@@ -1007,6 +1008,9 @@ var prata = {
 		}
 
 
+		if(wAnimate.step === 0){
+			$(".navTxt").text('');
+		}
 
 		let sec31Bound = document.querySelector(".section31").getBoundingClientRect();
 		let sec31TopFirstText = document.querySelector(".section31 .top-wrap .text-wrap .first").getBoundingClientRect();
@@ -1363,15 +1367,15 @@ var prata = {
 
 		/*섹션 7 구간*/
 		var section7 = $(".section7").offset().top;
-		var section7Recruit = $(".section7 .link-wrap").offset().top;
+		// var section7Recruit = $(".section7 .link-wrap").offset().top;
 		if(this.scrollTop >= section7) {
 			$(".navTxt").text(((languageCode=="ko")?"07. 브랜드 에셋":"07. Brand assets"));
 		}
 
 
-		if(this.scrollTop >= (section7Recruit - 100)) {
-			$(".navTxt").text(((languageCode=="ko")?"08. 인재 채용":"08. Recruit"));
-		}
+		// if(this.scrollTop >= (section7Recruit - 100)) {
+		// 	$(".navTxt").text(((languageCode=="ko")?"08. 인재 채용":"08. Recruit"));
+		// }
 
 
 		let sec7FirstText = document.querySelector(".section7 .title-sub .first").getBoundingClientRect();
@@ -1408,8 +1412,9 @@ var prata = {
 			});
 		}
 
-		if(sec7ThirdText.top <= $(window).height() * 0.85){
+		if(sec7ThirdText.top <= $(window).height() * 0.35){
 			$(".section7 .title-sub .third div").each(function (index) {
+				$(".navTxt").text(((languageCode=="ko")?"08. 인재 채용":"08. Recruit"));
 				setTimeout(() => {
 					$(this).addClass("on");
 				}, index * 100); // index에 따라 0.1초(100ms)씩 증가
