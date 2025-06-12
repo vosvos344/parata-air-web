@@ -260,13 +260,13 @@
         <section class="animationSectionScroll" id="animationSection3">
             <div class="animationImgMain">
                 <div class="animationImgCont one active" id="img_01">
-                    <img src="../images/section3_11.png">
+<!--                    <img src="../images/section3_11.png">-->
                 </div>
                 <div class="animationImgCont two">
                     <img src="../images/section3_1.png">
                 </div>
                 <div class="animationImgCont three" id="img_02">
-                    <img src="../images/section3_14.png">
+<!--                    <img src="../images/section3_14.png">-->
                 </div>
                 <div class="animationImgCont four">
                     <img src="../images/section3_10.png">
@@ -276,7 +276,8 @@
                 const params = new URLSearchParams(window.location.search);
                 const type = params.get('type');
                 const type2 = params.get('type2');
-
+                console.log(type);
+                console.log(type2);
                 let imgSrc;
                 switch(type) {
                     case '1':
