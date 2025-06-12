@@ -259,30 +259,53 @@
 
         <section class="animationSectionScroll" id="animationSection3">
             <div class="animationImgMain">
-                <div class="animationImgCont one active">
-                    <? if($_GET['type'] === 1){?>
+                <div class="animationImgCont one active" id="img_01">
                     <img src="../images/section3_11.png">
-                    <? }else if($_GET['type'] === 2){?>
-                    <img src="../images/section3_12.png">
-                    <? }else{?>
-                    <img src="../images/section3_13.png">
-                    <? }?>
                 </div>
                 <div class="animationImgCont two">
                     <img src="../images/section3_1.png">
                 </div>
-                <div class="animationImgCont three">
-                    <? if($_GET['type2'] === 1){?>
+                <div class="animationImgCont three" id="img_02">
                     <img src="../images/section3_14.png">
-                    <? }else{?>
-                    <img src="../images/section3_15.png">
-                    <? }?>
                 </div>
                 <div class="animationImgCont four">
                     <img src="../images/section3_10.png">
                 </div>
-
             </div>
+            <script>
+                const params = new URLSearchParams(window.location.search);
+                const type = params.get('type');
+                const type2 = params.get('type2');
+
+                let imgSrc;
+                switch(type) {
+                    case '1':
+                        imgSrc = '../images/section3_11.png';
+                        break;
+                    case '2':
+                        imgSrc = '../images/section3_12.png';
+                        break;
+                    default:
+                        imgSrc = '../images/section3_13.png';
+                }
+
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                document.getElementById('img_01').appendChild(img);
+
+                let imgSrc2;
+                switch(type2) {
+                    case '1':
+                        imgSrc2 = '../images/section3_14.png';
+                        break;
+                    default:
+                        imgSrc2 = '../images/section3_15.png';
+                }
+
+                const img2 = document.createElement('img');
+                img2.src = imgSrc2;
+                document.getElementById('img_02').appendChild(img2);
+            </script>
             <div class="animationInfoWrap">
                 <div class="animationInfo one">
                     <div class="animationInfoInner">
